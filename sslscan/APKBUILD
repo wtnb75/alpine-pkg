@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=sslscan
+pkgver=2.0.6
+pkgrel=0
+pkgdesc="sslscan tests SSL/TLS enabled services to discover supported cipher suites"
+url="https://github.com/rbsec/sslscan"
+arch="all"
+license="GPLv3"
+depends="zlib"
+makedepends="gcc make zlib-dev linux-headers perl musl-dev"
+install=""
+subpackages="$pkgname-doc"
+source="sslscan-$pkgver.tar.gz::https://github.com/rbsec/sslscan/archive/$pkgver.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make static
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd "$builddir"
+	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="2f7236f101e1ab75a6fb2efc8fed2949a410b4c67156e88865724e0f399a6e749218253d49c122f1e046022634ef62dcc2b4f97833fd33f90a3ba5a2b7e06c6c  sslscan-2.0.6.tar.gz"
