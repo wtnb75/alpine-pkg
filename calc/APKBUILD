@@ -16,7 +16,8 @@ builddir="$srcdir/${pkgname}-${pkgver}"
 
 build() {
 	cd "$builddir"
-	make EXTRA_CFLAGS='-DFPOS_POS_LEN=FILEPOS_LEN'
+	# make EXTRA_CFLAGS='-DFPOS_POS_LEN=FILEPOS_LEN' hsrc
+	make EXTRA_CFLAGS='-DFPOS_POS_LEN=FILEPOS_LEN' -j1
 }
 
 check() {
@@ -26,7 +27,7 @@ check() {
 
 package() {
 	cd "$builddir"
-	make install
+	make install T=$pkgdir
 }
 
 sha512sums="52f35d67ef0a95da399e959598d421ae9bd3bb04e2156754834b92ca890def563ff97fafc8bdfefa47759e16b9a4aaae1ce76d4e0a16cd8347117daa6509d576  calc-2.12.7.2.tar.bz2"
