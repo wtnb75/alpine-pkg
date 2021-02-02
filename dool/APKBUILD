@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=dool
+pkgver=0.0.1
+pkgrel=0
+pkgdesc="Python3 compatible clone of dstat"
+url="https://github.com/scottchiefbaker/dool"
+arch="all"
+license="GPLv2"
+depends="python3"
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/scottchiefbaker/dool/archive/master.tar.gz 0000-shebang.patch"
+builddir="$srcdir/$pkgname-master"
+
+build() {
+	:
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/share/dool"
+	mkdir -p "$pkgdir/usr/share/man"
+	make install DESTDIR="$pkgdir"
+}
+
+sha512sums="90a619fc9b8aee428a4f88942ed91680a72792696b2089931cb72cc7fa9db6791c692867c9d329ee010eb8bea1f3768d874048270eeef3baede8bb69a641bbab  dool-0.0.1.tar.gz
+8de2c5137546d78ca66c95c8bf719dc49618cb0ce62698735a79c652d8ba66339c362f7f173f5c73f357d3ad52111d27a3a420cf1ef779f58fd9067edae3ddba  0000-shebang.patch"
