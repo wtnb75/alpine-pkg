@@ -1,0 +1,39 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=py3-gyp
+_pkgname=gyp
+pkgver=0.1
+pkgrel=0
+pkgdesc="GYP is a Meta-Build system"
+url="https://gyp.gsrc.io/"
+arch="all"
+license="3-clause BSD"
+depends="python3"
+makedepends="py3-pip py3-wheel"
+install=""
+subpackages=""
+source=""
+_giturl="https://chromium.googlesource.com/external/gyp"
+builddir="${srcdir}/${_pkgname}"
+
+prepare(){
+	default_prepare
+	git clone --depth=1 "${_giturl}" "${builddir}" || return 1
+}
+
+build() {
+	cd "$builddir"
+	python3 setup.py bdist_wheel
+}
+
+check() {
+	# cd "$builddir"
+	# python3 setup.py test
+	:
+}
+
+package() {
+	cd "$builddir"
+	python3 setup.py install --prefix=/usr --root="${pkgdir}"
+}
+

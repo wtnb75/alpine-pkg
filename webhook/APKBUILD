@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=webhook
+pkgver=2.8.0
+pkgrel=0
+pkgdesc="adnanh/webhook"
+url="https://github.com/adnanh/webhook"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/adnanh/webhook/archive/refs/tags/${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	go build
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p ${pkgdir}/usr/bin
+	cp webhook ${pkgdir}/usr/bin/
+}
+
+sha512sums="98a9e941687c1e679abd5cbd314dad28cb42383e483202698d386d9123d63a3f8f40bb97f3da2c644dfc3f79a8e7d7a6d28b5069c39c9ca114e7e101424481ca  webhook-2.8.0.tar.gz"

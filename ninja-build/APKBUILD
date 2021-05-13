@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ninja-build
+pkgname0=ninja
+pkgver=1.10.2
+pkgrel=0
+pkgdesc="a small build system with a focus on speed"
+url="https://ninja-build.org/"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="python3 re2c"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/ninja-build/ninja/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/${pkgname0}-${pkgver}"
+
+build() {
+	cd "$builddir"
+	python3 configure.py --bootstrap
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p "${pkgdir}/usr/bin"
+	install -c -s -m 755 ninja "${pkgdir}/usr/bin/"
+}
+
+sha512sums="895412ae1cbc83c656e92f282602a29300e08274e9dea0da4464202ae556e7a1ab03bec057f23da4756bbd91bd2d744cd7a64b336740fd2782bb4db5c3b7b496  ninja-build-1.10.2.tar.gz"

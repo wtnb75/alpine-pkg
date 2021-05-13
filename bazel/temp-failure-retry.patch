@@ -1,0 +1,18 @@
+diff -up ./src/main/tools/linux-sandbox-pid1.h.orig ./src/main/tools/linux-sandbox-pid1.h
+--- ./src/main/tools/linux-sandbox-pid1.h.orig	2021-05-13 14:52:59.000000000 +0900
++++ ./src/main/tools/linux-sandbox-pid1.h	2021-05-13 14:53:17.000000000 +0900
+@@ -17,4 +17,14 @@
+ 
+ int Pid1Main(void *sync_pipe_param);
+ 
++/* taken from glibc unistd.h and fixes musl */
++#ifndef TEMP_FAILURE_RETRY
++#define TEMP_FAILURE_RETRY(expression) \
++  (__extension__                                                              \
++    ({ long int __result;                                                     \
++       do __result = (long int) (expression);                                 \
++       while (__result == -1L && errno == EINTR);                             \
++       __result; }))
++#endif
++
+ #endif
