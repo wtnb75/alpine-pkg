@@ -8,7 +8,7 @@ url="https://bazel.build/"
 arch="all"
 license="Apache-2.0"
 depends=""
-makedepends="bash openjdk11 python2 linux-headers zip"
+makedepends="bash openjdk11 python3 linux-headers zip"
 install=""
 subpackages=""
 source="https://github.com/bazelbuild/bazel/releases/download/${pkgver}/${pkgname}-${pkgver}-dist.zip temp-failure-retry.patch"
@@ -18,6 +18,8 @@ prepare(){
 	mkdir -p ${builddir}
 	cd ${builddir}
 	unzip -q ${srcdir}/$(basename $source)
+	python3 -m venv .venv
+	. .venv/bin/activate
 }
 
 build() {
