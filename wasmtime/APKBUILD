@@ -1,0 +1,41 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=wasmtime
+pkgver=0.26.0
+pkgrel=0
+pkgdesc="Standalone JIT-style runtime for WebAssembly, using Cranelift"
+url="https://wasmtime.dev/"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="rustup"
+install=""
+subpackages=""
+source=""
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p $(dirname ${builddir})
+	cd $(dirname ${builddir})
+	git clone --depth=1 https://github.com/bytecodealliance/wasmtime -b v${pkgver} $(basename ${builddir})
+	cd ${builddir}
+	git submodule init
+	git submodule update --single-branch
+	rustup-init -y
+	. $HOME/.cargo/env
+}
+
+build() {
+	cd "$builddir"
+	cargo build --release
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install --root ${pkgdir}/usr --path .
+}
