@@ -1,0 +1,44 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=monetdb
+pkgver=11.39.17
+pkgrel=0
+pkgdesc="column store db"
+url="https://monetdb.org/"
+arch="all"
+license="MPL-2.0"
+depends=""
+makedepends="cmake bison python3-dev linux-headers"
+install=""
+subpackages="${pkgname}-doc py3-$pkgname:py3"
+source="https://www.monetdb.org/downloads/sources/Latest/MonetDB-${pkgver}.tar.bz2 alpine-build.patch"
+builddir="${srcdir}/MonetDB-${pkgver}"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	export CC=$(which gcc)
+	export CXX=$(which g++)
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LOCALSTATEDIR=/var -DCMAKE_INSTALL_LIBDIR=/usr/lib ..
+	make
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=${pkgdir}
+}
+
+py3() {
+	pkgdesc="$pkgname python binding"
+	depends="python3"
+	mkdir -p "$subpkgdir"/usr/lib
+	mv "$pkgdir"/usr/lib/python* "$subpkgdir"/usr/lib
+}
+
+sha512sums="bcad43b932d8ba1574a549cdc4edb14790b30cdfd7237fc366ad1a9baf46d6e599a943f9ecc2affde865cfd32965a8d66e5c180326ca3a0d4333cda08a076f66  MonetDB-11.39.17.tar.bz2
+0346d80535c87be99dee497da789bb75b437ffb4991a69357e41cf221254a786798607f88ec790f9996577b3abb38d1be2ee02fd481c42775d164472bfa1fdba  alpine-build.patch"
