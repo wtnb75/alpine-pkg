@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=glusterfs
+pkgver=9.2
+pkgrel=0
+pkgdesc="glusterfs"
+url="https://www.gluster.org/"
+arch="all"
+license="GPLv2/GPLv3"
+depends=""
+makedepends="linux-headers flex bison openssl-dev automake autoconf libtool pkgconfig util-linux-dev libuuid acl-dev zlib-dev python2-dev libxml2-dedv argp-standalone libtirpc-dev readline-dev libaio-dev liburing-dev userspace-rcu-dev cmocka-dev fuse-dev libucontext-dev"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/gluster/glusterfs/archive/refs/tags/v${pkgver}.tar.gz 0000-alpine.patch"
+builddir="$srcdir/${pkgname}-${pkgver}"
+
+build() {
+	cd "$builddir"
+	sh autogen.sh
+	./configure --prefix=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
