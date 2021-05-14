@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=rqlite
+pkgver=5.12.1
+pkgrel=0
+pkgdesc="The lightweight, distributed relational database built on SQLite"
+url="https://github.com/rqlite/rqlite"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go git"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/rqlite/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/${pkgname}-${pkgver}"
+
+build() {
+	cd "$builddir"/cmd/rqlite && go build
+	cd "$builddir"/cmd/rqlited && go build
+	cd "$builddir"/cmd/rqbench && go build
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/cmd/rqlite && GOBIN=${pkgdir}/usr/bin go install
+	cd "$builddir"/cmd/rqlited && GOBIN=${pkgdir}/usr/bin go install
+	cd "$builddir"/cmd/rqbench && GOBIN=${pkgdir}/usr/bin go install
+}
+sha512sums="0612b0b7a6bcea328a009423367c937859ffcb1fe40e6612e73c4d25ee26ca60b387ed06c32ec6437ff64125dcb6968ca8200ea333da30d9dabfdedd27f3dcb4  rqlite-5.12.1.tar.gz"
