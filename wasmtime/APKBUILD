@@ -27,7 +27,7 @@ prepare() {
 
 build() {
 	cd "$builddir"
-	cargo build --release
+	# cargo build --release
 }
 
 check() {
