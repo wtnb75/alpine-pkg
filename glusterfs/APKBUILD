@@ -10,14 +10,15 @@ license="GPLv2/GPLv3"
 depends=""
 makedepends="linux-headers flex bison openssl-dev automake autoconf libtool pkgconfig util-linux-dev libuuid acl-dev zlib-dev python2-dev libxml2-dev argp-standalone libtirpc-dev readline-dev libaio-dev liburing-dev userspace-rcu-dev cmocka-dev fuse-dev libucontext-dev rpcgen"
 install=""
-subpackages=""
+subpackages="$pkgname-doc $pkgname-dev"
 source="$pkgname-$pkgver.tar.gz::https://github.com/gluster/glusterfs/archive/refs/tags/v${pkgver}.tar.gz 0000-alpine.patch"
 builddir="$srcdir/${pkgname}-${pkgver}"
+options="suid"
 
 build() {
 	cd "$builddir"
 	sh autogen.sh
-	./configure --prefix=/usr
+	CFLAGS='-D_PATH_MOUNTED="\"/etc/mtab\""' LIBS=-lucontext ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc
 	make
 }
 
@@ -31,4 +32,4 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="6225a067044a4c22dbe84a3c32e812ccdb662ab571c06a9c3f02a88cf68183cc4396d28adf4920098ba95cbce7fbf6face8e11b1c8765c2363d40d6ccc2b780f  glusterfs-9.2.tar.gz
-a332bff1b2349b8dda2ef6544bd3ca7bc98f5e57b269adcf2cf7548d2b9b4fae72d8e2837920e1d8e936c85623390b993551a6785361ea695e6ebf351caa65ff  0000-alpine.patch"
+df2b267f97e8b342d8fe6a20d973641237d0992432117f1ad296df4ec4289db77494424b8c132c53519c4cdcc439585df755b0b3d818a570a50e549d0deb3bde  0000-alpine.patch"
