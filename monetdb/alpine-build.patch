@@ -1,0 +1,11 @@
+diff -up MonetDB-11.39.11/common/utils/mutils.h.orig MonetDB-11.39.11/common/utils/mutils.h
+--- MonetDB-11.39.11/common/utils/mutils.h.orig
++++ MonetDB-11.39.11/common/utils/mutils.h
+@@ -46,6 +46,7 @@
+ 
+ #endif
+ 
++#include <sys/stat.h>
+ #ifndef S_IWGRP
+ /* if one doesn't exist, presumably they all don't exist - Not so on MinGW */
+ #define S_IRUSR 0000400		/* read permission, owner */

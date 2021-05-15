@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=duckdb
+pkgver=0.2.6
+pkgrel=0
+pkgdesc="DuckDB is an in-process SQL OLAP database management system"
+url="https://duckdb.org/"
+arch="all"
+license="MIT"
+depends=""
+makedepends="cmake python3-dev"
+install=""
+subpackages="$pkgname-dev"
+source="$pkgname-$pkgver.tar.gz::https://github.com/duckdb/duckdb/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build && cd build
+	export CC=$(which gcc)
+	export CXX=$(which g++)
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LOCALSTATEDIR=/var -DCMAKE_INSTALL_LIBDIR=/usr/lib ..
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	cd build
+	make install DESTDIR=${pkgdir}
+}
+sha512sums="d12f4c6338457bc038b2969c22f1c24cdfb34f19d0cae9403cceaa02f4883d85db39f30c25a234cf945a35f8fa82cc014f72d88701020ba10fa75280cca5d22e  duckdb-0.2.6.tar.gz"
