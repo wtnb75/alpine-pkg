@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+    builder:
+        image: local/builder
+        build: ./builder.docker
+        environment:
+            CCACHE_DIR: /home/packager/.cache/ccache
+        volumes:
+            - distfiles:/var/cache/distfiles
+            - gocache:/home/packager/go
+            - rustcache:/home/packager/.cargo
+            - othercache:/home/packager/.cache
+            - output:/home/packager/packages
+            - ./:/build
+        command:
+            - sh
+            - /build/build-all.sh
+    extract:
+        image: local/rsync
+        build: ./rsync.docker
+        volumes:
+            - output:/packages
+            - ./output:/output
+        user: '${UID:-1000}:${GID:-100}'
+        command:
+            - rsync
+            - -rv
+            - /packages/build/
+            - /output/
+
+volumes:
+    distfiles: {}
+    gocache: {}
+    rustcache: {}
+    othercache: {}
+    output: {}
