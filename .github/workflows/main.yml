@@ -1,0 +1,64 @@
+name: branch
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+      with:
+        lfs: true
+    - name: setup abuild.conf
+      run: |
+        echo "PACKAGER=\"${{ secrets.PACKAGER }}\"" >> builder.docker/abuildconf/abuild.conf
+        echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa\"" >> builder.docker/abuildconf/abuild.conf
+        echo "${{ secrets.PRIVATE_KEY }}" > builder.docker/abuildconf/${{ secrets.KEY_NAME }}.rsa
+        echo "${{ secrets.PUBLIC_KEY }}" > builder.docker/abuildconf/${{ secrets.KEY_NAME }}.rsa.pub
+        chmod 600 builder.docker/abuildconf/${{ secrets.KEY_NAME }}.rsa
+    - name: build image
+      run: docker-compose build
+    - name: boot builder
+      run: docker-compose up -d builder
+    - name: cache
+      uses: actions/cache@v2
+      with:
+        path: cache
+        key: ${{ runner.os }}-buildcache
+    - name: import cache
+      run: docker-compose up cache-import
+    - name: import pre-built
+      run:
+        curl -sLO https://github.com/wtnb75/alpine-pkg/archive/refs/heads/gh-pages.zip || exit 0
+        unzip gh-pages.zip
+        rm -rf output
+        mkdir output/
+        mv alpine-pkg-gh_pages output/build
+    - name: build apk
+      run: docker-compose exec builder sh /build/build-all.sh
+    - name: get result
+      run: |
+        mkdir -p output
+        docker-compose up export
+    - name: export cache
+      run: docker-compose up cache-export
+    - name: shutdown builder
+      run: docker-compose down -v
+    - name: build index
+      run: |
+        pip install dirindex
+        cd output
+        echo "${{ secrets.PUBLIC_KEY }}" > ${{ secrets.KEY_NAME }}.rsa.pub
+        dirindex make --template apache --recursive .
+        cd -
+    - name: push to gh-pages
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./output
+      with:
+        forceOrphan: true

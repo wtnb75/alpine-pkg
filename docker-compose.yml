@@ -14,13 +14,13 @@ services:
             - output:/home/packager/packages
             - ./:/build
         command:
-            - sh
-            - /build/build-all.sh
-    extract:
+            - sleep
+            - infinity
+    export:
         image: local/rsync
         build: ./rsync.docker
         volumes:
-            - output:/packages
+            - output:/packages:ro
             - ./output:/output
         user: '${UID:-1000}:${GID:-100}'
         command:
@@ -28,6 +28,46 @@ services:
             - -rv
             - /packages/build/
             - /output/
+    import:
+        image: local/rsync
+        build: ./rsync.docker
+        volumes:
+            - output:/packages
+            - ./output:/output:ro
+        user: '${UID:-100}:${GID:-300}'
+        command:
+            - rsync
+            - -rv
+            - /output/
+            - /packages/build/
+    cache-export:
+        image: alpine:3
+        volumes:
+            - distfiles:/cache/distfiles:ro
+            - gocache:/cache/gocache:ro
+            - rustcache:/cache/rustcache:ro
+            - othercache:/cache/othercache:ro
+            - ./cache:/output
+        working_dir: /cache
+        command:
+            - tar
+            - cf
+            - /output/cache.tar
+            - .
+    cache-import:
+        image: alpine:3
+        volumes:
+            - distfiles:/cache/distfiles:rw
+            - gocache:/cache/gocache:rw
+            - rustcache:/cache/rustcache:rw
+            - othercache:/cache/othercache:rw
+            - ./cache:/input:ro
+        working_dir: /cache
+        command:
+            - tar
+            - xf
+            - /input/cache.tar
+            - .
 
 volumes:
     distfiles: {}
