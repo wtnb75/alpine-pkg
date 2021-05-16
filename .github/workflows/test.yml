@@ -1,8 +1,6 @@
 name: test(tmp)
 
-on:
-  push:
-    branches-ignore: [gh-pages, main]
+"on": [push]
 
 jobs:
   helloworld:
