@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=normalize
+pkgver=0.7.7
+pkgrel=0
+pkgdesc="an audio file volume normalizer"
+url="http://normalize.nongnu.org/"
+arch="all"
+license="GPL"
+depends="libmad"
+makedepends="libmad-dev"
+install=""
+subpackages=""
+source="http://savannah.nongnu.org/download/normalize/${pkgname}-${pkgver}.tar.bz2"
+builddir="${srcdir}/${pkgname}-${pkgver}"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr
+	make
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=${pkgdir}
+}
+
+sha512sums="5fb2265eac93b243682cedb955d2ddfe05f55cafdeb1d757aaef0afb36bc9907ea3321b8554e128f6228bdeeaeef96e3e9ba000d0ad84282cc76a50b3e460ce4  normalize-0.7.7.tar.bz2"
