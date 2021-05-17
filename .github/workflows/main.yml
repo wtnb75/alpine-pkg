@@ -1,4 +1,4 @@
-name: branch
+name: main
 
 on:
   push:
@@ -36,7 +36,7 @@ jobs:
         mkdir output/
         mv alpine-pkg-gh_pages output/build
     - name: build apk
-      run: docker-compose exec builder sh /build/build-all.sh
+      run: docker-compose exec -T builder sh /build/build-all.sh
     - name: get result
       run: |
         mkdir -p output
