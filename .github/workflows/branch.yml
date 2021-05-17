@@ -37,6 +37,7 @@ jobs:
           [ -f "$i" ] || continue
           dn=$(dirname $i)
           [ -f "${dn}/APKBUILD" ] || continue
+          grep -q "$dn" draft.list && continue
           docker-compose exec -T builder sh /build/build-all.sh ${dn}
         done
     - name: list apk

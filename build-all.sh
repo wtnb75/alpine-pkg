@@ -11,6 +11,7 @@ do1(){
 
 if [ "$*" = "" ]; then
     for i in */APKBUILD; do
+        grep -q "$(dirname $i)" draft.list && continue
         do1 $(dirname $i)
     done
 else
