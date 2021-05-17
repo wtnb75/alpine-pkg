@@ -70,6 +70,7 @@ jobs:
         find . -name index.html -delete
         echo "$PUBLIC_KEY" > "$KEY_NAME.rsa.pub"
         dirindex make --template apache --recursive .
+        touch .nojekyll
         cd -
     - name: push to gh-pages
       uses: peaceiris/actions-gh-pages@v2

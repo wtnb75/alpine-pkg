@@ -5,7 +5,7 @@ do1(){
     local dirname=$1
     [ -f $dirname/APKBUILD ] || return
     cd $dirname
-    abuild -r
+    abuild -r || exit 1
     cd - > /dev/null
 }
 
@@ -19,4 +19,4 @@ else
         do1 $i
     done
 fi
-apk-index
+apk-index || exit 1

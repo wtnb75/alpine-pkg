@@ -38,14 +38,17 @@ jobs:
           dn=$(dirname $i)
           [ -f "${dn}/APKBUILD" ] || continue
           grep -q "$dn" draft.list && continue
-          docker-compose exec -T builder sh /build/build-all.sh ${dn}
+          docker-compose exec -T builder sh /build/build-all.sh ${dn} || exit 1
         done
     - name: list apk
       run: |
-        mkdir -p output
-        docker-compose up export
+        mkdir -p -m 0777 output
+        env c_gid=$(id -g) c_uid=$(id -u) docker-compose up export
         ls -lR output
     - name: export cache
-      run: docker-compose up cache-export
+      run: |
+        mkdir -p -m 0777 cache
+        docker-compose up cache-export
+        ls -lR cache
     - name: shutdown builder
       run: docker-compose down -v
