@@ -29,7 +29,7 @@ jobs:
     - name: import cache
       run: docker-compose up cache-import
     - name: import pre-built
-      run:
+      run: |
         curl -sLO https://github.com/wtnb75/alpine-pkg/archive/refs/heads/gh-pages.zip || exit 0
         unzip gh-pages.zip
         rm -rf output
