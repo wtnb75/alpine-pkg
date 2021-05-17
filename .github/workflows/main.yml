@@ -34,7 +34,7 @@ jobs:
         unzip gh-pages.zip
         rm -rf output
         mkdir -p -m 0777 output/
-        mv alpine-pkg-gh_pages output/build
+        mv alpine-pkg-gh-pages output/build
         ls -lR output
         docker-compose up import
         docker-compose exec -T builder ls -lR /home/packager/packages
