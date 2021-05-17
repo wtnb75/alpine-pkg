@@ -22,7 +22,7 @@ services:
         volumes:
             - output:/packages:ro
             - ./output:/output
-        user: '${UID:-1000}:${GID:-100}'
+        user: '${c_uid:-1000}:${c_gid:-100}'
         command:
             - rsync
             - -rv
@@ -34,7 +34,7 @@ services:
         volumes:
             - output:/packages
             - ./output:/output:ro
-        user: '${UID:-100}:${GID:-300}'
+        user: '${c_uid:-100}:${c_gid:-300}'
         command:
             - rsync
             - -rv

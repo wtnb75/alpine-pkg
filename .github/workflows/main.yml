@@ -43,7 +43,7 @@ jobs:
       run: |
         rm -rf output
         mkdir -p -m 0777 output
-        GID=$(id -g) UID=$(id -u) docker-compose up export
+        env c_gid=$(id -g) c_uid=$(id -u) docker-compose up export
         ls -lR output
     - name: export cache
       run: |
