@@ -1,0 +1,38 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=pyston
+pkgver=2.2
+pkgrel=0
+pkgdesc="a small build system with a focus on speed"
+url="https://www.pyston.org/"
+arch="all"
+license="PSF-2.0"
+depends=""
+makedepends="cmake py3-virtualenv linux-headers"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/pyston/pyston/archive/refs/tags/${pkgname}_${pkgver}.tar.gz"
+builddir="$srcdir/${pkgname}-${pkgname}_${pkgver}"
+
+build() {
+	cd "$builddir"
+	export CMAKE_MAKE_PROGRAM=make
+	export CMAKE_C_COMPILER=$(which gcc)
+	export CMAKE_CXX_COMPILER=$(which g++)
+	export CMAKE_INSTALL_PREFIX=/usr
+	export CMAKE_INSTALL_LOCALSTATEDIR=/var
+	export CMAKE_INSTALL_LIBDIR=/usr/lib
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=${pkgdir}
+}
+
+sha512sums="464c8bc8a758fb6950cbb93d30e04dcfb45dbe136e3b7db2a3fc3454fe0df57d1aa8097a61409ce0816b0f8f4c57498c63ba46806de7c78064caaabebfd674ff  pyston-2.2.tar.gz"
