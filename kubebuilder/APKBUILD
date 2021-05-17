@@ -1,0 +1,39 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=kubebuilder
+pkgver=3.0.0
+pkgrel=0
+pkgdesc="Kubebuilder - SDK for building Kubernetes APIs using CRDs"
+url="https://book.kubebuilder.io/"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/kubernetes-sigs/kubebuilder/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	default_prepare
+	cd "$builddir"
+	sed -i -e 's,\$(shell git rev-parse HEAD),v'$pkgver',g;' Makefile
+	sed -i -e 's,\$(shell git describe --tags --dirty --broken),v'$pkgver',g;' Makefile
+}
+
+build() {
+	cd "$builddir"
+	make build
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p ${pkgdir}/usr/bin
+	make install GOBIN=${pkgdir}/usr/bin
+}
+sha512sums="bac5cf9b2a18865ebd125a2c3db5df77475e1f1f9602aa337ebf59bb9e7311533ad68008788bbdc50e8e4df7fa0dd617165b86a9f017c4ffe788103724c1eebd  kubebuilder-3.0.0.tar.gz"
