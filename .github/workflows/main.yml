@@ -33,13 +33,12 @@ jobs:
         curl -sLO https://github.com/wtnb75/alpine-pkg/archive/refs/heads/gh-pages.zip || exit 0
         unzip gh-pages.zip
         rm -rf output
-        mkdir -p -m 0777 output/
-        mv alpine-pkg-gh-pages output/build
+        mv alpine-pkg-gh-pages output
         ls -lR output
         docker-compose up import
         docker-compose exec -T builder ls -lR /home/packager/packages
     - name: build apk
-      run: docker-compose exec -T builder sh /build/build-all.sh
+      run: docker-compose exec -T builder sh /build/build-all.sh cscope
     - name: get result
       run: |
         rm -rf output
