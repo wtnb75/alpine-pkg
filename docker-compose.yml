@@ -1,0 +1,77 @@
+version: '3'
+
+services:
+    builder:
+        image: local/builder
+        build: ./builder.docker
+        environment:
+            CCACHE_DIR: /home/packager/.cache/ccache
+        volumes:
+            - distfiles:/var/cache/distfiles
+            - gocache:/home/packager/go
+            - rustcache:/home/packager/.cargo
+            - othercache:/home/packager/.cache
+            - output:/home/packager/packages
+            - ./:/build
+        command:
+            - sleep
+            - infinity
+    export:
+        image: local/rsync
+        build: ./rsync.docker
+        volumes:
+            - output:/packages:ro
+            - ./output:/output
+        user: '${c_uid:-1000}:${c_gid:-100}'
+        command:
+            - rsync
+            - -rv
+            - /packages/build/
+            - /output/
+    import:
+        image: local/rsync
+        build: ./rsync.docker
+        volumes:
+            - output:/packages
+            - ./output:/output:ro
+        user: '${c_uid:-100}:${c_gid:-300}'
+        command:
+            - rsync
+            - -rv
+            - /output/
+            - /packages/build/
+    cache-export:
+        image: alpine:3
+        volumes:
+            - distfiles:/cache/distfiles:ro
+            - gocache:/cache/gocache:ro
+            - rustcache:/cache/rustcache:ro
+            - othercache:/cache/othercache:ro
+            - ./cache:/output
+        working_dir: /cache
+        command:
+            - tar
+            - cf
+            - /output/cache.tar
+            - .
+    cache-import:
+        image: alpine:3
+        volumes:
+            - distfiles:/cache/distfiles:rw
+            - gocache:/cache/gocache:rw
+            - rustcache:/cache/rustcache:rw
+            - othercache:/cache/othercache:rw
+            - ./cache:/input:ro
+        working_dir: /cache
+        command:
+            - tar
+            - xf
+            - /input/cache.tar
+            - .
+
+volumes:
+    distfiles: {}
+    gocache: {}
+    rustcache: {}
+    othercache: {}
+    output: {}

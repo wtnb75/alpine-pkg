@@ -1,3 +1,7 @@
 */src
 *.swp
 *~
+output
+cache
+*.pub
+*.rsa
