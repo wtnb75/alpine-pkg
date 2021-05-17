@@ -25,7 +25,8 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ./cache
-        key: ${{ runner.os }}-buildcache
+        key: ${{ runner.os }}-buildcache-${{ hashFiles('**/APKBUILD') }}
+        restore-keys: ${{ runner.os }}-buildcache-
     - name: import cache
       run: docker-compose up cache-import
     - name: import pre-built
@@ -38,7 +39,7 @@ jobs:
         docker-compose up import
         docker-compose exec -T builder ls -lR /home/packager/packages
     - name: build apk
-      run: docker-compose exec -T builder sh /build/build-all.sh cscope dool calc
+      run: docker-compose exec -T builder sh /build/build-all.sh
     - name: get result
       run: |
         rm -rf output

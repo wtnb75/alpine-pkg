@@ -27,7 +27,8 @@ jobs:
       uses: actions/cache@v2
       with:
         path: cache
-        key: ${{ runner.os }}-buildcache
+        key: ${{ runner.os }}-buildcache-${{ hashFiles('**/APKBUILD') }}
+        restore-keys: ${{ runner.os }}-buildcache-
     - name: import cache
       run: docker-compose up cache-import
     - name: build apk
