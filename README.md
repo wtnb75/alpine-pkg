@@ -4,9 +4,8 @@
 
 ## Enable Repository
 
-- echo "https://wtnb75.github.io/alpine-pkg/" >> /etc/apk/repository
-- cd /etc/apk/keys
-- curl -sLO https://wtnb75.github.io/alpine-pkg/wtnb75@gmail.com-601572c5.rsa.pub
+- echo "https://wtnb75.github.io/alpine-pkg/" >> /etc/apk/repositories
+- wget -P /etc/apk/keys/ https://wtnb75.github.io/alpine-pkg/wtnb75@gmail.com-601572c5.rsa.pub
 
 ## install
 
