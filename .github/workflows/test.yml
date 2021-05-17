@@ -1,9 +1,0 @@
-name: test(tmp)
-
-"on": [push]
-
-jobs:
-  helloworld:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2

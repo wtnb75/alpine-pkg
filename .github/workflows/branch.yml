@@ -2,7 +2,7 @@ name: branch
 
 on:
   push:
-    branches-ignore: [gh-pages, main, auto-build]
+    branches-ignore: [gh-pages, main]
 
 jobs:
   build:
