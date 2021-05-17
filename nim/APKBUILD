@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=nim
+pkgver=1.4.6
+pkgrel=0
+pkgdesc="Nim is a statically typed compiled systems programming language"
+url="https://nim-lang.org/"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source="https://nim-lang.org/download/${pkgname}-${pkgver}.tar.xz"
+builddir="${srcdir}/${pkgname}-${pkgver}"
+
+build() {
+	cd "$builddir"
+	sh build.sh
+	./bin/nim c koch
+	./koch boot -d:release
+	./koch tools
+}
+
+check() {
+	# cd "$builddir"
+	# python3 setup.py test
+	:
+}
+
+package() {
+	cd "$builddir"
+	./koch geninstall
+	sh install.sh ${pkgdir}/usr
+}
+
+sha512sums="6b1971a920c3572f9a1997648a297afc1696b09ac20ca031a4b23eba3b66b9ff93606bff2eeacaa651ed8cf6af2df7d38ec6253a4e66955a3e04c6d88991e013  nim-1.4.6.tar.xz"

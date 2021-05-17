@@ -1,0 +1,75 @@
+bazel:
+  type: github_tag
+  id: bazelbuild/bazel
+calc:
+  type: github_tag
+  id: lcn2/calc
+cscope:
+  type: general
+  url: http://cscope.sourceforge.net/
+  xpath: //*[@id="files_list"]/tbody/tr[1]/th/a/span/text()
+deno:
+  type: cargo
+  id: deno
+dool:
+  type: github_tag
+  id: scottchiefbaker/dool
+duckdb:
+  type: github_tag
+  id: duckdb/duckdb
+glusterfs:
+  type: github_tag
+  id: gluster/glusterfs
+gyp:
+  type: head
+kubebuilder:
+  type: github_tag
+  id: kubernetes-sigs/kubebuilder
+mkcert:
+  type: github_tag
+  id: FiloSottile/mkcert
+monetdb:
+  type: general
+  url: https://www.monetdb.org/downloads/sources/Latest/
+  xpath: /html/body/pre/a[6]/text()
+  regexp: '^MonetDB-(<version>[0-9\.]*)\.tar'
+ninja-build:
+  type: github_tag
+  id: ninja-build/ninja
+normalize:
+  type: general
+  url: http://normalize.nongnu.org/
+  xpath: /html/body/ul[1]/li[1]/a/text()
+  regexp: '^normalize-(<version>[0-9\.]*)\.tar'
+pypy:
+  type: general
+  url: https://www.pypy.org/download.html
+  xpath: //*[@id="checksums"]/p[2]/text()
+  regexp: '^pypy(<version>[0-9\.-]+)'
+pyston:
+  type: github_tag
+  id: pyston/pyston
+rqlite:
+  type: github_tag
+  id: rqlite/rqlite
+sslscan:
+  type: github_tag
+  id: rbsec/sslscan
+sysbench:
+  type: github_tag
+  id: akopytov/sysbench
+tgtd:
+  type: github_tag
+  id: fujita/tgt
+wasmtime:
+  type: github_tag
+  id: bytecodealliance/wasmtime
+webhook:
+  type: github_tag
+  id: adnanh/webhook
+mitmproxy:
+  type: pypi
+  id: mitmproxy
+nim:
+  type: github_tag
+  id: nim-lang/Nim
