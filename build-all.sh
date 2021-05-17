@@ -5,12 +5,13 @@ do1(){
     local dirname=$1
     [ -f $dirname/APKBUILD ] || return
     cd $dirname
-    abuild -r
+    abuild -r || exit 1
     cd - > /dev/null
 }
 
 if [ "$*" = "" ]; then
     for i in */APKBUILD; do
+        grep -q "$(dirname $i)" draft.list && continue
         do1 $(dirname $i)
     done
 else
@@ -18,4 +19,4 @@ else
         do1 $i
     done
 fi
-apk-index
+apk-index || exit 1

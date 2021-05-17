@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=pypy
+pkgver=3.7-v7.3.4
+pkgrel=0
+pkgdesc="A fast, compliant alternative implementation of Python"
+url="https://www.pypy.org/"
+arch="all"
+license="MIT"
+depends="libffi zlib expat ncurses-lib libzip libbz2"
+makedepends="python2 linux-headers py2-setuptools libffi-dev zlib-dev expat-dev ncurses-dev libzip-dev bzip2-dev"
+install=""
+subpackages=""
+source="https://downloads.python.org/pypy/pypy${pkgver}-src.tar.bz2"
+builddir="${srcdir}/${pkgname}${pkgver}-src"
+
+build() {
+	cd "$builddir"
+	easy_install-2.7 pycparser
+	make JOBS="--make-jobs ${JOBS}"
+}
+
+check() {
+	# cd "$builddir"
+	# python3 setup.py test
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=${pkgdir}
+}
+

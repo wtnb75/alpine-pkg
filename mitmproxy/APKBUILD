@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=py3-mitmproxy
+pkgver=6.0
+pkgrel=0
+pkgdesc="mitmproxy is a free and open source interactive HTTPS proxy"
+url="https://mitmproxy.org/"
+arch="all"
+license="MIT"
+depends="py3-asgiref py3-blinker py3-brotli py3-certifi py3-click py3-cryptography py3-flask py3-h11 py3-h2 py3-hyperframe py3-ldap3 py3-msgpack py3-passlib py3-protobuf py3-openssl py3-parsing py3-ruamel.yaml py3-sortedcontainers py3-tornado py3-urwid"
+depends="$depends py3-kaitaistruct py3-perclip py3-wsproto py3-publicsuffix2 py3-zstandard"
+makedepends="$depends"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}-${pkgver}"
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	# cd "$builddir"
+	# python3 setup.py test
+	:
+}
+
+package() {
+	cd "$builddir"
+	pip3 install "mitmproxy==${pkgver}" --prefix=/usr --root="${pkgdir}"
+}
+
