@@ -1,4 +1,4 @@
-[![branch](https://github.com/wtnb75/alpine-pkg/actions/workflows/branch.yml/badge.svg)](https://github.com/wtnb75/alpine-pkg/actions/workflows/branch.yml)
+[![main](https://github.com/wtnb75/alpine-pkg/actions/workflows/main.yml/badge.svg)](https://github.com/wtnb75/alpine-pkg/actions/workflows/main.yml)
 
 # Usage
 
