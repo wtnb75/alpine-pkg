@@ -66,7 +66,7 @@ jobs:
         pip install dirindex
         cd output
         find . -name index.html -delete
-        rm .nojekyll
+        rm -f .nojekyll
         echo "$PUBLIC_KEY" > "$KEY_NAME.rsa.pub"
         dirindex make --template apache --recursive .
         tar cf archive.tar x86_64/

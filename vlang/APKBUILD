@@ -7,7 +7,7 @@ pkgdesc="The V Programming Language"
 url="https://vlang.io/"
 arch="all"
 license="MIT"
-depends=""
+depends="gcc"
 makedepends=""
 install=""
 subpackages=""
@@ -36,4 +36,3 @@ package() {
 	cp -r vlib cmd v ${pkgdir}/usr/v/
 	ln -fs ../v/v ${pkgdir}/usr/bin/v
 }
-

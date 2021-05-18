@@ -4,8 +4,8 @@
 
 ## Enable Repository
 
-- echo "https://wtnb75.github.io/alpine-pkg/" >> /etc/apk/repositories
-- wget -P /etc/apk/keys/ https://wtnb75.github.io/alpine-pkg/wtnb75@gmail.com-601572c5.rsa.pub
+- echo "https://wtnb75-repo.netlify.app/" >> /etc/apk/repositories
+- wget -P /etc/apk/keys/ https://wtnb75-repo.netlify.app/wtnb75@gmail.com-601572c5.rsa.pub
 
 ## install
 
