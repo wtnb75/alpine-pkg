@@ -69,7 +69,7 @@ jobs:
         rm -f .nojekyll
         echo "$PUBLIC_KEY" > "$KEY_NAME.rsa.pub"
         dirindex make --template apache --recursive .
-        tar cf archive.tar x86_64/
+        tar cf ../cache/archive.tar x86_64/
         cd -
     - name: deploy to netlify
       run: npx netlify-cli deploy --dir=./output --prod
