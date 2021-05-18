@@ -70,7 +70,7 @@ jobs:
         find . -name index.html -delete
         echo "$PUBLIC_KEY" > "$KEY_NAME.rsa.pub"
         dirindex make --template apache --recursive .
-        touch .nojekyll
+        tar cf archive.tar x86_64/
         cd -
     - name: deploy to netlify
       run: npx netlify-cli deploy --dir=./output --prod
