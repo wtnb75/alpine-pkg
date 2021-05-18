@@ -34,14 +34,13 @@ jobs:
         key: ${{ runner.os }}-buildcache-${{ hashFiles('**/APKBUILD') }}
         restore-keys: ${{ runner.os }}-buildcache-
     - name: import cache
-      run: |
-        docker-compose up cache-import
-        ls -l cache
+      run: docker-compose up cache-import
     - name: import pre-built
       run: |
         rm -rf output
-        mkdir -p output
-        [ -f cache/archive.tar ] && tar xf cache/archive.tar -C output
+        wget -r -nv https://wtnb75-repo.netlify.app/
+        mv wtnb75-repo.netlify.app output
+        find output -name index.html -delete
         docker-compose up import
         docker-compose exec -T builder ls -lR /home/packager/packages
     - name: build apk
@@ -71,7 +70,6 @@ jobs:
         rm -f .nojekyll
         echo "$PUBLIC_KEY" > "$KEY_NAME.rsa.pub"
         dirindex make --template apache --recursive .
-        tar cf ../cache/archive.tar x86_64/
         cd -
     - name: deploy to netlify
       run: npx netlify-cli deploy --dir=./output --prod
