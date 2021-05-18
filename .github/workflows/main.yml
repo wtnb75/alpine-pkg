@@ -37,11 +37,9 @@ jobs:
       run: docker-compose up cache-import
     - name: import pre-built
       run: |
-        curl -sLO https://github.com/wtnb75/alpine-pkg/archive/refs/heads/gh-pages.zip || exit 0
-        unzip gh-pages.zip
         rm -rf output
-        mv alpine-pkg-gh-pages output
-        ls -lR output
+        mkdir -p output
+        curl https://wtnb75-repo.netlify.app/archive.tar | tar xf - -C output
         docker-compose up import
         docker-compose exec -T builder ls -lR /home/packager/packages
     - name: build apk
@@ -68,6 +66,7 @@ jobs:
         pip install dirindex
         cd output
         find . -name index.html -delete
+        rm .nojekyll
         echo "$PUBLIC_KEY" > "$KEY_NAME.rsa.pub"
         dirindex make --template apache --recursive .
         tar cf archive.tar x86_64/
