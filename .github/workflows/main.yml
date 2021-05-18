@@ -37,11 +37,10 @@ jobs:
       run: docker-compose up cache-import
     - name: import pre-built
       run: |
-        curl -sLO https://github.com/wtnb75/alpine-pkg/archive/refs/heads/gh-pages.zip || exit 0
-        unzip gh-pages.zip
         rm -rf output
-        mv alpine-pkg-gh-pages output
-        ls -lR output
+        wget -r -np -nv https://wtnb75-repo.netlify.app/
+        mv wtnb75-repo.netlify.app output
+        find output -name index.html -delete
         docker-compose up import
         docker-compose exec -T builder ls -lR /home/packager/packages
     - name: build apk
@@ -68,15 +67,12 @@ jobs:
         pip install dirindex
         cd output
         find . -name index.html -delete
+        rm -f .nojekyll
         echo "$PUBLIC_KEY" > "$KEY_NAME.rsa.pub"
         dirindex make --template apache --recursive .
-        touch .nojekyll
         cd -
-    - name: push to gh-pages
-      uses: peaceiris/actions-gh-pages@v2
+    - name: deploy to netlify
+      run: npx netlify-cli deploy --dir=./output --prod
       env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./output
-      with:
-        forceOrphan: true
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
