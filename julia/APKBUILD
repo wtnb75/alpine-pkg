@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=julia
+pkgver=1.6.1
+pkgrel=0
+pkgdesc="The Julia Programming Language"
+url="https://julialang.org/"
+arch="all"
+license="MIT"
+depends=""
+makedepends="python3 tar gfortran perl"
+install=""
+subpackages=""
+source="https://github.com/JuliaLang/julia/releases/download/v${pkgver}/julia-${pkgver}.tar.gz"
+builddir="${srcdir}/${pkgname}-${pkgver}"
+
+
+build() {
+	cd "$builddir"
+	make prefix=/usr
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=${pkgdir} prefix=/usr
+}
+

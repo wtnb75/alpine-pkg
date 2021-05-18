@@ -2,3 +2,5 @@ pypy
 pyston
 mitmproxy
 deno
+julia
+traefik

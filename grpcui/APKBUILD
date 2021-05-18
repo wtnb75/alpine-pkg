@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=grpcui
+pkgver=1.1.0
+pkgrel=0
+pkgdesc="An interactive web UI for gRPC, along the lines of postman"
+url="https://github.com/fullstorydev/grpcui"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/fullstorydev/grpcui"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	GO111MODULE=on go get ${_gourl}@v${pkgver}
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd $(go env GOMODCACHE)/${_gourl}@v${pkgver}/cmd/grpcui
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.version=v${pkgver}"
+}

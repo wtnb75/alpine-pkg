@@ -73,3 +73,24 @@ mitmproxy:
 nim:
   type: github_tag
   id: nim-lang/Nim
+julia:
+  type: github_tag
+  id: JuliaLang/julia
+vlang:
+  type: github_tag
+  id: vlang/v
+noVNC:
+  type: github_tag
+  id: novnc/noVNC
+grpcui:
+  type: github_tag
+  id: fullstorydev/grpcui
+grpcurl:
+  type: github_tag
+  id: fullstorydev/grpcurl
+evans:
+  type: github_tag
+  id: ktr0731/evans
+traefik:
+  type: github_tag
+  id: traefik/traefik

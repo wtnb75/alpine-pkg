@@ -1,0 +1,39 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=vlang
+pkgver=2021.20
+pkgrel=0
+pkgdesc="The V Programming Language"
+url="https://vlang.io/"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source=""
+_giturl="https://github.com/vlang/v"
+builddir="${srcdir}/${pkgname}"
+
+prepare(){
+	cd ${srcdir}
+	git clone --depth=1 ${_giturl} -b weekly.${pkgver} ${pkgname}
+}
+
+build() {
+	cd "$builddir"
+	make prefix=/usr
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p ${pkgdir}/usr/bin
+	mkdir -p ${pkgdir}/usr/v
+	cp -r vlib cmd v ${pkgdir}/usr/v/
+	ln -fs ../v/v ${pkgdir}/usr/bin/v
+}
+
