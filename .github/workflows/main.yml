@@ -2,7 +2,7 @@ name: main
 
 on:
   push:
-    branches: [main, netlify]
+    branches: [main]
 
 jobs:
   build:
@@ -38,7 +38,7 @@ jobs:
     - name: import pre-built
       run: |
         rm -rf output
-        wget -r -nv https://wtnb75-repo.netlify.app/
+        wget -r -np -nv https://wtnb75-repo.netlify.app/
         mv wtnb75-repo.netlify.app output
         find output -name index.html -delete
         docker-compose up import
