@@ -1,4 +1,4 @@
-[![main](https://github.com/wtnb75/alpine-pkg/actions/workflows/main.yml/badge.svg)](https://github.com/wtnb75/alpine-pkg/actions/workflows/main.yml)
+[![main](https://github.com/wtnb75/alpine-pkg/actions/workflows/main.yml/badge.svg)](https://github.com/wtnb75/alpine-pkg/actions/workflows/main.yml) [![Netlify Status](https://api.netlify.com/api/v1/badges/c8ca8f09-8390-4fbc-9aab-4bf79ecf4fcb/deploy-status)](https://app.netlify.com/sites/wtnb75-repo/deploys)
 
 # Usage
 

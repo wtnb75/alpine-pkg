@@ -39,7 +39,7 @@ jobs:
       run: |
         rm -rf output
         mkdir -p output
-        curl https://wtnb75-repo.netlify.app/archive.tar | tar xf - -C output
+        [ -f cache/archive.tar ] && tar xf cache/archive.tar -C output
         docker-compose up import
         docker-compose exec -T builder ls -lR /home/packager/packages
     - name: build apk
