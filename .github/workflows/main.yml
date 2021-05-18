@@ -2,7 +2,7 @@ name: main
 
 on:
   push:
-    branches: [main]
+    branches: [main, netlify]
 
 jobs:
   build:
@@ -72,11 +72,8 @@ jobs:
         dirindex make --template apache --recursive .
         touch .nojekyll
         cd -
-    - name: push to gh-pages
-      uses: peaceiris/actions-gh-pages@v2
+    - name: deploy to netlify
+      run: npx netlify-cli deploy --dir=./output --prod
       env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./output
-      with:
-        forceOrphan: true
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
