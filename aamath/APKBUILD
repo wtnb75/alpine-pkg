@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=aamath
+pkgver=0.3
+pkgrel=0
+pkgdesc="ASCII art mathematics"
+url="http://fuse.superglue.se/aamath/"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="bison flex readline-dev"
+install=""
+subpackages="$pkgname-doc"
+source="http://fuse.superglue.se/aamath/${pkgname}-${pkgver}.tar.gz 00-alpine.patch"
+builddir="$srcdir/${pkgname}"
+
+build() {
+	cd "$builddir"
+	make LIBS=-lreadline -j1
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p ${pkgdir}/usr/bin
+	mkdir -p ${pkgdir}/usr/share/man/man1
+	install -c -m 755 -o root -g root -s aamath ${pkgdir}/usr/bin/
+	install -c -m 644 -o root -g root aamath.1 ${pkgdir}/usr/share/man/man1/
+}
+
+sha512sums="2f509f12f38030d21d06fbde26e8430c157403c17da9bf3e244151851aa47d7083046fd98cdbb222a355bf8774e3a4a7aa7d3abd61813b18348b48da84471e6f  aamath-0.3.tar.gz
+985812c32cda48533598535e86394e6ea3c5cdf8a981e62e0a67547413511dcb38aa64c1f4091229ca39aff573bdcafca6fc98d5b84fd6b770654810eabe6710  00-alpine.patch"

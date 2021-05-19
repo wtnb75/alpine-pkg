@@ -3,7 +3,7 @@
 pkgname=mathtex
 pkgver=1.05
 pkgrel=0
-pkgdesc="mimetex – Parse LATEX math expressions and emit gif or xbitmaps"
+pkgdesc="mathtex – A CGI program to use LATEX to put mathematics on the web"
 url="https://ctan.org/pkg/mathtex"
 arch="all"
 license="GPL"
