@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=povray
+pkgver=3.7.0.8
+pkgrel=0
+pkgdesc="POV-Ray - The Persistence of Vision Raytracer"
+url="http://www.povray.org/"
+arch="all"
+license="AGPLv3"
+depends=""
+makedepends="zlib-dev libpng-dev libjpeg-turbo-dev tiff-dev sdl-dev openexr-dev boost-dev boost-thread coreutils"
+install=""
+subpackages="${pkgname}-doc"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/POV-Ray/povray/archive/refs/tags/v${pkgver}.tar.gz 00-alpine.patch"
+builddir="$srcdir/${pkgname}-${pkgver}"
+
+build() {
+	cd "$builddir"/unix/
+	./prebuild.sh
+	cd ..
+	COMPILED_BY="Watanabe Takashi <wtnb75@gmail.com>" ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="4de3090cb4c1f7d8004bf5548297f4b95496b3265e5b8b5c861f331bda20de06c9d1ce67858a233740f8091e61315abdd3e519c8db5557b6b37c7a864b85d1c6  povray-3.7.0.8.tar.gz
+95cc81b18dbc5a12ef5d2a7bcfa00d4f691152e86d7b59b23a1130665d23c2d3fce90fef142066a90b1c77909770d553bcc32e79430b927968416e4a35a93f4e  00-alpine.patch"

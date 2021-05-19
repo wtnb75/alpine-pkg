@@ -94,3 +94,15 @@ evans:
 traefik:
   type: github_tag
   id: traefik/traefik
+trafficserver:
+  type: github_tag
+  id: apache/trafficserver
+abcmidi:
+  type: github_tag
+  id: sshlien/abcmidi
+timidity++:
+  type: sourceforge
+  id: timidity
+povray:
+  type: github_tag
+  id: POV-Ray/povray

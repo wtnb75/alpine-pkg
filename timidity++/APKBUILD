@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=TiMidity++
+_pkgname="TiMidity%2B%2B"
+pkgver=2.13.2
+pkgrel=0
+pkgdesc="TiMidity++ is an open source MIDI to WAVE converter and player."
+url="http://timidity.sourceforge.net/"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="audiofile-dev alsa-lib-dev libao-dev libogg-dev libvorbis-dev flac-dev clang"
+install=""
+subpackages="${pkgname}-doc"
+source="${pkgname}-${pkgver}.tar.bz2::https://sourceforge.net/projects/timidity/files/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.bz2/download"
+builddir="$srcdir/${pkgname}-${pkgver}"
+
+build() {
+	cd "$builddir"
+	# make EXTRA_CFLAGS='-DFPOS_POS_LEN=FILEPOS_LEN' hsrc
+	CC=clang ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="0e35ad4c8745878daf63932143e60dc4bda0f3ef5d6f046cad74c8c57edf39a7d1d3f0f36758d5b11ace72e2661fba1629d30d90202e9573c07d1ea2b66a6bc1  TiMidity++-2.13.2.tar.bz2"
