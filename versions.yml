@@ -32,7 +32,7 @@ monetdb:
   type: general
   url: https://www.monetdb.org/downloads/sources/Latest/
   xpath: /html/body/pre/a[6]/text()
-  regexp: '^MonetDB-(<version>[0-9\.]*)\.tar'
+  regexp: '^MonetDB-(?P<version>[0-9\.]*)\.tar'
 ninja-build:
   type: github_tag
   id: ninja-build/ninja
@@ -40,12 +40,12 @@ normalize:
   type: general
   url: http://normalize.nongnu.org/
   xpath: /html/body/ul[1]/li[1]/a/text()
-  regexp: '^normalize-(<version>[0-9\.]*)\.tar'
+  regexp: '^normalize-(?P<version>[0-9\.]*)\.tar'
 pypy:
   type: general
   url: https://www.pypy.org/download.html
   xpath: //*[@id="checksums"]/p[2]/text()
-  regexp: '^pypy(<version>[0-9\.-]+)'
+  regexp: '^pypy(?P<version>[0-9\.-]+)'
 pyston:
   type: github_tag
   id: pyston/pyston
@@ -79,6 +79,7 @@ julia:
 vlang:
   type: github_tag
   id: vlang/v
+  regexp: '^(weekly.|v)?(?P<version>.*)$'
 noVNC:
   type: github_tag
   id: novnc/noVNC
@@ -94,3 +95,16 @@ evans:
 traefik:
   type: github_tag
   id: traefik/traefik
+trafficserver:
+  type: github_tag
+  id: apache/trafficserver
+abcmidi:
+  type: github_tag
+  id: sshlien/abcmidi
+timidity++:
+  type: sourceforge
+  id: timidity
+povray:
+  type: github_tag
+  id: POV-Ray/povray
+  regexp: '^v(?P<version>3\.7[^0-9\.]*)'

@@ -1,0 +1,42 @@
+diff -up ./expr.cc.orig ./expr.cc
+--- ./expr.cc.orig
++++ ./expr.cc
+@@ -1192,7 +1192,7 @@
+ 
+ class SumSymbol : public OpSymbol {
+   public:
+-	void render(Canvas& c, int r, int c) const;
++	void render(Canvas& c, int r, int d) const;
+ };
+ 
+ void
+@@ -1208,7 +1208,7 @@
+ 
+ class ProductSymbol : public OpSymbol {
+   public:
+-	void render(Canvas& c, int r, int c) const;
++	void render(Canvas& c, int r, int d) const;
+ };
+ 
+ void
+diff -up ./expr.h.orig ./expr.h
+--- ./expr.h.orig
++++ ./expr.h
+@@ -451,7 +451,7 @@
+ 
+ 	virtual CanvasPtr render_head() const;
+ 
+-	void render_symbol(Canvas& c, int r, int c, int h) const;
++	void render_symbol(Canvas& c, int r, int d, int h) const;
+ 
+ 	virtual CanvasPtr render() const;
+ };
+@@ -467,7 +467,7 @@
+ 
+ class OpSymbol {
+   public:
+-	virtual void render(Canvas& c, int r, int c) const = 0;
++	virtual void render(Canvas& c, int r, int d) const = 0;
+ };
+ 
+ class SumOrProduct : public OpOnFunction {

@@ -1,0 +1,12 @@
+diff -up ./vfe/vfe.h.orig ./vfe/vfe.h
+--- ./vfe/vfe.h.orig
++++ ./vfe/vfe.h
+@@ -36,6 +36,8 @@
+
+ #include <cassert>
+
++typedef unsigned int uint;
++
+ #include "syspovconfigfrontend.h"
+ #include <boost/format.hpp>
+ #include <boost/thread.hpp>

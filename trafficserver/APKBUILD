@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=trafficserver
+pkgver=9.0.1
+pkgrel=0
+pkgdesc="fast, scalable and extensible HTTP/1.1 and HTTP/2 compliant caching proxy server."
+url="https://trafficserver.apache.org/"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="openssl-dev pcre-dev libexecinfo-dev zlib-dev libunwind-dev luajit-dev brotli-dev ncurses-dev curl-dev"
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source="https://ftp.iij.ad.jp/pub/network/apache/trafficserver/${pkgname}-${pkgver}.tar.bz2"
+builddir="$srcdir/${pkgname}-${pkgver}"
+
+build() {
+	cd "$builddir"
+	# make EXTRA_CFLAGS='-DFPOS_POS_LEN=FILEPOS_LEN' hsrc
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="74eca6522c880b13e4ca7aca0f73c9252e84778a26027b1fb21f3e5f81eadedba884347f4e75cc6bd6778945bbf2e3f0b17543ae92aba9e1941e2d797c14df1c  trafficserver-9.0.1.tar.bz2"
