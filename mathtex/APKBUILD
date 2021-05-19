@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=mathtex
+pkgver=1.05
+pkgrel=0
+pkgdesc="mimetex – Parse LATEX math expressions and emit gif or xbitmaps"
+url="https://ctan.org/pkg/mathtex"
+arch="all"
+license="GPL"
+depends="texlive texlive-dvi"
+makedepends="libpng-dev"
+install=""
+subpackages=""
+source="https://mirrors.ctan.org/support/${pkgname}.zip"
+builddir="$srcdir/${pkgname}"
+
+build() {
+	cd "$builddir"
+	gcc -DPNG -DLATEX=\"/usr/bin/latex\" -DDVIPNG=\"/usr/bin/dvipng\" mathtex.c -o mathtex.cgi -lpng
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p ${pkgdir}/usr/share/webapps/mathtex
+	install -c -m 755 -o root -g root -s mathtex.cgi ${pkgdir}/usr/share/webapps/mathtex/
+	install -c -m 644 -o root -g root mathtex.html ${pkgdir}/usr/share/webapps/mathtex/
+}
+
+sha512sums="f116618de4264efdbccb122b0e9769bbe622f6300266284a96e65f37346c000364063f201b31554bde62a4a4e13c0c8f16d570dca359d3ef27bc0f7622af3715  mathtex.zip"
