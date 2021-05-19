@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=git-bug
+pkgver=0.7.2
+pkgrel=0
+pkgdesc="Distributed, offline-first bug tracker embedded in git, with bridges"
+url="https://github.com/MichaelMure/git-bug"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/MichaelMure/git-bug"
+_gourl2='github.com/!michael!mure/git-bug'
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	GO111MODULE=on go get ${_gourl}@v${pkgver}
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd $(go env GOMODCACHE)/${_gourl2}@v${pkgver}
+	c=${_gourl}/commands
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X ${c}.GitExactTag=v${pkgver} -X ${c}.GitLastTag=v${pkgver} -X ${c}.GitCommit=v${pkgver}"
+}

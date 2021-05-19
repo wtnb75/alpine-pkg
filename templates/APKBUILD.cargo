@@ -1,12 +1,12 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
-pkgname=deno
-pkgver=1.10.2
+pkgname={{name}}
+pkgver={{version}}
 pkgrel=0
-pkgdesc="A secure JavaScript and TypeScript runtime"
-url="https://deno.land/"
+pkgdesc="{{description}}"
+url="{{url}}"
 arch="all"
-license="MIT"
+license="{{license}}"
 depends=""
 makedepends="cargo rust"
 install=""
@@ -19,13 +19,11 @@ build() {
 }
 
 check() {
-	# cd "$builddir"
-	# python3 setup.py test
 	:
 }
 
 package() {
 	cd "$builddir"
-	cargo install deno --locked --version ${pkgver} --root ${pkgdir}/usr
+	cargo install {{name}} --locked --version ${pkgver} --root ${pkgdir}/usr
 }
 
