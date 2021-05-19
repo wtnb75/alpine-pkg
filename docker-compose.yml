@@ -68,6 +68,14 @@ services:
             - xf
             - /input/cache.tar
             - .
+    test:
+        image: local/test
+        build: ./test.docker
+        command:
+            - sleep
+            - infinity
+        volumes:
+            - output:/packages:ro
 
 volumes:
     distfiles: {}

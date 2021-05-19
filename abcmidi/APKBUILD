@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=abcmidi
+pkgver=2021.05.10
+pkgrel=0
+pkgdesc="abcMIDI is a package of programs written in C for handling abc music notation files"
+url="https://github.com/sshlien/abcmidi"
+arch="all"
+license="Unknown"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/sshlien/abcmidi/archive/refs/tags/${pkgver}.tar.gz"
+builddir="${srcdir}/${pkgname}-${pkgver}"
+
+build() {
+	cd "$builddir"
+	make prefix=/usr
+}
+
+check() {
+	# cd "$builddir"
+	# python3 setup.py test
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install prefix=/usr DESTDIR=${pkgdir}
+}
+
+sha512sums="0bcc7c871dd51ed720999fc4b318326bc9cbfd1453b7a93395d7c3bf7175f85f301ec78bff6e20cfae4c0b2ccf6e00897d4d0b08ec896fb3032b66b865f6e2d0  abcmidi-2021.05.10.tar.gz"
