@@ -7,7 +7,8 @@ calc:
 cscope:
   type: general
   url: http://cscope.sourceforge.net/
-  xpath: //*[@id="files_list"]/tbody/tr[1]/th/a/span/text()
+  xpath: /html/body/center[2]/b/text()
+  regexp: '^(?P<version>[^\s]+)'
 deno:
   type: cargo
   id: deno

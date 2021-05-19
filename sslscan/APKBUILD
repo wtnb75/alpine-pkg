@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=sslscan
-pkgver=2.0.6
+pkgver=2.0.10
 pkgrel=0
 pkgdesc="sslscan tests SSL/TLS enabled services to discover supported cipher suites"
 url="https://github.com/rbsec/sslscan"
