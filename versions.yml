@@ -106,3 +106,4 @@ timidity++:
 povray:
   type: github_tag
   id: POV-Ray/povray
+  regexp: '^v(?P<version>3\.7[^0-9\.]*)'
