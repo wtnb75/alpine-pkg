@@ -131,6 +131,12 @@ corosync:
 global:
   type: autoindex
   url: https://ftp.gnu.org/pub/gnu/global/
+  prefix: global-
+  suffix: .tar.gz
 sourcetrail:
   type: github_tag
   id: CoatiSoftware/Sourcetrail
+3proxy:
+  type: github_tag
+  id: 3proxy/3proxy
+  regexp: '^3proxy-(?P<version>.*)'
