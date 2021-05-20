@@ -1,0 +1,20 @@
+name: purge build cache
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: cache
+      uses: actions/cache@v2
+      with:
+        path: ./cache
+        key: ${{ runner.os }}-buildcache-${{ hashFiles('**/APKBUILD') }}
+        restore-keys: ${{ runner.os }}-buildcache-
+    - name: remove
+      run: |
+        rm -rf cache
+        mkdir cache
