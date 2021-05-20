@@ -12,7 +12,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ./cache
-        key: ${{ runner.os }}-buildcache-${{ hashFiles('**/APKBUILD') }}
+        key: ${{ runner.os }}-buildcache--${{ github.sha }}
         restore-keys: ${{ runner.os }}-buildcache-
     - name: remove
       run: |
