@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=orangefs
+pkgver=2.9.8
+pkgrel=0
+pkgdesc="Orangefs is an open-source, multi-server scalable parallel file system targeted at production parallel computation environments"
+url="http://www.orangefs.org/"
+arch="all"
+license="LGPL"
+depends=""
+makedepends="bison flex linux-headers openssl-dev perl attr-dev db-dev"
+install=""
+subpackages="$pkgname-doc"
+source="http://download.orangefs.org/current/source/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-v.$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --disable-malloc-redef
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}

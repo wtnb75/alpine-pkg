@@ -118,3 +118,19 @@ wasmer:
 direnv:
   type: github_tag
   id: direnv/direnv
+pacemaker:
+  type: github_tag
+  id: ClusterLabs/pacemaker
+  regexp: '^Pacemaker-(?P<version>.*)$'
+libpq:
+  type: github_tag
+  id: ClusterLabs/libqb
+corosync:
+  type: github_tag
+  id: corosync/corosync
+global:
+  type: autoindex
+  url: https://ftp.gnu.org/pub/gnu/global/
+sourcetrail:
+  type: github_tag
+  id: CoatiSoftware/Sourcetrail

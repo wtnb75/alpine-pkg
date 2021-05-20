@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=libqb
+pkgver=2.0.3
+pkgrel=0
+pkgdesc="libqb is a library providing high performance logging, tracing, ipc, and poll"
+url="https://clusterlabs.github.io/libqb/"
+arch="all"
+license="LGPL"
+depends=""
+makedepends="python2 coreutils"
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source="https://github.com/ClusterLabs/libqb/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="c25b45c4bc246118168cc8c86e7c1b4f66abddab35fe5ed82e5b4216896f884342ddf780b3bdf297605a2fe69dd5d7f6b0df4b5aacad3e5850d32f12c28547bc  libqb-2.0.3.tar.xz"

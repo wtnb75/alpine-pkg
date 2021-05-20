@@ -25,5 +25,6 @@ check() {
 package() {
 	cd "$builddir"
 	cargo install {{name}} --locked --version ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
 }
 
