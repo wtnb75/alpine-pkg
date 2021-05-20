@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=wasmer
+pkgver=1.0.2
+pkgrel=0
+pkgdesc="🚀 The leading WebAssembly Runtime supporting WASI and Emscripten"
+url="https://wasmer.io/"
+arch="all"
+license="MIT"
+depends=""
+makedepends="cargo rust ncurses-dev libffi-dev"
+install=""
+subpackages="$pkgname-dev"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/wasmerio/wasmer/archive/refs/tags/${pkgver}.tar.gz"
+builddir="${srcdir}/${pkgname}-${pkgver}"
+
+build() {
+	cd "$builddir"
+	make build-wasmer
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=${pkgdir}/usr
+}
+
+sha512sums="f8058cbd5a8a807cd84b4a839c87ff76dae5475c655e804b27262cd5cb22ddb6c43da3a01b6cdbed29502afc38aa9ee589022f67fab27b189453f2500478c4a9  wasmer-1.0.2.tar.gz"

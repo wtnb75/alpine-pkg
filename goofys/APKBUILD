@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=goofys
+pkgver=0.24.0
+pkgrel=0
+pkgdesc="a high-performance, POSIX-ish Amazon S3 file system written in Go"
+url="https://github.com/kahing/goofys"
+arch="all"
+license="Apache-2.0"
+depends="fuse"
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/kahing/goofys"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	GO111MODULE=on go get ${_gourl}@v${pkgver}
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd $(go env GOMODCACHE)/${_gourl}@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.Version=v${pkgver}"
+}

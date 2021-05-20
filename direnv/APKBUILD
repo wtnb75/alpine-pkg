@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=direnv
+pkgver=2.28.0
+pkgrel=0
+pkgdesc="unclutter your .profile"
+url="https://github.com/direnv/direnv"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/direnv/direnv"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	# build with GOPATH mode (go <1.16)
+	go get ${_gourl}
+	cd $(go env GOPATH)/src/${_gourl}
+	git checkout v${pkgver}
+	go build
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd $(go env GOPATH)/src/${_gourl}
+	GOBIN=${pkgdir}/usr/bin go install
+}

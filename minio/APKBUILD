@@ -1,0 +1,42 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=minio
+pkgver=2021.05.18
+_pkgver=RELEASE.2021-05-18T00-53-28Z
+_pkgver_mc=RELEASE.2021-05-18T03-39-44Z
+pkgrel=0
+pkgdesc="High Performance, Kubernetes Native Object Storage"
+url="https://github.com/minio/minio"
+arch="all"
+license="AGPLv3"
+depends=""
+makedepends="go"
+install=""
+subpackages="$pkgname-mc"
+source=""
+_gourl="github.com/minio/minio"
+_gourl_mc="github.com/minio/mc"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	GO111MODULE=on go get ${_gourl}@${_pkgver}
+	GO111MODULE=on go get ${_gourl_mc}@${_pkgver_mc}
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}@${_pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl_mc}@${_pkgver_mc}
+}
+
+mc() {
+	pkgdesc="MinIO Client is a replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage."
+	mkdir -p "$subpkgdir"/usr/bin
+	mv "$pkgdir"/usr/bin/mc "$subpkgdir"/usr/bin
+}

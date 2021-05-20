@@ -1,7 +1,11 @@
-pypy
-pyston
-mitmproxy
-deno
-julia
-traefik
-abcmidi
+pypy       # build failed
+pyston     # build failed
+mitmproxy  # python package dependency
+deno       # build failed(rusty_v8)
+julia      # build failed
+traefik    # build failed(tag? v1 or v2)
+abcmidi    # no license
+minio      # build failed(needs go 1.16~)
+octave     # build failed(fatal error: oct-conf-post.h: No such file or directory)
+wasmer     # build failed(rust version?)
+goofys     # buidl failed

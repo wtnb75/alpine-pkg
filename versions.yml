@@ -109,3 +109,12 @@ povray:
   type: github_tag
   id: POV-Ray/povray
   regexp: '^v(?P<version>3\.7[^0-9\.]*)'
+goofys:
+  type: github_tag
+  id: kahing/goofys
+wasmer:
+  type: github_tag
+  id: wasmerio/wasmer
+direnv:
+  type: github_tag
+  id: direnv/direnv
