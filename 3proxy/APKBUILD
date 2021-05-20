@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=3proxy
+pkgver=0.9.3
+pkgrel=0
+pkgdesc="3proxy - tiny free proxy server"
+url="https://github.com/3proxy/3proxy"
+arch="all"
+license="BSD"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/3proxy/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make -f Makefile.Linux chroot_prefix=/usr exec_prefix=/usr
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make -f Makefile.Linux install DESTDIR=$pkgdir chroot_prefix=/usr exec_prefix=/usr
+	rm -rf ${pkgdir}/etc/init.d
+}
+sha512sums="26f25c4664aa7ca3913fd5cdd81f1f21caa2bc29ee0c73b77389e71aab6b580e3659c7d694d8adebc22085439328a058ad989cea1f41c03ef986f3100bc1bacb  3proxy-0.9.3.tar.gz"
