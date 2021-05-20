@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=global
+pkgver=6.6.6
+pkgrel=0
+pkgdesc="GNU Global source code tagging system"
+url="https://www.gnu.org/software/global/"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="ncurses-dev"
+install=""
+subpackages="$pkgname-doc"
+source="https://ftp.gnu.org/pub/gnu/global/global-6.6.6.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="e46c0c7c0055533f70170f33eaeb7cedeab3c28e76db1b16df191883e2da4f2fddff27970962a9c9650ad91b75f066a248b0c1214fb02a4b92de23562f5c008e  global-6.6.6.tar.gz"

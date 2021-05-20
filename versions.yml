@@ -109,3 +109,34 @@ povray:
   type: github_tag
   id: POV-Ray/povray
   regexp: '^v(?P<version>3\.7[^0-9\.]*)'
+goofys:
+  type: github_tag
+  id: kahing/goofys
+wasmer:
+  type: github_tag
+  id: wasmerio/wasmer
+direnv:
+  type: github_tag
+  id: direnv/direnv
+pacemaker:
+  type: github_tag
+  id: ClusterLabs/pacemaker
+  regexp: '^Pacemaker-(?P<version>.*)$'
+libpq:
+  type: github_tag
+  id: ClusterLabs/libqb
+corosync:
+  type: github_tag
+  id: corosync/corosync
+global:
+  type: autoindex
+  url: https://ftp.gnu.org/pub/gnu/global/
+  prefix: global-
+  suffix: .tar.gz
+sourcetrail:
+  type: github_tag
+  id: CoatiSoftware/Sourcetrail
+3proxy:
+  type: github_tag
+  id: 3proxy/3proxy
+  regexp: '^3proxy-(?P<version>.*)'

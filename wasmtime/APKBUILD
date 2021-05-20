@@ -38,4 +38,5 @@ check() {
 package() {
 	cd "$builddir"
 	cargo install --root ${pkgdir}/usr --path .
+	rm -f ${pkgdir}/usr/.crates*
 }

@@ -1,5 +1,5 @@
 FROM alpine:3
-RUN apk add alpine-sdk sudo atools abuild-doc mandoc ccache cmake go rust linux-headers automake autoconf libtool pkgconfig musl-dev
+RUN apk add alpine-sdk sudo atools abuild-doc mandoc ccache cmake go rust linux-headers automake autoconf libtool pkgconfig musl-dev cargo
 RUN sed -i -e 's,#USE_CCACHE=1,USE_CCACHE=1,g;' /etc/abuild.conf
 RUN adduser -S -G abuild packager
 ADD sudoers.packager /etc/sudoers.d/packager

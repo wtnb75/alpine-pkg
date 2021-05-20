@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=pacemaker
+_pkgname=Pacemaker
+pkgver=2.0.5
+pkgrel=0
+pkgdesc="Pacemaker is an advanced, scalable High-Availability cluster resource manager"
+url="https://www.clusterlabs.org/pacemaker/"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="automake autoconf libtool python2 libxml2-dev libxslt-dev bzip2-dev libqb-dev libcpg-dev"
+install=""
+subpackages="$pkgname-doc"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/ClusterLabs/pacemaker/archive/refs/tags/${_pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/${pkgname}-${_pkgname}-$pkgver"
+
+build() {
+	cd "$builddir"
+	sh autogen.sh
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}

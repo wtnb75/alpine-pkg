@@ -6,6 +6,7 @@ services:
         build: ./builder.docker
         environment:
             CCACHE_DIR: /home/packager/.cache/ccache
+            PATH: /usr/lib/ccache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
         volumes:
             - distfiles:/var/cache/distfiles
             - gocache:/home/packager/go

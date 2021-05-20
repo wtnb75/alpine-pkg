@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=octave
+pkgver=6.2.0
+pkgrel=0
+pkgdesc="Scientific Programming Language"
+url="https://www.gnu.org/software/octave/"
+arch="all"
+license="GPL"
+depends="gnuplot"
+makedepends="gfortran bison flex texinfo openblas-dev lapack-dev pcre-dev qhull-dev readline-dev zlib-dev bzip2-dev hdf5-dev fftw-dev curl-dev libsndfile-dev portaudio-dev mesa-dev glu-dev freetype-dev fontconfig-dev fltk-dev suitesparse-dev arpack-dev graphicsmagick-dev"
+install=""
+subpackages="$pkgname-dev"
+source="https://ftp.iij.ad.jp/pub/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="7a0d9ee5fd739bd9bd5d2d57faf9e800ccc760afbb840ec5e3371d1e1564163a6190587e31b16d22ae834162917049a0e2789663294030aa84ee86430127eade  octave-6.2.0.tar.xz"

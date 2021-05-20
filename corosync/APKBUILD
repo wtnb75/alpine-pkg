@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=corosync
+pkgver=3.1.2
+pkgrel=0
+pkgdesc="The Corosync Cluster Engine"
+url="http://corosync.github.io/corosync/"
+arch="all"
+license="BSD"
+depends=""
+makedepends="libqb-dev zlib-dev autoconf automake libtool"
+install=""
+subpackages="$pkgname-doc"
+source="{{source}}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	sh autogen.sh
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
