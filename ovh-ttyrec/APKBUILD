@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ovh-ttyrec
+pkgver=1.1.6.7
+pkgrel=0
+pkgdesc="Enhanced (but compatible) version of the classic ttyrec"
+url="https://github.com/ovh/ovh-ttyrec"
+arch="all"
+license="BSD-3-Clause"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/ovh/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=${pkgdir}
+}
+sha512sums="ae81adde1b95ce354727a795118d39b9c70b94229344287c722a38ff1597bfdff4a66de1fee59381c03c1d0a42ab3e374b2ab6e576fa758d3933b1a73162fa55  ovh-ttyrec-1.1.6.7.tar.gz"

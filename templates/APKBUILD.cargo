@@ -12,7 +12,7 @@ makedepends="cargo rust"
 install=""
 subpackages=""
 source=""
-builddir="${srcdir}/${_pkgname}"
+builddir="${srcdir}/${pkgname}"
 
 build() {
 	cd "$builddir"

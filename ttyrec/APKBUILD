@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ttyrec
+pkgver=1.0.8
+pkgrel=0
+pkgdesc="ttyrec: a tty recorder"
+url="http://0xcc.net/ttyrec/"
+arch="all"
+license="unknown"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="http://0xcc.net/ttyrec/ttyrec-1.0.8.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make CFLAGS=-DSVR4
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p ${pkgdir}/usr/bin
+	mkdir -p ${pkgdir}/usr/share/man/man1/
+	mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
+	install -c -m 755 ttyplay ttyrec ttytime ${pkgdir}/usr/bin/
+	install -c -m 644 README ${pkgdir}/usr/share/doc/${pkgname}/
+	install -c -m 644 *.1 ${pkgdir}/usr/share/man/man1/
+}
+sha512sums="b7f6f4c78c5148dacc7058534d89f13fcf333ee9e099d4475135e9c15a99a8aed72bf4bd5954652a6bb044d11ad35b4cb8d07208a5349c79c811f68fde7e8611  ttyrec-1.0.8.tar.gz"
