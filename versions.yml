@@ -154,3 +154,45 @@ ttyrec:
   url: http://0xcc.net/ttyrec/
   xpath: /html/body/div/ul[3]/li[1]/a/text()
   regexp: '^ttyrec-(?P<version>[0-9\.-]+)\.tar.gz'
+  binary: true
+aamath:
+  type: general
+  url: http://fuse.superglue.se/aamath/
+  xpath: //a/text()
+  regexp: 'aamath-(?P<version>[0-9\.]*)\.tar.gz'
+mathtex:
+  type: general
+  url: https://ctan.org/pkg/mathtex
+  xpath: //td/text()
+  regexp: '^(?P<version>[0-9\.]*) 20[0-9][0-9]-[01][0-9]-[0-9][0-9]$'
+mimetex:
+  type: general
+  url: https://ctan.org/pkg/mimetex
+  xpath: //td/text()
+  regexp: '^(?P<version>[0-9\.]*) 20[0-9][0-9]-[01][0-9]-[0-9][0-9]$'
+libqb:
+  type: github_tag
+  id: ClusterLabs/libqb
+git-bug:
+  type: github_tag
+  id: MichaelMure/git-bug
+git-delta:
+  type: github_tag
+  id: dandavison/delta
+orangefs:
+  type: general
+  url: http://www.orangefs.org/
+  xpath: '//a["href"]'
+  attribute: href
+  regexp: '.*orangefs-(?P<version>[0-9\.]*)\.tar\.gz$'
+minio:
+  type: github_tag
+  id: minio/minio
+octave:
+  type: autoindex
+  url: http://ftp.iij.ad.jp/pub/gnu/octave/
+  prefix: octave-
+  suffix: .tar.gz
+cling:
+  type: github_tag
+  id: root-project/cling

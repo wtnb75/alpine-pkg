@@ -10,7 +10,7 @@ license="GPLv2"
 depends="libgcc mariadb-connector-c"
 makedepends="automake autoconf libtool pkgconfig mariadb-dev"
 install=""
-subpackages="$pkgname-doc"
+subpackages=""
 source="sysbench-$pkgver.tar.gz::https://github.com/akopytov/sysbench/archive/$pkgver.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
