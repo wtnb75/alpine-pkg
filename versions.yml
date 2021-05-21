@@ -146,3 +146,11 @@ wasmer:
 sccache:
   type: cargo
   id: sccache
+ovh-ttyrec:
+  type: github_tag
+  id: ovh/ovh-ttyrec
+ttyrec:
+  type: general
+  url: http://0xcc.net/ttyrec/
+  xpath: /html/body/div/ul[3]/li[1]/a/text()
+  regexp: '^ttyrec-(?P<version>[0-9\.-]+)\.tar.gz'
