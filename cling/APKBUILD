@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=cling
+pkgver=0.9
+pkgrel=0
+pkgdesc="The cling C++ interpreter"
+url="https://github.com/root-project/cling"
+arch="all"
+license="UI/NCSAOSL+LGPL"
+depends=""
+makedepends="llvm-dev"
+install=""
+subpackages="$pkgname-doc"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/root-project/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake ..
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="255972be4ad5e6f63e4e96e79dbc9f8102f6694788736872f7a5f1352363d2e0ddfaf3fd03237f161c6ba21109b22fad0f4eadf1fafaa1de36f9cb65b5d88a3d  cling-0.9.tar.gz"
