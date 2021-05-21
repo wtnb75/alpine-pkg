@@ -33,7 +33,7 @@ package() {
 	cd "$builddir"
 	mkdir -p ${pkgdir}/usr/bin
 	install -c -s -m 755 target/release/wasmer ${pkgdir}/usr/bin/
-	install -c -s -m 755 target/release/wapm ${pkgdir}/usr/bin/
+	install -c -s -m 755 wapm-cli/target/release/wapm ${pkgdir}/usr/bin/
 }
 
 wapm() {
