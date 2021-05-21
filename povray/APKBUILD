@@ -18,7 +18,7 @@ build() {
 	cd "$builddir"/unix/
 	./prebuild.sh
 	cd ..
-	COMPILED_BY="Watanabe Takashi <wtnb75@gmail.com>" ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	COMPILED_BY="Watanabe Takashi <wtnb75@gmail.com>" ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --disable-optimiz-arch
 	make
 }
 

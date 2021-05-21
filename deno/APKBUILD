@@ -8,11 +8,15 @@ url="https://deno.land/"
 arch="all"
 license="MIT"
 depends=""
-makedepends="cargo rust"
+makedepends="rustup"
 install=""
 subpackages=""
 source=""
 builddir="${srcdir}/${_pkgname}"
+
+prepare() {
+	rustup-init -y
+}
 
 build() {
 	cd "$builddir"
@@ -26,6 +30,7 @@ check() {
 
 package() {
 	cd "$builddir"
+	. $HOME/.cargo/env
 	cargo install deno --locked --version ${pkgver} --root ${pkgdir}/usr
 	rm -f ${pkgdir}/usr/.crates*
 }

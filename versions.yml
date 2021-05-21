@@ -140,3 +140,9 @@ sourcetrail:
   type: github_tag
   id: 3proxy/3proxy
   regexp: '^3proxy-(?P<version>.*)'
+wasmer:
+  type: github_tag
+  id: wasmerio/wasmer
+sccache:
+  type: cargo
+  id: sccache

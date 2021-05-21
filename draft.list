@@ -1,7 +1,7 @@
 pypy       # build failed
 pyston     # build failed
 mitmproxy  # python package dependency
-deno       # build failed(rusty_v8)
+deno       # build failed(rusty_v8, file too small to be an archive)
 julia      # build failed
 traefik    # build failed(tag? v1 or v2)
 abcmidi    # no license
@@ -12,3 +12,4 @@ goofys     # build failed(old gomod?)
 orangefs   # build failed(c macro problem)
 corosync   # working
 pacemaker  # needs libqb, libcpg(corosync)
+cling      # build failed(LLVMDemangle)
