@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=hwloc
+pkgver=2.1.0
+pkgrel=0
+pkgdesc="Hardware locality (hwloc)"
+url="https://github.com/open-mpi/hwloc"
+arch="all"
+license="BSD-3-clause"
+depends=""
+makedepends="ncurses-dev doxygen numactl-dev libxml2-dev"
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source="https://github.com/open-mpi/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.bz2"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="3fda7c4152c3f1b701c3da0fcbbe7e1dffb502042cb86e9a44ce6df8e227c005333e61d5459407f88efbd56816db0ab90b19f75d047e0c77b3b7f5c6405ea501  hwloc-2.1.0.tar.bz2"
