@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=pyenv
+pkgver=2.0.0
+pkgrel=0
+pkgdesc="Simple Python version management"
+url="https://github.com/pyenv/pyenv"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/pyenv/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	src/configure
+	make -C src
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p ${pkgdir}/usr/pyenv/
+	mkdir -p ${pkgdir}/usr/bin/
+	cp -r . ${pkgdir}/usr/pyenv/
+	ln -s ../pyenv/bin/pyenv ${pkgdir}/usr/bin/
+}
+sha512sums="00289e52e674c704bab26b69777a1e14e2f163262167badaf2e42e9a0feb497f2421dd246a4d1c545492f3aa5c5d4ca563fc8b9af013be76230bcda7f4d0b3ef  pyenv-2.0.0.tar.gz"

@@ -5,11 +5,10 @@ calc:
   type: github_tag
   id: lcn2/calc
 cscope:
-  type: general
-  url: http://cscope.sourceforge.net/
-  xpath: /html/body/center[2]/b/text()
-  regexp: '^(?P<version>[^\s]+)'
-  skip: true
+  type: sourceforge
+  id: cscope
+  directory: cscope
+  regexp: '^v?(?P<version>[^\s]+)'
 deno:
   type: cargo
   id: deno
@@ -107,6 +106,8 @@ abcmidi:
 timidity++:
   type: sourceforge
   id: timidity
+  directory: 'TiMidity%2B%2B'
+  regexp: '^[^-]*-(?P<version>.*)$'
 povray:
   type: github_tag
   id: POV-Ray/povray
@@ -214,3 +215,8 @@ tinycc:
   url: http://download.savannah.gnu.org/releases/tinycc/
   prefix: tcc-
   suffix: .tar.bz2
+pyenv:
+  type: github_tag
+  id: pyenv/pyenv
+  regexp: '^(?P<version>[0-9]*\.[0-9\.]*)$'
+  skip: true
