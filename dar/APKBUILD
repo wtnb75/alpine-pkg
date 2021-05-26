@@ -1,0 +1,41 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=dar
+pkgver=2.7.1
+pkgrel=0
+pkgdesc="DAR - Disk ARchive"
+url="http://dar.linux.free.fr/"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="zlib-dev bzip2-dev lzo-dev xz-dev zstd-dev lz4-dev libgcrypt-dev gpgme-dev e2fsprogs-dev librsync-dev python3-dev py3-pybind11-dev argon2-dev curl-dev automake autoconf libtool"
+install=""
+subpackages="$pkgname-doc $pkgname-dev py3-${pkgname}:py3"
+#source="https://dar.edrusb.org/dar.linux.free.fr/Releases/Source_code/${pkgname}-${pkgver}.tar.gz"
+source="${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/dar/files/dar/2.7.1/dar-2.7.1.tar.gz/download"
+builddir="$srcdir/${pkgname}-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+
+py3() {
+        pkgdesc="$pkgname python binding"
+        depends="python3"
+        mkdir -p "$subpkgdir"/usr/lib
+        mv "$pkgdir"/usr/lib/python* "$subpkgdir"/usr/lib
+}
+
+sha512sums="404e3281b2c420088623e4c6ba262d2a7a44848986e43d4c71aff77104395f1178445d560849a73e0dbacce6b8014df2bb20bc33471ae2d07d897bb6ad577bcc  dar-2.7.1.tar.gz"

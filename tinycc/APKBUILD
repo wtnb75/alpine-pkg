@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=tinycc
+_pkgname=tcc
+pkgver=0.9.27
+pkgrel=0
+pkgdesc="Tiny C Compiler"
+url="https://bellard.org/tcc/"
+arch="all"
+license="LGPL"
+depends=""
+makedepends="musl-dev"
+install=""
+subpackages="$pkgname-doc"
+source="http://download.savannah.gnu.org/releases/${pkgname}/${_pkgname}-${pkgver}.tar.bz2"
+builddir="$srcdir/${_pkgname}-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --mandir=/usr/share/man --config-musl
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="835184292d97c07f0ff7b36ec550e855e649b04e23c7e2a1c706d223409eb60708dc1ae969f28eba45e56c8b96ae56936b93caf9d8a13ac5adf119014d5367a7  tcc-0.9.27.tar.bz2"

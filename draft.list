@@ -14,3 +14,4 @@ corosync   # working
 pacemaker  # needs libqb, libcpg(corosync)
 cling      # build failed(LLVMDemangle)
 ttyrec     # no license
+vlang      # build failed(tcc.exe)
