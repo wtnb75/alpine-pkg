@@ -9,6 +9,7 @@ cscope:
   url: http://cscope.sourceforge.net/
   xpath: /html/body/center[2]/b/text()
   regexp: '^(?P<version>[^\s]+)'
+  skip: true
 deno:
   type: cargo
   id: deno
@@ -50,6 +51,7 @@ pypy:
 pyston:
   type: github_tag
   id: pyston/pyston
+  skip: true
 rqlite:
   type: github_tag
   id: rqlite/rqlite
@@ -109,6 +111,7 @@ povray:
   type: github_tag
   id: POV-Ray/povray
   regexp: '^v(?P<version>3\.7[^0-9\.]*)'
+  skip: true
 goofys:
   type: github_tag
   id: kahing/goofys
@@ -204,7 +207,10 @@ hwloc:
   id: open-mpi/hwloc
   regexp: '^hwloc-(?P<version>.*)$'
 dar:
+  type: github_tag
+  id: Edrusb/DAR
+tinycc:
   type: autoindex
-  url: https://dar.edrusb.org/dar.linux.free.fr/Releases/Source_code/
-  prefix: dar-
-  suffix: .tar.gz
+  url: http://download.savannah.gnu.org/releases/tinycc/
+  prefix: tcc-
+  suffix: .tar.bz2
