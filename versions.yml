@@ -215,3 +215,8 @@ tinycc:
   url: http://download.savannah.gnu.org/releases/tinycc/
   prefix: tcc-
   suffix: .tar.bz2
+pyenv:
+  type: github_tag
+  id: pyenv/pyenv
+  regexp: '^(?P<version>[0-9]*\.[0-9\.]*)$'
+  skip: true
