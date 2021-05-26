@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=TiMidity++
 _pkgname="TiMidity%2B%2B"
-pkgver=2.13.2
+pkgver=2.15.0
 pkgrel=0
 pkgdesc="TiMidity++ is an open source MIDI to WAVE converter and player."
 url="http://timidity.sourceforge.net/"
@@ -31,4 +31,4 @@ package() {
 	cd "$builddir"
 	make install DESTDIR=$pkgdir
 }
-sha512sums="0e35ad4c8745878daf63932143e60dc4bda0f3ef5d6f046cad74c8c57edf39a7d1d3f0f36758d5b11ace72e2661fba1629d30d90202e9573c07d1ea2b66a6bc1  TiMidity++-2.13.2.tar.bz2"
+sha512sums="154da865badd5a9752a502ff16cc3fe3f4fd50fea02aeb8020230eb2233d54214faba1ce99adea7f5fa77fd256a491207d540f2ad0ab0c0dcfff59676c0c8666  TiMidity++-2.15.0.tar.bz2"
