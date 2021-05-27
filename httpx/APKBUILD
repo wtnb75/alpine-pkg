@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=httpx
+pkgver=1.0.8
+pkgrel=0
+pkgdesc="fast and multi-purpose HTTP toolkit"
+url="https://github.com/projectdiscovery/httpx"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/projectdiscovery/httpx"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	GO111MODULE=on go get ${_gourl}@v${pkgver}
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd $(go env GOMODCACHE)/${_gourl}@v${pkgver}/cmd/httpx
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install
+}
