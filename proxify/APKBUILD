@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=proxify
+pkgver=0.0.4
+pkgrel=0
+pkgdesc="Swiss Army knife Proxy tool for HTTP/HTTPS traffic"
+url="https://github.com/projectdiscovery/proxify"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/projectdiscovery/proxify"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	GO111MODULE=on go get ${_gourl}@v${pkgver}
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	for i in proxify mitmrelay replay; do
+		cd $(go env GOMODCACHE)/${_gourl}@v${pkgver}/cmd/$i
+		GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install
+	done
+}
