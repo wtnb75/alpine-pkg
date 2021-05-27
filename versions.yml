@@ -126,7 +126,7 @@ pacemaker:
   type: github_tag
   id: ClusterLabs/pacemaker
   regexp: '^Pacemaker-(?P<version>.*)$'
-libpq:
+libqb:
   type: github_tag
   id: ClusterLabs/libqb
 corosync:
@@ -235,3 +235,6 @@ nuclei:
 naabu:
   type: github_tag
   id: projectdiscovery/naabu
+unicorn:
+  type: github_tag
+  id: unicorn-engine/unicorn
