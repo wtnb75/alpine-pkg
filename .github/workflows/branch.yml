@@ -33,12 +33,12 @@ jobs:
       run: docker-compose up cache-import
     - name: build apk
       run: |
-        for i in $(git diff --name-only origin/main) ; do
-          [ -f "$i" ] || continue
-          dn=$(dirname $i)
-          [ -f "${dn}/APKBUILD" ] || continue
-          grep -q "^$(basename $dn)" mgmt/draft.list && continue
-          docker-compose exec -T builder sh /build/build-all.sh ${dn} || exit 1
+        cd apk
+        for i in $(git diff --name-only origin/main . | cut -f2 -d/ | sort -u) ; do
+          [ -d "$i" ] || continue
+          [ -f "${i}/APKBUILD" ] || continue
+          grep -q "^${i}" ../mgmt/draft.list && continue
+          docker-compose exec -T builder sh /build/build-all.sh ${i} || exit 1
         done
     - name: list apk
       run: |
