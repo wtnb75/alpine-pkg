@@ -18,11 +18,11 @@ jobs:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
       run: |
-        echo "PACKAGER=\"$PACKAGER\"" >> builder.docker/abuildconf/abuild.conf
-        echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/$KEY_NAME.rsa\"" >> builder.docker/abuildconf/abuild.conf
-        echo "$PRIVATE_KEY" > "builder.docker/abuildconf/$KEY_NAME.rsa"
-        echo "$PUBLIC_KEY" > "builder.docker/abuildconf/$KEY_NAME.rsa.pub"
-        chmod 600 "builder.docker/abuildconf/$KEY_NAME.rsa"
+        echo "PACKAGER=\"$PACKAGER\"" >> docker/builder/abuildconf/abuild.conf
+        echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/$KEY_NAME.rsa\"" >> docker/builder/abuildconf/abuild.conf
+        echo "$PRIVATE_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa"
+        echo "$PUBLIC_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa.pub"
+        chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
     - name: build image
       run: docker-compose build
     - name: boot builder

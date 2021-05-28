@@ -3,7 +3,7 @@ version: '3'
 services:
     builder:
         image: local/builder
-        build: ./builder.docker
+        build: ./docker/builder
         environment:
             CCACHE_DIR: /home/packager/.cache/ccache
             PATH: /usr/lib/ccache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -19,7 +19,7 @@ services:
             - infinity
     export:
         image: local/rsync
-        build: ./rsync.docker
+        build: ./docker/rsync
         volumes:
             - output:/packages:ro
             - ./output:/output
@@ -31,7 +31,7 @@ services:
             - /output/
     import:
         image: local/rsync
-        build: ./rsync.docker
+        build: ./docker/rsync
         volumes:
             - output:/packages
             - ./output:/output:ro
@@ -71,7 +71,7 @@ services:
             - .
     test:
         image: local/test
-        build: ./test.docker
+        build: ./docker/test
         command:
             - sleep
             - infinity
