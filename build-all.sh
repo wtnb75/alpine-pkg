@@ -14,7 +14,7 @@ do1(){
 
 if [ "$*" = "" ]; then
     for i in */APKBUILD; do
-        grep -q "^$(dirname $i)" ${mgmtdir}/draft.list && continue
+        grep -q "^$(basename $(dirname $i))" ${mgmtdir}/draft.list && continue
         do1 $(dirname $i)
     done
 else
