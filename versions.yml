@@ -164,6 +164,7 @@ aamath:
   url: http://fuse.superglue.se/aamath/
   xpath: //a/text()
   regexp: 'aamath-(?P<version>[0-9\.]*)\.tar.gz'
+  skip: true
 mathtex:
   type: general
   url: https://ctan.org/pkg/mathtex
