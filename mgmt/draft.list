@@ -16,3 +16,4 @@ cling      # build failed(LLVMDemangle)
 ttyrec     # no license
 vlang      # build failed(tcc.exe)
 pyenv      # cannot install python
+aamath     # site down?
