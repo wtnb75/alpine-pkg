@@ -1,5 +1,8 @@
 #! /bin/sh
 cd $(dirname $0)
+apkdir=$(pwd)/apk
+mgmtdir=$(pwd)/mgmt
+cd ${apkdir}
 
 do1(){
     local dirname=$1
@@ -11,7 +14,7 @@ do1(){
 
 if [ "$*" = "" ]; then
     for i in */APKBUILD; do
-        grep -q "^$(dirname $i)" draft.list && continue
+        grep -q "^$(dirname $i)" ${mgmtdir}/draft.list && continue
         do1 $(dirname $i)
     done
 else
