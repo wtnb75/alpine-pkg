@@ -18,9 +18,10 @@ builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
 	# build with GOPATH mode (go <1.16)
-	go get ${_gourl}
+	mkdir -p $(go env GOPATH)/src/$(dirname ${_gourl})
+	cd $(go env GOPATH)/src/$(dirname ${_gourl})
+	git clone --depth=1 https://${_gourl} -b v${pkgver}
 	cd $(go env GOPATH)/src/${_gourl}
-	git checkout v${pkgver}
 	go build
 }
 
