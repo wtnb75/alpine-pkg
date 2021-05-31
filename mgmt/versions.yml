@@ -239,3 +239,18 @@ naabu:
 unicorn:
   type: github_tag
   id: unicorn-engine/unicorn
+tikv:
+  type: github_tag
+  id: tikv/tikv
+tikv-pd:
+  type: github_tag
+  id: tikv/pd
+tidb:
+  type: github_tag
+  id: pingcap/tidb
+tispark:
+  type: github_tag
+  id: pingcap/tispark
+vitess:
+  type: github_tag
+  id: vitessio/vitess

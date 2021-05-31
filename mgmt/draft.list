@@ -17,3 +17,5 @@ ttyrec     # no license
 vlang      # build failed(tcc.exe)
 pyenv      # cannot install python
 aamath     # site down?
+tikv-pd    # now working
+tikv       # now working

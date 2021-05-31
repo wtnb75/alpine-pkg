@@ -1,0 +1,40 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=tikv-pd
+_pkgname=pd
+pkgver=4.0.13
+pkgrel=0
+pkgdesc="Placement driver for TiKV"
+url="https://github.com/tikv/pd"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/tikv/pd"
+builddir="$srcdir/${pkgname}"
+
+
+build() {
+	mkdir -p $(go env GOPATH)/src/$(dirname ${_gourl})
+	cd $(go env GOPATH)/src/$(dirname ${_gourl})
+	rm -rf $(basename ${_gourl})
+	git clone --depth=1 https://${_gourl} -b v${pkgver}
+	cd $(go env GOPATH)/src/${_gourl}
+	GO111MODULE=on go mod download
+	export -n LDFLAGS
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	mkdir -p ${pkgdir}/usr/bin
+	cp $(go env GOPATH)/src/${_gourl}/bin/* ${pkgdir}/usr/bin/
+}
