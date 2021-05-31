@@ -27,7 +27,7 @@ services:
         command:
             - rsync
             - -rv
-            - /packages/build/
+            - /packages/apk/
             - /output/
     import:
         image: local/rsync
@@ -40,7 +40,7 @@ services:
             - rsync
             - -rv
             - /output/
-            - /packages/build/
+            - /packages/apk/
     cache-export:
         image: alpine:3
         volumes:
