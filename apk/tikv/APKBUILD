@@ -34,4 +34,4 @@ package() {
 	mkdir -p ${pkgdir}/usr/bin
 	cp target/release/tikv-* ${pkgdir}/usr/bin
 }
-sha512sums="5f1c4b456e3bbd0a8c5d55dfb7f132a57f28e4b0786a22949e50b021fb8845dbbe0813a5425e0577854edac78ba235a6bd595526c57c76f09db0ecc21ef36b05  tikv-5.0.1.tar.gz"
+sha512sums="4ac2a6c4227be5d1a3358c8861534706b21157a40bb7f70126d96414669922563fc38a01f5ee74e7743a07f1262ef03dc1a9b8905be7adbb65e033c1404800a7  tikv-4.0.13.tar.gz"
