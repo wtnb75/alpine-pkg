@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=py3-{{name}}
+_pkgname={{name}}
+pkgver={{version}}
+pkgrel=0
+pkgdesc="{{description}}"
+url="{{url}}"
+arch="all"
+license="{{license}}"
+depends="python3"
+makedepends="python3-dev py3-pip py3-wheel"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+build() {
+	cd "$builddir"
+	pip wheel "${_pkgname}==${pkgver}"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	pip install ${_pkgname}*.whl --root ${pkgdir}
+}
+
