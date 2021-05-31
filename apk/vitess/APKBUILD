@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=vitess
+pkgver=10.0.2
+pkgrel=0
+pkgdesc="Vitess is a database clustering system for horizontal scaling of MySQL"
+url="https://github.com/vitessio/vitess"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/vitessio/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	make build
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	make install PREFIX=${pkgdir}/usr
+}
+sha512sums="e384d553260deded1f6d01fe54b6e745605103849b4a4eadb838b65ab2f341fcaa18eb5d1c32940cf96c9e977a02b61fedbb7e96d8ef4c11291a39fbefe5515f  vitess-10.0.2.tar.gz"
