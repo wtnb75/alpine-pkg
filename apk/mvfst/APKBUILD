@@ -1,0 +1,41 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=mvfst
+pkgver=0.1
+pkgrel=0
+pkgdesc="An implementation of the QUIC transport protocol."
+url="https://github.com/facebookincubator/mvfst"
+arch="all"
+license="MIT"
+depends=""
+makedepends="boost-dev libevent-dev glog-dev gflags-dev zlib-dev xz-dev lz4-dev snappy-dev binutils-dev openssl-dev pkgconf libsodium-dev double-conversion-dev fizz-dev folly-dev wangle-dev"
+install=""
+subpackages="$pkgname-dev"
+source=""
+_giturl="https://github.com/facebookincubator/${pkgname}"
+builddir="$srcdir/$pkgname"
+
+prepare(){
+	mkdir -p $(dirname ${builddir})
+	cd $(dirname ${builddir})
+	rm -rf $(basename ${_giturl})
+	git clone --depth=1 ${_giturl}
+}
+
+build() {
+	cd "$builddir"
+	mkdir _build
+	cd _build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/_build
+	make install DESTDIR=$pkgdir
+}

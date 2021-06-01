@@ -254,3 +254,24 @@ tispark:
 vitess:
   type: github_tag
   id: vitessio/vitess
+ngtcp2:
+  type: github_tag
+  id: ngtcp2/ngtcp2
+folly:
+  type: github_tag
+  id: facebook/folly
+glog:
+  type: github_tag
+  id: google/glog
+wangle:
+  type: github_tag
+  id: facebook/wangle
+fizz:
+  type: github_tag
+  id: facebookincubator/fizz
+msquic:
+  type: github_tag
+  id: microsoft/msquic
+mvfst:
+  type: github_tag
+  id: facebookincubator/mvfst
