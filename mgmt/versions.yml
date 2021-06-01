@@ -280,3 +280,8 @@ mujs:
   url: https://mujs.com/downloads/
   prefix: mujs-
   suffix: .tar.gz
+quickjs:
+  type: autoindex
+  url: https://bellard.org/quickjs/
+  prefix: quickjs-
+  suffix: .tar.xz
