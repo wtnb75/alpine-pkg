@@ -1,0 +1,56 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ngtcp2
+pkgver=0.1.0
+pkgrel=0
+pkgdesc="ngtcp2 project is an effort to implement IETF QUIC protocol"
+url="https://github.com/ngtcp2/ngtcp2"
+arch="all"
+license="MIT/Apache-2.0"
+depends=""
+makedepends="autoconf automake libtool pkgconf gnutls-dev"
+install=""
+subpackages="$pkgname-dev"
+source=""
+_giturl_nghttp3="https://github.com/ngtcp2/nghttp3"
+_nghttp3_branch="main"
+_giturl_ngtcp2="https://github.com/ngtcp2/ngtcp2"
+_ngtcp2_branch="main"
+builddir="$srcdir/$pkgname"
+
+prepare() {
+	mkdir -p $builddir
+	cd $builddir
+	git clone --depth 1 -b ${_nghttp3_branch} ${_giturl_nghttp3}
+	git clone --depth 1 -b ${_ngtcp2_branch} ${_giturl_ngtcp2}
+}
+
+build() {
+	cd "$builddir"
+	cd $(basename ${_giturl_nghttp3})
+	sed -i -e 's,0.1.0-DEV,0.1.0-alpha,g;' configure.ac
+	autoreconf -i
+	./configure --prefix=/usr --enable-lib-only
+	make
+	cd -
+	cd $(basename ${_giturl_ngtcp2})
+	sed -i -e 's,0.1.0-DEV,0.1.0,g;' configure.ac
+	autoreconf -i
+	cd -
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	cd $(basename ${_giturl_nghttp3})
+	make install DESTDIR=${pkgdir}
+	cd -
+	cd $(basename ${_giturl_ngtcp2})
+	./configure --prefix=/usr --with-gnutls
+	make
+	make install DESTDIR=${pkgdir}
+}

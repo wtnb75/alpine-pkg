@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=glog
+pkgver=0.5.0
+pkgrel=0
+pkgdesc="C++ implementation of the Google logging module"
+url="https://github.com/google/glog"
+arch="all"
+license="BSD-3-clause"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-dev"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/google/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="445e4338f3d81cd0b065f2da9c6ce343c243263ca144cea424ef97531a4e9e09c06ffd6942ac01c5213a8003c75cfbbede3c4028d12f0134f23ff29314769c1a  glog-0.5.0.tar.gz"

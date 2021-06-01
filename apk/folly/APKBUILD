@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=folly
+pkgver=2021.05.31.00
+pkgrel=0
+pkgdesc="An open-source C++ library developed and used at Facebook"
+url="https://github.com/facebook/folly"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="fmt-dev cmake boost-dev libevent-dev double-conversion-dev gflags-dev lz4-dev xz-dev zlib-dev binutils-dev openssl-dev pkgconf snappy-dev libsodium-dev scons glog-dev libexecinfo-dev"
+# libiberty-dev jemalloc-dev libunwind-dev
+install=""
+subpackages="$pkgname-dev"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz 0001-execinfo.patch"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir _build
+	cd _build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DPACKAGE_VERSION=${pkgver}
+	# -DBUILD_SHARED_LIBS=ON
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/_build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="608ca02df7c4bf4d8e286f450bf5e21dbbf45e8328a5dcb95016c5945272d8b6e5f817c6a8e015e75a9ea20e24ddac9b951d083d74c66a45ddd73292508d4eea  folly-2021.05.31.00.tar.gz
+888938ff3826a5c46de93d957dd4e4236084c5593bc8d8ee41c3ce71eeb34a72120bdcaf9dc25118c222604e52c225c9e1d603538a4178a44a83b697d9780a67  0001-execinfo.patch"

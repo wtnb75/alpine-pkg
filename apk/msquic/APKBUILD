@@ -1,0 +1,43 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=msquic
+pkgver=1.1.6
+pkgrel=0
+pkgdesc="Cross-platform, C implementation of the IETF QUIC protocol"
+url="https://microsoft.github.io/msquic/"
+arch="all"
+license="MIT"
+depends=""
+makedepends="openssl-dev cmake make perl linux-headers"
+install=""
+subpackages="$pkgname-dev"
+source=""
+_giturl="https://github.com/microsoft/${pkgname}"
+builddir="$srcdir/$pkgname"
+
+prepare() {
+	mkdir -p $(dirname ${builddir})
+	cd $(dirname ${builddir})
+	git clone --depth=1 -b v${pkgver} ${_giturl}
+	cd $(basename ${_giturl})
+	git submodule init
+	git submodule update
+}
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
