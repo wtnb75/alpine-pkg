@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=mujs
+pkgver=1.1.2
+pkgrel=0
+pkgdesc="MuJS is a lightweight Javascript interpreter"
+url="https://mujs.com/"
+arch="all"
+license="ISC"
+depends=""
+makedepends="readline-dev"
+install=""
+subpackages="$pkgname-dev"
+source="https://mujs.com/downloads/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make prefix=/usr
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir prefix=/usr
+}
+sha512sums="0767cd8be6693a1577db47a14fc4e9fbd6ee5f5d07495698522eb68dfa9c7ddbce658e6863c4b87b494ff5dc677b8cc41487b2fd5245cb62e268fcefc6d587df  mujs-1.1.2.tar.gz"
