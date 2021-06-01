@@ -12,6 +12,10 @@ makedepends="autoconf automake libtool pkgconf gnutls-dev"
 install=""
 subpackages="$pkgname-dev"
 source=""
+#_giturl_bssl="https://github.com/google/boringssl"
+#_bssl_branch="master"
+_giturl_openssl="https://github.com/quictls/openssl"
+_openssl_branch="OpenSSL_1_1_1k+quic"
 _giturl_nghttp3="https://github.com/ngtcp2/nghttp3"
 _nghttp3_branch="main"
 _giturl_ngtcp2="https://github.com/ngtcp2/ngtcp2"
@@ -21,12 +25,25 @@ builddir="$srcdir/$pkgname"
 prepare() {
 	mkdir -p $builddir
 	cd $builddir
+	git clone --depth 1 -b ${_openssl_branch} ${_giturl_openssl}
+	#git clone --depth 1 -b ${_bssl_branch} ${_giturl_bssl}
 	git clone --depth 1 -b ${_nghttp3_branch} ${_giturl_nghttp3}
 	git clone --depth 1 -b ${_ngtcp2_branch} ${_giturl_ngtcp2}
 }
 
 build() {
 	cd "$builddir"
+	cd $(basename ${_giturl_openssl})
+	./config enable-tls1_3 --prefix=$PWD/build
+	make
+	make install_sw
+	cd -
+	#cd $(basename ${_giturl_bssl})
+	#mkdir build
+	#cd build
+	#cmake ..
+	#make
+	#cd ../..
 	cd $(basename ${_giturl_nghttp3})
 	sed -i -e 's,0.1.0-DEV,0.1.0-alpha,g;' configure.ac
 	autoreconf -i
@@ -50,7 +67,9 @@ package() {
 	make install DESTDIR=${pkgdir}
 	cd -
 	cd $(basename ${_giturl_ngtcp2})
-	./configure --prefix=/usr --with-gnutls
+	slibdir=${builddir}/$(basename ${_giturl_openssl})/build/lib
+	OPENSSL_LIBS="-Wl,--whole-archive ${slibdir}/libssl.a ${slibdir}/libcrypto.a -Wl,--no-whole-archive" \
+	./configure --prefix=/usr --with-gnutls PKG_CONFIG_PATH=$PWD/../openssl/build/lib/pkgconfig
 	make
 	make install DESTDIR=${pkgdir}
 }
