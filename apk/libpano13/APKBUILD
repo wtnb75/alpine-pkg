@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=libpano13
+pkgver=2.9.20
+pkgrel=0
+pkgdesc="The cross-platform library behind the Hugin photo stitcher"
+url="http://panotools.sourceforge.net/"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="zlib-dev libpng-dev jpeg-dev tiff-dev"
+install=""
+subpackages="$pkgname-dev $pkgname-doc"
+source="${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/panotools/files/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz/download 0001-inline.patch"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="18da5cb3760f06df8007622a64c4121c3acdadf8b02faa2125f319acde30532378cec5d97ccd5a65d6d2c1960c1b4946c80ffa850da2dc790051f5c0b76f8a86  libpano13-2.9.20.tar.gz
+da6271826f11e387988032dc66912399a88789f679bc9f00bb4aa845e9d032c582a38e4a27c6a5aa774c79367ce6a8edf6e4693152e187c0b0f0120175021911  0001-inline.patch"

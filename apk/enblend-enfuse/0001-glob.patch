@@ -1,0 +1,17 @@
+diff -up ./src/filespec.cc.orig ./src/filespec.cc
+--- ./src/filespec.cc.orig
++++ ./src/filespec.cc
+@@ -50,6 +50,13 @@
+ #include "layer_selection.h"
+ #include "selector.h"
+ 
++#ifndef GLOB_TILDE
++#define GLOB_TILDE 0
++#endif
++
++#ifndef GLOB_BRACE
++#define GLOB_BRACE 0
++#endif
+ 
+ // How many lines at the beginning of a response file we check to
+ // guess that it actually is a response file.

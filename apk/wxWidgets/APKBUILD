@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=wxWidgets
+pkgver=3.1.5
+pkgrel=0
+pkgdesc=""
+url="https://www.wxwidgets.org/"
+arch="all"
+license="modified-LGPL"
+depends=""
+makedepends="cmake wxgtk3-dev zlib-dev expat-dev jpeg-dev libpng-dev tiff-dev xz-dev sdl-dev libmspack-dev mesa-dev"
+install=""
+subpackages="$pkgname-dev"
+source="https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir _build
+	cd _build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="ce9c31f0c502135839330150ec08724d69b64910d3e1d3dc11eb587b079bb8bdedd515ff980e7992c68ff1ba59d962353a079ee72a19a03923fc4755826714c9  wxWidgets-3.1.5.tar.bz2"
