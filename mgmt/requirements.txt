@@ -1,0 +1,7 @@
+click
+requests
+PyYAML
+lxml
+natsort
+cssselect
+jinja2
