@@ -285,3 +285,14 @@ quickjs:
   url: https://bellard.org/quickjs/
   prefix: quickjs-
   suffix: .tar.xz
+libpano13:
+  type: hg_tag
+  url: http://hg.code.sf.net/p/panotools/libpano13
+enblend-enfuse:
+  type: sourceforge
+  id: enblend
+  directory: enblend-enfuse
+  regexp: '^enblend-enfuse-(?P<version>[^\s]+)'
+wxWidgets:
+  type: github_tag
+  id: wxWidgets/wxWidgets
