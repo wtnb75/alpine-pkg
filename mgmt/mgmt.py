@@ -8,6 +8,7 @@ import json
 import re
 import glob
 import functools
+from typing import List
 from lxml import etree
 from lxml.cssselect import CSSSelector
 from natsort import natsorted
@@ -94,7 +95,7 @@ class VersionChecker:
                 return False
         return True
 
-    def get_newest(self, regexp, val: list[str], stopwords=None) -> str:
+    def get_newest(self, regexp, val: List[str], stopwords=None) -> str:
         _log.debug("choose newest: %s", val)
         if stopwords is None:
             stopwords = self.default_stopwords
