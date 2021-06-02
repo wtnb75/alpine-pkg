@@ -1,0 +1,19 @@
+name: check versions
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: setup python
+      run: |
+        cd mgmt
+        python -m venv .venv
+        .venv/bin/pip install -r requirements.txt
+    - name: check versions
+      run: |
+        cd mgmt
+        .venv/bin/python -m mgmt check-version versions.yml
