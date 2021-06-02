@@ -1,0 +1,35 @@
+diff -up ./rgbe.c.orig ./rgbe.c
+--- ./rgbe.c.orig
++++ ./rgbe.c
+@@ -63,7 +63,7 @@
+ 
+ /* standard conversion from float pixels to rgbe pixels */
+ /* note: you can remove the "inline"s if your compiler complains about it */
+-INLINE void 
++void 
+ float2rgbe(unsigned char rgbe[4], float red, float green, float blue)
+ {
+   float v;
+@@ -87,7 +87,7 @@
+ /* standard conversion from rgbe to float pixels */
+ /* note: Ward uses ldexp(col+0.5,exp-(128+8)).  However we wanted pixels */
+ /*       in the range [0,1] to map back into the range [0,1].            */
+-INLINE void 
++void 
+ rgbe2float(float *red, float *green, float *blue, unsigned char rgbe[4])
+ {
+   float f;
+diff -up ./rgbe.h.orig ./rgbe.h
+--- ./rgbe.h.orig
++++ ./rgbe.h
+@@ -62,8 +62,8 @@
+             size_t num_scanlines);
+ 
+ 
+-INLINE void float2rgbe(unsigned char rgbe[4], float red, float green, float blue);
+-INLINE void rgbe2float(float *red, float *green, float *blue, unsigned char rgbe[4]);
++void float2rgbe(unsigned char rgbe[4], float red, float green, float blue);
++void rgbe2float(float *red, float *green, float *blue, unsigned char rgbe[4]);
+ 
+ #ifdef __cplusplus
+ }

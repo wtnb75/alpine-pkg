@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=proxygen
+pkgver=2021.05.31.00
+pkgrel=0
+pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
+url="https://github.com/facebook/proxygen"
+arch="all"
+license="BSD-3-clause"
+depends=""
+makedepends="cmake fmt-dev folly-dev mvfst-dev fizz-dev zstd-dev zlib-dev openssl-dev boost-dev xz-dev lz4-dev snappy-dev libevent-dev binutils-dev sodium-dev double-conversion-dev wangle-dev"
+install=""
+subpackages="$pkgname-dev"
+source="{{source}}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_QUIC=ON
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}

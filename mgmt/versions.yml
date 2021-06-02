@@ -1,5 +1,5 @@
 bazel:
-  type: github_tag
+  type: github_release
   id: bazelbuild/bazel
 calc:
   type: github_tag
@@ -64,7 +64,7 @@ tgtd:
   type: github_tag
   id: fujita/tgt
 wasmtime:
-  type: github_tag
+  type: github_release
   id: bytecodealliance/wasmtime
 webhook:
   type: github_tag
@@ -205,7 +205,7 @@ onetbb:
   type: github_tag
   id: oneapi-src/oneTBB
 hwloc:
-  type: github_tag
+  type: github_release
   id: open-mpi/hwloc
   regexp: '^hwloc-(?P<version>.*)$'
 dar:
@@ -240,13 +240,13 @@ unicorn:
   type: github_tag
   id: unicorn-engine/unicorn
 tikv:
-  type: github_tag
+  type: github_release
   id: tikv/tikv
 tikv-pd:
-  type: github_tag
+  type: github_release
   id: tikv/pd
 tidb:
-  type: github_tag
+  type: github_release
   id: pingcap/tidb
 tispark:
   type: github_tag
@@ -285,3 +285,14 @@ quickjs:
   url: https://bellard.org/quickjs/
   prefix: quickjs-
   suffix: .tar.xz
+libpano13:
+  type: hg_tag
+  url: http://hg.code.sf.net/p/panotools/libpano13
+enblend-enfuse:
+  type: sourceforge
+  id: enblend
+  directory: enblend-enfuse
+  regexp: '^enblend-enfuse-(?P<version>[^\s]+)'
+wxWidgets:
+  type: github_tag
+  id: wxWidgets/wxWidgets
