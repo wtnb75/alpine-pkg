@@ -8,6 +8,7 @@ import json
 import re
 import glob
 import functools
+from typing import List
 from lxml import etree
 from lxml.cssselect import CSSSelector
 from natsort import natsorted
@@ -61,11 +62,11 @@ def cli_option(func):
 class VersionChecker:
     default_stopwords = ["dev", "alpha", "beta", "test", "rc", "RC"]
 
-    def read_apkfile(self, apkfile) -> dict:
+    def read_apkbuild(self, apkbuild) -> dict:
         kwd = ["pkgname", "pkgver", "pkgrel", "pkgdesc", "url", "arch", "license",
                "depends", "makedepends", "install", "subpackages", "source", "builddir"]
         res = {}
-        for line in apkfile.readlines():
+        for line in apkbuild.readlines():
             m = re.match("^(?P<var>[a-z0-9_]+)=(?P<val>.*)$", line.strip())
             if m is None:
                 continue
@@ -73,6 +74,24 @@ class VersionChecker:
                 v = m.group("val")
                 v = v.strip('"').strip("'")
                 res[m.group("var")] = v
+        return res
+
+    def read_apkfile(self, apkfile) -> dict:
+        import tarfile
+        apk = tarfile.open(apkfile, mode="r:gz")
+        res = {}
+        for line in apk.extractfile(".PKGINFO").readlines():
+            ll = line.decode("utf-8").strip().split("=", 1)
+            if len(ll) != 2:
+                continue
+            var, val = [x.strip() for x in ll]
+            if var in res:
+                if isinstance(res[var], list):
+                    res[var].append(val)
+                else:
+                    res[var] = [res[var], val]
+            else:
+                res[var] = val
         return res
 
     def fix_by_regexp(self, regexp, val):
@@ -94,7 +113,7 @@ class VersionChecker:
                 return False
         return True
 
-    def get_newest(self, regexp, val: list[str], stopwords=None) -> str:
+    def get_newest(self, regexp, val: List[str], stopwords=None) -> str:
         _log.debug("choose newest: %s", val)
         if stopwords is None:
             stopwords = self.default_stopwords
@@ -229,7 +248,14 @@ class VersionChecker:
 
 @cli.command()
 @cli_option
-@click.argument("apkfile", type=click.File('r'))
+@click.argument("apkbuild", type=click.File('r'))
+def read_apkbuild(apkbuild):
+    print(VersionChecker().read_apkbuild(apkbuild))
+
+
+@cli.command()
+@cli_option
+@click.argument("apkfile", type=click.Path(exists=True, file_okay=True, dir_okay=False, readable=True))
 def read_apkfile(apkfile):
     print(VersionChecker().read_apkfile(apkfile))
 
@@ -261,8 +287,8 @@ def check_version(yamlfile, names):
         if len(names) == 0 or k in names:
             vchk = VersionChecker()
             if os.path.exists(os.path.join(_apkdir, k, "APKBUILD")):
-                with open(os.path.join(_apkdir, k, "APKBUILD")) as apkfile:
-                    metainfo = vchk.read_apkfile(apkfile)
+                with open(os.path.join(_apkdir, k, "APKBUILD")) as apkbuild:
+                    metainfo = vchk.read_apkbuild(apkbuild)
                 current_ver = vchk.get_version(args)
                 meta_ver = metainfo.get("pkgver")
                 if current_ver is None or meta_ver is None:
@@ -329,6 +355,23 @@ def make_from_template(template, args, output):
     click.echo(json.dumps(data, ensure_ascii=False))
     t = Template("\n".join(tmpl))
     click.echo(t.render(**data), file=output)
+
+
+@cli.command()
+@cli_option
+@click.option("--generations", type=int, default=2)
+@click.argument("directory", type=click.Path(
+    exists=True, file_okay=False, dir_okay=True, readable=True))
+def gc(directory, generations):
+    raise NotImplementedError("gc")
+
+
+@cli.command()
+@cli_option
+@click.argument("directory", type=click.Path(
+    exists=True, file_okay=False, dir_okay=True, readable=True))
+def make_index(directory):
+    raise NotImplementedError("make-index")
 
 
 if __name__ == "__main__":

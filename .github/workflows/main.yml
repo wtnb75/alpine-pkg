@@ -36,10 +36,16 @@ jobs:
     - name: import cache
       run: docker-compose up cache-import
     - name: import pre-built
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
       run: |
-        rm -rf output
-        wget -r -np -nv https://wtnb75-repo.netlify.app/
-        mv wtnb75-repo.netlify.app output
+        cd mgmt
+        python -m venv .venv
+        .venv/bin/pip install -r requirements.txt
+        rm -rf ../output
+        .venv/bin/python -m napi download --output ../output
+        cd ..
         find output -name index.html -delete
         docker-compose up import
         docker-compose exec -T builder ls -lR /home/packager/packages
