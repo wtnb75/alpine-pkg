@@ -296,3 +296,7 @@ enblend-enfuse:
 wxWidgets:
   type: github_tag
   id: wxWidgets/wxWidgets
+boinc-client:
+  type: github_tag
+  id: BOINC/boinc
+  regexp: '^client_release/[^/]*/(?P<version>.*)$'
