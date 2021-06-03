@@ -183,7 +183,7 @@ class VersionChecker:
         tags = []
         for line in subprocess.check_output(["git", "ls-remote", "--tags", url], text=True).splitlines():
             v = line.strip().split()
-            tagstr = v[-1].split("/")[-1]
+            tagstr = v[-1].split("/", 2)[-1]
             if tagstr.endswith("{}"):
                 continue
             tags.append(tagstr)

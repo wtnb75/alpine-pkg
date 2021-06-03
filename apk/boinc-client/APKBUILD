@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=boinc-client
+pkgver=7.16.17
+_pkgver=7.16
+pkgrel=0
+pkgdesc="Open-source software for volunteer computing and grid computing"
+url="https://boinc.berkeley.edu/"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="automake autoconf libtool pkgconf openssl-dev curl-dev libgcrypt-dev libgpg-error-dev openldap-dev gnutls-dev cyrus-sasl-dev libgssglue-dev libgss-dev libnotify-dev"
+install=""
+subpackages="$pkgname-dev"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/BOINC/boinc/archive/refs/tags/client_release/${_pkgver}/${pkgver}.tar.gz"
+builddir="$srcdir/${pkgname}_release-${_pkgver}-${pkgver}"
+
+build() {
+	cd "$builddir"
+	autoreconf -i
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --enable-client --disable-manager --disable-server
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="e9882f37ad5c83ed020155c8192228322932f83b88ed00d025dcda63bff2dca109ecdcbaf98b48c4522b841f545f32352e5c158ae0a41de0a1f2941ac8135221  boinc-client-7.16.17.tar.gz"
