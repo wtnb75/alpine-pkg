@@ -298,3 +298,12 @@ boinc-client:
   type: github_tag
   id: BOINC/boinc
   regexp: '^client_release/[^/]*/(?P<version>.*)$'
+podman:
+  type: github_tag
+  id: containers/podman
+conmon:
+  type: github_tag
+  id: containers/conmon
+buildah:
+  type: github_tag
+  id: containers/buildah

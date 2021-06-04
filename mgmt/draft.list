@@ -24,3 +24,4 @@ mvfst      # dep
 hugin      # working
 proxygen   # working
 wxWidgets  # build failed
+youki      # build failed

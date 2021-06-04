@@ -1,0 +1,38 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=youki
+pkgver=0.1
+pkgrel=0
+pkgdesc="An experimental container runtime written in Rust"
+url="https://github.com/containers/youki"
+arch="all"
+license="MIT"
+depends=""
+makedepends="cargo rust"
+_giturl=${url}
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $(dirname $builddir)
+	cd $(dirname $builddir)
+	git clone --depth=1 ${_giturl}
+}
+
+build() {
+	cd "$builddir"
+	cargo build --release
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p ${pkgdir}/usr/bin
+	cp target/*/release/youki ${pkgdir}/usr/bin
+}
+
