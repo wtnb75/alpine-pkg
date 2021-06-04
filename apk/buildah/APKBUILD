@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=buildah
+pkgver=1.21.0
+pkgrel=0
+pkgdesc="A tool that facilitates building OCI images"
+url="https://github.com/containers/buildah"
+arch="all"
+license="Apache-2.0"
+depends="runc"
+makedepends="go make glib-dev bats btrfs-progs-dev bzip2-dev lvm2-dev gpgme-dev libseccomp-dev"
+install=""
+subpackages="$pkgname-doc"
+source=""
+_giturl=${url}
+builddir="$srcdir/$pkgname"
+
+prepare() {
+	cd $(dirname $builddir)
+	git clone --depth=1 ${_giturl} -b v${pkgver}
+}
+
+build() {
+	cd ${builddir}
+	make PREFIX=/usr
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd ${builddir}
+	make install DESTDIR=${pkgdir} PREFIX=/usr
+}
