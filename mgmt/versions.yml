@@ -109,10 +109,8 @@ timidity++:
   directory: 'TiMidity%2B%2B'
   regexp: '^[^-]*-(?P<version>.*)$'
 povray:
-  type: github_tag
+  type: github_release
   id: POV-Ray/povray
-  regexp: '^v(?P<version>3\.7[^0-9\.]*)'
-  skip: true
 goofys:
   type: github_tag
   id: kahing/goofys
