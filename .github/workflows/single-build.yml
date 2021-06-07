@@ -31,7 +31,7 @@ jobs:
     - name: boot builder
       run: docker-compose up -d builder
     - name: apk update
-      run: docker-compose exec -T builder apk update
+      run: docker-compose exec -T builder sudo apk update
     - name: build apk
       run: docker-compose exec -T builder sh /build/build-all.sh ${{ github.event.inputs.package }}
     - name: get result
