@@ -27,7 +27,7 @@ build() {
 	./config --prefix=${builddir}/openssl_quic no-shared
 	make
 	make install_sw
-	cd "$builddir}
+	cd "$builddir"
 	cd trafficserver
 	autoreconf -i
 	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --with-openssl=${builddir}/openssl_quic
