@@ -23,6 +23,7 @@ glusterfs:
   id: gluster/glusterfs
 gyp:
   type: head
+  skip: true
 kubebuilder:
   type: github_tag
   id: kubernetes-sigs/kubebuilder
@@ -162,7 +163,6 @@ aamath:
   url: http://fuse.superglue.se/aamath/
   xpath: //a/text()
   regexp: 'aamath-(?P<version>[0-9\.]*)\.tar.gz'
-  skip: true
 mathtex:
   type: general
   url: https://ctan.org/pkg/mathtex
@@ -307,3 +307,9 @@ conmon:
 buildah:
   type: github_tag
   id: containers/buildah
+govc:
+  type: github_tag
+  id: vmware/govmomi
+packer:
+  type: github_tag
+  id: hashicorp/packer

@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=packer
+pkgver=1.7.2
+pkgrel=0
+pkgdesc="tool for creating identical machine images"
+url="https://github.com/hashicorp/packer"
+arch="all"
+license="MPL-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/hashicorp/packer"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	GO111MODULE=on go get ${_gourl}@v${pkgver}
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd $(go env GOMODCACHE)/${_gourl}@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X version.Version=v${pkgver}"
+}
