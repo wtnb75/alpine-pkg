@@ -10,6 +10,7 @@ license="Apache-2.0"
 depends=""
 makedepends="fmt-dev cmake boost-dev libevent-dev double-conversion-dev gflags-dev lz4-dev xz-dev zlib-dev binutils-dev openssl-dev pkgconf snappy-dev libsodium-dev scons glog-dev libexecinfo-dev"
 # libiberty-dev jemalloc-dev libunwind-dev
+depends_dev="fmt-dev boost-dev libevent-dev double-conversion-dev gflags-dev lz4-dev xz-dev zlib-dev binutils-dev openssl-dev snappy-dev libsodium-dev glog-dev libexecinfo-dev"
 install=""
 subpackages="$pkgname-dev"
 source="${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz 0001-execinfo.patch"

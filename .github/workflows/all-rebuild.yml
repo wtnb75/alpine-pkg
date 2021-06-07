@@ -25,6 +25,8 @@ jobs:
       run: docker-compose build
     - name: boot builder
       run: docker-compose up -d builder
+    - name: apk update
+      run: docker-compose exec -T builder sudo apk update
     - name: build apk
       run: docker-compose exec -T builder sh /build/build-all.sh
     - name: get result

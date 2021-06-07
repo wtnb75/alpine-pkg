@@ -31,6 +31,8 @@ jobs:
         restore-keys: ${{ runner.os }}-buildcache-
     - name: import cache
       run: docker-compose up cache-import
+    - name: apk update
+      run: docker-compose exec -T builder sudo apk update
     - name: build apk
       run: |
         cd apk
