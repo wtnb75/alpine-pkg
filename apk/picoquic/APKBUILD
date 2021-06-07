@@ -1,0 +1,39 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=picoquic
+pkgver=0.1
+pkgrel=0
+pkgdesc="Minimal implementation of the QUIC protocol"
+url="https://github.com/private-octopus/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="openssl-dev picotls"
+install=""
+subpackages=""
+source=""
+builddir="$srcdir/$pkgname"
+
+prepare() {
+	mkdir -p $(dirname ${builddir})
+	cd $(dirname ${builddir})
+	git clone --depth=1 ${url}
+}
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=${pkgdir}
+}

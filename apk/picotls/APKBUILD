@@ -1,0 +1,49 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=picotls
+pkgver=0.1
+pkgrel=0
+pkgdesc="TLS 1.3 implementation in C"
+url="https://github.com/h2o/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="openssl-dev brotli-dev"
+install=""
+subpackages=""
+source=""
+builddir="$srcdir/$pkgname"
+
+prepare() {
+	mkdir -p $(dirname ${builddir})
+	cd $(dirname ${builddir})
+	git clone --depth=1 ${url}
+	cd $pkgname
+	git submodule init
+	git submodule update
+}
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	mkdir -p ${pkgdir}/usr/lib
+	mkdir -p ${pkgdir}/usr/bin
+	mkdir -p ${pkgdir}/usr/include/
+	cp ./*.a ${pkgdir}/usr/lib
+	cp -r ../include/* ${pkgdir}/usr/include/
+	cp cli ${pkgdir}/usr/bin/picotls-cli
+	cp picotls-esni ${pkgdir}/usr/bin/
+	cp ptlsbench ${pkgdir}/usr/bin/
+}
