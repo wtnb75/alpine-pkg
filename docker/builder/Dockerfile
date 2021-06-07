@@ -9,5 +9,5 @@ RUN install -d -o packager -g abuild -m 0755 /home/packager/packages /home/packa
 ADD abuildconf/* /home/packager/.abuild/
 RUN chown -R packager.abuild /home/packager/.abuild
 RUN echo "https://wtnb75-repo.netlify.app/" >> /etc/apk/repositories
-RUN cp /home/packager/.abuild/*.rsa.pub /etc/apk/keys/
+ADD https://wtnb75-repo.netlify.app/wtnb75@gmail.com-601572c5.rsa.pub /etc/apk/keys/
 USER packager
