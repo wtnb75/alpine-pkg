@@ -18,6 +18,7 @@ vlang      # build failed(tcc.exe)
 pyenv      # cannot install python
 aamath     # site down?
 tikv       # build failed(proc-macro vs. musl)
+folly      # dep
 fizz       # dep
 wangle     # dep
 mvfst      # dep
