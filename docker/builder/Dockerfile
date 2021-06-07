@@ -10,4 +10,6 @@ ADD abuildconf/* /home/packager/.abuild/
 RUN chown -R packager.abuild /home/packager/.abuild
 RUN echo "https://wtnb75-repo.netlify.app/" >> /etc/apk/repositories
 ADD https://wtnb75-repo.netlify.app/wtnb75@gmail.com-601572c5.rsa.pub /etc/apk/keys/
+RUN chown root.root /etc/apk/keys/wtnb75*.pub && \
+    chmod 644 /etc/apk/keys/wtnb75*.pub
 USER packager
