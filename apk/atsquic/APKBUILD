@@ -1,0 +1,45 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=atsquic
+pkgver=0.1
+pkgrel=0
+pkgdesc="Apache Traffic Server with QUIC"
+url="https://cwiki.apache.org/confluence/display/TS/QUIC"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="openssl-dev pcre-dev libexecinfo-dev zlib-dev libunwind-dev luajit-dev brotli-dev ncurses-dev curl-dev autoconf automake libtool pkgconf"
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source=""
+builddir="$srcdir/$pkgname"
+
+prepare() {
+	mkdir -p $builddir
+	cd $builddir
+	git clone --depth 1 --branch OpenSSL_1_1_1j+quic https://github.com/quictls/openssl
+	git clone --depth 1 --branch quic-latest https://github.com/apache/trafficserver
+}
+
+build() {
+	cd "$builddir"
+	cd openssl
+	./config --prefix=${builddir}/openssl_quic no-shared
+	make
+	make install_sw
+	cd "$builddir}
+	cd trafficserver
+	autoreconf -i
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --with-openssl=${builddir}/openssl_quic
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/trafficserver
+	make install DESTDIR=$pkgdir
+}

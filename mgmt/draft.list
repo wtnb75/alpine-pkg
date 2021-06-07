@@ -18,10 +18,10 @@ vlang      # build failed(tcc.exe)
 pyenv      # cannot install python
 aamath     # site down?
 tikv       # build failed(proc-macro vs. musl)
-wangle     # dep
 mvfst      # dep
 hugin      # working
 proxygen   # working
 wxWidgets  # build failed
 youki      # build failed
 packer     # build failed(io/fs requires go 1.16-)
+atsquic    # working
