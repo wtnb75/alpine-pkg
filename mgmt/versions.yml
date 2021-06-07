@@ -307,3 +307,9 @@ conmon:
 buildah:
   type: github_tag
   id: containers/buildah
+govc:
+  type: github_tag
+  id: vmware/govmomi
+packer:
+  type: github_tag
+  id: hashicorp/packer
