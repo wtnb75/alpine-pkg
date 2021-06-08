@@ -313,3 +313,11 @@ govc:
 packer:
   type: github_tag
   id: hashicorp/packer
+picotls:
+  type: github_tag
+  id: h2o/picotls
+  skip: true
+picoquic:
+  type: github_tag
+  id: private-octopus/picoquic
+  skip: true
