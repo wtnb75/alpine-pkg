@@ -10,7 +10,7 @@ license="MPL-2.0"
 depends=""
 makedepends="cmake bison python3-dev linux-headers"
 install=""
-subpackages="${pkgname}-doc py3-$pkgname:py3"
+subpackages="${pkgname}-doc py3-$pkgname:py3 ${pkgname}-dev"
 source="https://www.monetdb.org/downloads/sources/Latest/MonetDB-${pkgver}.tar.bz2 alpine-build.patch"
 builddir="${srcdir}/MonetDB-${pkgver}"
 
