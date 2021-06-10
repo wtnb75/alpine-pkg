@@ -321,3 +321,8 @@ picoquic:
   type: github_tag
   id: private-octopus/picoquic
   skip: true
+poke:
+  type: autoindex
+  url: https://ftp.gnu.org/gnu/poke/
+  prefix: poke-
+  suffix: .tar.gz
