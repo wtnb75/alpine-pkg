@@ -29,3 +29,4 @@ package() {
 	make install DESTDIR=${pkgdir} prefix=/usr
 }
 
+sha512sums="da05fc7b77543b6b6c48af555191b581af1582864deb1565ad1fe3d3008de186986807758ff2295c6fdbbbc36687962eecef0e84cc9adca7ab50d72e2c3b4371  julia-1.6.1.tar.gz"

@@ -29,3 +29,4 @@ package() {
 	cd "$builddir"
 	make install DESTDIR=$pkgdir
 }
+sha512sums="6e11e9e53111ecd9ca9c02d56c8d12f3968c9c1743085e489e7e4effe4e613ca7673d0aad6f3483de20df7e1fc48b5a586a22f6a80d631277c946e214e023949  orangefs-2.9.8.tar.gz"
