@@ -31,3 +31,4 @@ package() {
 	make install DESTDIR=${pkgdir}
 }
 
+sha512sums="c570d34f284f41dcd8dd909216c69831dd83b8501423c7635a4fe506fb16fd3705cf87975a664735e52d0b805a0432267d611a993437d17aac3defe4b9ea4401  pypy3.7-v7.3.4-src.tar.bz2"
