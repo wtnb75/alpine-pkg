@@ -195,6 +195,21 @@ class VersionChecker:
             url=f"https://github.com/{id}",
             regexp=regexp, stopwords=stopwords)
 
+    def get_version_ctan(self, id, regexp=None, stopwords=None):
+        url = f"https://www.ctan.org/json/2.0/pkg/{id}"
+        res = requests.get(url).json()
+        return res.get("version", {}).get("number")
+
+    def get_version_cpan(self, id, regexp=None, stopwords=None):
+        url = f"https://fastapi.metacpan.org/v1/module/{id}"
+        res = requests.get(url).json()
+        return res.get("module", [])[0].get("version")
+
+    def get_version_cran(self, id, regexp=None, stopwords=None):
+        url = f"https://crandb.r-pkg.org/{id}"
+        res = requests.get(url).json()
+        return res.get("Version")
+
     def get_version_cargo(self, id, regexp=None, stopwords=None):
         baseurl = "https://raw.githubusercontent.com/rust-lang/crates.io-index/master/"
         if len(id) == 1:

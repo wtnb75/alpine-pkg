@@ -164,15 +164,11 @@ aamath:
   xpath: //a/text()
   regexp: 'aamath-(?P<version>[0-9\.]*)\.tar.gz'
 mathtex:
-  type: general
-  url: https://ctan.org/pkg/mathtex
-  xpath: //td/text()
-  regexp: '^(?P<version>[0-9\.]*) 20[0-9][0-9]-[01][0-9]-[0-9][0-9]$'
+  type: ctan
+  id: mathtex
 mimetex:
-  type: general
-  url: https://ctan.org/pkg/mimetex
-  xpath: //td/text()
-  regexp: '^(?P<version>[0-9\.]*) 20[0-9][0-9]-[01][0-9]-[0-9][0-9]$'
+  type: ctan
+  id: mimetex
 libqb:
   type: github_tag
   id: ClusterLabs/libqb
