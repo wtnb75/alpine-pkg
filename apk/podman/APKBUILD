@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=podman
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=0
 pkgdesc="Podman: A tool for managing OCI containers and pods"
 url="https://github.com/containers/podman"
