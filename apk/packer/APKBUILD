@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=packer
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=0
 pkgdesc="tool for creating identical machine images"
 url="https://github.com/hashicorp/packer"
