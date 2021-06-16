@@ -36,3 +36,4 @@ package() {
 	cp -r vlib cmd v thirdparty ${pkgdir}/usr/v/
 	ln -fs ../v/v ${pkgdir}/usr/bin/v
 }
+

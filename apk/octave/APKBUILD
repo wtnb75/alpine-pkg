@@ -10,7 +10,7 @@ license="GPL"
 depends="gnuplot"
 makedepends="gfortran bison flex texinfo openblas-dev lapack-dev pcre-dev qhull-dev readline-dev zlib-dev bzip2-dev hdf5-dev fftw-dev curl-dev libsndfile-dev portaudio-dev mesa-dev glu-dev freetype-dev fontconfig-dev fltk-dev suitesparse-dev arpack-dev graphicsmagick-dev"
 install=""
-subpackages="$pkgname-dev"
+subpackages="$pkgname-dev $pkgname-doc"
 source="https://ftp.iij.ad.jp/pub/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"
 builddir="$srcdir/$pkgname-$pkgver"
 
