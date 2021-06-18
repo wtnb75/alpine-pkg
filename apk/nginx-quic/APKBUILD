@@ -1,0 +1,44 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=nginx-quic
+pkgver=0.1
+pkgrel=0
+pkgdesc="nginx + quic (nginx ver)"
+url="https://quic.nginx.org/"
+arch="all"
+license="BSD"
+depends=""
+makedepends="mercurial pcre-dev zlib-dev"
+install=""
+subpackages=""
+source=""
+builddir="$srcdir/$pkgname-$pkgver"
+_baseopt="--prefix=/var/lib/nginx-quic --sbin-path=/usr/sbin/nginx-quic --modules-path=/usr/lib/nginx-quic/modules --conf-path=/etc/nginx-quic/nginx.conf --pid-path=/run/nginx/nginx-quic.pid --lock-path=/run/nginx/nginx-quic.lock --user=nginx --group=nginx --with-threads --with-file-aio --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_addition_module"
+
+prepare() {
+	mkdir -p "$builddir"
+	cd "$builddir"
+	hg clone -b quic https://hg.nginx.org/nginx-quic
+	git clone --depth=1 https://boringssl.googlesource.com/boringssl
+}
+
+build() {
+	cd "$builddir"/boringssl
+	mkdir build
+	cd build
+	cmake ..
+	make
+	cd "$builddir"/nginx-quic
+	./auto/configure --with-http_v3_module --with-stream_quic_module --with-cc-opt="-I../boringssl/include" --with-ld-opt="-L../boringssl/build/ssl -L../boringssl/build/crypto" $_baseopt
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/nginx-quic
+	make install DESTDIR=$pkgdir
+}
