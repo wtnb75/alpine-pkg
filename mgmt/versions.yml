@@ -322,3 +322,6 @@ poke:
   url: https://ftp.gnu.org/gnu/poke/
   prefix: poke-
   suffix: .tar.gz
+nginx-cfquic:
+  type: github_tag
+  id: cloudflare/quiche
