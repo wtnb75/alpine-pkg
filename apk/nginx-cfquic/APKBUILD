@@ -1,0 +1,46 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=nginx-cfquic
+pkgver=0.9.0
+_nginx_ver=1.16.1
+pkgrel=0
+pkgdesc="nginx ${_nginx_ver} + quic (cloudflare ver)"
+url="https://github.com/cloudflare/quiche/tree/master/extras/nginx"
+arch="all"
+license="BSD"
+depends=""
+makedepends="rustup pcre-dev zlib-dev"
+install=""
+subpackages=""
+source="https://nginx.org/download/nginx-${_nginx_ver}.tar.gz"
+_giturl="https://github.com/cloudflare/quiche"
+builddir="$srcdir/$pkgname-$pkgver"
+_baseopt="--prefix=/var/lib/nginx-cfquic --sbin-path=/usr/sbin/nginx-cfquic --modules-path=/usr/lib/nginx-cfquic/modules --conf-path=/etc/nginx-cfquic/nginx.conf --pid-path=/run/nginx/nginx-cfquic.pid --lock-path=/run/nginx/nginx-cfquic.lock --user=nginx --group=nginx --with-threads --with-file-aio --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_addition_module"
+
+prepare() {
+	mkdir -p "$builddir"
+	cd "$builddir"
+	tar xfz ${srcdir}/nginx-${_nginx_ver}.tar.gz
+	git clone --depth=1 --recursive ${_giturl}
+	cd nginx-${_nginx_ver}
+	patch -p01 < ../quiche/extras/nginx/nginx-1.16.patch
+	rustup-init -y
+	. $HOME/.cargo/env
+}
+
+build() {
+	cd "$builddir"/nginx-${_nginx_ver}
+	./configure --build="quiche-$(git --git-dir=../quiche/.git rev-parse --short HEAD)" --with-http_v3_module --with-openssl=../quiche/deps/boringssl --with-quiche=../quiche $_baseopt
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/nginx-${_nginx_ver}
+	make install DESTDIR=$pkgdir
+}
+sha512sums="17e95b43fa47d4fef5e652dea587518e16ab5ec562c9c94355c356440166d4b6a6a41ee520d406e5a34791a327d2e3c46b3f9b105ac9ce07afdd495c49eca437  nginx-1.16.1.tar.gz"
