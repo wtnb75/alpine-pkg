@@ -22,4 +22,3 @@ wxWidgets  # build failed
 youki      # build failed
 packer     # build failed(io/fs requires go 1.16-)
 atsquic    # working
-curl-quic  # core dump

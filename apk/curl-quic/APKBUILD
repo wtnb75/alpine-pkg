@@ -10,9 +10,9 @@ url="https://curl.se/"
 arch="all"
 license="MIT"
 depends=""
-makedepends="rustup zlib-dev brotli-dev zstd-dev"
+makedepends="zlib-dev brotli-dev zstd-dev autoconf automake libtool"
 install=""
-subpackages="${pkgname}-doc ${pkgname}-dev"
+subpackages=""
 source="https://github.com/curl/${_pkgname}/releases/download/${_pkgname}-${_pkgver_underscore}/${_pkgname}-${pkgver}.tar.bz2"
 builddir="$srcdir/${pkgname}"
 
@@ -20,20 +20,32 @@ prepare() {
 	mkdir -p $builddir
 	cd "$builddir"
 	tar xfj ${srcdir}/${_pkgname}-${pkgver}.tar.bz2
-	git clone --depth=1 --recursive https://github.com/cloudflare/quiche
-	rustup-init -y
-	. $HOME/.cargo/env
+	git clone --depth 1 -b OpenSSL_1_1_1k+quic https://github.com/quictls/openssl
+	git clone --depth 1 https://github.com/ngtcp2/nghttp3
+	git clone --depth 1 https://github.com/ngtcp2/ngtcp2
 }
 
 build() {
-	cd "$builddir"/quiche
-	cargo build --release --features ffi,pkg-config-meta,qlog
-	mkdir deps/boringssl/src/lib
-	ln -vnf $(find target/release -name libcrypto.a -o -name libssl.a) deps/boringssl/src/lib/
+	cd "$builddir"/openssl
+	./config enable-tls1_3 no-shared --prefix=$PWD/..
+	make build_libs
+	make install_dev
+
+	cd "$builddir"/nghttp3
+	autoreconf -fi
+	./configure --prefix=$PWD/.. --enable-lib-only --disable-shared
+	make
+	make install
+
+	cd "$builddir"/ngtcp2
+	autoreconf -fi
+	PKG_CONFIG_PATH=$PWD/../lib/pkgconfig LDFLAGS="-Wl,-rpath,$PWD/../lib" ./configure --prefix=$PWD/.. --enable-lib-only --disable-shared
+	make
+	make install
 
 	cd "$builddir"/${_pkgname}-${pkgver}
 	autoreconf -fi
-	LDFLAGS="-Wl,-rpath,$PWD/../quiche/target/release" ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man  --with-openssl=$PWD/../quiche/deps/boringssl/src --with-quiche=$PWD/../quiche/target/release --enable-alt-svc
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man  --with-openssl=$PWD/.. --with-nghttp3=$PWD/..  --with-ngtcp2=$PWD/.. --enable-alt-svc --disable-manual --disable-shared
 	make
 }
 
@@ -45,5 +57,10 @@ check() {
 package() {
 	cd "$builddir"/${_pkgname}-${pkgver}
 	make install DESTDIR=$pkgdir
+	rm -rf $pkgdir/usr/lib
+	rm -rf $pkgdir/usr/share
+	rm -rf $pkgdir/usr/include
+	rm -rf $pkgdir/usr/bin/curl-config
+	mv $pkgdir/usr/bin/curl $pkgdir/usr/bin/curl-quic
 }
 sha512sums="75c5b399fb3ad54eff87343a695d38c065f0c141501d1adb5957df01bbcda3db3bb1b860126e33496b6285f819a1926d1c8a224b9482069f81ef2accc5a58272  curl-7.77.0.tar.bz2"
