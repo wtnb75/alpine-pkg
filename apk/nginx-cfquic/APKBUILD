@@ -21,7 +21,7 @@ prepare() {
 	mkdir -p "$builddir"
 	cd "$builddir"
 	tar xfz ${srcdir}/nginx-${_nginx_ver}.tar.gz
-	git clone --recursive ${_giturl}
+	git clone --depth=1 --recursive ${_giturl}
 	cd nginx-${_nginx_ver}
 	patch -p01 < ../quiche/extras/nginx/nginx-1.16.patch
 	rustup-init -y
