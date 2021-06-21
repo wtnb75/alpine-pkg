@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=vlang
-pkgver=2021.24
+pkgver=2021.25
 pkgrel=0
 pkgdesc="The V Programming Language"
 url="https://vlang.io/"
@@ -36,4 +36,3 @@ package() {
 	cp -r vlib cmd v thirdparty ${pkgdir}/usr/v/
 	ln -fs ../v/v ${pkgdir}/usr/bin/v
 }
-
