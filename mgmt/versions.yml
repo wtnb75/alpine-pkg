@@ -325,3 +325,6 @@ poke:
 nginx-cfquic:
   type: github_tag
   id: cloudflare/quiche
+croc:
+  type: github_tag
+  id: schollz/croc
