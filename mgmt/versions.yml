@@ -67,9 +67,6 @@ tgtd:
 wasmtime:
   type: github_release
   id: bytecodealliance/wasmtime
-webhook:
-  type: github_tag
-  id: adnanh/webhook
 mitmproxy:
   type: pypi
   id: mitmproxy
@@ -118,9 +115,6 @@ goofys:
 wasmer:
   type: github_tag
   id: wasmerio/wasmer
-direnv:
-  type: github_tag
-  id: direnv/direnv
 pacemaker:
   type: github_tag
   id: ClusterLabs/pacemaker
@@ -187,24 +181,12 @@ orangefs:
 minio:
   type: github_tag
   id: minio/minio
-octave:
-  type: autoindex
-  url: http://ftp.iij.ad.jp/pub/gnu/octave/
-  prefix: octave-
-  suffix: .tar.gz
 cling:
   type: github_tag
   id: root-project/cling
 onetbb:
   type: github_tag
   id: oneapi-src/oneTBB
-hwloc:
-  type: github_release
-  id: open-mpi/hwloc
-  regexp: '^hwloc-(?P<version>.*)$'
-dar:
-  type: github_tag
-  id: Edrusb/DAR
 tinycc:
   type: autoindex
   url: http://download.savannah.gnu.org/releases/tinycc/
@@ -294,21 +276,9 @@ boinc-client:
   type: github_tag
   id: BOINC/boinc
   regexp: '^client_release/[^/]*/(?P<version>.*)$'
-podman:
-  type: github_tag
-  id: containers/podman
-conmon:
-  type: github_tag
-  id: containers/conmon
-buildah:
-  type: github_tag
-  id: containers/buildah
 govc:
   type: github_tag
   id: vmware/govmomi
-packer:
-  type: github_tag
-  id: hashicorp/packer
 picotls:
   type: github_tag
   id: h2o/picotls
@@ -325,6 +295,3 @@ poke:
 nginx-cfquic:
   type: github_tag
   id: cloudflare/quiche
-croc:
-  type: github_tag
-  id: schollz/croc
