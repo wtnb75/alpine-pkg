@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=croc
+pkgver=9.2.0
+_pkgver=v9
+pkgrel=0
+pkgdesc="Easily and securely send things from one computer to another"
+url="https://github.com/schollz/croc"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/schollz/croc"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	GO111MODULE=on go get ${_gourl}/${_pkgver}
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd $(go env GOMODCACHE)/${_gourl}/${_pkgver}@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install
+}
