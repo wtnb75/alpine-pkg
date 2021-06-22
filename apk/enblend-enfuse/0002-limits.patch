@@ -1,0 +1,11 @@
+diff -up ./src/minimizer.h.orig ./src/minimizer.h
+--- ./src/minimizer.h.orig
++++ ./src/minimizer.h
+@@ -28,6 +28,7 @@
+ 
+ #include <string>
+ #include <stdexcept>
++#include <limits>
+ #include <vector>
+ 
+ #include <boost/optional.hpp>
