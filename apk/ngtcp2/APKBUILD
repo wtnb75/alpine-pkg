@@ -8,7 +8,7 @@ url="https://github.com/ngtcp2/ngtcp2"
 arch="all"
 license="MIT/Apache-2.0"
 depends=""
-makedepends="autoconf automake libtool pkgconf gnutls-dev"
+makedepends="autoconf automake libtool pkgconf"
 install=""
 subpackages="$pkgname-dev"
 source=""
@@ -69,7 +69,7 @@ package() {
 	cd $(basename ${_giturl_ngtcp2})
 	slibdir=${builddir}/$(basename ${_giturl_openssl})/build/lib
 	OPENSSL_LIBS="-Wl,--whole-archive ${slibdir}/libssl.a ${slibdir}/libcrypto.a -Wl,--no-whole-archive" \
-	./configure --prefix=/usr --with-gnutls PKG_CONFIG_PATH=$PWD/../openssl/build/lib/pkgconfig
+	./configure --prefix=/usr PKG_CONFIG_PATH=$PWD/../openssl/build/lib/pkgconfig
 	make
 	make install DESTDIR=${pkgdir}
 }
