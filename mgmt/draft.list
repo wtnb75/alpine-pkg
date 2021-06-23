@@ -22,3 +22,6 @@ wxWidgets  # build failed
 youki      # build failed
 atsquic    # working
 vlang      # build failed(tcc.exe)
+fizz       # build failed?
+folly      # tmp
+wangle     # tmp

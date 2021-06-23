@@ -11,7 +11,7 @@ depends=""
 makedepends="gsl-dev blas-dev openblas-dev zlib-dev libpng-dev jpeg-dev tiff-dev lcms2-dev openexr-dev vigra-dev boost-dev perl texlive help2man"
 install=""
 subpackages="$pkgname-doc"
-source="${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/enblend/files/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz/download 0001-glob.patch"
+source="${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/enblend/files/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz/download 0001-glob.patch 0002-limits.patch"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
@@ -30,4 +30,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="15d6e3bfbca94cc0f74741d6683ac211050877a4cddfd6b28872f1c159f74c2a0e5ef19f8a5f1ec554511e2c4cc1ec4e25d59d361e1e4bc6d3cad2720cd7c582  enblend-enfuse-4.2.tar.gz
-e49551847f24240d14c4b36f3e54cd4ebd5a9c21a9651196cc49e4b889b79a1b7428578e55097512f632fe6e6c7f7c55aed03aa399edcfbe28b49f6c30ca9c55  0001-glob.patch"
+e49551847f24240d14c4b36f3e54cd4ebd5a9c21a9651196cc49e4b889b79a1b7428578e55097512f632fe6e6c7f7c55aed03aa399edcfbe28b49f6c30ca9c55  0001-glob.patch
+0395d6fcb4dc5a411b3870a7e6cc60932ac17ab4847a4c544665b78510df0307e6fe0c794637129237ece79451c6fdad56e6d3544f0600b3a97afaec8f0fff07  0002-limits.patch"
