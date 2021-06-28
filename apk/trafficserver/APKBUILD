@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=trafficserver
-pkgver=9.0.1
+pkgver=9.0.2
 pkgrel=0
 pkgdesc="fast, scalable and extensible HTTP/1.1 and HTTP/2 compliant caching proxy server."
 url="https://trafficserver.apache.org/"
@@ -30,4 +30,4 @@ package() {
 	cd "$builddir"
 	make install DESTDIR=$pkgdir
 }
-sha512sums="74eca6522c880b13e4ca7aca0f73c9252e84778a26027b1fb21f3e5f81eadedba884347f4e75cc6bd6778945bbf2e3f0b17543ae92aba9e1941e2d797c14df1c  trafficserver-9.0.1.tar.bz2"
+sha512sums="6f1ad9989dd9b85df42519e3ded2a0da04bbd1a982e44ded2753b5913d0bc95d20dff255cdcf1862a8193d5041a06d6ad78139d142b8fd53b241cbcf5094edaf  trafficserver-9.0.2.tar.bz2"
