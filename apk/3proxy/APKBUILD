@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=3proxy
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=0
 pkgdesc="3proxy - tiny free proxy server"
 url="https://github.com/3proxy/3proxy"
