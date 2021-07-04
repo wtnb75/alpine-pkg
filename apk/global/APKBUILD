@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=global
-pkgver=6.6.6
+pkgver=6.6.7
 pkgrel=0
 pkgdesc="GNU Global source code tagging system"
 url="https://www.gnu.org/software/global/"
@@ -11,7 +11,7 @@ depends=""
 makedepends="ncurses-dev"
 install=""
 subpackages="$pkgname-doc"
-source="https://ftp.gnu.org/pub/gnu/global/global-6.6.6.tar.gz"
+source="https://ftp.gnu.org/pub/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
@@ -29,4 +29,4 @@ package() {
 	cd "$builddir"
 	make install DESTDIR=$pkgdir
 }
-sha512sums="e46c0c7c0055533f70170f33eaeb7cedeab3c28e76db1b16df191883e2da4f2fddff27970962a9c9650ad91b75f066a248b0c1214fb02a4b92de23562f5c008e  global-6.6.6.tar.gz"
+sha512sums="b4f7ef7ac947235680b35722b2ab465410336667c9bcd9d044705f4eddf9f8b523fe1ddd5a3b631a2eac6dfc8292988eef932cc9696dd056927fb732c0fba2b5  global-6.6.7.tar.gz"

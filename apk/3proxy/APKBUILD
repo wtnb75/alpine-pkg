@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=3proxy
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=0
 pkgdesc="3proxy - tiny free proxy server"
 url="https://github.com/3proxy/3proxy"
@@ -29,4 +29,4 @@ package() {
 	make -f Makefile.Linux install DESTDIR=$pkgdir chroot_prefix=/usr exec_prefix=/usr
 	rm -rf ${pkgdir}/etc/init.d
 }
-sha512sums="26f25c4664aa7ca3913fd5cdd81f1f21caa2bc29ee0c73b77389e71aab6b580e3659c7d694d8adebc22085439328a058ad989cea1f41c03ef986f3100bc1bacb  3proxy-0.9.3.tar.gz"
+sha512sums="d3316f6ee1217e580ce593a7bfd9d76672487a89862f247373b0acf3ea207887c758168e33b25db9fc974063deab0826c20d455cab2536d03eee49d8bddda6b5  3proxy-0.9.4.tar.gz"
