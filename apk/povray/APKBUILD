@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=povray
-pkgver=3.7.0.9
+pkgver=3.7.0.10
 pkgrel=0
 pkgdesc="POV-Ray - The Persistence of Vision Raytracer"
 url="http://www.povray.org/"
@@ -31,5 +31,7 @@ package() {
 	cd "$builddir"
 	make install DESTDIR=$pkgdir
 }
-sha512sums="14c5f6b477721afe14d0ee7c5b8945ade4e74eb1fcfc36e7113d1280b8bb71d08cc214a95377e98d00bacf74fb344a4756257c677c7a3cd943ad1f31c3bac6c4  povray-3.7.0.9.tar.gz
-95cc81b18dbc5a12ef5d2a7bcfa00d4f691152e86d7b59b23a1130665d23c2d3fce90fef142066a90b1c77909770d553bcc32e79430b927968416e4a35a93f4e  00-alpine.patch"
+sha512sums="
+fb947f2231f44c548b53ad27008e6a53909b375970c504938d7d7ea5dd336672891b50d3b41076598d8d025db5bcee01880d399094b4727d942d1c02a3594c47  povray-3.7.0.10.tar.gz
+95cc81b18dbc5a12ef5d2a7bcfa00d4f691152e86d7b59b23a1130665d23c2d3fce90fef142066a90b1c77909770d553bcc32e79430b927968416e4a35a93f4e  00-alpine.patch
+"

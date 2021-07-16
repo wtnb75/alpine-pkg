@@ -389,5 +389,33 @@ def make_index(directory):
     raise NotImplementedError("make-index")
 
 
+@cli.command()
+@cli_option
+@click.argument("pkgname")
+@click.argument("new-version")
+def update_version(pkgname, new_version):
+    vchk = VersionChecker()
+    if os.path.exists(os.path.join(_apkdir, pkgname, "APKBUILD")):
+        with open(os.path.join(_apkdir, pkgname, "APKBUILD")) as apkbuild:
+            metainfo = vchk.read_apkbuild(apkbuild)
+        meta_ver = metainfo.get("pkgver")
+        if meta_ver != new_version:
+            click.echo(f"new version: {pkgname} {meta_ver} -> {new_version}")
+        apk_dirname = os.path.join(_apkdir, pkgname)
+        apk_fname1 = os.path.join(apk_dirname, "APKBUILD.old")
+        apk_fname2 = os.path.join(apk_dirname, "APKBUILD")
+        os.rename(apk_fname2, apk_fname1)
+        with open(apk_fname1) as input:
+            with open(apk_fname2, "w") as output:
+                for line in input:
+                    if line.startswith("pkgver="):
+                        new_line = line.replace(meta_ver, new_version)
+                        _log.info("replaced: %s", line != new_line)
+                        line = new_line
+                    print(line, file=output, end="")
+        subprocess.check_output(["abuild", "fetch"], cwd=apk_dirname)
+        subprocess.check_output(["abuild", "checksum"], cwd=apk_dirname)
+
+
 if __name__ == "__main__":
     cli()
