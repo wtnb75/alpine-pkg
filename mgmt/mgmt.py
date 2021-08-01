@@ -260,6 +260,24 @@ class VersionChecker:
     def check(self, apkfile, check_value):
         pass
 
+    def update_version(self, filename, old_version, new_version):
+        if old_version == new_version:
+            return
+        apk_dirname = os.path.dirname(filename)
+        apk_fname1 = os.path.join(apk_dirname, os.path.basename(filename) + ".old")
+        apk_fname2 = filename
+        os.rename(apk_fname2, apk_fname1)
+        with open(apk_fname1) as input:
+            with open(apk_fname2, "w") as output:
+                for line in input:
+                    if line.startswith("pkgver="):
+                        new_line = line.replace(old_version, new_version)
+                        _log.info("replaced: %s", line != new_line)
+                        line = new_line
+                    print(line, file=output, end="")
+        subprocess.check_output(["abuild", "fetch"], cwd=apk_dirname)
+        subprocess.check_output(["abuild", "checksum"], cwd=apk_dirname)
+
 
 @cli.command()
 @cli_option
@@ -401,20 +419,37 @@ def update_version(pkgname, new_version):
         meta_ver = metainfo.get("pkgver")
         if meta_ver != new_version:
             click.echo(f"new version: {pkgname} {meta_ver} -> {new_version}")
-        apk_dirname = os.path.join(_apkdir, pkgname)
-        apk_fname1 = os.path.join(apk_dirname, "APKBUILD.old")
-        apk_fname2 = os.path.join(apk_dirname, "APKBUILD")
-        os.rename(apk_fname2, apk_fname1)
-        with open(apk_fname1) as input:
-            with open(apk_fname2, "w") as output:
-                for line in input:
-                    if line.startswith("pkgver="):
-                        new_line = line.replace(meta_ver, new_version)
-                        _log.info("replaced: %s", line != new_line)
-                        line = new_line
-                    print(line, file=output, end="")
-        subprocess.check_output(["abuild", "fetch"], cwd=apk_dirname)
-        subprocess.check_output(["abuild", "checksum"], cwd=apk_dirname)
+        vchk.update_version(apkbuild, meta_ver, new_version)
+
+
+@cli.command()
+@cli_option
+@click.argument("yamlfile", type=click.File('r'))
+@click.argument("names", nargs=-1)
+def auto_update(yamlfile, names):
+    vchk = VersionChecker()
+    data = yaml.safe_load(yamlfile)
+    build_files = glob.glob(os.path.join(_apkdir, "*", "APKBUILD"))
+    build_dirs = {os.path.basename(os.path.dirname(x)) for x in build_files}
+    keys = set(data.keys())
+    click.echo("not found: %s" % (build_dirs - keys))
+    click.echo("too many: %s" % (keys - build_dirs))
+
+    for k, args in data.items():
+        if len(names) == 0 or k in names:
+            vchk = VersionChecker()
+            fname = os.path.join(_apkdir, k, "APKBUILD")
+            if os.path.exists(fname):
+                with open(fname) as apkbuild:
+                    metainfo = vchk.read_apkbuild(apkbuild)
+                current_ver = vchk.get_version(args)
+                meta_ver = metainfo.get("pkgver")
+                if current_ver is None or meta_ver is None:
+                    continue
+                if meta_ver != current_ver:
+                    click.echo(f"new version: {k} pkg({meta_ver})!=current({current_ver})")
+                    vchk.update_version(fname, meta_ver, current_ver)
+                    subprocess.check_call(["git", "add", fname])
 
 
 if __name__ == "__main__":

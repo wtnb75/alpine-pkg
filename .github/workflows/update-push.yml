@@ -1,0 +1,45 @@
+name: auto update
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: setup abuild.conf
+      shell: bash
+      env:
+        PACKAGER: ${{ secrets.PACKAGER }}
+        KEY_NAME: ${{ secrets.KEY_NAME }}
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
+      run: |
+        echo "PACKAGER=\"$PACKAGER\"" >> docker/builder/abuildconf/abuild.conf
+        echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/$KEY_NAME.rsa\"" >> docker/builder/abuildconf/abuild.conf
+        echo "$PRIVATE_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa"
+        echo "$PUBLIC_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa.pub"
+        chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
+    - name: build image
+      run: docker-compose build
+    - name: boot builder
+      run: docker-compose up -d builder
+    - name: update version
+      run: docker-compose exec -w /build/mgmt builder python3 -m mgmt auto-update versions.yml
+    - name: git setting
+      env:
+        PACKAGER: ${{ secrets.PACKAGER }}
+      run: |
+        git config --local user.name "GitHub Actions"
+        git config --local user.email "546304+github-actions[bot]@users.noreply.github.com"
+    - name: git commit/push
+      env:
+        GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }}
+      run: |
+        tag=version$(date +%Y%m%d)
+        git diff --name-only | grep -q APKBUILD || exit 0
+        git checkout -b $tag
+        git commit -m 'auto update version'
+        hub push
+        hub pull-request -b ${GITHUB_REF##*/} -m "auto update version"
