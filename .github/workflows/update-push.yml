@@ -25,6 +25,8 @@ jobs:
       run: docker-compose build
     - name: boot builder
       run: docker-compose up -d builder
+    - name: chmod
+      run: chmod -R go+wX apk
     - name: update version
       run: docker-compose exec -T -w /build/mgmt builder python3 -m mgmt auto-update versions.yml
     - name: git setting
