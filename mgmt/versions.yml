@@ -295,3 +295,6 @@ poke:
 nginx-cfquic:
   type: github_tag
   id: cloudflare/quiche
+gravity:
+  type: github_release
+  id: marcobambini/gravity
