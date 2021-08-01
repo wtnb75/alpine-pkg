@@ -43,5 +43,5 @@ jobs:
         git diff --cached --name-only | grep -q APKBUILD || exit 0
         git checkout -b $tag
         git commit -m 'auto update version'
-        hub push
+        hub push origin $tag
         hub pull-request -b ${GITHUB_REF##*/} -m "auto update version"
