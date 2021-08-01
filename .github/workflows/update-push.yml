@@ -25,8 +25,10 @@ jobs:
       run: docker-compose build
     - name: boot builder
       run: docker-compose up -d builder
+    - name: chmod
+      run: chmod -R go+wX apk .git
     - name: update version
-      run: docker-compose exec -w /build/mgmt builder python3 -m mgmt auto-update versions.yml
+      run: docker-compose exec -T -w /build/mgmt builder python3 -m mgmt auto-update versions.yml
     - name: git setting
       env:
         PACKAGER: ${{ secrets.PACKAGER }}
@@ -38,8 +40,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }}
       run: |
         tag=version$(date +%Y%m%d)
-        git diff --name-only | grep -q APKBUILD || exit 0
+        git diff --cached --name-only | grep -q APKBUILD || exit 0
         git checkout -b $tag
         git commit -m 'auto update version'
-        hub push
+        hub push origin $tag
         hub pull-request -b ${GITHUB_REF##*/} -m "auto update version"
