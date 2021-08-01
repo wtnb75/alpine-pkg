@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=gravity
+pkgver=0.8.5
+pkgrel=0
+pkgdesc="Gravity is a powerful, dynamically typed, lightweight, embeddable programming language"
+url="https://marcobambini.github.io/gravity/"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/marcobambini/gravity/archive/refs/tags/0.8.5.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p $pkgdir/usr/bin
+	install -c -m 755 -o root -g root gravity $pkgdir/usr/bin/
+}
+sha512sums="
+a21f77994a833be925550353ca95568e0df5d155df8504bbe9e6b15e9791e49b918445fefc021280e2d3b0db83d6b6f6dab9c36de41af49f8838805c0e4c137a  gravity-0.8.5.tar.gz
+"
