@@ -11,7 +11,7 @@ depends=""
 makedepends="cmake fmt-dev folly-dev mvfst-dev fizz-dev zstd-dev zlib-dev openssl-dev boost-dev xz-dev lz4-dev snappy-dev libevent-dev binutils-dev sodium-dev double-conversion-dev wangle-dev"
 install=""
 subpackages="$pkgname-dev"
-source="{{source}}"
+source="https://github.com/facebook/proxygen/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {

@@ -11,7 +11,7 @@ depends=""
 makedepends="libqb-dev zlib-dev autoconf automake libtool"
 install=""
 subpackages="$pkgname-doc"
-source="{{source}}"
+source="https://github.com/corosync/corosync/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
