@@ -5,7 +5,6 @@ deno       # build failed(rusty_v8, file too small to be an archive)
 julia      # build failed
 traefik    # build failed(tag? v1 or v2)
 abcmidi    # no license
-minio      # build failed(needs go >=1.16)
 goofys     # build failed(old gomod?)
 orangefs   # build failed(c macro problem)
 corosync   # working
