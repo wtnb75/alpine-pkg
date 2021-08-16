@@ -1,0 +1,42 @@
+diff -up ./src/cedro.c.orig ./src/cedro.c
+--- ./src/cedro.c.orig
++++ ./src/cedro.c
+@@ -85,7 +85,7 @@
+   va_end(args);
+ }
+ 
+-#define LANG(es, en) (strn_eq(getenv("LANG"), "es", 2)? es: en)
++#define LANG(es, en) (getenv("LANG")?(strn_eq(getenv("LANG"), "es", 2)? es: en):en)
+ 
+ typedef enum UTF8Error {
+   UTF8_NO_ERROR, UTF8_ERROR, UTF8_ERROR_OVERLONG,
+@@ -173,7 +173,7 @@
+   va_list args;
+   va_start(args, fmt);
+ 
+-  if (strstr(getenv("LANG"), "UTF-8")) {
++  if (getenv("LANG")?strstr(getenv("LANG"), "UTF-8"):"UTF-8") {
+     vfprintf(stderr, fmt, args);
+   } else {
+     char* buffer;
+diff -up ./template/tools/cedro/cedro.c.orig ./template/tools/cedro/cedro.c
+--- ./template/tools/cedro/cedro.c.orig
++++ ./template/tools/cedro/cedro.c
+@@ -85,7 +85,7 @@
+   va_end(args);
+ }
+ 
+-#define LANG(es, en) (strn_eq(getenv("LANG"), "es", 2)? es: en)
++#define LANG(es, en) (getenv("LANG")?(strn_eq(getenv("LANG"), "es", 2)? es: en):en)
+ 
+ typedef enum UTF8Error {
+   UTF8_NO_ERROR, UTF8_ERROR, UTF8_ERROR_OVERLONG,
+@@ -173,7 +173,7 @@
+   va_list args;
+   va_start(args, fmt);
+ 
+-  if (strstr(getenv("LANG"), "UTF-8")) {
++  if (getenv("LANG")?strstr(getenv("LANG"), "UTF-8"):"UTF-8") {
+     vfprintf(stderr, fmt, args);
+   } else {
+     char* buffer;

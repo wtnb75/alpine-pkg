@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=cedro
+pkgver=1.0
+pkgrel=0
+pkgdesc="Cedro is a C language extension that works as a pre-processor"
+url="https://sentido-labs.com/en/library/cedro/202106171400/"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/Sentido-Labs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz cedro-1.0-getenv.patch"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p $pkgdir/bin
+	cp bin/* $pkgdir/bin/
+}
+sha512sums="
+79e8f61161c48d5f4956875ed9bd8f35fcc115c9d3ebcaa25d243c2a51e1dabe019c507f649ba7f410a106ff8733b64e5921dad365dea52802814154ce340c4f  cedro-1.0.tar.gz
+4610f02ac8b5edcb5b09fc70551bc3db6ee5dcfb6ddd3d036c2c9aee474e0b668f28fe1513e597f06b20c259436675dfea89fd78a108393dc96c8cdcd12d1cb0  cedro-1.0-getenv.patch
+"
