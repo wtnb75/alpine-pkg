@@ -298,3 +298,6 @@ nginx-cfquic:
 gravity:
   type: github_release
   id: marcobambini/gravity
+cedro:
+  type: github_tag
+  id: Sentido-Labs/cedro
