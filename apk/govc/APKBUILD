@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=govc
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=0
 pkgdesc="govc is a vSphere CLI built on top of govmomi"
 url="https://github.com/vmware/govmomi/tree/master/govc"
