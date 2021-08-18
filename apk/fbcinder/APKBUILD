@@ -38,3 +38,6 @@ package() {
 	cd "$builddir"
 	make install DESTDIR=$pkgdir
 }
+sha512sums="
+da6140cf502b8fb548d22d9a481fc11561c79d527360c3d6bd33245fceeecee9e59ebe7c3c38c61e795ad5308d8c7ac6b97673ba99f87cc0a0d1a17a46d1e153  cinder-fix.patch
+"

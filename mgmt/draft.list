@@ -24,3 +24,4 @@ vlang      # build failed(tcc.exe)
 fizz       # build failed?
 folly      # tmp
 wangle     # tmp
+fbcinder   # build failed
