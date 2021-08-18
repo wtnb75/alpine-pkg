@@ -1,0 +1,40 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=fbcinder
+pkgver=0.1
+pkgrel=0
+pkgdesc="Instagram's performance oriented fork of CPython"
+url="https://github.com/facebookincubator/cinder"
+arch="all"
+license="PSF2"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="cinder-fix.patch"
+_giturl="https://github.com/facebookincubator/cinder"
+builddir="$srcdir/cinder"
+
+prepare() {
+	mkdir -p "$srcdir"
+	cd $srcdir
+	git clone --depth=1 ${_giturl}
+	cd $builddir
+	patch -p1 < ../cinder-fix.patch
+}
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --enable-optimizations --disable-profiling
+	make PGO_PROF_GEN_FLAG='' PGO_PROF_USE_FLAG=''
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}

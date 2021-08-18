@@ -301,3 +301,6 @@ gravity:
 cedro:
   type: github_tag
   id: Sentido-Labs/cedro
+viddy:
+  type: github_tag
+  id: sachaos/viddy

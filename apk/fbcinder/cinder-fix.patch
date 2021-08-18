@@ -1,0 +1,25 @@
+diff -up ./Jit/hir/type.h.orig ./Jit/hir/type.h
+--- ./Jit/hir/type.h.orig
++++ ./Jit/hir/type.h
+@@ -12,6 +12,8 @@
+ #include <cstdint>
+ #include <ostream>
+ 
++typedef unsigned int uint;
++
+ // This file defines jit::hir::Type, which represents types of objects in HIR,
+ // both Python objects and primitive C types (some of which are exposed to
+ // Python code in Static Python). For a high-level overview, see
+diff -up ./Jit/perf_jitdump.cpp.orig ./Jit/perf_jitdump.cpp
+--- ./Jit/perf_jitdump.cpp.orig
++++ ./Jit/perf_jitdump.cpp
+@@ -54,7 +54,8 @@
+ // C++-friendly wrapper around strerror_r().
+ std::string string_error(int errnum) {
+   char buf[1024];
+-  return strerror_r(errnum, buf, sizeof(buf));
++  strerror_r(errnum, buf, sizeof(buf));
++  return buf;
+ }
+ 
+ class FileLock {
