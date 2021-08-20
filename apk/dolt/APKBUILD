@@ -1,0 +1,38 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=dolt
+pkgver=0.27.4.2
+pkgrel=0
+pkgdesc="Git for Data"
+url="https://github.com/dolthub/dolt"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/dolthub/dolt"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p $builddir
+	cd $builddir
+	git clone --depth 1 -b v${pkgver} ${url}
+}
+
+build() {
+	cd $builddir/dolt/go
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd $builddir/dolt/go
+	GOBIN=${pkgdir}/usr/bin go install ./cmd/dolt
+	GOBIN=${pkgdir}/usr/bin go install ./cmd/git-dolt
+	GOBIN=${pkgdir}/usr/bin go install ./cmd/git-dolt-smudge
+}

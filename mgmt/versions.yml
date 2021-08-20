@@ -304,3 +304,9 @@ cedro:
 viddy:
   type: github_tag
   id: sachaos/viddy
+sqlite-utils:
+  type: github_tag
+  id: simonw/sqlite-utils
+dolt:
+  type: github_release
+  id: dolthub/dolt
