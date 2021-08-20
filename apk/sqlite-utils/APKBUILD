@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=py3-sqlite-utils
+_pkgname=sqlite_utils
+pkgver=3.16
+pkgrel=0
+pkgdesc="CLI tool and Python utility functions for manipulating SQLite databases"
+url="https://sqlite-utils.datasette.io/"
+arch="all"
+license="Apache-2.0"
+depends="python3 py3-click py3-tz py3-dateutil"
+makedepends="python3-dev py3-pip py3-wheel py3-click py3-click-plugins py3-tz py3-dateutil"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p "$builddir"
+}
+
+build() {
+	cd "$builddir"
+	pip wheel "${_pkgname}==${pkgver}"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	pip install ${_pkgname}*.whl --root ${pkgdir}
+}
