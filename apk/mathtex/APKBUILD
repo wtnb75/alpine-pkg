@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=mathtex
-pkgver=1.05
+pkgver=no_type:ctan
 pkgrel=0
 pkgdesc="mathtex – A CGI program to use LATEX to put mathematics on the web"
 url="https://ctan.org/pkg/mathtex"
@@ -31,4 +31,6 @@ package() {
 	install -c -m 644 -o root -g root mathtex.html ${pkgdir}/usr/share/webapps/mathtex/
 }
 
-sha512sums="f116618de4264efdbccb122b0e9769bbe622f6300266284a96e65f37346c000364063f201b31554bde62a4a4e13c0c8f16d570dca359d3ef27bc0f7622af3715  mathtex.zip"
+sha512sums="
+f116618de4264efdbccb122b0e9769bbe622f6300266284a96e65f37346c000364063f201b31554bde62a4a4e13c0c8f16d570dca359d3ef27bc0f7622af3715  mathtex.zip
+"
