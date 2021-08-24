@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=mathtex
-pkgver=no_type:ctan
+pkgver=1.05
 pkgrel=0
 pkgdesc="mathtex – A CGI program to use LATEX to put mathematics on the web"
 url="https://ctan.org/pkg/mathtex"
