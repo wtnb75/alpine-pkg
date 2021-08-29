@@ -310,6 +310,6 @@ sqlite-utils:
 dolt:
   type: github_release
   id: dolthub/dolt
-addlicense
+addlicense:
   type: github_tag
   id: google/addlicense
