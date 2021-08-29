@@ -12,7 +12,7 @@ makedepends="go"
 install=""
 subpackages=""
 source=""
-_gourl="github.com/goalngci/golangci-lint"
+_gourl="github.com/golangci/golangci-lint"
 builddir="$srcdir/$pkgname-$pkgver"
 
 
