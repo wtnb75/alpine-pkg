@@ -1,0 +1,29 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=addlicense
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="ensures source code files have copyright license headers"
+url="https://github.com/google/addlicense"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/google/addlicense"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	:
+}
+
+package() {
+	GOBIN=${pkgdir}/usr/bin go install ${_gourl}@v${pkgver}
+}

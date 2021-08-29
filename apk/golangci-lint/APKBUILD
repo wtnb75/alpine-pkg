@@ -1,0 +1,29 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=golangci-lint
+pkgver=1.42.0
+pkgrel=0
+pkgdesc="Fast linters Runner for Go"
+url="https://github.com/golangci/golangci-lint"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/golangci/golangci-lint"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	:
+}
+
+package() {
+	GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/golangci-lint@v${pkgver}
+}
