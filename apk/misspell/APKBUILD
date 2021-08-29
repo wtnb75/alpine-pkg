@@ -1,0 +1,29 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=misspell
+pkgver=0.3.4
+pkgrel=0
+pkgdesc="Correct commonly misspelled English words in source files"
+url="https://github.com/client9/misspell"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/client9/misspell"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	:
+}
+
+package() {
+	GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/misspell@v${pkgver}
+}

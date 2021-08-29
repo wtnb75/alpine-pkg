@@ -313,3 +313,9 @@ dolt:
 addlicense:
   type: github_tag
   id: google/addlicense
+misspell:
+  type: github_tag
+  id: client9/misspell
+golangci-lint:
+  type: github_tag
+  id: golangci/golangci-lint
