@@ -319,3 +319,21 @@ misspell:
 golangci-lint:
   type: github_tag
   id: golangci/golangci-lint
+cosign:
+  type: github_tag
+  id: sigstore/cosign
+dasel:
+  type: github_tag
+  id: tomwright/dasel
+drill:
+  type: github_tag
+  id: fcsonline/drill
+pv:
+  type: github_tag
+  id: a-j-wood/pv
+whalebrew:
+  type: github_tag
+  id: whalebrew/whalebrew
+uftrace:
+  type: github_tag
+  id: namhyung/uftrace

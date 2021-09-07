@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=uftrace
+pkgver=0.10
+pkgrel=0
+pkgdesc="Function graph tracer for C/C++/Rust"
+url="https://github.com/namhyung/uftrace"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="make gcc linux-headers perf python3-dev ncurses-dev luajit-dev libdwarf-dev capstone-dev elfutils-dev musl-dev"
+install=""
+subpackages=""
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/namhyung/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	sh configure --prefix=/usr --sysconfdir=/etc
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="788234e4156974a70f06d02527e56e5fac821e8b66363dc5fc55d68797c374043c0b66b18b4ab1488b9647e08969e8dc94a64d6bb1a38ccad4cf98eaecc6e919  uftrace-0.10.tar.gz"

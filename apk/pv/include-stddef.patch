@@ -1,0 +1,11 @@
+diff -up ./src/pv/number.c.orig ./src/pv/number.c
+--- ./src/pv/number.c.orig
++++ ./src/pv/number.c
+@@ -5,6 +5,7 @@
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+ #endif
++#include <stddef.h>
+ #include "pv.h"
+ 
+ 

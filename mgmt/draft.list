@@ -25,3 +25,5 @@ fizz       # build failed?
 folly      # tmp
 wangle     # tmp
 fbcinder   # build failed
+uftrace    # missing gcrt1.o
+drill      # build failed
