@@ -337,3 +337,6 @@ whalebrew:
 uftrace:
   type: github_tag
   id: namhyung/uftrace
+opentelemetry-collector:
+  type: github_tag
+  id: open-telemetry/opentelemetry-collector
