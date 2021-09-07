@@ -1,0 +1,41 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=opentelemetry-collector
+pkgver=0.33.0
+pkgrel=0
+pkgdesc="OpenTelemetry Collector"
+url="https://github.com/open-telemetry/opentelemetry-collector"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/open-telemetry/opentelemetry-collector"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p ${builddir}
+	cd ${builddir}
+	git clone --depth=1 ${url} -b v${pkgver}
+}
+
+build() {
+	cd ${builddir}/$(basename $url)
+	go mod download
+	make install-tools
+	PATH=$PATH:$(go env GOPATH)/bin make otelcol
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd ${builddir}/$(basename $url)
+	mkdir -p ${pkgdir}/usr/bin
+	cp bin/otelcol_linux_* ${pkgdir}/usr/bin/otelcol
+}

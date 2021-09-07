@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=whalebrew
+pkgver=0.3.1
+pkgrel=0
+pkgdesc="Homebrew, but with Docker images"
+url="https://github.com/whalebrew/whalebrew"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/whalebrew/whalebrew"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GOBIN=${pkgdir}/usr/bin go install ${_gourl}@${pkgver}
+}
