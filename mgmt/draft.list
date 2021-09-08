@@ -28,3 +28,5 @@ fbcinder   # build failed
 uftrace    # missing gcrt1.o
 drill      # build failed
 cosign     # build failed
+cdb        # no license
+pv         # exists in base repo

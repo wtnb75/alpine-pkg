@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=diffstat
+pkgver=1.64
+pkgrel=0
+pkgdesc="diffstat reads the output of diff and displays a histogram"
+url="https://invisible-island.net/diffstat/"
+arch="all"
+license="MIT-X11"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://invisible-island.net/datafiles/release/diffstat.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+d647477beb49b0999c5de41d084da827528571c4848f40c69c2d64d060fc89848d15d03d59b1a31d79f02180f81d92cdf6e19d0172482bc569cf2a87476f12cf  diffstat-1.64.tar.gz
+"

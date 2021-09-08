@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=cdb
+pkgver=0.75
+pkgrel=0
+pkgdesc="cdb is a fast, reliable, simple package for creating and reading constant databases"
+url="https://cr.yp.to/cdb.html"
+arch="all"
+license="?"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source="https://cr.yp.to/cdb/$pkgname-$pkgver.tar.gz errno.patch"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p $pkgdir/usr/bin
+	for i in cdbdump cdbget cdbmake cdbstats cdbtest; do
+		install -c -m 755 $i $pkgdir/usr/bin/$i
+	done
+}
+sha512sums="
+6faeab91a77457348b58f685e81000b83fb609691317198a06284c5c62dee1e4d6138f90be1e727021f279d740169c175a21b23c96adb39a654e3f7fafdf36c0  cdb-0.75.tar.gz
+57bca797432affb93f584d66dc506a3f170952be15a1a9789bcc2a0d8781c6a127f3617a9aac7ca8c804c9fc40a35ce8f060fa1e2ec1c4888c91b59d3e76e2ce  errno.patch
+"
