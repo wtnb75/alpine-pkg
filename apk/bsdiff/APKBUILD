@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=bsdiff
+pkgver=4.3
+pkgrel=0
+pkgdesc="bsdiff and bspatch are tools for building and applying patches to binary files"
+url="https://www.daemonology.net/bsdiff/"
+arch="all"
+license="BSD"
+depends=""
+makedepends="bmake bzip2-dev"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://deb.debian.org/debian/pool/main/b/bsdiff/bsdiff_${pkgver}.orig.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	gcc -O3  -o bsdiff bsdiff.c -lbz2
+	gcc -O3  -o bspatch bspatch.c -lbz2 -Du_char="unsigned char"
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p $pkgdir/usr/bin $pkgdir/usr/man/man1 $pkgdir/usr/share/
+	bmake install PREFIX=$pkgdir/usr INSTALL=install
+	mv $pkgdir/usr/man $pkgdir/usr/share/man
+}
+sha512sums="
+bde46b393b74bcc9f05532ea4d45b12c104c4f182fdd49d4176aad5f02a2b357f435819f13a5a7ddefe27df0ca82980f06fad764094014a6d068622263e319c3  bsdiff-4.3.tar.gz
+"

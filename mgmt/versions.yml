@@ -340,3 +340,6 @@ uftrace:
 opentelemetry-collector:
   type: github_tag
   id: open-telemetry/opentelemetry-collector
+htmlq:
+  type: cargo
+  id: htmlq
