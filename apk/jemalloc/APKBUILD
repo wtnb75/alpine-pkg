@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=jemalloc
+pkgver=5.2.1
+pkgrel=0
+pkgdesc="jemalloc is a general purpose malloc(3) implementation"
+url="http://jemalloc.net/"
+arch="all"
+license="BSD-2"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source="https://github.com/jemalloc/${pkgname}/releases/download/${pkgver}/jemalloc-${pkgver}.tar.bz2 jemalloc-pc.patch"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	sh autogen.sh --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+0bbb77564d767cef0c6fe1b97b705d368ddb360d55596945aea8c3ba5889fbce10479d85ad492c91d987caacdbbdccc706aa3688e321460069f00c05814fae02  jemalloc-5.2.1.tar.bz2
+574dc6751b65b27acc860571934d1da74761eee6a2d4efa9c96a7388882a29f6906cb967011fb43b2661c9e3d1100f5d6d34938d7da0f7cbcaa90547cb6f5f34  jemalloc-pc.patch
+"

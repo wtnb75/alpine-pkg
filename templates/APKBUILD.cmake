@@ -18,7 +18,7 @@ build() {
 	cd "$builddir"
 	mkdir build
 	cd build
-	cmake ..
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
 	make
 }

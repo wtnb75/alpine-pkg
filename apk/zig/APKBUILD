@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=zig
+pkgver=0.8.0
+pkgrel=0
+pkgdesc="General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software."
+url="https://ziglang.org/"
+arch="all"
+license="MIT"
+depends=""
+makedepends="llvm-dev"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/ziglang/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake ..
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+2082810d5ab0560167766e80f0853e5ff99e32b1935836a6a0029b8e1c88061c55dd0c285cbcc506f4c38aac8477ec7162b771537699be9b3d387de94e3baa57  zig-0.8.0.tar.gz
+"

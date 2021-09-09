@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=rpmalloc
+pkgver=1.4.3
+pkgrel=0
+pkgdesc="Public domain cross platform lock free thread caching 16-byte aligned memory allocator implemented in C"
+url="https://github.com/mjansson/rpmalloc"
+arch="all"
+license="Public Domain/MIT"
+depends=""
+makedepends="python3 samurai clang"
+install=""
+subpackages="$pkgname-dev"
+source="$pkgname-$pkgver.tar.gz::https://github.com/mjansson/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	CC=clang CXX=clang++ python3 configure.py
+	samu
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p $pkgdir/usr/bin $pkgdir/usr/lib $pkgdir/usr/include/rpmalloc
+	cp bin/linux/release/*/*.so $pkgdir/usr/lib/
+	cp lib/linux/release/*/*.a $pkgdir/usr/lib/
+	cp rpmalloc/*.h $pkgdir/usr/include/rpmalloc
+}
+sha512sums="
+deb352ef91a9d76080109c2d4624d1eb33619a7fdc3de3dee5681333708fac49491731382e16210964f8949b679a8466e83352bb0d5dd3337ca8bffbb65c2693  rpmalloc-1.4.3.tar.gz
+"
