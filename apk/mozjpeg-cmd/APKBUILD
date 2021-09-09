@@ -1,0 +1,40 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=mozjpeg-cmd
+_pkgname=mozjpeg
+pkgver=4.0.3
+pkgrel=0
+pkgdesc="Improved JPEG encoder"
+url="https://github.com/mozilla/mozjpeg"
+arch="all"
+license="BSD/IJG/zlib"
+depends=""
+makedepends="nasm"
+install=""
+subpackages=""
+source="$_pkgname-$pkgver.tar.gz::https://github.com/mozilla/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$_pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DPNG_SUPPORTED=0
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	mkdir -p $pkgdir/usr/bin
+	for i in *-static; do
+		cp $i $pkgdir/usr/bin/mozjpeg-${i%%-static}
+	done
+}
+sha512sums="
+59c2d65af28d4ef68b9e5c85215cf3b26f4ac5c98e3ae76ba5febceec97fa5ab28cc13496e3f039f11cae767c5466bbf798038f83b310134c13d2e9a6bf5467e  mozjpeg-4.0.3.tar.gz
+"

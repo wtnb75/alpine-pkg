@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=hoard
+_pkgname=Hoard
+pkgver=3.13
+pkgrel=0
+pkgdesc="The Hoard Memory Allocator: A Fast, Scalable, and Memory-efficient Malloc for Linux, Windows, and Mac"
+url="https://github.com/emeryberger/Hoard"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/emeryberger/$_pkgname/archive/refs/tags/$pkgver.tar.gz"
+builddir="$srcdir/$_pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	cd src
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+c98985dfc2213a96891b5734c7323f42c9f045cc8a0c27c56d642949be64879e813ac441def81c8d1ab8f320543e87d6e86b683577c7eaa30b6b75347e100b6e  hoard-3.13.tar.gz
+"

@@ -343,3 +343,15 @@ opentelemetry-collector:
 htmlq:
   type: cargo
   id: htmlq
+hoard:
+  type: github_tag
+  id: emeryberger/Hoard
+jemalloc:
+  type: github_tag
+  id: jemalloc/jemalloc
+mimalloc:
+  type: github_tag
+  id: microsoft/mimalloc
+rpmalloc:
+  type: github_tag
+  id: mjansson/rpmalloc

@@ -313,8 +313,8 @@ def check_version(yamlfile, names):
     build_files = glob.glob(os.path.join(_apkdir, "*", "APKBUILD"))
     build_dirs = {os.path.basename(os.path.dirname(x)) for x in build_files}
     keys = set(data.keys())
-    click.echo("not found: %s" % (build_dirs - keys))
-    click.echo("too many: %s" % (keys - build_dirs))
+    click.echo("not found: %s" % ", ".join(sorted(build_dirs - keys)))
+    click.echo("too many: %s" % ", ".join(sorted(keys - build_dirs)))
 
     for k, args in data.items():
         if len(names) == 0 or k in names:
@@ -432,8 +432,8 @@ def auto_update(yamlfile, names):
     build_files = glob.glob(os.path.join(_apkdir, "*", "APKBUILD"))
     build_dirs = {os.path.basename(os.path.dirname(x)) for x in build_files}
     keys = set(data.keys())
-    click.echo("not found: %s" % (build_dirs - keys))
-    click.echo("too many: %s" % (keys - build_dirs))
+    click.echo("not found: %s" % ", ".join(sorted(build_dirs - keys)))
+    click.echo("too many: %s" % ", ".join(sorted(keys - build_dirs)))
 
     for k, args in data.items():
         if len(names) == 0 or k in names:

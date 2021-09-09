@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=mimalloc
+pkgver=2.0.2
+pkgrel=0
+pkgdesc="mimalloc is a compact general purpose allocator with excellent performance"
+url="https://github.com/microsoft/mimalloc"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-dev"
+source="$pkgname-$pkgver.tar.gz::https://github.com/microsoft/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+d6f1749a6df86346220fc190a3fd6aa67deff5439b26846c33ff95e91ce5fea73837ee39348dd432db3592575298e6e87856329d0236d2c6959abd8bf7756cdc  mimalloc-2.0.2.tar.gz
+"

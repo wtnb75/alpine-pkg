@@ -30,3 +30,6 @@ drill      # build failed
 cosign     # build failed
 cdb        # no license
 pv         # exists in base repo
+mesh       # build failed
+hoard      # build failed
+zig        # needs llvm 12.x
