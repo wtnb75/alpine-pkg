@@ -33,3 +33,6 @@ pv         # exists in base repo
 mesh       # build failed
 hoard      # build failed
 zig        # needs llvm 12.x
+sysbench   # exists in base repo
+cmph       # exists in base repo
+glog       # exists in base repo
