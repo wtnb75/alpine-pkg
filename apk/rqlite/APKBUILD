@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=rqlite
-pkgver=6.4.2
+pkgver=6.4.3
 pkgrel=0
 pkgdesc="The lightweight, distributed relational database built on SQLite"
 url="https://github.com/rqlite/rqlite"
@@ -31,5 +31,5 @@ package() {
 	cd "$builddir"/cmd/rqbench && GOBIN=${pkgdir}/usr/bin go install
 }
 sha512sums="
-f56dcbb6f0d6f29a62dd5d9fed75646aec37ae73f443fa88478619a5797bda2583c80401ca41878878f7a8e6a3396096d70ee0d68f0b713bae6d7c434b2fbd4e  rqlite-6.4.2.tar.gz
+048e1f8b56940e828cf25cce6e0611a908c38dd9530cbc4985eed7f20d76a0e31203ca2f38675997560eaa1c18cc7af133bf0501fe0f82b0117e1b97e18a56bb  rqlite-6.4.3.tar.gz
 "
