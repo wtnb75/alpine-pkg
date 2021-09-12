@@ -355,3 +355,6 @@ mimalloc:
 rpmalloc:
   type: github_tag
   id: mjansson/rpmalloc
+wabt:
+  type: github_tag
+  id: WebAssembly/wabt
