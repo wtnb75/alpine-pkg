@@ -94,6 +94,30 @@ class VersionChecker:
                 res[var] = val
         return res
 
+    def read_apkindex(self, apkindexfile) -> dict:
+        import tarfile
+        idx = tarfile.open(apkindexfile, mode="r:gz")
+        ent = {}
+        ret = {}
+        for line in idx.extractfile("APKINDEX").readlines():
+            ll = line.decode("utf-8").strip().split(":", 1)
+            if ll == [""]:
+                name = ent.get("P")
+                if not name:
+                    continue
+                if name not in ret:
+                    ret[name] = []
+                ret[name].append(ent)
+                ent = {}
+            elif len(ll) == 2:
+                ent[ll[0]] = ll[1]
+        if len(ent) != 0:
+            name = ent.get("P")
+            if name and name not in ret:
+                ret[name] = []
+            ret[name].append(ent)
+        return ret
+
     def fix_by_regexp(self, regexp, val):
         # val = val.replace("-", ".")
         if regexp is None:
@@ -450,6 +474,30 @@ def auto_update(yamlfile, names):
                     click.echo(f"new version: {k} pkg({meta_ver})!=current({current_ver})")
                     vchk.update_version(fname, meta_ver, current_ver)
                     subprocess.check_call(["git", "add", fname])
+
+
+@cli.command()
+@cli_option
+@click.option("--draftfile", type=click.File('r'))
+@click.argument("yamlfile", type=click.File('r'))
+@click.argument("urls", nargs=-1)
+def check_repo(yamlfile, urls, draftfile):
+    import tempfile
+    vchk = VersionChecker()
+    data = yaml.safe_load(yamlfile)
+    keys = set(data.keys())
+    drafts = {x.split()[0] for x in draftfile}
+    for u in urls:
+        r = requests.get(os.path.join(u, "APKINDEX.tar.gz"))
+        r.raise_for_status()
+        with tempfile.NamedTemporaryFile() as tf:
+            tf.write(r.content)
+            tf.flush()
+            idx = vchk.read_apkindex(tf.name)
+        names = set(idx.keys())
+        both = (names & keys) - drafts
+        if len(both) != 0:
+            click.echo(f"{u} dups: {both}")
 
 
 if __name__ == "__main__":
