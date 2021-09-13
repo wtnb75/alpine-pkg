@@ -358,3 +358,6 @@ rpmalloc:
 wabt:
   type: github_tag
   id: WebAssembly/wabt
+s3fs-fuse:
+  type: github_tag
+  id: s3fs-fuse/s3fs-fuse
