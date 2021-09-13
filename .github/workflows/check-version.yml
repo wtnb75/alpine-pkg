@@ -17,3 +17,4 @@ jobs:
       run: |
         cd mgmt
         .venv/bin/python -m mgmt check-version versions.yml
+        .venv/bin/python -m mgmt check-repo --draftfile draft.list versions.yml https://dl-cdn.alpinelinux.org/alpine/edge/{main,community,testing}/x86_64/

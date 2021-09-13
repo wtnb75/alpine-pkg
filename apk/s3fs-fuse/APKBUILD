@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=s3fs-fuse
+pkgver=1.90
+pkgrel=0
+pkgdesc="FUSE-based file system backed by Amazon S3"
+url="https://github.com/s3fs-fuse/s3fs-fuse"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="make curl-dev fuse-dev libxml2-dev automake openssl-dev"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/s3fs-fuse/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	sh autogen.sh
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+f1b74676b9c83e5b99bdd59666eea8cdcd9a6fcd2f9237aaf33fd6e12d642f26ee11a3c3ffb0248ea7ce24ac31ae45eeb5f2bd7f04b8e91ed8a04004d59a550d  s3fs-fuse-1.90.tar.gz
+"
