@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=pv
-pkgver=1.6.19
+pkgver=1.6.20
 pkgrel=0
 pkgdesc="Pipe Viewer - monitor the progress of data through a pipe"
 url="https://github.com/a-j-wood/pv"
@@ -31,6 +31,6 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-2ae857a8778baf853d4ad704f35afe14b37d615850f5ad52bce53ed7046dffdde720dab9b35f016739d377a062d7178cccdd0a3ccf53cf89918e3623060c9cc8  pv-1.6.19.tar.bz2
+e445f91b298ed285ddab54a3f8a6b5d5297e2e2eb8ad7b2ee2cbacca4adda9c6ca2bf3c77bf2a93373d3875c5b3b0b345d3945cbd91fc2647c6c25f1661a6752  pv-1.6.20.tar.bz2
 67f6b3042c619a139e522282914798f3f90eae80c20e12caf8593367bd268cb645a81e70cccbdebcaec698679b75fdeabf73dfeb41d3603d020acf8025c12b79  include-stddef.patch
 "
