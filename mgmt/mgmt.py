@@ -431,9 +431,11 @@ def gc(directory, generations, dry):
             for i in to_gc:
                 basename = f"{i['P']}-{i['V']}.apk"
                 fn = os.path.join(directory, basename)
-                _log.info("remove(%s) %s", dry, fn)
                 if not dry:
+                    _log.info("unlink %s", fn)
                     os.unlink(fn)
+                else:
+                    _log.info("(dry) unlink %s", fn)
 
 
 @cli.command()
