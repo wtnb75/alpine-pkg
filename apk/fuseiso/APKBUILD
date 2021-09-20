@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=fuseiso
+pkgver=20070708
+pkgrel=0
+pkgdesc="FuseISO is a FUSE module to mount ISO filesystem images"
+url="https://sourceforge.net/projects/fuseiso/"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="fuse-dev zlib-dev glib-dev"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.bz2::https://sourceforge.net/projects/fuseiso/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2/download"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+d9d8153101494434fe4ec9c684cec46a1eee46fd3ce06e97fa27f4746990f866e1f23f256b2659e60296d2362cea05d259a0a2ef669ecddf7a0a7e44110c4ae0  fuseiso-20070708.tar.bz2
+"
