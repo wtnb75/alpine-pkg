@@ -433,7 +433,14 @@ def gc(directory, generations, dry):
                 fn = os.path.join(directory, basename)
                 if not dry:
                     _log.info("unlink %s", fn)
-                    os.unlink(fn)
+                    try:
+                        os.unlink(fn)
+                    except Exception:
+                        _log.info("cannot unlink %s ... lower?", fn)
+                        try:
+                            os.unlink(fn.lower())
+                        except Exception:
+                            _log.exception("cannot unlink %s", fn)
                 else:
                     _log.info("(dry) unlink %s", fn)
 
