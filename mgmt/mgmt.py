@@ -416,19 +416,38 @@ def make_from_template(template, args, output):
 
 @cli.command()
 @cli_option
-@click.option("--generations", type=int, default=2)
+@click.option("--generations", type=int, default=2, show_default=True)
 @click.argument("directory", type=click.Path(
     exists=True, file_okay=False, dir_okay=True, readable=True))
-def gc(directory, generations):
-    raise NotImplementedError("gc")
+@click.option("--dry/--no-dry", default=True, show_default=True)
+def gc(directory, generations, dry):
+    vchk = VersionChecker()
+    data = vchk.read_apkindex(os.path.join(directory, "APKINDEX.tar.gz"))
+    for name, versions in data.items():
+        if len(versions) > generations:
+            versions = natsorted(versions, key=lambda f: f.get("V"), reverse=True)
+            _log.info("live: %s %s", name, [x['V'] for x in versions[:generations]])
+            to_gc = versions[generations:]
+            for i in to_gc:
+                basename = f"{i['P']}-{i['V']}.apk"
+                fn = os.path.join(directory, basename)
+                _log.info("remove(%s) %s", dry, fn)
+                if not dry:
+                    os.unlink(fn)
 
 
 @cli.command()
 @cli_option
+@click.option("--privkey", type=click.Path(
+    exists=True, file_okay=True, dir_okay=False, readable=True))
 @click.argument("directory", type=click.Path(
     exists=True, file_okay=False, dir_okay=True, readable=True))
-def make_index(directory):
-    raise NotImplementedError("make-index")
+def make_index(directory, privkey):
+    apks = glob.glob(os.path.join(directory, "*.apk"))
+    idx = os.path.join(directory, "APKINDEX.tar.gz")
+    subprocess.run(["apk", "index", "-o", idx, *apks])
+    if privkey:
+        subprocess.run(["abuild-sign", "-k", privkey, idx])
 
 
 @cli.command()
