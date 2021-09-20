@@ -45,7 +45,7 @@ jobs:
         done
     - name: gc and re-index
       run: |
-        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/x86_64/ || true
+        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/x86_64/ --no-dry || true
         docker-compose exec -T -w /build/mgmt builder python3 -m mgmt make-index --privkey /home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa /home/packager/packages/apk/x86_64/ || true
     - name: list apk
       run: |
