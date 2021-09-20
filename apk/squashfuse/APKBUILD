@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=squashfuse
+pkgver=0.1.104
+pkgrel=0
+pkgdesc="FUSE filesystem to mount squashfs archives"
+url="https://github.com/vasi/squashfuse"
+arch="all"
+license="BSD-2-Clause"
+depends=""
+makedepends="xz-dev zlib-dev fuse-dev lzo-dev"
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source="$pkgname-$pkgver.tar.gz::https://github.com/vasi/$pkgname/archive/refs/tags/$pkgver.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	sh autogen.sh
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+34e5092fb422b98ec7eaaa5ea1fe71c401cf9cfb0fdad8d89f8ed1662912b3733fceafb2959af988467363e5d7fc9ccdd37cc2bcfc090379c4f9e38a415f7a2b  squashfuse-0.1.104.tar.gz
+"
