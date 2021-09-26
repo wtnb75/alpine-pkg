@@ -350,6 +350,8 @@ def check_version(yamlfile, names):
                 meta_ver = metainfo.get("pkgver")
                 if current_ver is None or meta_ver is None:
                     continue
+                if current_ver.startswith("no_type:"):
+                    continue
                 if meta_ver != current_ver:
                     click.echo(f"new version: {k} pkg({meta_ver})!=current({current_ver})")
 
@@ -497,6 +499,8 @@ def auto_update(yamlfile, names):
                 current_ver = vchk.get_version(args)
                 meta_ver = metainfo.get("pkgver")
                 if current_ver is None or meta_ver is None:
+                    continue
+                if current_ver.startswith("no_type:"):
                     continue
                 if meta_ver != current_ver:
                     click.echo(f"new version: {k} pkg({meta_ver})!=current({current_ver})")
