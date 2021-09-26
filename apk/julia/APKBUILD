@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=julia
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=0
 pkgdesc="The Julia Programming Language"
 url="https://julialang.org/"
@@ -30,5 +30,5 @@ package() {
 }
 
 sha512sums="
-6595f3f767ec3b27715dae0079a7098b649aebd8c92c9eceb7925fd62db5d43179ee97c119749471bb4f90ad629377b9f02fbf4bb4bb9bce64b121be6dabe2e1  julia-1.6.2.tar.gz
+a622fddc9e9f3f47037053a1e722153a567c065723f99a97912f8c5a6c2a22c3be0be674325361dd1b04601bbe6c6f204c66004ce887f3f7822e8204fd6855de  julia-1.6.3.tar.gz
 "

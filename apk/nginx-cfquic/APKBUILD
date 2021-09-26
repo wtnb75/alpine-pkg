@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=nginx-cfquic
-pkgver=0.9.0
+pkgver=0.10.0
 _nginx_ver=1.16.1
 pkgrel=0
 pkgdesc="nginx ${_nginx_ver} + quic (cloudflare ver)"
@@ -43,4 +43,6 @@ package() {
 	cd "$builddir"/nginx-${_nginx_ver}
 	make install DESTDIR=$pkgdir
 }
-sha512sums="17e95b43fa47d4fef5e652dea587518e16ab5ec562c9c94355c356440166d4b6a6a41ee520d406e5a34791a327d2e3c46b3f9b105ac9ce07afdd495c49eca437  nginx-1.16.1.tar.gz"
+sha512sums="
+17e95b43fa47d4fef5e652dea587518e16ab5ec562c9c94355c356440166d4b6a6a41ee520d406e5a34791a327d2e3c46b3f9b105ac9ce07afdd495c49eca437  nginx-1.16.1.tar.gz
+"
