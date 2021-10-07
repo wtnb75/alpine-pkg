@@ -8,7 +8,7 @@ do1(){
     local dirname=$1
     [ -f $dirname/APKBUILD ] || return
     cd $dirname
-    abuild -r || exit 1
+    abuild -r -k || exit 1
     cd - > /dev/null
 }
 
