@@ -7,3 +7,4 @@ cache
 *.rsa
 *.old
 __pycache__
+.env

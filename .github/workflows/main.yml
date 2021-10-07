@@ -3,6 +3,7 @@ name: main
 on:
   push:
     branches: [main]
+  workflow_dispatch: {}
 
 jobs:
   build:
@@ -23,10 +24,25 @@ jobs:
         echo "$PRIVATE_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa"
         echo "$PUBLIC_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa.pub"
         chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
+    - name: setup dotenv
+      shell: bash
+      env:
+        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+        AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+        AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+      run: |
+        touch .env
+        echo "AWS_ACCESS_KEY=$AWS_ACCESS_KEY" >> .env
+        echo "AWS_SECRET_KEY=$AWS_SECRET_KEY" >> .env
+        echo "AWS_BUCKET=$AWS_BUCKET" >> .env
+        echo "AWS_REGION=$AWS_REGION" >> .env
+    - name: setup docker plugin
+      run: docker plugin install --grant-all-permissions ghcr.io/wtnb75/anyfs:latest
     - name: build image
       run: docker-compose build
     - name: boot builder
-      run: docker-compose up -d builder
+      run: docker-compose -f docker-compose.yml -f s3output.yml up -d builder
     - name: cache
       uses: actions/cache@v2
       with:
@@ -34,21 +50,7 @@ jobs:
         key: ${{ runner.os }}-buildcache-${{ hashFiles('**/APKBUILD') }}
         restore-keys: ${{ runner.os }}-buildcache-
     - name: import cache
-      run: docker-compose up cache-import
-    - name: import pre-built
-      env:
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-      run: |
-        cd mgmt
-        python -m venv .venv
-        .venv/bin/pip install -r requirements.txt
-        rm -rf ../output
-        .venv/bin/python -m napi download --output ../output
-        cd ..
-        find output -name index.html -delete
-        docker-compose up import
-        docker-compose exec -T builder ls -lR /home/packager/packages
+      run: docker-compose -f docker-compose.yml -f s3output.yml up cache-import
     - name: apk update
       run: docker-compose exec -T builder sudo apk update
     - name: build apk
@@ -57,34 +59,11 @@ jobs:
       run: |
         docker-compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/x86_64/ --no-dry
         docker-compose exec -T -w /build/mgmt builder python3 -m mgmt make-index --privkey /home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa /home/packager/packages/apk/x86_64/
-    - name: get result
-      run: |
-        rm -rf output
-        mkdir -p -m 0777 output
-        env c_gid=$(id -g) c_uid=$(id -u) docker-compose up export
-        ls -lR output
+        docker-compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
     - name: export cache
       run: |
         mkdir -p -m 0777 cache
-        docker-compose up cache-export
+        docker-compose -f docker-compose.yml -f s3output.yml up cache-export
         ls -lR cache
     - name: shutdown builder
-      run: docker-compose down -v
-    - name: build index
-      shell: bash
-      env:
-        PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
-        KEY_NAME: ${{ secrets.KEY_NAME }}
-      run: |
-        pip install dirindex
-        cd output
-        find . -name index.html -delete
-        rm -f .nojekyll
-        echo "$PUBLIC_KEY" > "$KEY_NAME.rsa.pub"
-        dirindex make --template apache --recursive .
-        cd -
-    - name: deploy to netlify
-      run: npx netlify-cli deploy --dir=./output --prod
-      env:
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      run: docker-compose -f docker-compose.yml -f s3output.yml down -v

@@ -1,0 +1,15 @@
+version: '3'
+
+volumes:
+    output:
+        driver: ghcr.io/wtnb75/anyfs:latest
+        driver_opts:
+            type: s3fs
+            access_key: ${AWS_ACCESS_KEY}
+            secret_key: ${AWS_SECRET_KEY}
+            src: ${AWS_BUCKET}
+            endpoint: ${AWS_REGION}
+            url: https://s3-${AWS_REGION}.amazonaws.com
+            uid: 100
+            gid: 300
+            o: allow_other

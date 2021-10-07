@@ -14,6 +14,7 @@ ttyrec     # no license
 pyenv      # cannot install python
 aamath     # site down?
 tikv       # build failed(proc-macro vs. musl)
+tikv-pd    # live version check problem
 mvfst      # dep
 hugin      # working
 proxygen   # working
