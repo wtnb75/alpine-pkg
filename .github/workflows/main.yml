@@ -2,7 +2,7 @@ name: main
 
 on:
   push:
-    branches: [main, disable-netlify]
+    branches: [main]
   workflow_dispatch: {}
 
 jobs:
