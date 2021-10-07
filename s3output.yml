@@ -2,7 +2,7 @@ version: '3'
 
 volumes:
     output:
-        driver: ghcr.io/wtnb75/anyfs
+        driver: ghcr.io/wtnb75/anyfs:latest
         driver_opts:
             type: s3fs
             access_key: ${AWS_ACCESS_KEY}
