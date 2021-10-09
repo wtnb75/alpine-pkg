@@ -16,7 +16,11 @@ builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
 	cd "$builddir"
-	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	if [ $(uname -m) = "aarch64" ] ; then
+	  ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --build=arm
+	else
+	  ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	fi
 	make
 }
 
