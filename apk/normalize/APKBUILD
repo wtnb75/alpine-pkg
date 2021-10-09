@@ -16,7 +16,11 @@ builddir="${srcdir}/${pkgname}-${pkgver}"
 
 build() {
 	cd "$builddir"
-	./configure --prefix=/usr
+  if [ $(uname -m) = "aarch64" ] ; then
+	  ./configure --prefix=/usr --build=arm
+  else
+	  ./configure --prefix=/usr
+  fi
 	make
 }
 

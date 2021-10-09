@@ -18,7 +18,11 @@ builddir="$srcdir/${pkgname}-${pkgver}"
 build() {
 	cd "$builddir"
 	# make EXTRA_CFLAGS='-DFPOS_POS_LEN=FILEPOS_LEN' hsrc
-	CC=clang ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	if [ $(uname -m) = "aarch64" ] ; then
+	  CC=clang ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --build=arm
+        else
+	  CC=clang ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+        fi
 	make
 }
 
