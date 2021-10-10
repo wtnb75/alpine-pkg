@@ -2,5 +2,4 @@ bazel     # too long build time
 boinc-client
 picoquic
 picotls
-povray
 wasmer
