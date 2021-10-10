@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=glusterfs
-pkgver=9.3
+pkgver=9.4
 pkgrel=0
 pkgdesc="glusterfs"
 url="https://www.gluster.org/"
@@ -31,5 +31,7 @@ package() {
 	cd "$builddir"
 	make install DESTDIR=$pkgdir
 }
-sha512sums="2d0a42463c5faeafa8d9a834ea17007e1526cc32e2dac56497ed0cbf3f1a230675e4e3735aa538576a528e7c0d1fa945343cb5ccef15dde79e2dae4ed98a710b  glusterfs-9.3.tar.gz
-df2b267f97e8b342d8fe6a20d973641237d0992432117f1ad296df4ec4289db77494424b8c132c53519c4cdcc439585df755b0b3d818a570a50e549d0deb3bde  0000-alpine.patch"
+sha512sums="
+24f7806aabcbf187b9ef7d7352cf9dc09d24cdafd239fcbf986f55fe23ab3410a3acc7209a3ce2394a6f6f33fd07d89570e676839474dd9f748b4920869cd405  glusterfs-9.4.tar.gz
+df2b267f97e8b342d8fe6a20d973641237d0992432117f1ad296df4ec4289db77494424b8c132c53519c4cdcc439585df755b0b3d818a570a50e549d0deb3bde  0000-alpine.patch
+"

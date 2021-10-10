@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=dolt
-pkgver=0.30.1
+pkgver=0.30.3
 pkgrel=0
 pkgdesc="Git for Data"
 url="https://github.com/dolthub/dolt"
