@@ -358,6 +358,9 @@ rpmalloc:
 wabt:
   type: github_tag
   id: WebAssembly/wabt
+svgbob:
+  type: cargo
+  id: svgbob_cli
 s3fs-fuse:
   type: github_tag
   id: s3fs-fuse/s3fs-fuse
@@ -366,3 +369,9 @@ fuseiso:
   id: fuseiso
   directory: fuseiso
   regexp: '^(?P<version>[^\s]+)'
+pandoc:
+  type: github_tag
+  id: jgm/pandoc
+caire:
+  type: github_tag
+  id: esimov/caire
