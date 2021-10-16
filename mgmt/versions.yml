@@ -375,3 +375,10 @@ pandoc:
 caire:
   type: github_tag
   id: esimov/caire
+goose:
+  type: github_tag
+  id: pressly/goose
+wasi-sdk:
+  type: github_tag
+  id: WebAssembly/wasi-sdk
+  regexp: '^wasi-sdk-(?P<version>[^\s]+)'
