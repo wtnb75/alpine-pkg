@@ -54,3 +54,4 @@ minio      # exists in edge/testing repo
 viddy      # exists in edge/community repo
 nim        # exists in edge/community repo
 pandoc     # exists in edge/testing repo
+wasmer     # tmp
