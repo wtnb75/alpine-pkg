@@ -26,8 +26,8 @@ prepare() {
 
 build() {
 	cd "$builddir"
-	# make
-	make NINJA_FLAGS=-j1    # oom killer
+	make
+	# make NINJA_FLAGS=-j1    # oom killer
 }
 
 check() {
