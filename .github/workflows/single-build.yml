@@ -18,6 +18,8 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v2
+    - name: setup qemu
+      uses: docker/setup-qemu-action@v1
     - name: setup abuild.conf
       shell: bash
       env:
