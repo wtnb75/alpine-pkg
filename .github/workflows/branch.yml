@@ -21,12 +21,18 @@ jobs:
     - name: setup qemu
       uses: docker/setup-qemu-action@v1
     - name: setup abuild.conf
+      shell: bash
+      env:
+        PACKAGER: ${{ secrets.PACKAGER }}
+        KEY_NAME: ${{ secrets.KEY_NAME }}
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       run: |
-        echo "PACKAGER=\"${{ secrets.PACKAGER }}\"" >> docker/builder/abuildconf/abuild.conf
-        echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa\"" >> docker/builder/abuildconf/abuild.conf
-        echo "${{ secrets.PRIVATE_KEY }}" > docker/builder/abuildconf/${{ secrets.KEY_NAME }}.rsa
-        echo "${{ secrets.PUBLIC_KEY }}" > docker/builder/abuildconf/${{ secrets.KEY_NAME }}.rsa.pub
-        chmod 600 docker/builder/abuildconf/${{ secrets.KEY_NAME }}.rsa
+        echo "PACKAGER=\"$PACKAGER\"" >> docker/builder/abuildconf/abuild.conf
+        echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/$KEY_NAME.rsa\"" >> docker/builder/abuildconf/abuild.conf
+        echo "$PRIVATE_KEY" > docker/builder/abuildconf/$KEY_NAME.rsa
+        cp "$KEY_NAME.rsa.pub" docker/builder/abuildconf/
+        cp "$KEY_NAME.rsa.pub" docker/test/
+        chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
     - name: build image
       run: docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build
     - name: boot builder
