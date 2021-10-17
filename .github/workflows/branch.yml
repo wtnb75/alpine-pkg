@@ -7,12 +7,19 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        arch:
+        - x86_64
+        - aarch64
     runs-on: ubuntu-latest
     steps:
     - name: checkout
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: setup qemu
+      uses: docker/setup-qemu-action@v1
     - name: setup abuild.conf
       run: |
         echo "PACKAGER=\"${{ secrets.PACKAGER }}\"" >> docker/builder/abuildconf/abuild.conf
@@ -21,15 +28,15 @@ jobs:
         echo "${{ secrets.PUBLIC_KEY }}" > docker/builder/abuildconf/${{ secrets.KEY_NAME }}.rsa.pub
         chmod 600 docker/builder/abuildconf/${{ secrets.KEY_NAME }}.rsa
     - name: build image
-      run: docker-compose build
+      run: docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build
     - name: boot builder
-      run: docker-compose up -d builder
+      run: docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml up -d builder
     - name: cache
       uses: actions/cache@v2
       with:
         path: cache
-        key: ${{ runner.os }}-buildcache-${{ hashFiles('**/APKBUILD') }}
-        restore-keys: ${{ runner.os }}-buildcache-
+        key: ${{ runner.os }}-buildcache-${{ matrix.arch }}-${{ hashFiles('**/APKBUILD') }}
+        restore-keys: ${{ runner.os }}-${{ matrix.arch }}-buildcache-
     - name: import cache
       run: docker-compose up cache-import
     - name: apk update
@@ -45,8 +52,8 @@ jobs:
         done
     - name: gc and re-index
       run: |
-        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/x86_64/ --no-dry || true
-        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt make-index --privkey /home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa /home/packager/packages/apk/x86_64/ || true
+        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ matrix.arch }}/ --no-dry || true
+        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt make-index --privkey /home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa /home/packager/packages/apk/${{ matrix.arch }}/ || true
     - name: list apk
       run: |
         mkdir -p -m 0777 output

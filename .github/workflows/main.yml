@@ -7,10 +7,17 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        arch:
+        - x86_64
+        - aarch64
     runs-on: ubuntu-latest
     steps:
     - name: checkout
       uses: actions/checkout@v2
+    - name: setup qemu
+      uses: docker/setup-qemu-action@v1
     - name: setup abuild.conf
       shell: bash
       env:
@@ -40,15 +47,15 @@ jobs:
     - name: setup docker plugin
       run: docker plugin install --grant-all-permissions ghcr.io/wtnb75/anyfs:latest
     - name: build image
-      run: docker-compose build
+      run: docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build
     - name: boot builder
-      run: docker-compose -f docker-compose.yml -f s3output.yml up -d builder
+      run: docker-compose -f docker-compose.yml -f s3output.yml -f ${{ matrix.arch }}.yml up -d builder
     - name: cache
       uses: actions/cache@v2
       with:
         path: ./cache
-        key: ${{ runner.os }}-buildcache-${{ hashFiles('**/APKBUILD') }}
-        restore-keys: ${{ runner.os }}-buildcache-
+        key: ${{ runner.os }}-buildcache-${{ matrix.arch }}-${{ hashFiles('**/APKBUILD') }}
+        restore-keys: ${{ runner.os }}-${{ matrix.arch }}-buildcache-
     - name: import cache
       run: docker-compose -f docker-compose.yml -f s3output.yml up cache-import
     - name: apk update
@@ -57,8 +64,8 @@ jobs:
       run: docker-compose exec -T builder sh /build/build-all.sh
     - name: gc and re-index
       run: |
-        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/x86_64/ --no-dry
-        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt make-index --privkey /home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa /home/packager/packages/apk/x86_64/
+        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ matrix.arch }}/ --no-dry
+        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt make-index --privkey /home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa /home/packager/packages/apk/${{ matrix.arch }}/
         docker-compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
     - name: export cache
       run: |

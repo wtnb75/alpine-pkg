@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+    builder:
+        platform: linux/arm64
+    test:
+        platform: linux/arm64
