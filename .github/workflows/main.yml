@@ -29,6 +29,7 @@ jobs:
         echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/$KEY_NAME.rsa\"" >> docker/builder/abuildconf/abuild.conf
         echo "$PRIVATE_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa"
         cp $KEY_NAME.rsa.pub docker/builder/abuildconf/
+        cp $KEY_NAME.rsa.pub docker/test/
         chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
     - name: setup dotenv
       shell: bash
@@ -46,7 +47,10 @@ jobs:
     - name: setup docker plugin
       run: docker plugin install --grant-all-permissions ghcr.io/wtnb75/anyfs:latest
     - name: build image
-      run: docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build
+      run: |
+        docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build builder test
+        docker pull alpine:3
+        docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build export
     - name: boot builder
       run: docker-compose -f docker-compose.yml -f s3output.yml -f ${{ matrix.arch }}.yml up -d builder
     - name: cache
