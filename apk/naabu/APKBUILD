@@ -27,5 +27,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/naabu@v${pkgver}
+	GOBIN=${pkgdir}/usr/bin go install ${_gourl}/v2/cmd/naabu@v${pkgver}
 }
