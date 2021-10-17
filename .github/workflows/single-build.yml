@@ -24,6 +24,7 @@ jobs:
         echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/$KEY_NAME.rsa\"" >> docker/builder/abuildconf/abuild.conf
         echo "$PRIVATE_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa"
         cp $KEY_NAME.rsa.pub docker/builder/abuildconf/
+        cp $KEY_NAME.rsa.pub docker/test/
         chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
     - name: build image
       run: docker-compose build
