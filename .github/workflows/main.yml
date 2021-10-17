@@ -24,12 +24,11 @@ jobs:
         PACKAGER: ${{ secrets.PACKAGER }}
         KEY_NAME: ${{ secrets.KEY_NAME }}
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
       run: |
         echo "PACKAGER=\"$PACKAGER\"" >> docker/builder/abuildconf/abuild.conf
         echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/$KEY_NAME.rsa\"" >> docker/builder/abuildconf/abuild.conf
         echo "$PRIVATE_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa"
-        echo "$PUBLIC_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa.pub"
+        cp $KEY_NAME.rsa.pub docker/builder/abuildconf/
         chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
     - name: setup dotenv
       shell: bash

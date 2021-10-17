@@ -12,7 +12,7 @@ ADD abuildconf/* /home/packager/.abuild/
 RUN chown -R packager.abuild /home/packager/.abuild
 RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 RUN echo "http://wtnb75-repo.s3-website-ap-northeast-1.amazonaws.com/apk/" >> /etc/apk/repositories
-ADD http://wtnb75-repo.s3-website-ap-northeast-1.amazonaws.com/wtnb75@gmail.com-601572c5.rsa.pub /etc/apk/keys/
+ADD abuildconf/*.rsa.pub /etc/apk/keys/
 RUN chown root.root /etc/apk/keys/wtnb75*.pub && \
     chmod 644 /etc/apk/keys/wtnb75*.pub
 USER packager
