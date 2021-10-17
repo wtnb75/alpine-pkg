@@ -47,7 +47,10 @@ jobs:
     - name: setup docker plugin
       run: docker plugin install --grant-all-permissions ghcr.io/wtnb75/anyfs:latest
     - name: build image
-      run: docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build
+      run: |
+        docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build builder test
+        docker pull alpine:3
+        docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build export
     - name: boot builder
       run: docker-compose -f docker-compose.yml -f s3output.yml -f ${{ matrix.arch }}.yml up -d builder
     - name: cache
