@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=faktory
+pkgver=1.5.5
+pkgrel=0
+pkgdesc="Language-agnostic persistent background job server"
+url="https://github.com/contribsys/faktory"
+arch="all"
+license="AGPLv3"
+depends="redis"
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/contribsys/faktory"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/faktory-cli@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/faktory@v${pkgver}
+}

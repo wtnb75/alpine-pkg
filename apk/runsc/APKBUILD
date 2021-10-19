@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=runsc
+pkgver=20211005.0
+pkgrel=0
+pkgdesc="Application Kernel for Containers"
+url="https://github.com/google/gvisor"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="gvisor.dev/gvisor/runsc"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	CGO_ENABLED=0 GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.version=v${pkgver}" ${_gourl}@go
+}

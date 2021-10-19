@@ -382,3 +382,14 @@ wasi-sdk:
   type: github_tag
   id: WebAssembly/wasi-sdk
   regexp: '^wasi-sdk-(?P<version>[^\s]+)'
+runsc:
+  type: github_tag
+  id: google/gvisor
+  regexp: '^release-(?P<version>[^\s]+)'
+gping:
+  type: github_tag
+  id: orf/gping
+  regexp: '^gping-v(?P<version>[^\s]+)'
+faktory:
+  type: github_tag
+  id: contribsys/faktory
