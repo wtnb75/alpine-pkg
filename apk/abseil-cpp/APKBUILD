@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=abseil-cpp
+pkgver=20210324.2
+pkgrel=0
+pkgdesc="Abseil Common Libraries (C++)"
+url="https://abseil.io/"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-dev"
+source="$pkgname-$pkgver.tar.gz::https://github.com/abseil/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+7b935f0f2787a81438f30072f2191138ce3c099e4b22addfbe8ebe579d906604bc6ab03f054d3d6917a08ef5cb7a4371c1a501a7dfbc15c50301261dbf5f6e27  abseil-cpp-20210324.2.tar.gz
+"
