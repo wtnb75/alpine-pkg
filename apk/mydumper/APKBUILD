@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=mydumper
+pkgver=0.11.1.5
+_pkgver=$(echo $pkgver| sed -e 's,\.\([0-9]*\)$,-\1,;')
+pkgrel=0
+pkgdesc="How MySQL DBA & support engineer would imagine 'mysqldump' ;-)"
+url="https://github.com/maxbube/mydumper"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="pcre-dev glib-dev mariadb-dev zlib-dev"
+install=""
+subpackages=""
+source="$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/maxbube/mydumper/archive/refs/tags/v${_pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$_pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DWITH_SSL=OFF
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+9960b577cc327bdcbfadbb4f82ab160b28d96f927ac51e8be1ec1b7efb4ca58b3a14bc5348c7369526d7b9b341718cceee3699bab091a486f5f542e584240146  mydumper-0.11.1.5-0.tar.gz
+"

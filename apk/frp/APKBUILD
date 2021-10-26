@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=frp
+pkgver=0.38.0
+pkgrel=0
+pkgdesc="A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
+url="https://github.com/fatedier/frp"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/fatedier/frp"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install github.com/fatedier/frp/cmd/frpc@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install github.com/fatedier/frp/cmd/frps@v${pkgver}
+}

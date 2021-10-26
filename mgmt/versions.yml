@@ -393,3 +393,13 @@ gping:
 faktory:
   type: github_tag
   id: contribsys/faktory
+ssdeep:
+  type: github_tag
+  id: ssdeep-project/ssdeep
+  regexp: '^release-(?P<version>[^\s]+)'
+frp:
+  type: github_tag
+  id: fatedier/frp
+mydumper:
+  type: github_tag
+  id: maxbube/mydumper

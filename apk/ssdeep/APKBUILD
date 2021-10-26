@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ssdeep
+pkgver=2.14.1
+pkgrel=0
+pkgdesc="Fuzzy hashing API and fuzzy hashing tool"
+url="https://ssdeep-project.github.io/ssdeep/index.html"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source="$pkgname-$pkgver.tar.gz::https://github.com/ssdeep-project/${pkgname}/archive/refs/tags/release-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-release-$pkgver"
+
+build() {
+	cd "$builddir"
+	./bootstrap
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+6f45a961800fcbd4a5c8f1dac9afc7e0791ecd5aded28f3048d4ade68870a8e928704c80a5778a463b9492d561ae4568785c2b8c873f485d5d9c500d74955f07  ssdeep-2.14.1.tar.gz
+"
