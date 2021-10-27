@@ -403,3 +403,6 @@ frp:
 mydumper:
   type: github_tag
   id: maxbube/mydumper
+gox:
+  type: github_tag
+  id: mitchellh/gox
