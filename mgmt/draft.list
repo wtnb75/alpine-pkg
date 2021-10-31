@@ -54,3 +54,4 @@ minio      # exists in edge/testing repo
 viddy      # exists in edge/community repo
 nim        # exists in edge/community repo
 pandoc     # exists in edge/testing repo
+wasmtime   # build failed(wasi-cap-std-sync v0.31.0, multiple definition of rsix_...)
