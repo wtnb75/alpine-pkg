@@ -1,0 +1,40 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=control-flag
+pkgver=0.1
+pkgrel=0
+pkgdesc="A system to flag anomalous source code expressions by learning typical expressions from training data"
+url="https://github.com/IntelLabs/control-flag"
+arch="all"
+license="MIT"
+depends=""
+makedepends="cmake"
+install=""
+subpackages=""
+source=""
+builddir="$srcdir/$pkgname"
+
+prepare() {
+	cd $srcdir
+	git clone --depth=1 ${url}
+}
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	mkdir -p ${pkgdir}/usr/bin/
+	cp bin/* ${pkgdir}/usr/bin/
+	cp ../scripts/* ${pkgdir}/usr/bin/
+}
