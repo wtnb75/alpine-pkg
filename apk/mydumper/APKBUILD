@@ -1,8 +1,9 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=mydumper
-pkgver=0.11.1.6
-_pkgver=$(echo $pkgver| sed -e 's,\.\([0-9]*\)$,-\1,;')
+pkgver=0.11.3
+#_pkgver=$(echo $pkgver| sed -e 's,\.\([0-9]*\)$,-\1,;')
+_pkgver=$pkgver
 pkgrel=0
 pkgdesc="How MySQL DBA & support engineer would imagine 'mysqldump' ;-)"
 url="https://github.com/maxbube/mydumper"
@@ -33,5 +34,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-8f870a568c276795bf728eb6aefecf16d55d583326fa2aa32e41d6a3971cc2bdc92e145a7abbb3c7bb6fc72a60784fd41c9c0867f2a5fc1ab38239db358b425e  mydumper-0.11.1.6-0.tar.gz
+5d0e73b8402d29a890dbba678acfb95e1a1aaca29383814a1f58285595f7b07897914b5be40719ca4f6dd0ac4dbddc2f7459fa5187dc6e32aafa1d5d17996c0f  mydumper-0.11.3-0.tar.gz
 "
