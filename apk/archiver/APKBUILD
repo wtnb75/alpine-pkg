@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=archiver
+pkgver=3.5.1
+pkgrel=0
+pkgdesc="Easily create & extract archives, and compress & decompress files of various formats"
+url="https://github.com/mholt/archiver"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/mholt/archiver"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.version=v${pkgver}" ${_gourl}/v3/cmd/arc@v${pkgver}
+}
