@@ -55,4 +55,4 @@ viddy      # exists in edge/community repo
 nim        # exists in edge/community repo
 pandoc     # exists in edge/testing repo
 wasmtime   # build failed(wasi-cap-std-sync v0.31.0, multiple definition of rsix_...)
-bazel      # basel4 exists in base repo
+bazel      # bazel4 exists in base repo
