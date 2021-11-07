@@ -18,7 +18,7 @@ options="suid"
 build() {
 	cd "$builddir"
 	sh autogen.sh
-	CFLAGS='-D_PATH_MOUNTED="\"/etc/mtab\""' LIBS=-lucontext ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc
+	CFLAGS='-D_PATH_MOUNTED="\"/etc/mtab\"" -D__WORDSIZE=64' LIBS=-lucontext ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc -without-tcmalloc
 	make
 }
 
