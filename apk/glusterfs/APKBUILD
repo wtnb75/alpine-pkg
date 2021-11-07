@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=glusterfs
-pkgver=9.4
+pkgver=10.0
 pkgrel=0
 pkgdesc="glusterfs"
 url="https://www.gluster.org/"
@@ -18,7 +18,7 @@ options="suid"
 build() {
 	cd "$builddir"
 	sh autogen.sh
-	CFLAGS='-D_PATH_MOUNTED="\"/etc/mtab\""' LIBS=-lucontext ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc
+	CFLAGS='-D_PATH_MOUNTED="\"/etc/mtab\"" -D__WORDSIZE=64' LIBS=-lucontext ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc -without-tcmalloc
 	make
 }
 
@@ -32,6 +32,6 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-24f7806aabcbf187b9ef7d7352cf9dc09d24cdafd239fcbf986f55fe23ab3410a3acc7209a3ce2394a6f6f33fd07d89570e676839474dd9f748b4920869cd405  glusterfs-9.4.tar.gz
+48d271309ca63b50961ee183a2174795d47060d4c00a736d38636da88a9cfe8b476427e6593f53899951ccdd6962c984534f840970d43ceb9449cd54a019f08b  glusterfs-10.0.tar.gz
 df2b267f97e8b342d8fe6a20d973641237d0992432117f1ad296df4ec4289db77494424b8c132c53519c4cdcc439585df755b0b3d818a570a50e549d0deb3bde  0000-alpine.patch
 "
