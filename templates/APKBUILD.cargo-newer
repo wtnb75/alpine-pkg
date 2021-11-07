@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname={{name}}
+pkgver={{version}}
+pkgrel=0
+pkgdesc="{{description}}"
+url="{{url}}"
+arch="all"
+license="{{license}}"
+depends=""
+makedepends="rustup"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+	rustup-init -y
+	. $HOME/.cargo/env
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install {{name}} --locked --version ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
+}
+

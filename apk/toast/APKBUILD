@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=toast
+pkgver=0.45.1
+pkgrel=0
+pkgdesc="Containerize your development and continuous integration environments"
+url="https://github.com/stepchowfun/toast"
+arch="all"
+license="MIT"
+depends=""
+makedepends="rustup"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+	rustup-init -y
+	. $HOME/.cargo/env
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install toast --locked --version ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
+}
