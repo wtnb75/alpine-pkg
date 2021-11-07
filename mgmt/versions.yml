@@ -406,3 +406,9 @@ mydumper:
 gox:
   type: github_tag
   id: mitchellh/gox
+archiver:
+  type: github_tag
+  id: mholt/archiver
+toast:
+  type: github_tag
+  id: stepchowfun/toast
