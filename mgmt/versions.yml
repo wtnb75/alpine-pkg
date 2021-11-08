@@ -109,9 +109,9 @@ timidity++:
 povray:
   type: github_release
   id: POV-Ray/povray
-goofys:
-  type: github_tag
-  id: kahing/goofys
+#goofys:
+#  type: github_tag
+#  id: kahing/goofys
 wasmer:
   type: github_tag
   id: wasmerio/wasmer

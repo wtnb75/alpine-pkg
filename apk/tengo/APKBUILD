@@ -1,19 +1,20 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
-pkgname=goofys
-pkgver=0.20.0
+pkgname=tengo
+pkgver=2.9.0
 pkgrel=0
-pkgdesc="a high-performance, POSIX-ish Amazon S3 file system written in Go"
-url="https://github.com/kahing/goofys"
+pkgdesc="A fast script language for Go"
+url="https://github.com/d5/tengo"
 arch="all"
-license="Apache-2.0"
-depends="fuse"
+license="MIT"
+depends=""
 makedepends="go"
 install=""
 subpackages=""
 source=""
-_gourl="github.com/kahing/goofys"
+_gourl="github.com/d5/tengo"
 builddir="$srcdir/$pkgname-$pkgver"
+
 
 build() {
 	:
@@ -26,5 +27,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.version=v${pkgver}" ${_gourl}/v2/cmd/tengo@v${pkgver}
 }

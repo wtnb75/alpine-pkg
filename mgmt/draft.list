@@ -5,7 +5,6 @@ deno       # build failed(rusty_v8, file too small to be an archive)
 julia      # build failed
 traefik    # build failed(tag? v1 or v2)
 abcmidi    # no license
-goofys     # build failed(old gomod?)
 orangefs   # build failed(c macro problem)
 corosync   # working
 pacemaker  # needs libqb, libcpg(corosync)
@@ -22,9 +21,8 @@ wxWidgets  # build failed
 youki      # build failed
 atsquic    # working
 vlang      # build failed(tcc.exe)
-fizz       # build failed?
-folly      # tmp
-wangle     # tmp
+fizz       # build failed(folly/Traits.h error: 'value' is not a member of...)
+wangle     # need fizz
 fbcinder   # build failed
 uftrace    # missing gcrt1.o
 drill      # build failed

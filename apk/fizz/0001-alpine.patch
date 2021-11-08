@@ -1,7 +1,7 @@
 diff -up ./fizz/CMakeLists.txt.orig ./fizz/CMakeLists.txt
 --- ./fizz/CMakeLists.txt.orig
 +++ ./fizz/CMakeLists.txt
-@@ -252,7 +252,8 @@
+@@ -265,7 +265,8 @@
      ${FIZZ_LINK_LIBRARIES}
      ${DOUBLE_CONVERSION_LIBRARIES}
      ${CMAKE_DL_LIBS}
@@ -11,7 +11,7 @@ diff -up ./fizz/CMakeLists.txt.orig ./fizz/CMakeLists.txt
  
  if ($FIZZ_SHINY_DEPENDENCIES)
    add_dependencies(fizz ${FIZZ_SHINY_DEPENDENCIES})
-@@ -323,6 +324,7 @@
+@@ -336,6 +337,7 @@
      fizz
      ${LIBGMOCK_LIBRARIES}
      ${GLOG_LIBRARY}
@@ -19,7 +19,7 @@ diff -up ./fizz/CMakeLists.txt.orig ./fizz/CMakeLists.txt
  )
  
  target_compile_definitions(fizz_test_support
-@@ -366,7 +368,8 @@
+@@ -379,7 +381,8 @@
      ${test_name}
      fizz
      fizz_test_support
@@ -29,20 +29,21 @@ diff -up ./fizz/CMakeLists.txt.orig ./fizz/CMakeLists.txt
  
    if(NOT ${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
      # GMOCK_MOCK_METHOD() will complain otherwise
-@@ -452,7 +455,7 @@
+@@ -465,7 +468,7 @@
  
  if(BUILD_EXAMPLES)
    add_executable(BogoShim test/BogoShim.cpp)
 -  target_link_libraries(BogoShim fizz sodium)
 +  target_link_libraries(BogoShim fizz sodium execinfo)
-   add_executable(FizzTool
-       tool/Main.cpp
-       tool/FizzClientCommand.cpp
-@@ -461,6 +464,6 @@
+   set_target_properties(BogoShim PROPERTIES OUTPUT_NAME fizz-bogoshim)
+   install(
+     TARGETS BogoShim
+@@ -479,7 +482,7 @@
        tool/FizzGenerateDelegatedCredentialCommand.cpp
        tool/FizzServerBenchmarkCommand.cpp
        tool/FizzServerCommand.cpp)
 -  target_link_libraries(FizzTool fizz sodium)
 +  target_link_libraries(FizzTool fizz sodium execinfo)
    set_target_properties(FizzTool PROPERTIES OUTPUT_NAME fizz)
- endif()
+   install(
+     TARGETS FizzTool
