@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=goofys
-pkgver=0.24.0
+pkgver=0.20.0
 pkgrel=0
 pkgdesc="a high-performance, POSIX-ish Amazon S3 file system written in Go"
 url="https://github.com/kahing/goofys"
@@ -15,9 +15,8 @@ source=""
 _gourl="github.com/kahing/goofys"
 builddir="$srcdir/$pkgname-$pkgver"
 
-
 build() {
-	GO111MODULE=on go get ${_gourl}@v${pkgver}
+	:
 }
 
 check() {
@@ -27,6 +26,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	cd $(go env GOMODCACHE)/${_gourl}@v${pkgver}
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.Version=v${pkgver}"
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}@v${pkgver}
 }
