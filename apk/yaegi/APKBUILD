@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=yaegi
+pkgver=0.11.0
+pkgrel=0
+pkgdesc="Yaegi is Another Elegant Go Interpreter"
+url="https://github.com/traefik/yaegi"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/traefik/yaegi"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/yaegi@v${pkgver}
+}

@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=hashlink
+pkgver=1.11
+pkgrel=0
+pkgdesc="A virtual machine for Haxe"
+url="https://hashlink.haxe.org/"
+arch="all"
+license="MIT"
+depends=""
+makedepends="jpeg-dev libpng-dev libvorbis-dev openal-soft-dev sdl2-dev mbedtls-dev libuv-dev glu-dev"
+install=""
+subpackages="$pkgname-dev"
+source="$pkgname-$pkgver.tar.gz::https://github.com/HaxeFoundation/$pkgname/archive/refs/tags/$pkgver.tar.gz 0001-alpine.patch"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install PREFIX=$pkgdir/usr
+}
+sha512sums="
+cf8b17a197d44b14bfafad5b2b7a65c1fd0b203e3b47ce74dafe051c616751a29e0d8be148ba31c803b7b017624c589dd868daa6ed567cdbdf45aa18bce1c04f  hashlink-1.11.tar.gz
+aff7de03120de2c5d555902eb3ee1a866514424ed9ce8de5118c5ea62b08b00b8a83d713f5191599ce720896d83c943786eee69e1d30f5ee51c10bbf3c7b0fa2  0001-alpine.patch
+"

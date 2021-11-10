@@ -57,6 +57,7 @@ jobs:
           [ -d "$i" ] || continue
           [ -f "${i}/APKBUILD" ] || continue
           grep -q "^${i}" ../mgmt/draft.list && continue
+          [ -f ../mgmt/draft.list.${{ matrix.arch }} ] && grep -q "^${i}" ../mgmt/draft.list.${{ matrix.arch }} && continue
           docker-compose exec -T builder sh /build/build-all.sh ${i} || exit 1
         done
     - name: gc and re-index

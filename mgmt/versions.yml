@@ -412,3 +412,6 @@ archiver:
 toast:
   type: github_tag
   id: stepchowfun/toast
+yaegi:
+  type: github_tag
+  id: traefik/yaegi
