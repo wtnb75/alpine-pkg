@@ -54,3 +54,7 @@ nim        # exists in edge/community repo
 pandoc     # exists in edge/testing repo
 wasmtime   # build failed(wasi-cap-std-sync v0.31.0, multiple definition of rsix_...)
 bazel      # bazel4 exists in base repo
+ssdeep     # exists in edge/community repo
+frp        # exists in edge/community repo
+govc       # exists in edge/testing repo
+gping      # exists in edge/testing repo
