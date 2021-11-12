@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=gifski
+pkgver=1.5.0
+pkgrel=0
+pkgdesc="GIF encoder based on libimagequant (pngquant)."
+url="https://github.com/ImageOptim/gifski"
+arch="all"
+license="AGPL"
+depends=""
+makedepends="cargo rust ffmpeg-dev"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install gifski --locked --version ${pkgver} --root ${pkgdir}/usr --features=video,openmp
+	rm -f ${pkgdir}/usr/.crates*
+}
