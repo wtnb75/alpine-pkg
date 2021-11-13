@@ -128,7 +128,10 @@ class VersionChecker:
         return m.group("version")
 
     def usable(self, v, stopwords):
+        _log.debug("check usable: %s", v)
         if v is None:
+            return False
+        if len(v) == 0:
             return False
         if v[0] not in "0123456789":
             return False

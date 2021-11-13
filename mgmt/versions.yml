@@ -415,3 +415,43 @@ toast:
 yaegi:
   type: github_tag
   id: traefik/yaegi
+abseil-cpp:
+  type: github_tag
+  id: abseil/abseil-cpp
+bsdiff:
+  type: general
+  url: https://www.daemonology.net/bsdiff/
+  xpath: //a[contains(@href, 'tar.gz')]/@href
+  regexp: '^bsdiff-(?P<version>[0-9\.]*)\.tar.gz'
+cdb:
+  type: general
+  url: https://cr.yp.to/cdb/install.html
+  xpath: //a[contains(@href, 'tar.gz')]/@href
+  regexp: '^cdb-(?P<version>[0-9\.]*)\.tar.gz'
+gifski:
+  type: github_tag
+  id: ImageOptim/gifski
+#goofys:   # build failed with newer version
+#  type: github_tag
+#  id: kahing/goofys
+guetzli:
+  type: github_tag
+  id: google/guetzli
+hashlink:
+  type: github_tag
+  id: HaxeFoundation/hashlink
+mozjpeg-cmd:
+  type: github_tag
+  id: mozilla/mozjpeg
+squashfuse:
+  type: github_tag
+  id: vasi/squashfuse
+tengo:
+  type: github_tag
+  id: d5/tengo
+xsimd:
+  type: github_tag
+  id: xtensor-stack/xsimd
+zig:
+  type: github_tag
+  id: ziglang/zig
