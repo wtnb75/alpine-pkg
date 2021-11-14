@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=termshark
+pkgver=2.3.0
+pkgrel=0
+pkgdesc="A terminal UI for tshark, inspired by Wireshark"
+url="https://github.com/gcla/termshark"
+arch="all"
+license="MIT"
+depends="tshark"
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/gcla/termshark"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p $(dirname $builddir)
+	cd $(dirname $builddir)
+	git clone --depth 1 -b v${pkgver} ${url} $(basename $builddir)
+}
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd $builddir
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ./...
+}
