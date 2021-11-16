@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=uroboros
+pkgver=0.1
+pkgrel=0
+pkgdesc="A GNU/Linux monitoring and profiling tool focused on single processes."
+url="https://github.com/evilsocket/uroboros"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/evilsocket/uroboros"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/uro@latest
+}

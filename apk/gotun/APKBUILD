@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=gotun
+pkgver=0.7.0
+pkgrel=0
+pkgdesc="TLS/SSL Tunnel - A modern STunnel replacement written in golang"
+url="https://github.com/opencoff/go-tunnel"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/opencoff/go-tunnel"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.ProductVersion=v${pkgver} -X main.Buildtime=$(date +%Y%m%d)" ${_gourl}/src@v${pkgver}
+	mv ${pkgdir}/usr/bin/src ${pkgdir}/usr/bin/${pkgname}
+}

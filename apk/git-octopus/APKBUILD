@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=git-octopus
+pkgver=1.4
+pkgrel=0
+pkgdesc="The continuous merge workflow"
+url="https://github.com/lesfurets/git-octopus"
+arch="all"
+license="LGPLv3"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/lesfurets/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install prefix=$pkgdir/usr
+}
+sha512sums="
+5c55825799e9470de80d798f6baddf8992baebc8d05a3aa2321f59f38f565c3ccafc054adaefd31bc52a4ae07953d5f9ee80e7ec259b74269278b336e81a9245  git-octopus-1.4.tar.gz
+"
