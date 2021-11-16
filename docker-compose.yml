@@ -42,7 +42,7 @@ services:
             - /output/
             - /packages/apk/
     cache-export:
-        image: alpine:3
+        image: alpine:edge
         volumes:
             - distfiles:/cache/distfiles:ro
             - gocache:/cache/gocache:ro
@@ -56,7 +56,7 @@ services:
             - /output/cache.tar
             - .
     cache-import:
-        image: alpine:3
+        image: alpine:edge
         volumes:
             - distfiles:/cache/distfiles:rw
             - gocache:/cache/gocache:rw
