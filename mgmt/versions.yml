@@ -455,3 +455,15 @@ xsimd:
 zig:
   type: github_tag
   id: ziglang/zig
+hashcat:
+  type: github_tag
+  id: hashcat/hashcat
+gotun:
+  type: github_tag
+  id: opencoff/go-tunnel
+git-octopus:
+  type: github_tag
+  id: lesfurets/git-octopus
+actionlint:
+  type: github_tag
+  id: rhysd/actionlint
