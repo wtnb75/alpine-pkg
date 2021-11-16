@@ -36,7 +36,7 @@ jobs:
     - name: build image
       run: |
         docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build builder test
-        docker pull alpine:3
+        docker pull alpine:edge
         docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build export
     - name: boot builder
       run: docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml up -d builder
