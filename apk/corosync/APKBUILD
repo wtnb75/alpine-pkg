@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=corosync
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=0
 pkgdesc="The Corosync Cluster Engine"
 url="http://corosync.github.io/corosync/"
@@ -31,5 +31,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-eb974a32f60c52564057ed41c1ebf31fe4332a5a082ebbd5fa2540af8fa9e8c0c42d4ef9066abcb9d7dd04c12b97cd13642289c65b5b6b65cfd30c12641ada1d  corosync-3.1.5.tar.gz
+8f5d12851f296e0ee9dd425d40252988f0b8485d2c2098028b25265506f846e3f34df86007a7c273d020921b2532bdbc01b52e1631f6abfae79981436230225e  corosync-3.1.6.tar.gz
 "

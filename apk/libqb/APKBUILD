@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=libqb
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=0
 pkgdesc="libqb is a library providing high performance logging, tracing, ipc, and poll"
 url="https://clusterlabs.github.io/libqb/"
@@ -29,4 +29,6 @@ package() {
 	cd "$builddir"
 	make install DESTDIR=$pkgdir
 }
-sha512sums="c25b45c4bc246118168cc8c86e7c1b4f66abddab35fe5ed82e5b4216896f884342ddf780b3bdf297605a2fe69dd5d7f6b0df4b5aacad3e5850d32f12c28547bc  libqb-2.0.3.tar.xz"
+sha512sums="
+a726b9c1828cbef741ba9c50b9588cbd421637a8fac0d8f4381e2bf6d349cb228935e86f4e8cf409656ef789f4f5c0d096914d7a13637ee1f1e607894349d330  libqb-2.0.4.tar.xz
+"
