@@ -15,4 +15,5 @@ RUN echo "http://wtnb75-repo.s3-website-ap-northeast-1.amazonaws.com/apk/" >> /e
 ADD abuildconf/*.rsa.pub /etc/apk/keys/
 RUN chown root.root /etc/apk/keys/wtnb75*.pub && \
     chmod 644 /etc/apk/keys/wtnb75*.pub
+RUN apk update
 USER packager
