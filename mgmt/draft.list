@@ -58,3 +58,5 @@ ssdeep     # exists in edge/community repo
 frp        # exists in edge/community repo
 govc       # exists in edge/testing repo
 gping      # exists in edge/testing repo
+abseil-cpp # exists in edge/community repo
+guetzli    # exists in edge/testing repo
