@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=opentelemetry-collector
-pkgver=0.39.0
+pkgver=0.40.0
 pkgrel=0
 pkgdesc="OpenTelemetry Collector"
 url="https://github.com/open-telemetry/opentelemetry-collector"
@@ -25,7 +25,7 @@ build() {
 	cd ${builddir}/$(basename $url)
 	go mod download
 	make install-tools
-	PATH=$PATH:$(go env GOPATH)/bin make otelcol
+	PATH=$PATH:$(go env GOPATH)/bin make build-binary-cmd-otelcol
 }
 
 check() {
@@ -37,5 +37,5 @@ package() {
 	# Replace with proper package command(s)
 	cd ${builddir}/$(basename $url)
 	mkdir -p ${pkgdir}/usr/bin
-	cp bin/otelcol_linux_* ${pkgdir}/usr/bin/otelcol
+	cp bin/cmd-otelcol ${pkgdir}/usr/bin/otelcol
 }
