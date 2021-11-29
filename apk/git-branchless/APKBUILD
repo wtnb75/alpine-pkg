@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=git-branchless
+pkgver=0.3.7
+pkgrel=0
+pkgdesc="High-velocity, monorepo-scale workflow for Git"
+url="https://github.com/arxanas/git-branchless"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="cargo rust openssl-dev"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install git-branchless --locked --version ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
+}

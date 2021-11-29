@@ -467,3 +467,33 @@ git-octopus:
 actionlint:
   type: github_tag
   id: rhysd/actionlint
+act:
+  type: github_tag
+  id: nektos/act
+control-flag:
+  type: github_tag
+  id: IntelLabs/control-flag
+fortio:
+  type: github_tag
+  id: fortio/fortio
+git-branchless:
+  type: github_tag
+  id: arxanas/git-branchless
+goawk:
+  type: github_tag
+  id: benhoyt/goawk
+haiku:
+  type: github_tag
+  id: mattn/go-haiku
+proxygen:
+  type: github_tag
+  id: facebook/proxygen
+termshark:
+  type: github_tag
+  id: gcla/termshark
+uroboros:
+  type: github_tag
+  id: evilsocket/uroboros
+xmake:
+  type: github_tag
+  id: xmake-io/xmake
