@@ -497,3 +497,15 @@ uroboros:
 xmake:
   type: github_tag
   id: xmake-io/xmake
+btop:
+  type: github_tag
+  id: aristocratos/btop
+certigo:
+  type: github_tag
+  id: square/certigo
+bit-git:
+  type: github_tag
+  id: chriswalz/bit
+vale:
+  type: github_tag
+  id: errata-ai/vale
