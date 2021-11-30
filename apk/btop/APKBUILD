@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=btop
+pkgver=1.1.2
+pkgrel=0
+pkgdesc="A monitor of resources"
+url="https://github.com/aristocratos/btop"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="coreutils"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/aristocratos/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz 0001-alpine.patch"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make PREFIX=/usr
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir PREFIX=/usr
+}
+sha512sums="
+de1355d2660502b77ded2d0dfc6417b6a3c97d642dec8a5936806496c2e35630ee1c3bcbad483ac461620d387ab8450379bf5142830e9fb7cfa446fab7812c00  btop-1.1.2.tar.gz
+57bf2fe709dc5c0534b73bb1e2fb20e49c8384f9ec6b1f56ea89b5c4e79b85dda7dd13c84f7243f2aa4103d6e8b3ec8c2d4175e4b18d650b5185eb58ffb1216f  0001-alpine.patch
+"
