@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=sparkey
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="Simple constant key/value storage library, for read-heavy systems with infrequent large bulk inserts"
+url="https://github.com/spotify/sparkey/"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="autoconf automake libtool snappy-dev"
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source="https://github.com/spotify/${pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	autoreconf -i
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make || make CFLAGS=-Wno-implicit-fallthrough
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+0afdff7323326b72b655936925ff1c0dc4dbf12858c73ce335d40dce5c9cde5f6fe1e28ea56505d4f5851330ff5faa457861eb35f6cd4aef077eca344fd1fa4f  sparkey-1.0.0.tar.gz
+"
