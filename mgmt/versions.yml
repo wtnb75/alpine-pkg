@@ -509,3 +509,6 @@ bit-git:
 vale:
   type: github_tag
   id: errata-ai/vale
+sparkey:
+  type: github_tag
+  id: spotify/sparkey
