@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=hostess
+pkgver=0.5.2
+pkgrel=0
+pkgdesc="An idempotent command-line utility for managing your /etc/hosts file"
+url="https://github.com/cbednarski/hostess"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/cbednarski/hostess"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.Version=v${pkgver}" ${_gourl}@v${pkgver}
+}

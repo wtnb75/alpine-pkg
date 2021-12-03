@@ -512,3 +512,9 @@ vale:
 sparkey:
   type: github_tag
   id: spotify/sparkey
+hostess:
+  type: github_tag
+  id: cbednarski/hostess
+goplus:
+  type: github_tag
+  id: goplus/gop

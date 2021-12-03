@@ -1,0 +1,38 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=goplus
+pkgver=1.0.32
+pkgrel=0
+pkgdesc="GoPlus - The Go+ language for engineering, STEM education, and data science"
+url="https://github.com/goplus/gop"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/goplus/gop"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p $(dirname $builddir)
+	cd $(dirname $builddir)
+	git clone --depth=1 $url -b v${pkgver} $(basename $builddir)
+}
+
+build() {
+	cd $builddir
+	sh all.bash
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	mkdir -p ${pkgdir}/usr/bin
+	cp bin/* ${pkgdir}/usr/bin/
+}
