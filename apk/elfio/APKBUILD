@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=elfio
+_pkgname=ELFIO
+pkgver=3.9
+pkgrel=0
+pkgdesc="ELFIO - ELF (Executable and Linkable Format) reader and producer implemented as a header only C++ library"
+url="http://elfio.sourceforge.net/"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/serge1/ELFIO/archive/refs/tags/Release_${pkgver}.tar.gz"
+builddir="$srcdir/$_pkgname-Release_$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+479c4132ac3575940bd1e8190ba5253e54ae57f38319d7bca75ea85ee2f744f5d5b460d2d4ceb17eca0d0561c6e281673f050bbdab2f5ff526c031c220876bf1  elfio-3.9.tar.gz
+"
