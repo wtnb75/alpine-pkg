@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=cxxopts
+pkgver=3.0.0
+pkgrel=0
+pkgdesc="Lightweight C++ command line option parser"
+url="https://github.com/jarro2783/cxxopts"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/jarro2783/$pkgname/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+239479a3b35ddef6fc380ac9371e1cf7e3aea066f03e1ea538151fa2fff4296838daa976d55e988d8f87f40c0ae027767bcb214754177499413af1081315565c  cxxopts-3.0.0.tar.gz
+"

@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=libtree
+pkgver=2.0.0
+pkgrel=0
+pkgdesc="ldd as a tree with an option to bundle dependencies into a single folder"
+url="https://github.com/haampie/libtree"
+arch="all"
+license="MIT"
+depends="chrpath binutils"
+makedepends="cxxopts elfio termcolor"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/haampie/$pkgname/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+9272afd8540110f43ade864a2df58d8b8a7690c79cd29a9804b43e7e550bc05a4da530a763a27bd85a474673055e7a5ba63c0aa0bcaf8b246fbfc73a4f36c870  libtree-2.0.0.tar.gz
+"
