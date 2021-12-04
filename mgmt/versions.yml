@@ -518,3 +518,16 @@ hostess:
 goplus:
   type: github_tag
   id: goplus/gop
+cxxopts:
+  type: github_tag
+  id: jarro2783/cxxopts
+elfio:
+  type: github_tag
+  id: serge1/ELFIO
+  regexp: '^Release_(?P<version>[^\s]+)'
+libtree:
+  type: github_tag
+  id: haampie/libtree
+termcolor:
+  type: github_tag
+  id: ikalnytskyi/termcolor
