@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=control-flag
-pkgver=0.1
+pkgver=1.0
 pkgrel=0
 pkgdesc="A system to flag anomalous source code expressions by learning typical expressions from training data"
 url="https://github.com/IntelLabs/control-flag"
