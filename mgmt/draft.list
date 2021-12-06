@@ -25,8 +25,6 @@ fizz       # build failed(folly/Traits.h error: 'value' is not a member of...)
 wangle     # need fizz
 fbcinder   # build failed
 uftrace    # missing gcrt1.o
-drill      # build failed
-cosign     # build failed
 cdb        # no license
 pv         # exists in base repo
 mesh       # build failed
@@ -52,7 +50,6 @@ minio      # exists in edge/testing repo
 viddy      # exists in edge/community repo
 nim        # exists in edge/community repo
 pandoc     # exists in edge/testing repo
-wasmtime   # build failed(wasi-cap-std-sync v0.31.0, multiple definition of rsix_...)
 bazel      # bazel4 exists in base repo
 ssdeep     # exists in edge/community repo
 frp        # exists in edge/community repo
