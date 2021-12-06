@@ -1,7 +1,6 @@
 boinc-client
 picoquic
 picotls
-goose     # build failed?
 hashlink  # x86/x64 only
 gifski    # build failed(i8/u8)
 wasmer    # too long build time
