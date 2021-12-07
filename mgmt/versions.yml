@@ -531,3 +531,6 @@ libtree:
 termcolor:
   type: github_tag
   id: ikalnytskyi/termcolor
+htpdate:
+  type: github_tag
+  id: twekkel/htpdate

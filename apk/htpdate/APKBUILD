@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=htpdate
+pkgver=1.2.3
+pkgrel=0
+pkgdesc="HTTP Time protocol"
+url="https://www.vervest.org/htp/"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/twekkel/htpdate/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make CFLAGS="-Dntp_adjtime=adjtimex"
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+14240a07bffb92a94f9ab9791d3aea1e07c89821cc8e465e356ab66a689aeb324702c5f8612c93085230cfb1fa1c449e59bc9ca414d9b22b5450edb31836564f  htpdate-1.2.3.tar.gz
+"
