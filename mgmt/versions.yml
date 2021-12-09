@@ -534,3 +534,9 @@ termcolor:
 htpdate:
   type: github_tag
   id: twekkel/htpdate
+microplane:
+  type: github_tag
+  id: Clever/microplane
+turbolift:
+  type: github_tag
+  id: Skyscanner/turbolift
