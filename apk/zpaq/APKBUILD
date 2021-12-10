@@ -1,0 +1,47 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=zpaq
+pkgver=7.15
+_pkgver=$(echo $pkgver | tr -d .)
+pkgrel=0
+pkgdesc="Incremental Journaling Backup Utility and Archiver"
+url="http://mattmahoney.net/dc/zpaq.html"
+arch="all"
+license="Public Domain"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source="http://mattmahoney.net/dc/${pkgname}${_pkgver}.zip"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p ${builddir}
+	cd $builddir
+	unzip ${srcdir}/${pkgname}${_pkgver}.zip
+}
+
+build() {
+	cd "$builddir"
+	make PREFIX=/usr CXXFLAGS=-O3
+	ar cr libzpaq.a libzpaq.o
+	g++ -Dunix -fPIC -O3 -shared -o libzpaq.so libzpaq.cpp
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir PREFIX=/usr
+	mkdir -p ${pkgdir}/usr/include
+	mkdir -p ${pkgdir}/usr/lib
+	cp libzpaq.h ${pkgdir}/usr/include/
+	cp libzpaq.so ${pkgdir}/usr/lib/
+	cp libzpaq.a ${pkgdir}/usr/lib/
+}
+sha512sums="
+4cddcc04dff5e9dceb7138cf9e82b718b696048368ff494339f877d93e4423ed7959c0cfb2e30ba7dcbcdd6bbd59fa1021ceaca6d51e3180d8034b7a3997c265  zpaq715.zip
+"

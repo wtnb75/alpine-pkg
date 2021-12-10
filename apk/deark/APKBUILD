@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=deark
+pkgver=1.5.9
+pkgrel=0
+pkgdesc="A utility for file format and metadata analysis, data extraction, decompression, and image format decoding"
+url="https://entropymine.com/deark/"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/jsummers/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p $pkgdir/usr/bin
+	make install DEARK_INSTALLDIR=$pkgdir/usr/bin/
+}
+sha512sums="
+94fbb83cd7a0c6b6320eb12ed631a2bd094fd157896dc01f5a156b717ef3485350e4038d769bf092133795d3b5547f555059df966d05b89a89dcf666df459e99  deark-1.5.9.tar.gz
+"
