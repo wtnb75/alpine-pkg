@@ -1,6 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
-pkgname=drill
+pkgname=drill-http
+_pkgname=drill
 pkgver=0.7.2
 pkgrel=0
 pkgdesc="Drill is an HTTP load testing application written in Rust inspired by Ansible syntax"
@@ -12,7 +13,7 @@ makedepends="cargo rust openssl-dev"
 install=""
 subpackages=""
 source=""
-builddir="${srcdir}/${pkgname}"
+builddir="${srcdir}/${_pkgname}"
 
 build() {
 	mkdir -p "$builddir"
@@ -26,5 +27,6 @@ check() {
 package() {
 	cd "$builddir"
 	cargo install drill --locked --version ${pkgver} --root ${pkgdir}/usr
+	mv ${pkgdir}/usr/bin/drill ${pkgdir}/usr/bin/drill-http
 	rm -f ${pkgdir}/usr/.crates*
 }

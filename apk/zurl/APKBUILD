@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=zurl
+pkgver=1.11.0
+pkgrel=0
+pkgdesc="HTTP and WebSocket client worker with ZeroMQ interface"
+url="https://github.com/fanout/zurl"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="qt5-qtbase-dev zeromq-dev curl-dev"
+install=""
+subpackages=""
+source="https://github.com/fanout/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install INSTALL_ROOT=$pkgdir
+}
+sha512sums="
+099c6056d24c7b72722f0ca281c2308ea52caddc8a7ea1357290ba450a6fed338ac8ca16d4c38775064a1fe4861a7b3cad9a09c38abe1e20674fc4fad960e77b  zurl-1.11.0.tar.bz2
+"

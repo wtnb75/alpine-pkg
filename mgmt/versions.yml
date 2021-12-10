@@ -564,3 +564,9 @@ deark:
 ipfs:
   type: github_tag
   id: ipfs/go-ipfs
+mongrel2:
+  type: github_release
+  id: mongrel2/mongrel2
+zurl:
+  type: github_tag
+  id: fanout/zurl
