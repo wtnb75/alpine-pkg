@@ -58,3 +58,4 @@ gping      # exists in edge/testing repo
 abseil-cpp # exists in edge/community repo
 guetzli    # exists in edge/testing repo
 termshark  # exists in edge/testing repo
+calc       # build failed(missing Makefile.ship)
