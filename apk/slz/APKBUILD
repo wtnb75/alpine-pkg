@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=slz
+pkgver=1.2.0
+pkgrel=0
+pkgdesc="Stateless ZIP library"
+url="http://www.libslz.org/"
+_giturl="http://git.1wt.eu/git/libslz.git/"
+arch="all"
+license="X11"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-dev"
+source=""
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p $(dirname $builddir)
+	git clone ${_giturl} -b v${pkgver} $builddir
+}
+
+build() {
+	cd "$builddir"
+	make PREFIX=/usr
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir PREFIX=/usr
+}

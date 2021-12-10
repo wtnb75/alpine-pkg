@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=lzfse
+pkgver=1.0
+pkgrel=0
+pkgdesc="LZFSE compression library and command line tool"
+url="https://github.com/lzfse/lzfse"
+arch="all"
+license="BSD-3-Clause"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-dev"
+source="$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+9d7ca44e6d3d2bdf4b82b0eb66c14922369b8b6fe2cf891187a77c6708b8d26c2c1b2ccddec6059e85dbbbb37c497419549f02812b5f34d06238ac246a8cf912  lzfse-1.0.tar.gz
+"

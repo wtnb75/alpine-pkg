@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=pushpin
+pkgver=1.34.0
+pkgrel=0
+pkgdesc="Proxy server for adding push to your API"
+url="https://pushpin.org/"
+arch="all"
+license="AGPLv3"
+depends=""
+makedepends="rust cargo zeromq-dev qt5-qtbase-dev"
+install=""
+subpackages=""
+source="https://github.com/fanout/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	cargo update
+	./configure --prefix=/usr --configdir=/etc
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install INSTALL_ROOT=$pkgdir
+}
+sha512sums="
+3e615b81a3bd16bfb1def7981d8aefe5d870edf57a5cccb108bd89517c8502f0aa8f326e6b6e58ca3d06d82b6c8042fa841a1240f8100185a3bc2be3a463105c  pushpin-1.34.0.tar.bz2
+"

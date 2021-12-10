@@ -540,3 +540,27 @@ microplane:
 turbolift:
   type: github_tag
   id: Skyscanner/turbolift
+pushpin:
+  type: github_tag
+  id: fanout/pushpin
+lzfse:
+  type: github_tag
+  id: lzfse/lzfse
+  regexp: '^lzfse-(?P<version>[^\s]+)'
+zpaq:
+  type: general
+  url: http://mattmahoney.net/dc/zpaq.html
+  xpath: /html/body/p[8]/a[1]/text()
+  regexp: '^zpaq v(?P<version>[^\s]+)'
+miniz:
+  type: github_release
+  id: richgel999/miniz
+slz:
+  type: git_tag
+  url: http://git.1wt.eu/git/libslz.git/
+deark:
+  type: github_tag
+  id: jsummers/deark
+ipfs:
+  type: github_tag
+  id: ipfs/go-ipfs
