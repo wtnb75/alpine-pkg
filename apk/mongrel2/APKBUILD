@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=mongrel2
+pkgver=1.12.2
+pkgrel=0
+pkgdesc="The Mongrel2 Web Server Project"
+url="http://mongrel2.org/"
+arch="all"
+license="BSD-3-Clause"
+depends=""
+makedepends="zeromq-dev libucontext-dev mbedtls-dev sqlite"
+install=""
+subpackages=""
+source="https://github.com/mongrel2/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2 0001-alpine.patch"
+builddir="$srcdir/$pkgname-v$pkgver"
+
+build() {
+	cd "$builddir"
+	make -f localmbedtls.mak PREFIX=/usr OPTLIBS=-lucontext
+	# make PREFIX=/usr
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir PREFIX=/usr
+}
+sha512sums="
+e8b5f69dac95adc600399a4edd387ea3d7466ed6c3173574fa1cd6895dbc6630d305d3f966ee6bafdd48472c932e14ea47206778fee3863c0d2216be2e6a3a64  mongrel2-v1.12.2.tar.bz2
+54e5367f8756fce9ea8b474481b0e6cee858730540849ccbd5cc320449a900c37967799d2c7a9142c6af02805235ad42e7233ce4ab227c6a88857c98b62683c1  0001-alpine.patch
+"
