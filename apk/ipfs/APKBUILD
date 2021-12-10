@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ipfs
+pkgver=0.11.0
+pkgrel=0
+pkgdesc="IPFS implementation in Go"
+url="https://github.com/ipfs/go-ipfs"
+arch="all"
+license="MIT/Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/ipfs/go-ipfs"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/ipfs@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/ipfswatch@v${pkgver}
+}

@@ -561,3 +561,6 @@ slz:
 deark:
   type: github_tag
   id: jsummers/deark
+ipfs:
+  type: github_tag
+  id: ipfs/go-ipfs
