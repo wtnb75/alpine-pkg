@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=flif
+_pkgname=$(echo $pkgname | tr a-z A-Z)
+pkgver=0.4
+pkgrel=0
+pkgdesc="Free Lossless Image Format"
+url="https://flif.info/software.html"
+arch="all"
+license="LGPLv3"
+depends=""
+makedepends="libpng-dev"
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source="$pkgname-$pkgver.tar.gz::https://github.com/FLIF-hub/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/${_pkgname}-$pkgver"
+
+build() {
+	cd "$builddir"
+	make PREFIX=/usr
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install install-dev PREFIX=$pkgdir/usr
+}
+sha512sums="
+f0ec5327e4f03eb3c3a7bf376d2c972d4ec9a254a78af675da3f665b4b573354428f04208613eb0e8268b5f5ba919c66bfe81dd434ccb9a6ec6d4dabd5c50c0a  flif-0.4.tar.gz
+"

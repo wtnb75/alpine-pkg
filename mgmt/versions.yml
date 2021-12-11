@@ -570,3 +570,9 @@ mongrel2:
 zurl:
   type: github_tag
   id: fanout/zurl
+flif:
+  type: github_tag
+  id: FLIF-hub/FLIF
+imgproxy:
+  type: github_tag
+  id: imgproxy/imgproxy
