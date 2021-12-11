@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=imgproxy
+pkgver=3.1.1
+pkgrel=0
+pkgdesc="Fast and secure standalone server for resizing and converting remote images"
+url="https://github.com/imgproxy/imgproxy"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go vips-dev"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/imgproxy/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz 0001-alpine.patch"
+_gourl="github.com/imgproxy/imgproxy"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	cd $builddir
+	go build
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd $builddir
+	# Replace with proper package command(s)
+	GOBIN=${pkgdir}/usr/bin go install
+}
+sha512sums="
+b01651e288f05e8628c0370878b79ed7b43295973085a13d8e3b9b1e41ffc3f2f2a7c3aa3800426eb01a1fbf6aed960e7022a761f00e37d940e0df6c7c95b370  imgproxy-3.1.1.tar.gz
+18dae0a4bb41001468461e084b0e698ff753190da9aa303e004f6d81910542b1565018a615d8780236443fde3bb156db49679fa270fbad6f53026ba28ad50e21  0001-alpine.patch
+"

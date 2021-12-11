@@ -1,0 +1,11 @@
+diff -up ./vips/vips.go.orig ./vips/vips.go
+--- ./vips/vips.go.orig
++++ ./vips/vips.go
+@@ -2,7 +2,6 @@
+ 
+ /*
+ #cgo pkg-config: vips
+-#cgo LDFLAGS: -s -w
+ #cgo CFLAGS: -O3
+ #include "vips.h"
+ */
