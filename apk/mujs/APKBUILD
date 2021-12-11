@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=mujs
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=0
 pkgdesc="MuJS is a lightweight Javascript interpreter"
 url="https://mujs.com/"
@@ -28,4 +28,6 @@ package() {
 	cd "$builddir"
 	make install DESTDIR=$pkgdir prefix=/usr
 }
-sha512sums="fc3328413c305a6ad0606a316f677333abce79058d5a811a641c52933fe1cb5880466085b5d9d83ec9d1cfa18348a989c2873cdaafba0bc423fb9e0174c6d02e  mujs-1.1.3.tar.gz"
+sha512sums="
+dcde632f3be934653b7604a04c282fb71371cb416a13c186541d4fa6de8483091ddb77f06db1cd3b8c382f644f8c8ec83310611c5433aea3fcfba477ce9daf57  mujs-1.2.0.tar.gz
+"
