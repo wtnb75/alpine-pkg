@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=snzip
+pkgver=1.0.5
+pkgrel=0
+pkgdesc="Snzip, a compression/decompression tool based on snappy"
+url="https://github.com/kubo/snzip"
+arch="all"
+license="BSD-2-Clause"
+depends=""
+makedepends="snappy-dev"
+install=""
+subpackages="$pkgname-doc"
+source="https://github.com/kubo/$pkgname/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+4060b3fecc7044e6387357083404bd380bfcb6e48a5fb610ebe5c1e2deefdca0766e3689eded6cb51520aa23014c78ed65db272438156fd5c17e1634e854b804  snzip-1.0.5.tar.gz
+"
