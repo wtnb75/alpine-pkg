@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=gmic
+pkgver=3.0.0
+pkgrel=0
+pkgdesc="full-featured open-source framework for image processing"
+url="https://gmic.eu/"
+arch="all"
+license="CeCILL"
+depends=""
+makedepends="fftw-dev jpeg-dev libpng-dev tiff-dev openexr-dev graphicsmagick-dev libx11-dev curl-dev"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/dtschump/$pkgname/archive/refs/tags/v.${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-v.$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+3c31b2ac437ee8cbe06f3e77a96b2d182b01f8fd3e9f82ca9cfd46038a42b2fea44507db9f634fdc05f3329feba4ffeb4ab8e31e297c1db1e496b41c0da1e02b  gmic-3.0.0.tar.gz
+"

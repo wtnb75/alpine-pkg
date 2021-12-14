@@ -579,3 +579,16 @@ imgproxy:
 snzip:
   type: github_tag
   id: kubo/snzip
+syft:
+  type: github_tag
+  id: anchore/syft
+grype:
+  type: github_tag
+  id: anchore/grype
+clair:
+  type: github_tag
+  id: quay/clair
+gmic:
+  type: github_release
+  id: dtschump/gmic
+  regexp: '^v\.(?P<version>[^\s]+)'
