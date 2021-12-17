@@ -595,3 +595,6 @@ gmic:
 mold:
   type: github_tag
   id: rui314/mold
+austin:
+  type: github_tag
+  id: P403n1x87/austin
