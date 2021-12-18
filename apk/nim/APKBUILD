@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=nim
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=0
 pkgdesc="Nim is a statically typed compiled systems programming language"
 url="https://nim-lang.org/"
@@ -37,5 +37,5 @@ package() {
 }
 
 sha512sums="
-ac6f20664a2bdc0a47d0b010120ac47590278afa3ef799d02e2fe6da597cacba128be9a0a77ef2f1d78f4ee79ae01732f34a6bfb918af268dccf768b9ca11627  nim-1.6.0.tar.xz
+052b62c987035f7633f965356993cd4eec686f4f4f5c675cf966d82cb30fcf574045887a4402bcc20e487299fb5e8f65a921951c2dc21ac334e695e31d95d992  nim-1.6.2.tar.xz
 "
