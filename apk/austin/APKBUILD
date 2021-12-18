@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=austin
+pkgver=3.2.0
+pkgrel=0
+pkgdesc="Python frame stack sampler for CPython"
+url="https://github.com/P403n1x87/austin"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="argp-standalone"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/P403n1x87/$pkgname/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	autoreconf -i
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make LIBS=-largp
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+20e90f084d01f681596a9183e72565f889f7ae4864ac5c7fbf395e1f1329bea6905ec758b7ca3bb416827b9fb990ac6989b53420bf473c90f37584f2dba6f9d5  austin-3.2.0.tar.gz
+"

@@ -64,3 +64,4 @@ elfio      # exists in edge/testing repo
 cxxopts    # exists in edge/testing repo
 termcolor  # exists in edge/testing repo
 gmic       # build failed
+btop       # exists in edge/community repo
