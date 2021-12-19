@@ -598,3 +598,6 @@ mold:
 austin:
   type: github_tag
   id: P403n1x87/austin
+s3surfer:
+  type: github_tag
+  id: hirose31/s3surfer
