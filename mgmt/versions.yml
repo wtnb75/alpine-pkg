@@ -601,3 +601,6 @@ austin:
 s3surfer:
   type: github_tag
   id: hirose31/s3surfer
+orgalorg:
+  type: github_tag
+  id: reconquest/orgalorg
