@@ -607,3 +607,6 @@ orgalorg:
 sniffer:
   type: github_tag
   id: chenjiandongx/sniffer
+fq:
+  type: github_tag
+  id: wader/fq
