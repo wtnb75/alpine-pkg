@@ -193,7 +193,8 @@ class VersionChecker:
                 return self.get_newest(regexp, versions, stopwords)
 
     def get_version_autoindex(self, url, regexp=None, prefix=None, suffix=None, stopwords=None):
-        tree = etree.fromstring(requests.get(url).text, parser=etree.HTMLParser())
+        tree = etree.fromstring(requests.get(url).text,
+                                parser=etree.HTMLParser())
         atags = tree.xpath("//a")
         _log.debug("atags %s", len(atags))
         links = [os.path.basename(x.get("href")) for x in atags]
@@ -248,7 +249,8 @@ class VersionChecker:
         else:
             path = f"{id[:2]}/{id[2:4]}/{id}"
         url = baseurl + path
-        versions = [json.loads(x)["vers"] for x in requests.get(url).text.splitlines()]
+        versions = [json.loads(x)["vers"]
+                    for x in requests.get(url).text.splitlines()]
         return self.get_newest(regexp, versions, stopwords=stopwords)
 
     def get_version_pypi(self, id, regexp=None, stopwords=None):
@@ -260,7 +262,8 @@ class VersionChecker:
     def get_version_github_release(self, id,
                                    regexp=r"^v?(?P<version>.*)(\\^\\{\\})?$",
                                    stopwords=None):
-        res = requests.get(f"https://api.github.com/repos/{id}/releases/latest").json()
+        res = requests.get(
+            f"https://api.github.com/repos/{id}/releases/latest").json()
         return self.get_newest(regexp, [res.get("tag_name")], stopwords=stopwords)
 
     def get_version_hg_tag(self, url, method="json", regexp=None, stopwords=None):
@@ -291,7 +294,8 @@ class VersionChecker:
         if old_version == new_version:
             return
         apk_dirname = os.path.dirname(filename)
-        apk_fname1 = os.path.join(apk_dirname, os.path.basename(filename) + ".old")
+        apk_fname1 = os.path.join(
+            apk_dirname, os.path.basename(filename) + ".old")
         apk_fname2 = filename
         os.rename(apk_fname2, apk_fname1)
         with open(apk_fname1) as input:
@@ -356,7 +360,8 @@ def check_version(yamlfile, names):
                 if current_ver.startswith("no_type:"):
                     continue
                 if meta_ver != current_ver:
-                    click.echo(f"new version: {k} pkg({meta_ver})!=current({current_ver})")
+                    click.echo(
+                        f"new version: {k} pkg({meta_ver})!=current({current_ver})")
 
 
 @cli.command()
@@ -419,6 +424,47 @@ def make_from_template(template, args, output):
     click.echo(t.render(**data), file=output)
 
 
+@cli.command("template-auto")
+@cli_option
+@click.option("--template", required=True, type=click.Choice(
+    [x.rsplit(".", 1)[-1] for x in glob.glob(
+        os.path.join(_templatedir, "APKBUILD.*"))]))
+@click.argument("args", default='{}')
+def make_from_template2(template, args):
+    from jinja2 import Template
+    ptn = re.compile(r'{{\s*(?P<key>[a-zA-Z0-9]+)\s*}}')
+    data = json.loads(args)
+    keys = set(data.keys())
+    needs = set()
+    tmpl = []
+    with open(f"{_templatedir}/APKBUILD.{template}") as ifp:
+        for line in ifp:
+            tmpl.append(line.rstrip())
+            for i in ptn.finditer(line):
+                needs.add(i.group("key"))
+    _log.debug("missing: %s", needs-keys)
+    _log.debug("toomany: %s", keys-needs)
+    for i in sorted(needs-keys):
+        data[i] = input(f"{i}: ")
+    outfn = os.path.join("apk", data.get("name"), "APKBUILD")
+    # fix
+    kvs = {
+        "name": "pkgname",
+        "version": "pkgver",
+    }
+    for k in data.keys():
+        for k2, v2 in kvs.items():
+            if k2 == k:
+                continue
+            if data[k2] in data[k]:
+                data[k] = data[k].replace(data[k2], "${" + v2 + "}")
+    click.echo(json.dumps(data, ensure_ascii=False))
+    t = Template("\n".join(tmpl))
+    os.makedirs(os.path.dirname(outfn), exist_ok=True)
+    with open(outfn, "w") as output:
+        click.echo(t.render(**data), file=output)
+
+
 @cli.command()
 @cli_option
 @click.option("--generations", type=int, default=2, show_default=True)
@@ -430,8 +476,10 @@ def gc(directory, generations, dry):
     data = vchk.read_apkindex(os.path.join(directory, "APKINDEX.tar.gz"))
     for name, versions in data.items():
         if len(versions) > generations:
-            versions = natsorted(versions, key=lambda f: f.get("V"), reverse=True)
-            _log.info("live: %s %s", name, [x['V'] for x in versions[:generations]])
+            versions = natsorted(
+                versions, key=lambda f: f.get("V"), reverse=True)
+            _log.info("live: %s %s", name, [x['V']
+                      for x in versions[:generations]])
             to_gc = versions[generations:]
             for i in to_gc:
                 basename = f"{i['P']}-{i['V']}.apk"
@@ -506,7 +554,8 @@ def auto_update(yamlfile, names):
                 if current_ver.startswith("no_type:"):
                     continue
                 if meta_ver != current_ver:
-                    click.echo(f"new version: {k} pkg({meta_ver})!=current({current_ver})")
+                    click.echo(
+                        f"new version: {k} pkg({meta_ver})!=current({current_ver})")
                     vchk.update_version(fname, meta_ver, current_ver)
                     subprocess.check_call(["git", "add", fname])
 
