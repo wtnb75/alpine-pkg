@@ -11,7 +11,7 @@ depends=""
 makedepends="zeromq-dev libucontext-dev mbedtls-dev sqlite sqlite-dev"
 install=""
 subpackages=""
-source="https://github.com/mongrel2/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2 0001-alpine.patch"
+source="https://github.com/mongrel2/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2"
 builddir="$srcdir/$pkgname-v$pkgver"
 
 build() {
@@ -31,5 +31,4 @@ package() {
 }
 sha512sums="
 41e6fa077388628aeea6936600c538b61801a85e684134ca56687bf3e36d55a3a7b300ca4590dae511f1da41bed69249da47ffc500e1f6117625b42be3d92bee  mongrel2-v1.13.0.tar.bz2
-54e5367f8756fce9ea8b474481b0e6cee858730540849ccbd5cc320449a900c37967799d2c7a9142c6af02805235ad42e7233ce4ab227c6a88857c98b62683c1  0001-alpine.patch
 "
