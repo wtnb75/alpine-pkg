@@ -34,5 +34,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-8eb99c3a949f6547badfe6a291fa63819f4fb3844e7dcf797a9d741e7df7912c6f0006a3ca694c4ad5b5d7efe2bde86c7fdd3c98a3c4a987cc99d8dfcb331f7c  mydumper-0.11.3.5-0.tar.gz
+737bd1fb6cf36dfd386300369990d6c6dc3321f4787c45deec4e48df30634e8722c3258f7299ce071c2d59c3acf9a0f1a5b3fb51dc9ba64f4a4eaae9e17e5080  mydumper-0.11.5-0.tar.gz
 "
