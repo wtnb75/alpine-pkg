@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=traefik
-pkgver=2.5.5
+pkgver=2.5.6
 pkgrel=0
 pkgdesc="The Cloud Native Application Proxy"
 url="https://traefik.io/"

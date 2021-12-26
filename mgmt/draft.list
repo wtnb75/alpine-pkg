@@ -65,3 +65,4 @@ termcolor  # exists in edge/testing repo
 gmic       # build failed
 btop       # exists in edge/community repo
 mold       # exists in edge/testing repo
+mongrel2   # build failed

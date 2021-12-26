@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=orgalorg
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=0
 pkgdesc="Parallel SSH commands runner and file synchronization tool"
 url="https://github.com/reconquest/orgalorg"

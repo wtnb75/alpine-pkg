@@ -2,7 +2,7 @@
 . /etc/abuild.conf
 . $HOME/.abuild/abuild.conf
 
-for idx in $(find ${REPODEST} -type f -name APKINDEX.tar.gz); do
+for idx in $(find ${REPODEST}/apk/$(uname -m) -type f -name APKINDEX.tar.gz); do
   [ -f "${idx}" ] || continue
   d=$(dirname $idx)
   apk index -o ${idx} ${d}/*.apk
