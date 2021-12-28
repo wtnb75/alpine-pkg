@@ -8,3 +8,4 @@ cache
 *.old
 __pycache__
 .env
+.DS_Store
