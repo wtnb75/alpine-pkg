@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ehco
+pkgver=1.1.1
+pkgrel=0
+pkgdesc="${pkgname} is a network relay tool and a typo"
+url="https://github.com/Ehco1996/${pkgname}"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/Ehco1996/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/ehco@v${pkgver}
+}
