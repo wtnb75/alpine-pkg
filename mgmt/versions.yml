@@ -611,5 +611,5 @@ fq:
   type: github_tag
   id: wader/fq
 ehco:
-  type: github_tag
+  type: github_release
   id: Ehco1996/ehco

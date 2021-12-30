@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=goplus
-pkgver=1.0.37
+pkgver=1.0.38
 pkgrel=0
 pkgdesc="GoPlus - The Go+ language for engineering, STEM education, and data science"
 url="https://github.com/goplus/gop"
