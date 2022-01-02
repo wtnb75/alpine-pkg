@@ -613,3 +613,9 @@ fq:
 ehco:
   type: github_release
   id: Ehco1996/ehco
+kitchen_sync:
+  type: github_tag
+  id: willbryant/kitchen_sync
+nerdctl:
+  type: github_tag
+  id: containerd/nerdctl
