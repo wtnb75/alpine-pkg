@@ -1,0 +1,40 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=nerdctl
+pkgver=0.15.0
+pkgrel=0
+pkgdesc="contaiNERD CTL - Docker-compatible CLI for containerd"
+url="https://github.com/containerd/${pkgname}"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/containerd/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p $(dirname $builddir)
+	git clone --depth=1 ${url} -b v${pkgver} $builddir
+}
+
+
+build() {
+	cd $builddir
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	#GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X ${_gourl}/pkg/version.Version=v${pkgver}" ${_gourl}/cmd/nerdctl@v${pkgver}
+
+	cd $builddir
+	make install DESTDIR=${pkgdir} BINDIR=/usr/bin
+}

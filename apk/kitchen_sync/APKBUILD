@@ -1,0 +1,38 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=kitchen_sync
+pkgver=2.12
+pkgrel=0
+pkgdesc="Fast unidirectional synchronization"
+url="https://github.com/willbryant/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="mariadb-connector-c-dev libpq-dev"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/willbryant/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	rm -rf build
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make C_DEFINES="-DBLAKE3_NO_AVX2 -DBLAKE3_NO_AVX512 -DBLAKE3_NO_NEON -DBLAKE3_NO_SSE2 -DBLAKE3_NO_SSE41 -DBLAKE3_USE_NEON=0" blake3
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+3543ab1a26632b7cfb7874a2110958d36de41aaa58e5eec1f88b4d3c827b9fadee95e085d001d651998dc1a92bbfc8b110f11ea8facde1015288ed62da9ff169  kitchen_sync-2.12.tar.gz
+"
