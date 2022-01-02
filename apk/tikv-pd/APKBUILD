@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=tikv-pd
 _pkgname=pd
-pkgver=4.0.16
+pkgver=5.0.6
 pkgrel=0
 pkgdesc="Placement driver for TiKV"
 url="https://github.com/tikv/pd"
