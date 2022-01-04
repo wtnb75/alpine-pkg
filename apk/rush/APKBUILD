@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=rush
+pkgver=2.2
+pkgrel=0
+pkgdesc="GNU Rush is a Restricted User Shell"
+url="https://www.gnu.org/software/${pkgname}/"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="https://download.gnu.org.ua/pub/release/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+options="suid"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+9dcd681707b8aca16b983fe4bab51cbdd629b582d0c2bf8c7369b24300b525a81e9df88d5c5d055ee823bd5fb1ea3739aa4874cb01cf93ef253ae4471b819155  rush-2.2.tar.gz
+"
