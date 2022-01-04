@@ -619,3 +619,8 @@ kitchen_sync:
 nerdctl:
   type: github_tag
   id: containerd/nerdctl
+rush:
+  type: autoindex
+  url: http://ftp.gnu.org/gnu/rush/
+  prefix: rush-
+  suffix: .tar.gz
