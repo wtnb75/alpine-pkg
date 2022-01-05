@@ -624,3 +624,9 @@ rush:
   url: http://ftp.gnu.org/gnu/rush/
   prefix: rush-
   suffix: .tar.gz
+autoportforward:
+  type: github_tag
+  id: ruoshan/autoportforward
+gitbackup:
+  type: github_tag
+  id: amitsaha/gitbackup
