@@ -630,3 +630,9 @@ autoportforward:
 gitbackup:
   type: github_tag
   id: amitsaha/gitbackup
+youki:
+  type: github_tag
+  id: containers/youki
+periscope:
+  type: github_tag
+  id: anishathalye/periscope

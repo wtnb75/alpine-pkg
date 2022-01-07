@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=youki
-pkgver=0.1
+pkgver=0.0.1
 pkgrel=0
 pkgdesc="An experimental container runtime written in Rust"
 url="https://github.com/containers/youki"
@@ -18,7 +18,7 @@ builddir="${srcdir}/${pkgname}"
 prepare() {
 	mkdir -p $(dirname $builddir)
 	cd $(dirname $builddir)
-	git clone --depth=1 ${_giturl}
+	git clone --depth=1 ${_giturl} -b v${pkgver}
 }
 
 build() {

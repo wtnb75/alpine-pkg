@@ -18,7 +18,7 @@ mvfst      # dep
 hugin      # working
 proxygen   # working
 wxWidgets  # build failed
-youki      # build failed
+youki      # build failed (cfg-if https://github.com/alexcrichton/cfg-if/issues/44)
 atsquic    # working
 vlang      # build failed(tcc.exe)
 fizz       # build failed(folly/Traits.h error: 'value' is not a member of...)
