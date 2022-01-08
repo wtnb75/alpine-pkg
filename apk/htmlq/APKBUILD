@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=htmlq
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=0
 pkgdesc="Like jq, but for HTML."
 url="https://github.com/mgdm/htmlq"

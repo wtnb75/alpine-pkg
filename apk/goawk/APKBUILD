@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=goawk
-pkgver=1.9.2
+pkgver=1.13.0
 _pkgver=master
 pkgrel=0
 pkgdesc="A POSIX-compliant AWK interpreter written in Go"
