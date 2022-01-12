@@ -636,3 +636,18 @@ youki:
 periscope:
   type: github_tag
   id: anishathalye/periscope
+erofs-utils:
+  type: git_tag
+  url: https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git
+#dsq:
+#  type: github_tag
+#  id: multiprocessio/dsq
+textql:
+  type: github_tag
+  id: dinedal/textql
+octosql:
+  type: github_tag
+  id: cube2222/octosql
+columnify:
+  type: github_tag
+  id: reproio/columnify
