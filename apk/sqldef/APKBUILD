@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=sqldef
+pkgver=0.11.20
+pkgrel=0
+pkgdesc="Idempotent schema management for MySQL, PostgreSQL, and more"
+url="https://github.com/k0kubun/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go mariadb-dev sqlite-dev postgresql-dev"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/k0kubun/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	for i in mysqldef psqldef sqlite3def; do
+		GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.version=v${pkgver}" ${_gourl}/cmd/${i}@v${pkgver}
+	done
+}
