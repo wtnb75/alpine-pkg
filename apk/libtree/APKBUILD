@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=libtree
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=0
 pkgdesc="ldd as a tree with an option to bundle dependencies into a single folder"
 url="https://github.com/haampie/libtree"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-92975fc2e77ca7e68ea22866e3a82836e9dcd69409f3fe0f61852c43b9aba6ceb67d1619afb27adc68ddb1615bd24621e3a8de8858b5ce84a9bd670830852ba1  libtree-3.0.1.tar.gz
+db2a8d7e69f1f3ea1c09f9af0739b7a6019cba1eef62d5961a9d0bac2703397b1a91e9d65a04db51bc63e2e4d333c9369311815ef8c2f810ab26f0ba17b1c8db  libtree-3.0.2.tar.gz
 "
