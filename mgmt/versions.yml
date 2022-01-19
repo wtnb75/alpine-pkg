@@ -657,3 +657,6 @@ sqldef:
 deark:
   type: github_tag
   id: jsummers/deark
+dbmate:
+  type: github_tag
+  id: amacneil/dbmate
