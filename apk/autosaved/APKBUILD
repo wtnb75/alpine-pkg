@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=autosaved
+pkgver=0.2
+pkgrel=0
+pkgdesc="Never worry about losing your code. Written in Go"
+url="https://github.com/nikochiko/${pkgname}"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/nikochiko/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+_gourl="github.com/nikochiko/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd $builddir
+	mkdir -p $pkgdir/usr/bin
+	GOBIN=${pkgdir}/usr/bin go install
+}
+sha512sums="
+996e34760823cec6a9d1ceda5328078979db586bbd1982bb9e99ea8445dbd35b963e5a55d5fff5394b71594f35ec41233bededbbba8c9aa28336c3bfa0a9dbe9  autosaved-0.2.tar.gz
+"
