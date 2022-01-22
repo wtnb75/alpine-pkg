@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=kubebuilder
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=0
 pkgdesc="Kubebuilder - SDK for building Kubernetes APIs using CRDs"
 url="https://book.kubebuilder.io/"
@@ -37,5 +37,5 @@ package() {
 	make install GOBIN=${pkgdir}/usr/bin
 }
 sha512sums="
-21cf2d660c017d456347c1e99d5a92ead9e960f3f13505db48462422fbf8146edf772131b7d92d4e0a0aa27a67b9067173aca955515e53bf5295067d599d2fba  kubebuilder-3.2.0.tar.gz
+4c193f2de6e7b1c355986524adf6e9bb564b1f16ca88c534bc0ca9f43d9e7eabc6713cacda0a85f241b7af7d36f0bc58d63869edd118edff092a3f57f9714c95  kubebuilder-3.3.0.tar.gz
 "

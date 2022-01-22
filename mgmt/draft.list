@@ -67,3 +67,4 @@ btop       # exists in edge/community repo
 mold       # exists in edge/testing repo
 mongrel2   # build failed
 opentelemetry-collector  # build failed?
+glusterfs  # build failed(liburing)

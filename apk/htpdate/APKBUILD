@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=htpdate
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=0
 pkgdesc="HTTP Time protocol"
 url="https://www.vervest.org/htp/"
@@ -29,5 +29,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-4c14333f114b267bca08270944b4082d2cda600deb31e8c453053e8b2be57bb846c4c221c5adbb6d055c66398bd90e5f91538c8e7d89ff397ef3f3c23b4a01a5  htpdate-1.3.1.tar.gz
+5d4892ea3626b80e5d529de873f675616dfef156e91d1e574225f91f9496503f55da43aa4f3522cb2b55da7c41dba7d97b3cc557a2704945577ec0243d8bd7f8  htpdate-1.3.3.tar.gz
 "
