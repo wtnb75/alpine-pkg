@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=gping
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=0
 pkgdesc="Ping, but with a graph"
 url="https://github.com/orf/gping"

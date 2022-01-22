@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=glusterfs
-pkgver=10.0
+pkgver=10.1
 pkgrel=0
 pkgdesc="glusterfs"
 url="https://www.gluster.org/"
@@ -32,6 +32,6 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-48d271309ca63b50961ee183a2174795d47060d4c00a736d38636da88a9cfe8b476427e6593f53899951ccdd6962c984534f840970d43ceb9449cd54a019f08b  glusterfs-10.0.tar.gz
+4c887f3ba9ab7dfaff6a3dca40f0fc2081ccaabfb7204bd99469e1f7f55f1ce2fecb2e6549c828fd8d96dfd490f223baf6114b4db56b7f2e0bc96e0ddb7b4773  glusterfs-10.1.tar.gz
 df2b267f97e8b342d8fe6a20d973641237d0992432117f1ad296df4ec4289db77494424b8c132c53519c4cdcc439585df755b0b3d818a570a50e549d0deb3bde  0000-alpine.patch
 "
