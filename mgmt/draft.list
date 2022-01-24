@@ -68,3 +68,7 @@ mold       # exists in edge/testing repo
 mongrel2   # build failed
 opentelemetry-collector  # build failed?
 glusterfs  # build failed(liburing)
+syft       # exists in edge/testing repo
+grype      # exists in edge/testing repo
+hashcat    # exists in edge/testing repo
+fq         # exists in edge/testing repo
