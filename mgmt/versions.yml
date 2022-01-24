@@ -666,3 +666,9 @@ dbmate:
 autosaved:
   type: github_tag
   id: nikochiko/autosaved
+bingrep:
+  type: github_tag
+  id: m4b/bingrep
+git-town:
+  type: github_tag
+  id: git-town/git-town
