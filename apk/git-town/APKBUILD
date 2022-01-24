@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=git-town
+pkgver=7.7.0
+pkgrel=0
+pkgdesc="High-level CLI for Git"
+url="https://github.com/${pkgname}/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/${pkgname}/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X ${_gourl}/v7/src/cmd.version=v${pkgver} -X ${_gourl}/v7/src/cmd.buildDate=$(date +%Y/%m/%d)" ${_gourl}/v7@v${pkgver}
+}
