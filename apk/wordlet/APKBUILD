@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=wordlet
+pkgver=0.2.0
+pkgrel=0
+pkgdesc="Wordlet is a command-line clone of Wordle, written in Rust"
+url="https://github.com/scottluptowski/${pkgname}"
+arch="all"
+license="DWYW"
+depends=""
+makedepends="cargo rust"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install wordlet --locked --version ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
+}

@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=cue
+pkgver=0.4.1
+pkgrel=0
+pkgdesc="The CUE Data Constraint Language"
+url="https://github.com/${pkgname}-lang/${pkgname}"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+#_gourl="github.com/${pkgname}-lang/${pkgname}"
+_gourl="cuelang.org/go"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.version=v${pkgver}" ${_gourl}/cmd/cue@v${pkgver}
+}

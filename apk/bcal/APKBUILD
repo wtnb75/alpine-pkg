@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=bcal
+pkgver=2.4
+pkgrel=0
+pkgdesc="Bits, bytes and address calculator"
+url="https://github.com/jarun/${pkgname}"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="readline-dev"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/jarun/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make PREFIX=/usr
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir PREFIX=/usr
+}
+sha512sums="
+cdce53bb63f878ff6d2e15ea93f489a1ad8d59b2ff640f558704e5333dabaeeed34657a9fd01ae7aa73f3f110e6692598643f62bb93dcddd48d3b977f8748055  bcal-2.4.tar.gz
+"
