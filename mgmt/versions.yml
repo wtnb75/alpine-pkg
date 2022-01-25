@@ -672,3 +672,6 @@ bingrep:
 git-town:
   type: github_tag
   id: git-town/git-town
+bcal:
+  type: github_tag
+  id: jarun/bcal
