@@ -681,3 +681,7 @@ wordlet:
 cue:
   type: github_tag
   id: cue-lang/cue
+flowgrind:
+  type: github_tag
+  id: flowgrind/flowgrind
+  regexp: '^flowgrind-?(?P<version>[0-9]\.[0-9](\.[0-9])?)'
