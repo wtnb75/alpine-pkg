@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=flowgrind
+pkgver=0.8.2
+pkgrel=0
+pkgdesc="Advanced TCP traffic generator"
+url="https://${pkgname}.github.io/"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="automake util-linux-dev curl-dev xmlrpc-c-dev"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	autoreconf -i
+	CFLAGS=-DHAVE_TCP_CA_STATE=1 ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+3fcac21001eabaf16d8d104aef81faf646659f76aa00d998639984b098deabff2a14dd8416989dacb1d905bc23eadbcd310608c6b1010c4c05bb06443ee53107  flowgrind-0.8.2.tar.gz
+"
