@@ -72,3 +72,4 @@ syft       # exists in edge/testing repo
 grype      # exists in edge/testing repo
 hashcat    # exists in edge/testing repo
 fq         # exists in edge/testing repo
+nginx-cfquic # build(prepare) failed
