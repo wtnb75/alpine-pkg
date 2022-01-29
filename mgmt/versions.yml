@@ -685,3 +685,6 @@ flowgrind:
   type: github_tag
   id: flowgrind/flowgrind
   regexp: '^flowgrind-?(?P<version>[0-9]\.[0-9](\.[0-9])?)'
+atlas:
+  type: github_tag
+  id: ariga/atlas
