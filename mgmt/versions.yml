@@ -688,3 +688,6 @@ flowgrind:
 atlas:
   type: github_tag
   id: ariga/atlas
+jd:
+  type: github_tag
+  id: josephburnett/jd
