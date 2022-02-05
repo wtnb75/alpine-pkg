@@ -73,9 +73,9 @@ mitmproxy:
 nim:
   type: github_tag
   id: nim-lang/Nim
-julia:
-  type: github_tag
-  id: JuliaLang/julia
+#julia:
+#  type: github_tag
+#  id: JuliaLang/julia
 vlang:
   type: github_tag
   id: vlang/v
