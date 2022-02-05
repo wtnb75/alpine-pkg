@@ -73,3 +73,5 @@ grype      # exists in edge/testing repo
 hashcat    # exists in edge/testing repo
 fq         # exists in edge/testing repo
 nginx-cfquic # build(prepare) failed
+cosign     # exists in edge/community repo
+rqlite     # exists in edge/testing repo
