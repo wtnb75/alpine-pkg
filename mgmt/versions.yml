@@ -691,3 +691,6 @@ atlas:
 jd:
   type: github_tag
   id: josephburnett/jd
+sshs:
+  type: github_tag
+  id: quantumsheep/sshs
