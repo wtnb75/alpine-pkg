@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=grpcurl
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=0
 pkgdesc="Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers"
 url="https://github.com/fullstorydev/grpcurl"

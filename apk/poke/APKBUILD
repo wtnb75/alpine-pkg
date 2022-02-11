@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=poke
-pkgver=2.0
+pkgver=2.1
 pkgrel=0
 pkgdesc="The extensible editor for structured binary data"
 url="http://www.jemarch.net/poke"
@@ -30,5 +30,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-a068d9e1ba65586bdc83a9d856933ca0b19248c79772be94e1ed9128fec1442d1a4ffe87424d31f5d8a6c35e6640bf3fc2e0298cc14f170cc544d645718d199d  poke-2.0.tar.gz
+073ba79c627d6b20811443146e9f3c5884a349eceabfd5b3648b95bf7bb2d4da749b628994240556e987cb02247d11e2fd7d54adb99d81e35d838dbddad67f9f  poke-2.1.tar.gz
 "
