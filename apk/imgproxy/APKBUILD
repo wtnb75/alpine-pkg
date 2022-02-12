@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=imgproxy
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=0
 pkgdesc="Fast and secure standalone server for resizing and converting remote images"
 url="https://github.com/imgproxy/imgproxy"
@@ -32,6 +32,6 @@ package() {
 	GOBIN=${pkgdir}/usr/bin go install
 }
 sha512sums="
-efa8682a227d88da0c8d6516f504469c2a0fc84aeba072180ac067f185f38942c9c8b7f55c39245500f18c9232927073c41181d608baf353d4059f1355672c4b  imgproxy-3.2.1.tar.gz
+ac8ebde99ee78e6a7f0d4782c8e96e892e442e1925b8ebfa348ec4396ec9cd043b2a8541431bb49a4d3fe8f5017d18ab13be55696129c19e66e26bb53afb6e3d  imgproxy-3.2.2.tar.gz
 18dae0a4bb41001468461e084b0e698ff753190da9aa303e004f6d81910542b1565018a615d8780236443fde3bb156db49679fa270fbad6f53026ba28ad50e21  0001-alpine.patch
 "

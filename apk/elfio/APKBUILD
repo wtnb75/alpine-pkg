@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=elfio
 _pkgname=ELFIO
-pkgver=3.9
+pkgver=3.10
 pkgrel=0
 pkgdesc="ELFIO - ELF (Executable and Linkable Format) reader and producer implemented as a header only C++ library"
 url="http://elfio.sourceforge.net/"
@@ -33,5 +33,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-479c4132ac3575940bd1e8190ba5253e54ae57f38319d7bca75ea85ee2f744f5d5b460d2d4ceb17eca0d0561c6e281673f050bbdab2f5ff526c031c220876bf1  elfio-3.9.tar.gz
+f609fe5162d1609d1d65f441dbf01011ca5ae36195d8b3a74dec2b72891e9f8f90d3fdbc9bf893f7186494071606e898e5519fda18665fc88ae9781c504cd4a9  elfio-3.10.tar.gz
 "
