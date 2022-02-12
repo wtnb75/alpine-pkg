@@ -694,3 +694,6 @@ jd:
 sshs:
   type: github_tag
   id: quantumsheep/sshs
+jless:
+  type: github_tag
+  id: PaulJuliusMartinez/jless

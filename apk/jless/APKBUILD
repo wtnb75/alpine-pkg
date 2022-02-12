@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=jless
+pkgver=0.7.1
+pkgrel=0
+pkgdesc="A command-line pager for JSON data"
+url="https://github.com/PaulJuliusMartinez/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="cargo rust"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install jless --locked --version ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
+}
