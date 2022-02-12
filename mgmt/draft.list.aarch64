@@ -6,3 +6,6 @@ gifski    # build failed(i8/u8)
 wasmer    # too long build time
 pushpin   # build failed?(libzmq??)
 zurl      # build failed?(libzmq??)
+fizz      # long build time
+folly     # long build time
+duckdb    # long build time
