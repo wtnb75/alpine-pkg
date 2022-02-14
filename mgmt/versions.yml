@@ -697,3 +697,6 @@ sshs:
 jless:
   type: github_tag
   id: PaulJuliusMartinez/jless
+hss:
+  type: github_tag
+  id: six-ddc/hss
