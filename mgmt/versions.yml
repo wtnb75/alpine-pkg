@@ -700,3 +700,6 @@ jless:
 hss:
   type: github_tag
   id: six-ddc/hss
+mask:
+  type: github_tag
+  id: jakedeichert/mask
