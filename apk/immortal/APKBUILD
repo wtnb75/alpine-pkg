@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=immortal
+pkgver=0.24.4
+pkgrel=0
+pkgdesc="A *nix cross-platform (OS agnostic) supervisor"
+url="https://github.com/${pkgname}/${pkgname}"
+arch="all"
+license="BSD-3-Clause"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/${pkgname}/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.version=v${pkgver}" ${_gourl}/cmd/...@${pkgver}
+}
