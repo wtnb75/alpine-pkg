@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=dnsx
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=0
 pkgdesc="fast and multi-purpose DNS toolkit"
 url="https://github.com/projectdiscovery/dnsx"
