@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=btop
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=0
 pkgdesc="A monitor of resources"
 url="https://github.com/aristocratos/btop"
@@ -29,6 +29,6 @@ package() {
 	make install DESTDIR=$pkgdir PREFIX=/usr
 }
 sha512sums="
-91c6beed8dc41653a75238477dbc016a8b54a9dec027b2353e4817b134a4dbaf61db48000c0d33e434287b59e41cb36bc77bdc9a2e5b4ca274beff829592227c  btop-1.2.1.tar.gz
+ef42b836cb39daa250075208dadc6dce95cbd950c43d7b7f1c8cd9f46287d3d0bec37a338dba2b09b54cf948ec0a511007b04b8a27dbc5c7e1c9884c16240a70  btop-1.2.3.tar.gz
 57bf2fe709dc5c0534b73bb1e2fb20e49c8384f9ec6b1f56ea89b5c4e79b85dda7dd13c84f7243f2aa4103d6e8b3ec8c2d4175e4b18d650b5185eb58ffb1216f  0001-alpine.patch
 "

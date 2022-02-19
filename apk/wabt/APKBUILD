@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=wabt
-pkgver=1.0.26
+pkgver=1.0.27
 pkgrel=0
 pkgdesc="The WebAssembly Binary Toolkit"
 url="https://github.com/WebAssembly/wabt"
