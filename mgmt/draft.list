@@ -80,3 +80,4 @@ git-branchless # exists in edge/testing repo
 jless      # exists in edge/testing repo
 nerdctl    # exists in edge/testing repo
 folly      # build failed
+ngtcp2     # build failed
