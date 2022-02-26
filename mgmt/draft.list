@@ -79,3 +79,4 @@ wasi-sdk   # exists in edge/community repo
 git-branchless # exists in edge/testing repo
 jless      # exists in edge/testing repo
 nerdctl    # exists in edge/testing repo
+folly      # build failed
