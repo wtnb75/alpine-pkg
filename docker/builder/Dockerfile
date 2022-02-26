@@ -1,5 +1,5 @@
 FROM alpine:edge
-RUN apk add alpine-sdk sudo atools abuild-doc mandoc ccache cmake go rust linux-headers automake autoconf libtool pkgconfig musl-dev cargo
+RUN apk add alpine-sdk sudo atools abuild-doc mandoc ccache cmake go rust linux-headers automake autoconf libtool pkgconfig musl-dev cargo bash
 RUN apk add python3 py3-pip py3-click py3-lxml py3-yaml py3-requests py3-jinja2 py3-natsort
 RUN pip3 install cssselect dirindex
 RUN sed -i -e 's,#USE_CCACHE=1,USE_CCACHE=1,g;' /etc/abuild.conf
