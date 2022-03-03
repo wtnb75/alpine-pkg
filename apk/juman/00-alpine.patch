@@ -1,0 +1,42 @@
+diff -up ./makeint/makeint.c.orig ./makeint/makeint.c
+--- ./makeint/makeint.c.orig
++++ ./makeint/makeint.c
+@@ -24,8 +24,8 @@
+ extern FILE	*Jumanrc_Fileptr;
+ extern FILE	*Cha_stderr;
+ 
+-char		CurPath[FILENAME_MAX];
+-char		JumanPath[FILENAME_MAX];
++extern char		CurPath[FILENAME_MAX];
++extern char		JumanPath[FILENAME_MAX];
+ 
+ /*
+ ------------------------------------------------------------------------------
+diff -up ./makemat/makemat.c.orig ./makemat/makemat.c
+--- ./makemat/makemat.c.orig
++++ ./makemat/makemat.c
+@@ -32,8 +32,8 @@
+ FILE            *FpImis;
+ */
+ /* ROOT            Root; */
+-char		CurPath[FILENAME_MAX];
+-char		JumanPath[FILENAME_MAX];
++extern char		CurPath[FILENAME_MAX];
++extern char		JumanPath[FILENAME_MAX];
+ 
+ /*
+ ------------------------------------------------------------------------------
+diff -up ./makepat/makepat.c.orig ./makepat/makepat.c
+--- ./makepat/makepat.c.orig
++++ ./makepat/makepat.c
+@@ -9,8 +9,8 @@
+ th_hash_node hash_array[HASH_SIZE];
+ #endif
+ 
+-pat_node tree_top[MAX_DIC_NUMBER]; /* 木のねっこ♪ 辞書の数だけ使う */
+-FILE *dic_file[MAX_DIC_NUMBER]; /* 木のもとデータ(辞書ファイル) */
++extern pat_node tree_top[MAX_DIC_NUMBER]; /* 木のねっこ♪ 辞書の数だけ使う */
++extern FILE *dic_file[MAX_DIC_NUMBER]; /* 木のもとデータ(辞書ファイル) */
+ 
+ char line[50000]; /* 入力行 */
+ FILE *out_file, *in_file; /* セーブファイル・ロードファイル */

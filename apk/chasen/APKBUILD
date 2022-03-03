@@ -1,17 +1,17 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
-pkgname=mecab
-pkgver=0.996
+pkgname=chasen
+pkgver=2.4.5
 pkgrel=0
-pkgdesc="MeCab: Yet Another Part-of-Speech and Morphological Analyzer"
-url="https://taku910.github.io/${pkgname}/"
+pkgdesc="ChaSen -- 形態素解析器"
+url="https://${pkgname}-legacy.osdn.jp/"
 arch="all"
-license="GPLv2/LGPLv2/BSD-3-Clause"
+license="BSD-3-Clause"
 depends=""
-makedepends="gnu-libiconv-dev"
+makedepends="darts-clone-dev"
 install=""
-subpackages="$pkgname-doc $pkgname-dev"
-source="$pkgname-$pkgver.tar.gz::https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7cENtOXlicTFaRUE"
+subpackages="$pkgname-dev"
+source="https://mirrors.gigenet.com/OSDN//${pkgname}-legacy/56305/${pkgname}-${pkgver}.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
@@ -34,5 +34,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-aca6d16f411b9ba9b6687242246aeb28ede6d6c6a9122d4a32da9d8e76e79b5f4af2c8e3b13ad9462b34e9d2994cbd9bbbedebac45609684db9b703da999577f  mecab-0.996.tar.gz
+54eb0788082629e030927460ccaf9b86c59f34e83435e53007627193921d42f03e90b44cedf70218abfa33286e2f93c2291523001ad1530228ccb7185f8a49ca  chasen-2.4.5.tar.gz
 "
