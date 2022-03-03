@@ -706,3 +706,6 @@ mask:
 immortal:
   type: github_tag
   id: immortal/immortal
+amp:
+  type: github_tag
+  id: jmacdonald/amp

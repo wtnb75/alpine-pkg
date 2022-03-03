@@ -82,3 +82,4 @@ nerdctl    # exists in edge/testing repo
 folly      # build failed
 poke       # exists in edge/testing repo
 svgbob     # exists in edge/testing repo
+ipfs       # go-ipfs
