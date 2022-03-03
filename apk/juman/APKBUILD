@@ -1,0 +1,39 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=juman
+pkgver=7.01
+pkgrel=0
+pkgdesc="Japanese Morphological Analysis System JUMAN"
+url="https://nlp.ist.i.kyoto-u.ac.jp/?JUMAN"
+arch="all"
+license="BSD-3-Clause"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.bz2::https://nlp.ist.i.kyoto-u.ac.jp/DLcounter/lime.cgi?down=https://nlp.ist.i.kyoto-u.ac.jp/nl-resource/${pkgname}/${pkgname}-${pkgver}.tar.bz2&name=${pkgname}-${pkgver}.tar.bz2 00-alpine.patch"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	if [ $(uname -m) = "aarch64" ] ; then
+		./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --build=arm
+	else
+		./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	fi
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+d8d9934f89ed517d65d98c4f400b650dbca0348466a5714555b4075d43ec62f50ff18fe7d659323c7adb524827401bbe019c583e6e6254494b1153324d42e995  juman-7.01.tar.bz2
+274e82126e38642d0a4307de223f486efc09ce0cd7b659071abcbc5858ae2ab7e80ba29e4917fdbbfb05c8adebdc1c445b19458ef51d0639b0e15b56154ec80b  00-alpine.patch
+"

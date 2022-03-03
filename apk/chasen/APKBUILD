@@ -1,0 +1,38 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=chasen
+pkgver=2.4.5
+pkgrel=0
+pkgdesc="ChaSen -- 形態素解析器"
+url="https://${pkgname}-legacy.osdn.jp/"
+arch="all"
+license="BSD-3-Clause"
+depends=""
+makedepends="darts-clone-dev"
+install=""
+subpackages="$pkgname-dev"
+source="https://mirrors.gigenet.com/OSDN//${pkgname}-legacy/56305/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	if [ $(uname -m) = "aarch64" ] ; then
+		./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --build=arm
+	else
+		./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	fi
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+54eb0788082629e030927460ccaf9b86c59f34e83435e53007627193921d42f03e90b44cedf70218abfa33286e2f93c2291523001ad1530228ccb7185f8a49ca  chasen-2.4.5.tar.gz
+"

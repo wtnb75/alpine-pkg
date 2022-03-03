@@ -1,0 +1,38 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=mecab
+pkgver=0.996
+pkgrel=0
+pkgdesc="MeCab: Yet Another Part-of-Speech and Morphological Analyzer"
+url="https://taku910.github.io/${pkgname}/"
+arch="all"
+license="GPLv2/LGPLv2/BSD-3-Clause"
+depends=""
+makedepends="gnu-libiconv-dev"
+install=""
+subpackages="$pkgname-doc $pkgname-dev"
+source="$pkgname-$pkgver.tar.gz::https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7cENtOXlicTFaRUE"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	if [ $(uname -m) = "aarch64" ] ; then
+		./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --build=arm
+	else
+		./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	fi
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+aca6d16f411b9ba9b6687242246aeb28ede6d6c6a9122d4a32da9d8e76e79b5f4af2c8e3b13ad9462b34e9d2994cbd9bbbedebac45609684db9b703da999577f  mecab-0.996.tar.gz
+"
