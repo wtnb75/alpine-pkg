@@ -1,0 +1,39 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=mecab-ipadic
+pkgver=2007.08.01
+pkgrel=0
+pkgdesc="MeCab ipadic"
+url="https://taku910.github.io/mecab/"
+arch="noarch"
+license="ICOT"
+depends="mecab"
+makedepends="mecab-dev"
+install=""
+subpackages=""
+source=""
+_giturl="https://github.com/taku910/mecab"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p $(dirname $builddir)
+	git clone --depth=1 ${_giturl} $builddir
+}
+
+build() {
+	cd "$builddir"
+	cd mecab-ipadic
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man --with-charset=utf8
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	cd mecab-ipadic
+	make install DESTDIR=$pkgdir
+}
