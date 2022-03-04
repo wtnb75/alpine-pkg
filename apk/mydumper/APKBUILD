@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=mydumper
-pkgver=0.11.5.2
+pkgver=0.12.1
 _pkgver=$(echo $pkgver| sed -e 's,\([0-9]*\.[0-9]*\.[0-9]*\).\([0-9]\)$,\1-\2,g;')
 #_pkgver=$pkgver
 pkgrel=0
@@ -34,5 +34,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-f600c086c7e3402c3d35070709c5968e30046be5fc351e67dca05d2d7c48565e68ccbba08cf01195aa4d2ae3f2bdf8df84338d4f44a40504b583959fb67e72d8  mydumper-0.11.5.2-0.tar.gz
+90466520af4c26478b963a70ac9614889decae743fb40c3f5b6438b1e6db11ef284bd077288a0afa2aa02c93e9df32711d948cd868a7030d5215c2c7f5f96405  mydumper-0.12.1-0.tar.gz
 "

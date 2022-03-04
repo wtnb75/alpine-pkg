@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=cosign
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=0
 pkgdesc="Container Signing"
 url="https://github.com/sigstore/cosign"
