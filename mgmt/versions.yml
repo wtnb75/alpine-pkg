@@ -709,3 +709,6 @@ immortal:
 amp:
   type: github_tag
   id: jmacdonald/amp
+docuum:
+  type: github_tag
+  id: stepchowfun/docuum
