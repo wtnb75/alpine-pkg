@@ -712,3 +712,6 @@ amp:
 docuum:
   type: github_tag
   id: stepchowfun/docuum
+boringtun:
+  type: github_tag
+  id: cloudflare/boringtun

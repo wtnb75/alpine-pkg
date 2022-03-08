@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=boringtun
+pkgver=0.4.0
+pkgrel=0
+pkgdesc="Userspace WireGuard® Implementation in Rust"
+url="https://github.com/cloudflare/${pkgname}"
+arch="all"
+license="BSD-3-Clause"
+depends=""
+makedepends="cargo rust"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install boringtun --locked --version ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
+}
