@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=autoportforward
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=0
 pkgdesc="Bidirectional port-forwarding for docker and kubernetes"
 url="https://github.com/ruoshan/${pkgname}"

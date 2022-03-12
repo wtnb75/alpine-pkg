@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=monetdb
-pkgver=11.41.15
+pkgver=11.43.9
 pkgrel=0
 pkgdesc="column store db"
 url="https://monetdb.org/"
@@ -41,6 +41,6 @@ py3() {
 }
 
 sha512sums="
-b25e6f9222f868cfd76d4a732a83345e98b0eb3c186fba34e0696cfe91f26616ef7c17680bdd0946a26b8e24dfcf95d5dbb7dc22298d5709f7de136086ccf0b2  MonetDB-11.41.15.tar.bz2
+62bff1f77f478d24a35af7b2e78e0bcbe3e6c3e52e2e9ed31e25555c43517f28e70dbc60749ffd04ec1a41a6944aa0f67c85dc69d0f27edaf1b5086608a7b3d9  MonetDB-11.43.9.tar.bz2
 0346d80535c87be99dee497da789bb75b437ffb4991a69357e41cf221254a786798607f88ec790f9996577b3abb38d1be2ee02fd481c42775d164472bfa1fdba  alpine-build.patch
 "

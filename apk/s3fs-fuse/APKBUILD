@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=s3fs-fuse
-pkgver=1.90
+pkgver=1.91
 pkgrel=0
 pkgdesc="FUSE-based file system backed by Amazon S3"
 url="https://github.com/s3fs-fuse/s3fs-fuse"
@@ -31,5 +31,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-f1b74676b9c83e5b99bdd59666eea8cdcd9a6fcd2f9237aaf33fd6e12d642f26ee11a3c3ffb0248ea7ce24ac31ae45eeb5f2bd7f04b8e91ed8a04004d59a550d  s3fs-fuse-1.90.tar.gz
+5b57af18395f34885b4b8a98e93b0e3f9043c9af78e415a0a6c15489611d7e21ae619e69655737de369edee15762d8726b82bc2651b5b7f5c20e26fe866a96bc  s3fs-fuse-1.91.tar.gz
 "
