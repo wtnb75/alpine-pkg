@@ -715,3 +715,9 @@ docuum:
 boringtun:
   type: github_tag
   id: cloudflare/boringtun
+gup:
+  type: github_tag
+  id: nao1215/gup
+multi-git-status:
+  type: github_tag
+  id: fboender/multi-git-status

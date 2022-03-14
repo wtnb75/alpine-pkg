@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=multi-git-status
+pkgver=2.1
+pkgrel=0
+pkgdesc="Show uncommitted, untracked and unpushed changes for multiple Git repos"
+url="https://github.com/fboender/${pkgname}"
+arch="all"
+license="MIT"
+depends="ncurses"
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/fboender/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir PREFIX=/usr
+	mkdir -p $pkgdir/usr/share
+	mv $pkgdir/usr/man $pkgdir/usr/share/man
+}
+sha512sums="
+93dde3bd637e0d2139e44cbe3b89e19d89703b87b6050fb98246acc8623f7a57979779e0fbbf0a77381a58d1cdfcf0cc1e221e947d4ddfc848ceaa196957d647  multi-git-status-2.1.tar.gz
+"
