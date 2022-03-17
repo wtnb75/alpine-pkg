@@ -46,3 +46,4 @@ jobs:
         git commit -m 'auto update version'
         hub push origin $tag
         hub pull-request -b ${GITHUB_REF##*/} -m "auto update version"
+        gh workflow run branch --ref $tag
