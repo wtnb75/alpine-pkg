@@ -85,3 +85,4 @@ svgbob     # exists in edge/testing repo
 ipfs       # go-ipfs
 juman      # build failed
 jumanpp    # build failed
+clair      # build failed(go.mod replace directive)
