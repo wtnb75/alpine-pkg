@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=bazel
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=0
 pkgdesc="a fast, scalable, multi-language and extensible build system"
 url="https://bazel.build/"
@@ -40,6 +40,6 @@ package() {
 }
 
 sha512sums="
-2a9a972d1cce6b50f959fec3d37506914208169c8aa36e5ec5f9a27942e9beff1080a544a18e9bd5eb13dc434c1864cda0594e6da5b78c2f41085abf808c22d7  bazel-5.0.0-dist.zip
+5017955c42dabd2d1f3bc60cf5601268ecbdeeec37dbbe4f6c7ccffbd0cc10a178bddee253dd618f9ecb9fe0c7ebecf1c0130d1d160841d7c8572f419eaf4a96  bazel-5.1.0-dist.zip
 f264581ace86f6839a2815c41e828c28014cf75b78c13f0ad1cd2d857c9cbb6461e5b93d7b87ec3692e198a75b4db56fd04b5eb3758be24f8bf9171fc240dbe2  temp-failure-retry.patch
 "

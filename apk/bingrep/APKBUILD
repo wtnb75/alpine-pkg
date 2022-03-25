@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=bingrep
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=0
 pkgdesc="like ~~grep~~ UBER, but for binaries"
 url="https://github.com/m4b/${pkgname}"
