@@ -721,3 +721,6 @@ gup:
 multi-git-status:
   type: github_tag
   id: fboender/multi-git-status
+easeprobe:
+  type: github_tag
+  id: megaease/easeprobe
