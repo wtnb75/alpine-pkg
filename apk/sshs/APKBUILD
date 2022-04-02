@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=sshs
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=0
 pkgdesc="Terminal user interface for SSH"
 url="https://github.com/quantumsheep/${pkgname}"

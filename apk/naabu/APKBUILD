@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=naabu
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=0
 pkgdesc="A fast port scanner written in go"
 url="https://github.com/projectdiscovery/naabu"
