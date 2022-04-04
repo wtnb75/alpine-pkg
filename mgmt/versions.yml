@@ -724,3 +724,6 @@ multi-git-status:
 easeprobe:
   type: github_tag
   id: megaease/easeprobe
+difftastic:
+  type: cargo
+  id: difftastic
