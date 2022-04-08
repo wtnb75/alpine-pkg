@@ -207,7 +207,7 @@ class VersionChecker:
             _log.debug("suffix %s", links)
         return self.get_newest(regexp, links, stopwords=stopwords)
 
-    def get_version_git_tag(self, url, regexp="^v?(?P<version>.*)$", stopwords=None):
+    def get_version_git_tag(self, url, regexp="^v?(?P<version>[0-9\.]*)$", stopwords=None):
         tags = []
         for line in subprocess.check_output(["git", "ls-remote", "--tags", url], text=True).splitlines():
             v = line.strip().split()
@@ -218,7 +218,7 @@ class VersionChecker:
         return self.get_newest(regexp, tags, stopwords=stopwords)
 
     def get_version_github_tag(self, id,
-                               regexp=r"^v?(?P<version>.*)(\\^\\{\\})?$", stopwords=None):
+                               regexp=r"^v?(?P<version>[0-9\.]*)(\\^\\{\\})?$", stopwords=None):
         return self.get_version_git_tag(
             url=f"https://github.com/{id}",
             regexp=regexp, stopwords=stopwords)
@@ -260,7 +260,7 @@ class VersionChecker:
         return self.get_newest(regexp, versions, stopwords=stopwords)
 
     def get_version_github_release(self, id,
-                                   regexp=r"^v?(?P<version>.*)(\\^\\{\\})?$",
+                                   regexp=r"^v?(?P<version>[0-9\.]*)(\\^\\{\\})?$",
                                    stopwords=None):
         res = requests.get(
             f"https://api.github.com/repos/{id}/releases/latest").json()
