@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=youki
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=0
 pkgdesc="An experimental container runtime written in Rust"
 url="https://github.com/containers/youki"

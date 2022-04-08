@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=pandoc
-pkgver=2.17.1.1
+pkgver=2.18
 pkgrel=0
 pkgdesc="a universal document converter"
 url="https://pandoc.org/"
