@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=docuum
-pkgver=0.20.5
+pkgver=0.21.0
 pkgrel=0
 pkgdesc="Docuum performs least recently used (LRU) eviction of Docker images"
 url="https://github.com/stepchowfun/${pkgname}"

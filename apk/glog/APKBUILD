@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=glog
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=0
 pkgdesc="C++ implementation of the Google logging module"
 url="https://github.com/google/glog"
@@ -31,4 +31,6 @@ package() {
 	cd "$builddir"/build
 	make install DESTDIR=$pkgdir
 }
-sha512sums="445e4338f3d81cd0b065f2da9c6ce343c243263ca144cea424ef97531a4e9e09c06ffd6942ac01c5213a8003c75cfbbede3c4028d12f0134f23ff29314769c1a  glog-0.5.0.tar.gz"
+sha512sums="
+fd2c42583d0dd72c790a8cf888f328a64447c5fb9d99b2e2a3833d70c102cb0eb9ae874632c2732424cc86216c8a076a3e24b23a793eaddb5da8a1dc52ba9226  glog-0.6.0.tar.gz
+"
