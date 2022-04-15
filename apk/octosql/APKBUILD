@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=octosql
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=0
 pkgdesc="OctoSQL is a query tool that allows you to join, analyse and transform data from multiple databases and file formats using SQL"
 url="https://github.com/cube2222/${pkgname}"

@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=grype
-pkgver=0.34.7
+pkgver=0.35.0
 pkgrel=0
 pkgdesc="A vulnerability scanner for container images and filesystems"
 url="https://github.com/anchore/grype"
