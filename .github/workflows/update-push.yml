@@ -29,6 +29,8 @@ jobs:
       run: docker-compose up -d builder
     - name: chmod
       run: chmod -R go+wX apk .git
+    - name: git config
+      run: docker-compose exec -T -w /build builder git config --global --add safe.directory /build
     - name: update version
       run: docker-compose exec -T -w /build/mgmt builder python3 -m mgmt auto-update versions.yml
     - name: git setting
