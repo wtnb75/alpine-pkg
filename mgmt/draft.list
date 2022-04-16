@@ -86,3 +86,4 @@ ipfs       # go-ipfs
 juman      # build failed
 jumanpp    # build failed
 clair      # build failed(go.mod replace directive)
+vitess     # build failed(error obtaining VCS status: exit status 128)
