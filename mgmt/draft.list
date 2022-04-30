@@ -88,3 +88,4 @@ jumanpp    # build failed
 clair      # build failed(go.mod replace directive)
 vitess     # build failed(error obtaining VCS status: exit status 128)
 cedro      # build failed(Segmentation fault)
+hashlink   # build failed(undefined reference to tgkill)
