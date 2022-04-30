@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=mold
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=0
 pkgdesc="mold: A Modern Linker"
 url="https://github.com/rui314/mold"
@@ -29,5 +29,5 @@ package() {
 	make install PREFIX=/usr DESTDIR=$pkgdir
 }
 sha512sums="
-8ee806c43afd53bf980af8f640f2bbc60ca1d9a20d33684c4d743b21c9e86f91e96fb3186be2fdbeb0ed1f2e0ffb45301a72c11b0f94733409c583bdeef94c8f  mold-1.2.0.tar.gz
+fc39674b00119d09b3275ed7232356f0b25dad1a0f3a498f9db1a4835b6d4f9ea637ca9a643a05591ea895e8751d9bee43cdcb42303beb082462e76ddb42a0f1  mold-1.2.1.tar.gz
 "

@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=evans
-pkgver=0.10.4
+pkgver=0.10.6
 pkgrel=0
 pkgdesc="Evans: more expressive universal gRPC client"
 url="https://github.com/ktr0731/evans"
@@ -17,7 +17,7 @@ builddir="$srcdir/$pkgname-$pkgver"
 
 
 build() {
-	GO111MODULE=on go get ${_gourl}@v${pkgver}
+	:
 }
 
 check() {
@@ -27,6 +27,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	cd $(go env GOMODCACHE)/${_gourl}@v${pkgver}
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install
+	GOBIN=${pkgdir}/usr/bin go install ${_gourl}@v${pkgver}
 }

@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=runsc
-pkgver=20220418.0
+pkgver=20220425.0
 pkgrel=0
 pkgdesc="Application Kernel for Containers"
 url="https://github.com/google/gvisor"
