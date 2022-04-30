@@ -17,7 +17,7 @@ builddir="$srcdir/$pkgname-$pkgver"
 
 
 build() {
-	GO111MODULE=on go get ${_gourl}@v${pkgver}
+	:
 }
 
 check() {
@@ -27,6 +27,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	cd $(go env GOMODCACHE)/${_gourl}@v${pkgver}
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install
+	GOBIN=${pkgdir}/usr/bin go install ${_gourl}@v${pkgver}
 }
