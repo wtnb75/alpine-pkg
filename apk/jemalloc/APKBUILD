@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=jemalloc
-pkgver=5.2.1
+pkgver=5.3.0
 pkgrel=0
 pkgdesc="jemalloc is a general purpose malloc(3) implementation"
 url="http://jemalloc.net/"
@@ -30,6 +30,6 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-0bbb77564d767cef0c6fe1b97b705d368ddb360d55596945aea8c3ba5889fbce10479d85ad492c91d987caacdbbdccc706aa3688e321460069f00c05814fae02  jemalloc-5.2.1.tar.bz2
+22907bb052096e2caffb6e4e23548aecc5cc9283dce476896a2b1127eee64170e3562fa2e7db9571298814a7a2c7df6e8d1fbe152bd3f3b0c1abec22a2de34b1  jemalloc-5.3.0.tar.bz2
 574dc6751b65b27acc860571934d1da74761eee6a2d4efa9c96a7388882a29f6906cb967011fb43b2661c9e3d1100f5d6d34938d7da0f7cbcaa90547cb6f5f34  jemalloc-pc.patch
 "
