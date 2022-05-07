@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=fq
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=0
 pkgdesc="jq for binary formats"
 url="https://github.com/wader/${pkgname}"
