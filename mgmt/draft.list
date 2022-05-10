@@ -89,3 +89,5 @@ clair      # build failed(go.mod replace directive)
 vitess     # build failed(error obtaining VCS status: exit status 128)
 cedro      # build failed(Segmentation fault)
 hashlink   # build failed(undefined reference to tgkill)
+git-bug    # exists in edge/testing repo
+difftastic # exists in edge/testing repo
