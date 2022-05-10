@@ -1,0 +1,38 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=mbw
+pkgver=1.5
+pkgrel=0
+pkgdesc="Memory Bandwidth Benchmark"
+url="https://github.com/raas/${pkgname}/"
+arch="all"
+license="LGPLv2.1"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/raas/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+  mkdir -p $pkgdir/usr/share/man/man1
+  install -c -m 644 -o root -g root ../mbw.1 $pkgdir/usr/share/man/man1/
+}
+sha512sums="
+64d95c63e36a8eb443b2cb2f99c26782c1fdec281ec203533f25359cbb97764d3d71b9066cd45fa9ff7021858989dd3de34d560cffa1cd71d9b9c1aa341166e3  mbw-1.5.tar.gz
+"
