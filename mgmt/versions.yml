@@ -727,3 +727,9 @@ easeprobe:
 difftastic:
   type: cargo
   id: difftastic
+mbw:
+  type: github_tag
+  id: raas/mbw
+litestream:
+  type: github_tag
+  id: benbjohnson/litestream
