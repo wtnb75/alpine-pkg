@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=deno
-pkgver=1.21.2
+pkgver=1.21.3
 pkgrel=0
 pkgdesc="A secure JavaScript and TypeScript runtime"
 url="https://deno.land/"
