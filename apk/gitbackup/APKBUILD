@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=gitbackup
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=0
 pkgdesc="Tool to backup your Bitbucket, GitHub and GitLab repositories"
 url="https://github.com/amitsaha/${pkgname}"
