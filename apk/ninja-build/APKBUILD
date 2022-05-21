@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=ninja-build
 pkgname0=ninja
-pkgver=1.10.2
+pkgver=1.11.0
 pkgrel=0
 pkgdesc="a small build system with a focus on speed"
 url="https://ninja-build.org/"
@@ -31,4 +31,6 @@ package() {
 	install -c -s -m 755 ninja "${pkgdir}/usr/bin/"
 }
 
-sha512sums="895412ae1cbc83c656e92f282602a29300e08274e9dea0da4464202ae556e7a1ab03bec057f23da4756bbd91bd2d744cd7a64b336740fd2782bb4db5c3b7b496  ninja-build-1.10.2.tar.gz"
+sha512sums="
+9b9c8dae2251f9ddba50680911271b8504c292994fd90a0da94902f64c69a9edc72212217df5c651ddfc2f79c2ae03e84c99b805497dcd7497c53a1617de83e7  ninja-build-1.11.0.tar.gz
+"
