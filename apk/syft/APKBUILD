@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=syft
-pkgver=0.46.1
+pkgver=0.46.3
 pkgrel=0
 pkgdesc="CLI tool and library for generating a Software Bill of Materials from container images and filesystems"
 url="https://github.com/anchore/syft"

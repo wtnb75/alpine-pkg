@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=yaegi
-pkgver=0.11.3
+pkgver=0.12.0
 pkgrel=0
 pkgdesc="Yaegi is Another Elegant Go Interpreter"
 url="https://github.com/traefik/yaegi"
