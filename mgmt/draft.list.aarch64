@@ -9,3 +9,5 @@ zurl      # build failed?(libzmq??)
 fizz      # long build time
 folly     # long build time
 duckdb    # long build time
+mask      # build failed?(killed)
+uutils    # build failed?(killed)
