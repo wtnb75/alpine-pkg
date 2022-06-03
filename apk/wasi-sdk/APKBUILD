@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=wasi-sdk
-pkgver=15
+pkgver=16
 pkgrel=0
 pkgdesc="WASI-enabled WebAssembly C/C++ toolchain"
 url="https://github.com/WebAssembly/wasi-sdk"
