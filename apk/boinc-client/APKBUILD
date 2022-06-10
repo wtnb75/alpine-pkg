@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=boinc-client
 pkgver=7.18.1
-_pkgver=7.18
+_pkgver=$(echo $pkgver | cut -f1-2 -d.)
 pkgrel=0
 pkgdesc="Open-source software for volunteer computing and grid computing"
 url="https://boinc.berkeley.edu/"
