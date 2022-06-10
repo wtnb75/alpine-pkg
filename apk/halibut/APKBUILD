@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=halibut
+pkgver=1.3
+pkgrel=0
+pkgdesc="Halibut: yet another free document preparation system"
+url="https://www.chiark.greenend.org.uk/~sgtatham/${pkgname}/"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="https://www.chiark.greenend.org.uk/~sgtatham/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+872f0cdb398002843d7e1b19f6eaf80ff848ce5ffee8653fa88da63c57e89efcbfaadc09b476280d25d38136f7d8af286fa98b9b36598515e0eb50f1945ee34a  halibut-1.3.tar.gz
+"
