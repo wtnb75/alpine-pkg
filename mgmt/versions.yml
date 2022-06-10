@@ -733,3 +733,6 @@ mbw:
 litestream:
   type: github_tag
   id: benbjohnson/litestream
+cfonts:
+  type: cargo
+  id: cfonts
