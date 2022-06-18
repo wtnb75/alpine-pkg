@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=multi-git-status
-pkgver=2.1
+pkgver=2.2
 pkgrel=0
 pkgdesc="Show uncommitted, untracked and unpushed changes for multiple Git repos"
 url="https://github.com/fboender/${pkgname}"
@@ -30,5 +30,5 @@ package() {
 	mv $pkgdir/usr/man $pkgdir/usr/share/man
 }
 sha512sums="
-93dde3bd637e0d2139e44cbe3b89e19d89703b87b6050fb98246acc8623f7a57979779e0fbbf0a77381a58d1cdfcf0cc1e221e947d4ddfc848ceaa196957d647  multi-git-status-2.1.tar.gz
+e90f3b26497aa15d8e6c825a57bef774addf74ffc534e8e2856142170b519ac68ff30f0cccd1fb524429906982eeafb3779de9885594c981eb75a5484d63ffed  multi-git-status-2.2.tar.gz
 "

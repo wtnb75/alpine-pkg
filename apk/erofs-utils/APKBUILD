@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=erofs-utils
-pkgver=1.4
+pkgver=1.5
 pkgrel=0
 pkgdesc="${pkgname} includes user-space tools for EROFS filesystem"
 url="https://git.kernel.org/pub/scm/linux/kernel/git/xiang/${pkgname}.git"
@@ -11,7 +11,7 @@ depends=""
 makedepends="lz4-dev util-linux-dev"
 install=""
 subpackages="$pkgname-doc"
-source="https://git.kernel.org/pub/scm/linux/kernel/git/xiang/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.gz 0000-alpine.patch"
+source="https://git.kernel.org/pub/scm/linux/kernel/git/xiang/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
@@ -31,6 +31,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-ab95d6a7b2d278ee443d1e378c62354db66ce7ab5ce03b3a8d9004cf498c4e43e3e8ced6524444d2ea4871c4db0195489f033180c8a2082c2cba69c46c09692f  erofs-utils-1.4.tar.gz
-b226ee32dd2724b9306257cf525110487d9b093480dd50411334ec20f2fae725f02d9c01911400e5bafed32cb3c6788d2a07ee590f8fcfd50e53676d036fdad4  0000-alpine.patch
+0a9d593a9fef3c5976dc63e2927f47d070121ed07e6dda727b0a715b72cfe560c83bdf26ce41fe07b8cb5b66b0660105848e3f7c5a84f222296eb422d1cd5cba  erofs-utils-1.5.tar.gz
 "

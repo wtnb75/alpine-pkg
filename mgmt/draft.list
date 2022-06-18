@@ -92,3 +92,5 @@ hashlink   # build failed(undefined reference to tgkill)
 git-bug    # exists in edge/testing repo
 difftastic # exists in edge/testing repo
 octosql    # build failed
+gifski     # build failed(/usr/include/libavcodec/vaapi.h)
+proxify    # build failed(tmp)

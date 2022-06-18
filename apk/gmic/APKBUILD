@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=gmic
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=0
 pkgdesc="full-featured open-source framework for image processing"
 url="https://gmic.eu/"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-4ba7cf006d8ad09f5169ba225f04aae0c0e152c318d08ba97e1cca6dc728cc0a8fc5a1e3b58482fb7e569af7cee0b8df5d45aeede8f15a305b98332c389b7a9f  gmic-3.1.2.tar.gz
+b7d2361209e764f74968a4680bd818a6a7cf6d13dc33bccf0af8f132f56a355318eb81bd984f1a407bcd09435cfa31423defa5d432482a1b314e17de096391d6  gmic-3.1.3.tar.gz
 "
