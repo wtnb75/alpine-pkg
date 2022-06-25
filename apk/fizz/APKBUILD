@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=fizz
-pkgver=2022.06.13.00
+pkgver=2022.06.20.00
 pkgrel=0
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 url="https://github.com/facebookincubator/fizz"
@@ -33,6 +33,6 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-be9369522b2b66b09a58babeae2b58a5ca906e617a3d051dd216caa4a743cdb4b7a42a0d235e4cd2d25f687f81a4676a8eeb636cea78cbe13e06eef2424ae9c3  fizz-2022.06.13.00.tar.gz
+a998cc2bb7fb7da1f2f09471d56588846aa63ba73c3623e4ccc15893e3b2686c0d9890dc9363d494891eb550ee55a2ddfb15740ce7836b695a2a169c30a43180  fizz-2022.06.20.00.tar.gz
 b7862b8e01274f7701f156ab5fd8ea1a36595098c9c8cdc81aa007c64fa38c7db14dc3f8cd9232d1d0b9c852c301bd4cf473ed34717c0951d3dc0d3c9bf7463e  0001-alpine.patch
 "

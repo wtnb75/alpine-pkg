@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=uftrace
-pkgver=0.11
+pkgver=0.12
 pkgrel=0
 pkgdesc="Function graph tracer for C/C++/Rust"
 url="https://github.com/namhyung/uftrace"
@@ -30,5 +30,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-519ca13665ba97cea4c349d81b4b5cacd8d3d9b2188ef5edb447f6b783cb7a92356bc0f9e63b67427a896d8df671f58091113e1de3fffd8d8000417a9fdb6e46  uftrace-0.11.tar.gz
+02331f9e76b5652b0464fb3e9e29320ca1d4691a9de7bc7e7e489c3eac040ecd389c201ff2875b1b6a6695c687d7eab640239728f8b66c97efea21414b215842  uftrace-0.12.tar.gz
 "
