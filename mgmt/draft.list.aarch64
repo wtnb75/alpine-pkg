@@ -12,3 +12,4 @@ duckdb    # long build time
 mask      # build failed?(killed)
 uutils    # build failed?(killed)
 cfonts    # build failed?(cargo)
+wasmtime  # build failed?(cargo)
