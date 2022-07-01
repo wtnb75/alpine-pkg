@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=dasel
-pkgver=1.24.3
+pkgver=1.25.0
 pkgrel=0
 pkgdesc="Select, put and delete data from JSON, TOML, YAML, XML and CSV"
 url="https://github.com/TomWright/dasel"
