@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=certigo
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=0
 pkgdesc="A utility to examine and validate certificates in a variety of formats"
 url="https://github.com/square/certigo"

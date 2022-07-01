@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=abseil-cpp
-pkgver=20211102.0
+pkgver=20220623.0
 pkgrel=0
 pkgdesc="Abseil Common Libraries (C++)"
 url="https://abseil.io/"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-fed68aa434c02ec6faa9d1c81f1ad35b60ec024b44957e2e0ac31e6075e385c06a3e1b616afeb4bb7c2413191fd7827d82e1f9f0796b52ed21fb2c41dd9031cf  abseil-cpp-20211102.0.tar.gz
+6a84254927cac285c77f6b2e77de23ce4f65c28acc0289228f3db552e247fb1dedf2c6e51a98da7df700c062612e27e6acd029122e8abc3fff12f3f5502c8c10  abseil-cpp-20220623.0.tar.gz
 "
