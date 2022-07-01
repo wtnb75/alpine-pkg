@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=doggo
+pkgver=0.5.3
+pkgrel=0
+pkgdesc="Command-line DNS Client for Humans"
+url="https://github.com/mr-karan/${pkgname}"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/mr-karan/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.buildVersion=v${pkgver} -X main.buildDate=$(date +%Y-%m-%d)" ${_gourl}/cmd/doggo@v${pkgver}
+}

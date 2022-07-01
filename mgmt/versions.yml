@@ -736,3 +736,6 @@ litestream:
 cfonts:
   type: cargo
   id: cfonts
+doggo:
+  type: github_tag
+  id: mr-karan/doggo
