@@ -739,3 +739,6 @@ cfonts:
 doggo:
   type: github_tag
   id: mr-karan/doggo
+ijq:
+  type: git_tag
+  url: https://git.sr.ht/~gpanders/ijq

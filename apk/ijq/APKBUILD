@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ijq
+pkgver=0.4.0
+pkgrel=0
+pkgdesc="Interactive jq tool"
+url="https://github.com/git.sr.ht/~gpanders/${pkgname}"
+arch="all"
+license="GPLv3"
+depends="jq"
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="git.sr.ht/~gpanders/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.Version=v${pkgver}" ${_gourl}@v${pkgver}
+}
