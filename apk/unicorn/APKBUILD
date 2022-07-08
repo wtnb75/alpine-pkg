@@ -8,15 +8,18 @@ url="https://www.unicorn-engine.org/"
 arch="all"
 license="GPLv2"
 depends=""
-makedepends="py3-pip"
+makedepends="py3-pip cmake"
 install=""
-subpackages="$pkgname-dev py3-$pkgname:py3"
+subpackages="py3-$pkgname:py3 $pkgname-dev"
 source="${pkgname}-${pkgver}.tar.gz::https://github.com/unicorn-engine/${pkgname}/archive/${pkgver}.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
 	cd "$builddir"
-	make PREFIX=/usr
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+	make
 }
 
 check() {
@@ -25,9 +28,9 @@ check() {
 }
 
 package() {
-	cd "$builddir"
-	make install DESTDIR=$pkgdir PREFIX=/usr
-	make install3 DESTDIR=${pkgdir} -C bindings/python
+	cd "$builddir/build"
+	make install DESTDIR=$pkgdir
+	make install3 DESTDIR=${pkgdir} -C ../bindings/python
 }
 
 py3() {
