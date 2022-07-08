@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=unicorn
-pkgver=1.0.3
+pkgver=2.0.0
 pkgrel=0
 pkgdesc="Unicorn is a lightweight multi-platform, multi-architecture CPU emulator framework"
 url="https://www.unicorn-engine.org/"
@@ -36,4 +36,6 @@ py3() {
 	mkdir -p "$subpkgdir"/usr/lib
 	mv "$pkgdir"/usr/lib/python* "$subpkgdir"/usr/lib
 }
-sha512sums="10f1b5194358c65bc94723eaafd7b4167fee18f96a4810f46f8c78ed1ef5584546e66e8c910fa4eeadd791fcd73edea68f898e337081409fd188b4090b78a7ca  unicorn-1.0.3.tar.gz"
+sha512sums="
+3996f19755ccdaac6e92a7455160e1c90a592ffb789d55ddc9d1bdcf1e68e8a6150bcfa1025a322780c04878be8de28e0ad5fdd79a7b25887ed2793b769f6789  unicorn-2.0.0.tar.gz
+"
