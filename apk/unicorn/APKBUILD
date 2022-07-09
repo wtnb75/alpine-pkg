@@ -1,22 +1,25 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=unicorn
-pkgver=1.0.3
+pkgver=2.0.0
 pkgrel=0
 pkgdesc="Unicorn is a lightweight multi-platform, multi-architecture CPU emulator framework"
 url="https://www.unicorn-engine.org/"
 arch="all"
 license="GPLv2"
 depends=""
-makedepends="py3-pip"
+makedepends="py3-pip cmake"
 install=""
-subpackages="$pkgname-dev py3-$pkgname:py3"
+subpackages="py3-$pkgname:py3 $pkgname-dev"
 source="${pkgname}-${pkgver}.tar.gz::https://github.com/unicorn-engine/${pkgname}/archive/${pkgver}.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
 	cd "$builddir"
-	make PREFIX=/usr
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+	make
 }
 
 check() {
@@ -25,9 +28,9 @@ check() {
 }
 
 package() {
-	cd "$builddir"
-	make install DESTDIR=$pkgdir PREFIX=/usr
-	make install3 DESTDIR=${pkgdir} -C bindings/python
+	cd "$builddir/build"
+	make install DESTDIR=$pkgdir
+	make install3 DESTDIR=${pkgdir} -C ../bindings/python
 }
 
 py3() {
@@ -36,4 +39,6 @@ py3() {
 	mkdir -p "$subpkgdir"/usr/lib
 	mv "$pkgdir"/usr/lib/python* "$subpkgdir"/usr/lib
 }
-sha512sums="10f1b5194358c65bc94723eaafd7b4167fee18f96a4810f46f8c78ed1ef5584546e66e8c910fa4eeadd791fcd73edea68f898e337081409fd188b4090b78a7ca  unicorn-1.0.3.tar.gz"
+sha512sums="
+3996f19755ccdaac6e92a7455160e1c90a592ffb789d55ddc9d1bdcf1e68e8a6150bcfa1025a322780c04878be8de28e0ad5fdd79a7b25887ed2793b769f6789  unicorn-2.0.0.tar.gz
+"

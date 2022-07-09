@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=difftastic
-pkgver=0.29.1
+pkgver=0.30.0
 pkgrel=0
 pkgdesc="a diff that understands syntax"
 url="https://github.com/Wilfred/${pkgname}"
