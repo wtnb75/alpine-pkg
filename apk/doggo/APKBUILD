@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=doggo
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=0
 pkgdesc="Command-line DNS Client for Humans"
 url="https://github.com/mr-karan/${pkgname}"
