@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=evans
-pkgver=0.10.7
+pkgver=0.10.8
 pkgrel=0
 pkgdesc="Evans: more expressive universal gRPC client"
 url="https://github.com/ktr0731/evans"

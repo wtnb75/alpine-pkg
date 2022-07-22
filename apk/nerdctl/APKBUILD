@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=nerdctl
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=0
 pkgdesc="contaiNERD CTL - Docker-compatible CLI for containerd"
 url="https://github.com/containerd/${pkgname}"
