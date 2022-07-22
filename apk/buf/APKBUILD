@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=buf
+pkgver=1.6.0
+pkgrel=0
+pkgdesc="A new way of working with Protocol Buffers"
+url="https://github.com/${pkgname}build/${pkgname}"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/${pkgname}build/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X github.com/bufbuild/buf/private/buf/bufcli.Version=v${pkgver}" ${_gourl}/cmd/buf@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X github.com/bufbuild/buf/private/buf/bufcli.Version=v${pkgver}" ${_gourl}/cmd/protoc-gen-buf-breaking@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X github.com/bufbuild/buf/private/buf/bufcli.Version=v${pkgver}" ${_gourl}/cmd/protoc-gen-buf-lint@v${pkgver}
+}

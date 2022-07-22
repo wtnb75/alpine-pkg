@@ -736,6 +736,24 @@ litestream:
 cfonts:
   type: cargo
   id: cfonts
+qsv:
+  type: github_tag
+  id: jqnatividad/qsv
 doggo:
   type: github_tag
   id: mr-karan/doggo
+api-linter:
+  type: github_tag
+  id: googleapis/api-linter
+buf:
+  type: github_tag
+  id: bufbuild/buf
+protolint:
+  type: github_tag
+  id: yoheimuta/protolint
+prototool:
+  type: github_tag
+  id: uber/prototool
+protoc-gen-lint:
+  type: github_tag
+  id: ckaznocha/protoc-gen-lint

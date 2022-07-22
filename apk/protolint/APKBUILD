@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=protolint
+pkgver=0.38.3
+pkgrel=0
+pkgdesc="A pluggable linter and fixer to enforce Protocol Buffer style and conventions"
+url="https://github.com/yoheimuta/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/yoheimuta/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X github.com/yoheimuta/protolint/internal/cmd.version=v${pkgver}" ${_gourl}/cmd/protolint@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X github.com/yoheimuta/protolint/internal/cmd/protocgenprotolint.version=v${pkgver}" ${_gourl}/cmd/protoc-gen-protolint@v${pkgver}
+}
