@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=qsv
+pkgver=0.59.0
+pkgrel=0
+pkgdesc="CSVs sliced, diced & analyzed"
+url="https://github.com/jqnatividad/${pkgname}"
+arch="all"
+license="Unlicense/MIT"
+depends=""
+makedepends="cargo rust"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install qsv --locked --version ${pkgver} --root ${pkgdir}/usr --features full
+	rm -f ${pkgdir}/usr/.crates*
+}
