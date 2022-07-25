@@ -26,62 +26,15 @@ wangle     # need fizz
 fbcinder   # build failed
 uftrace    # missing gcrt1.o
 cdb        # no license
-pv         # exists in base repo
 mesh       # build failed
 hoard      # build failed
 zig        # needs llvm 12.x
-sysbench   # exists in base repo
-cmph       # exists in base repo
-glog       # exists in base repo
-monetdb    # exists in edge/testing repo
-s3fs-fuse  # exists in edge/testing repo
-sccache    # exists in edge/testing repo
-cscope     # exists in edge/testing repo
-mkcert     # exists in edge/testing repo
-3proxy     # exists in edge/testing repo
-gyp        # exists in edge/testing repo
-dasel      # exists in edge/testing repo
-sslscan    # exists in edge/testing repo
-htmlq      # exists in edge/testing repo
-wabt       # exists in edge/testing repo
-quickjs    # exists in edge/testing repo
-libqb      # exists in edge/testing repo
-minio      # exists in edge/testing repo
-viddy      # exists in edge/community repo
-nim        # exists in edge/community repo
-pandoc     # exists in edge/testing repo
-bazel      # bazel4 exists in base repo
-ssdeep     # exists in edge/community repo
-frp        # exists in edge/community repo
-govc       # exists in edge/testing repo
-gping      # exists in edge/testing repo
-abseil-cpp # exists in edge/community repo
-guetzli    # exists in edge/testing repo
-termshark  # exists in edge/testing repo
-libtree    # exists in edge/testing repo
-elfio      # exists in edge/testing repo
-cxxopts    # exists in edge/testing repo
-termcolor  # exists in edge/testing repo
 gmic       # build failed
-btop       # exists in edge/community repo
-mold       # exists in edge/testing repo
 mongrel2   # build failed
 opentelemetry-collector  # build failed?
 glusterfs  # build failed(liburing)
-syft       # exists in edge/testing repo
-grype      # exists in edge/testing repo
-hashcat    # exists in edge/testing repo
-fq         # exists in edge/testing repo
 nginx-cfquic # build(prepare) failed
-cosign     # exists in edge/community repo
-rqlite     # exists in edge/testing repo
-wasi-sdk   # exists in edge/community repo
-git-branchless # exists in edge/testing repo
-jless      # exists in edge/testing repo
-nerdctl    # exists in edge/testing repo
 folly      # build failed
-poke       # exists in edge/testing repo
-svgbob     # exists in edge/testing repo
 ipfs       # go-ipfs
 juman      # build failed
 jumanpp    # build failed
@@ -89,8 +42,6 @@ clair      # build failed(go.mod replace directive)
 vitess     # build failed(error obtaining VCS status: exit status 128)
 cedro      # build failed(Segmentation fault)
 hashlink   # build failed(undefined reference to tgkill)
-git-bug    # exists in edge/testing repo
-difftastic # exists in edge/testing repo
 octosql    # build failed
 gifski     # build failed(/usr/include/libavcodec/vaapi.h)
 act        # build failed(go.mod replace directive)
