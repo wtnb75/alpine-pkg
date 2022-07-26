@@ -4,11 +4,6 @@ bazel:
 calc:
   type: github_tag
   id: lcn2/calc
-cscope:
-  type: sourceforge
-  id: cscope
-  directory: cscope
-  regexp: '^v?(?P<version>[^\s]+)'
 deno:
   type: cargo
   id: deno
@@ -21,20 +16,9 @@ duckdb:
 glusterfs:
   type: github_tag
   id: gluster/glusterfs
-gyp:
-  type: head
-  skip: true
 kubebuilder:
   type: github_tag
   id: kubernetes-sigs/kubebuilder
-mkcert:
-  type: github_tag
-  id: FiloSottile/mkcert
-monetdb:
-  type: general
-  url: https://www.monetdb.org/downloads/sources/Latest/
-  xpath: /html/body/pre/a[6]/text()
-  regexp: '^MonetDB-(?P<version>[0-9\.]*)\.tar'
 ninja-build:
   type: github_tag
   id: ninja-build/ninja
@@ -52,15 +36,6 @@ pyston:
   type: github_tag
   id: pyston/pyston
   skip: true
-rqlite:
-  type: github_tag
-  id: rqlite/rqlite
-sslscan:
-  type: github_tag
-  id: rbsec/sslscan
-sysbench:
-  type: github_tag
-  id: akopytov/sysbench
 tgtd:
   type: github_tag
   id: fujita/tgt
@@ -70,9 +45,6 @@ wasmtime:
 mitmproxy:
   type: pypi
   id: mitmproxy
-nim:
-  type: github_tag
-  id: nim-lang/Nim
 #julia:
 #  type: github_tag
 #  id: JuliaLang/julia
@@ -119,9 +91,6 @@ pacemaker:
   type: github_tag
   id: ClusterLabs/pacemaker
   regexp: '^Pacemaker-(?P<version>.*)$'
-libqb:
-  type: github_tag
-  id: ClusterLabs/libqb
 corosync:
   type: github_tag
   id: corosync/corosync
@@ -133,16 +102,9 @@ global:
 sourcetrail:
   type: github_tag
   id: CoatiSoftware/Sourcetrail
-3proxy:
-  type: github_tag
-  id: 3proxy/3proxy
-  regexp: '^3proxy-(?P<version>.*)'
 wasmer:
   type: github_tag
   id: wasmerio/wasmer
-sccache:
-  type: cargo
-  id: sccache
 ovh-ttyrec:
   type: github_tag
   id: ovh/ovh-ttyrec
@@ -163,12 +125,6 @@ mathtex:
 mimetex:
   type: ctan
   id: mimetex
-libqb:
-  type: github_tag
-  id: ClusterLabs/libqb
-git-bug:
-  type: github_tag
-  id: MichaelMure/git-bug
 git-delta:
   type: github_tag
   id: dandavison/delta
@@ -178,9 +134,6 @@ orangefs:
   xpath: '//a["href"]'
   attribute: href
   regexp: '.*orangefs-(?P<version>[0-9\.]*)\.tar\.gz$'
-minio:
-  type: github_tag
-  id: minio/minio
 cling:
   type: github_tag
   id: root-project/cling
@@ -236,9 +189,6 @@ ngtcp2:
 folly:
   type: github_tag
   id: facebook/folly
-glog:
-  type: github_tag
-  id: google/glog
 wangle:
   type: github_tag
   id: facebook/wangle
@@ -251,16 +201,6 @@ msquic:
 mvfst:
   type: github_tag
   id: facebookincubator/mvfst
-mujs:
-  type: autoindex
-  url: https://mujs.com/downloads/
-  prefix: mujs-
-  suffix: .tar.gz
-quickjs:
-  type: autoindex
-  url: https://bellard.org/quickjs/
-  prefix: quickjs-
-  suffix: .tar.xz
 libpano13:
   type: hg_tag
   url: http://hg.code.sf.net/p/panotools/libpano13
@@ -276,9 +216,6 @@ boinc-client:
   type: github_tag
   id: BOINC/boinc
   regexp: '^client_release/[^/]*/(?P<version>.*)$'
-govc:
-  type: github_tag
-  id: vmware/govmomi
 picotls:
   type: github_tag
   id: h2o/picotls
@@ -287,11 +224,6 @@ picoquic:
   type: github_tag
   id: private-octopus/picoquic
   skip: true
-poke:
-  type: autoindex
-  url: https://ftp.gnu.org/gnu/poke/
-  prefix: poke-
-  suffix: .tar.gz
 nginx-cfquic:
   type: github_tag
   id: cloudflare/quiche
@@ -301,36 +233,18 @@ gravity:
 cedro:
   type: github_tag
   id: Sentido-Labs/cedro
-viddy:
-  type: github_tag
-  id: sachaos/viddy
 sqlite-utils:
   type: github_tag
   id: simonw/sqlite-utils
-dolt:
-  type: github_release
-  id: dolthub/dolt
 addlicense:
   type: github_tag
   id: google/addlicense
 misspell:
   type: github_tag
   id: client9/misspell
-golangci-lint:
-  type: github_tag
-  id: golangci/golangci-lint
-cosign:
-  type: github_tag
-  id: sigstore/cosign
-dasel:
-  type: github_tag
-  id: tomwright/dasel
 drill-http:
   type: github_tag
   id: fcsonline/drill
-pv:
-  type: github_tag
-  id: a-j-wood/pv
 whalebrew:
   type: github_tag
   id: whalebrew/whalebrew
@@ -340,66 +254,33 @@ uftrace:
 opentelemetry-collector:
   type: github_tag
   id: open-telemetry/opentelemetry-collector
-htmlq:
-  type: cargo
-  id: htmlq
 hoard:
   type: github_tag
   id: emeryberger/Hoard
-jemalloc:
-  type: github_tag
-  id: jemalloc/jemalloc
 mimalloc:
   type: github_tag
   id: microsoft/mimalloc
 rpmalloc:
   type: github_tag
   id: mjansson/rpmalloc
-wabt:
-  type: github_tag
-  id: WebAssembly/wabt
-svgbob:
-  type: cargo
-  id: svgbob_cli
-s3fs-fuse:
-  type: github_tag
-  id: s3fs-fuse/s3fs-fuse
 fuseiso:
   type: sourceforge
   id: fuseiso
   directory: fuseiso
   regexp: '^(?P<version>[^\s]+)'
-pandoc:
-  type: github_tag
-  id: jgm/pandoc
 caire:
   type: github_tag
   id: esimov/caire
 goose:
   type: github_tag
   id: pressly/goose
-wasi-sdk:
-  type: github_tag
-  id: WebAssembly/wasi-sdk
-  regexp: '^wasi-sdk-(?P<version>[^\s]+)'
 runsc:
   type: github_tag
   id: google/gvisor
   regexp: '^release-(?P<version>[^\s]+)'
-gping:
-  type: github_tag
-  id: orf/gping
-  regexp: '^gping-v(?P<version>[^\s]+)'
 faktory:
   type: github_tag
   id: contribsys/faktory
-ssdeep:
-  type: github_tag
-  id: ssdeep-project/ssdeep
-  regexp: '^release-(?P<version>[^\s]+)'
-frp:
-  type: github_tag
-  id: fatedier/frp
 mydumper:
   type: github_tag
   id: maxbube/mydumper
@@ -415,9 +296,6 @@ toast:
 yaegi:
   type: github_tag
   id: traefik/yaegi
-abseil-cpp:
-  type: github_tag
-  id: abseil/abseil-cpp
 bsdiff:
   type: general
   url: https://www.daemonology.net/bsdiff/
@@ -434,9 +312,6 @@ gifski:
 #goofys:   # build failed with newer version
 #  type: github_tag
 #  id: kahing/goofys
-guetzli:
-  type: github_tag
-  id: google/guetzli
 hashlink:
   type: github_tag
   id: HaxeFoundation/hashlink
@@ -455,9 +330,6 @@ xsimd:
 zig:
   type: github_tag
   id: ziglang/zig
-hashcat:
-  type: github_tag
-  id: hashcat/hashcat
 gotun:
   type: github_tag
   id: opencoff/go-tunnel
@@ -476,9 +348,6 @@ control-flag:
 fortio:
   type: github_tag
   id: fortio/fortio
-git-branchless:
-  type: github_tag
-  id: arxanas/git-branchless
 goawk:
   type: github_tag
   id: benhoyt/goawk
@@ -488,21 +357,12 @@ haiku:
 proxygen:
   type: github_tag
   id: facebook/proxygen
-termshark:
-  type: github_tag
-  id: gcla/termshark
 uroboros:
   type: github_tag
   id: evilsocket/uroboros
 xmake:
   type: github_tag
   id: xmake-io/xmake
-btop:
-  type: github_tag
-  id: aristocratos/btop
-certigo:
-  type: github_tag
-  id: square/certigo
 bit-git:
   type: github_tag
   id: chriswalz/bit
@@ -518,19 +378,6 @@ hostess:
 goplus:
   type: github_tag
   id: goplus/gop
-cxxopts:
-  type: github_tag
-  id: jarro2783/cxxopts
-elfio:
-  type: github_tag
-  id: serge1/ELFIO
-  regexp: '^Release_(?P<version>[^\s]+)'
-libtree:
-  type: github_tag
-  id: haampie/libtree
-termcolor:
-  type: github_tag
-  id: ikalnytskyi/termcolor
 htpdate:
   type: github_tag
   id: twekkel/htpdate
@@ -579,12 +426,6 @@ imgproxy:
 snzip:
   type: github_tag
   id: kubo/snzip
-syft:
-  type: github_tag
-  id: anchore/syft
-grype:
-  type: github_tag
-  id: anchore/grype
 clair:
   type: github_tag
   id: quay/clair
@@ -592,9 +433,6 @@ gmic:
   type: github_release
   id: dtschump/gmic
   regexp: '^v\.(?P<version>[^\s]+)'
-mold:
-  type: github_tag
-  id: rui314/mold
 austin:
   type: github_tag
   id: P403n1x87/austin
@@ -607,18 +445,12 @@ orgalorg:
 sniffer:
   type: github_tag
   id: chenjiandongx/sniffer
-fq:
-  type: github_tag
-  id: wader/fq
 ehco:
   type: github_release
   id: Ehco1996/ehco
 kitchen_sync:
   type: github_tag
   id: willbryant/kitchen_sync
-nerdctl:
-  type: github_tag
-  id: containerd/nerdctl
 rush:
   type: autoindex
   url: http://ftp.gnu.org/gnu/rush/
@@ -639,9 +471,9 @@ periscope:
 erofs-utils:
   type: git_tag
   url: https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git
-#dsq:
-#  type: github_tag
-#  id: multiprocessio/dsq
+dsq:
+  type: github_tag
+  id: multiprocessio/dsq
 textql:
   type: github_tag
   id: dinedal/textql
@@ -694,9 +526,6 @@ jd:
 sshs:
   type: github_tag
   id: quantumsheep/sshs
-jless:
-  type: github_tag
-  id: PaulJuliusMartinez/jless
 hss:
   type: github_tag
   id: six-ddc/hss
@@ -724,9 +553,6 @@ multi-git-status:
 easeprobe:
   type: github_tag
   id: megaease/easeprobe
-difftastic:
-  type: cargo
-  id: difftastic
 mbw:
   type: github_tag
   id: raas/mbw
@@ -739,9 +565,6 @@ cfonts:
 qsv:
   type: github_tag
   id: jqnatividad/qsv
-doggo:
-  type: github_tag
-  id: mr-karan/doggo
 api-linter:
   type: github_tag
   id: googleapis/api-linter

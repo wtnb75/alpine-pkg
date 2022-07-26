@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=dsq
-pkgver=0.1
+pkgver=0.21.0
 pkgrel=0
 pkgdesc="Commandline tool for running SQL queries against JSON, CSV, Excel, Parquet, and more"
 url="https://github.com/multiprocessio/${pkgname}"
@@ -27,5 +27,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}@latest
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}@${pkgver}
 }
