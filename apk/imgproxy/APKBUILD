@@ -11,7 +11,7 @@ depends=""
 makedepends="go vips-dev"
 install=""
 subpackages=""
-source="$pkgname-$pkgver.tar.gz::https://github.com/imgproxy/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz 0001-alpine.patch"
+source="$pkgname-$pkgver.tar.gz::https://github.com/imgproxy/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 _gourl="github.com/imgproxy/imgproxy"
 builddir="$srcdir/$pkgname-$pkgver"
 
@@ -33,5 +33,4 @@ package() {
 }
 sha512sums="
 771debb15672920c5267ae7221687a4c4b1e360c5094d4079b81319fdaa880d10b1b8854d78db3d1b0f26fce37e0a3cfbb884ac09c6605251afe8fb9966e468f  imgproxy-3.7.0.tar.gz
-18dae0a4bb41001468461e084b0e698ff753190da9aa303e004f6d81910542b1565018a615d8780236443fde3bb156db49679fa270fbad6f53026ba28ad50e21  0001-alpine.patch
 "
