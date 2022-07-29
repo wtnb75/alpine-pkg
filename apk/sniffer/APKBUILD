@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=sniffer
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=0
 pkgdesc="A modern alternative network traffic ${pkgname}"
 url="https://github.com/chenjiandongx/${pkgname}"
