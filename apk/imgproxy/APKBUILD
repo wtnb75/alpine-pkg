@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=imgproxy
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=0
 pkgdesc="Fast and secure standalone server for resizing and converting remote images"
 url="https://github.com/imgproxy/imgproxy"
@@ -32,5 +32,5 @@ package() {
 	GOBIN=${pkgdir}/usr/bin go install
 }
 sha512sums="
-771debb15672920c5267ae7221687a4c4b1e360c5094d4079b81319fdaa880d10b1b8854d78db3d1b0f26fce37e0a3cfbb884ac09c6605251afe8fb9966e468f  imgproxy-3.7.0.tar.gz
+dcea08e740d971efaef1ef102cd74437097b8f14cf23963a24fa2edd481976cfb6a9193611978301d4e880c7d248a2d7ad1ac9057c655f25625c2e1f5f051d0d  imgproxy-3.7.1.tar.gz
 "
