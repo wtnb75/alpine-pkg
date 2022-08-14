@@ -47,3 +47,4 @@ gifski     # build failed(/usr/include/libavcodec/vaapi.h)
 act        # build failed(go.mod replace directive)
 boringtun  # yanked from registry
 atlas      # build failed
+trafficserver # missing execinfo
