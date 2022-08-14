@@ -1,0 +1,32 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=rush-parallel
+pkgver=0.5.0
+pkgrel=0
+pkgdesc="A cross-platform command-line tool for executing jobs in parallel"
+url="https://github.com/shenwei356/rush"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/shenwei356/rush"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.VERSION=v${pkgver}" ${_gourl}@v${pkgver}
+  mv ${pkgdir}/usr/bin/rush ${pkgdir}/usr/bin/rush-parallel
+}
