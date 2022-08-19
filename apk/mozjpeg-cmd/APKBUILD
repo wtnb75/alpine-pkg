@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=mozjpeg-cmd
 _pkgname=mozjpeg
-pkgver=4.0.3
+pkgver=4.1.1
 pkgrel=0
 pkgdesc="Improved JPEG encoder"
 url="https://github.com/mozilla/mozjpeg"
@@ -36,5 +36,5 @@ package() {
 	done
 }
 sha512sums="
-59c2d65af28d4ef68b9e5c85215cf3b26f4ac5c98e3ae76ba5febceec97fa5ab28cc13496e3f039f11cae767c5466bbf798038f83b310134c13d2e9a6bf5467e  mozjpeg-4.0.3.tar.gz
+09a9a4eb7c7037440cc1c90acbbf5f4c726fb2d531f3b41c46f47e1d9418677a8f335a16aa58697c6a3f7035d18dda9275af95a4f40cea3e9b854117b8ed1e32  mozjpeg-4.1.1.tar.gz
 "
