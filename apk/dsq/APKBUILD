@@ -27,5 +27,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}@${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}@v${pkgver}
 }
