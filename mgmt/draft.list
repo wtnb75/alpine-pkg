@@ -48,3 +48,4 @@ act        # build failed(go.mod replace directive)
 boringtun  # yanked from registry
 atlas      # build failed
 trafficserver # missing execinfo
+xsimd      # exists in edge/testing
