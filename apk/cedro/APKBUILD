@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=cedro
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=0
 pkgdesc="Cedro is a C language extension that works as a pre-processor"
 url="https://sentido-labs.com/en/library/cedro/202106171400/"
@@ -30,6 +30,6 @@ package() {
 	cp bin/* $pkgdir/bin/
 }
 sha512sums="
-19aab5322ca36e6409eb8281c164b7d403e8ddfc3d9af1a9947abb0fd251f197dbe394af73ec4ba011c9d2b27264393db119a26043035277a3fdd24448c43b6e  cedro-1.0.8.tar.gz
+ed150073be68f457a2a80ef9af3647cdc2e190ff9605cb72d306d8b1e5d3daeda84a7934a4decc3105ef9c60d4ea5eafd2a5d0c44a21120ea7883bf0de0feb51  cedro-1.0.9.tar.gz
 4610f02ac8b5edcb5b09fc70551bc3db6ee5dcfb6ddd3d036c2c9aee474e0b668f28fe1513e597f06b20c259436675dfea89fd78a108393dc96c8cdcd12d1cb0  cedro-1.0-getenv.patch
 "
