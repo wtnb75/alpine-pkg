@@ -165,9 +165,9 @@ nuclei:
 naabu:
   type: github_tag
   id: projectdiscovery/naabu
-unicorn:
-  type: github_tag
-  id: unicorn-engine/unicorn
+#unicorn:
+#  type: github_tag
+#  id: unicorn-engine/unicorn
 tikv:
   type: github_release
   id: tikv/tikv

@@ -49,3 +49,4 @@ boringtun  # yanked from registry
 atlas      # build failed
 trafficserver # missing execinfo
 xsimd      # exists in edge/testing
+qsv        # github tag != crates.io version?
