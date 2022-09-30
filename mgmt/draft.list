@@ -50,3 +50,6 @@ atlas      # build failed
 trafficserver # missing execinfo
 xsimd      # exists in edge/testing
 qsv        # github tag != crates.io version?
+docuum     # exists in edge/community
+erofs-utils # exists in edge/testing
+lzfse       # exists in edge/testing
