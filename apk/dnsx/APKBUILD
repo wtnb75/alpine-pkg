@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=dnsx
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=0
 pkgdesc="fast and multi-purpose DNS toolkit"
 url="https://github.com/projectdiscovery/dnsx"
@@ -17,7 +17,7 @@ builddir="$srcdir/$pkgname-$pkgver"
 
 
 build() {
-	GO111MODULE=on go get ${_gourl}@v${pkgver}
+	:
 }
 
 check() {
@@ -27,6 +27,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	cd $(go env GOMODCACHE)/${_gourl}@v${pkgver}/cmd/dnsx
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}/cmd/dnsx@v${pkgver}
 }
