@@ -580,3 +580,6 @@ prototool:
 protoc-gen-lint:
   type: github_tag
   id: ckaznocha/protoc-gen-lint
+go-getter:
+  type: github_tag
+  id: hashicorp/go-getter
