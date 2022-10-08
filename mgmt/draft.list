@@ -53,3 +53,4 @@ qsv        # github tag != crates.io version?
 docuum     # exists in edge/community
 erofs-utils # exists in edge/testing
 lzfse       # exists in edge/testing
+go-getter  # v2 invalid version
