@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=api-linter
-pkgver=1.36.2
+pkgver=1.36.3
 pkgrel=0
 pkgdesc="A linter for APIs defined in protocol buffers."
 url="https://github.com/googleapis/${pkgname}"
