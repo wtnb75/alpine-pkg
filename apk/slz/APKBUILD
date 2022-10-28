@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=slz
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=0
 pkgdesc="Stateless ZIP library"
 url="http://www.libslz.org/"

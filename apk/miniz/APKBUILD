@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=miniz
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=0
 pkgdesc="miniz: Single C source file zlib-replacement library"
 url="https://github.com/richgel999/miniz"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-0bb2b0ac627715b90ff9fd69ca8958a0bea387bd7ddf5c200daba953b98ef788092e3009842f4f123234e85570159250c8897a30c1c1f2d4dea9bca9837f6111  miniz-2.2.0.tar.gz
+178ec178202eb9736d9bf4d38a31d0114c5231dc62c1cc233a0449aea8dcc418cc179d58fee4cf6979b1a58eda77f244eab35203c2610749e355b15708df5c01  miniz-3.0.0.tar.gz
 "
