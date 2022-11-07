@@ -583,3 +583,6 @@ protoc-gen-lint:
 go-getter:
   type: github_tag
   id: hashicorp/go-getter
+alpaca:
+  type: github_tag
+  id: samuong/alpaca
