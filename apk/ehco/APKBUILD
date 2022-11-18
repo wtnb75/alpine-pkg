@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=ehco
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=0
 pkgdesc="${pkgname} is a network relay tool and a typo"
 url="https://github.com/Ehco1996/${pkgname}"
