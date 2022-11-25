@@ -1,17 +1,17 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=wasmer
-pkgver=2.3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="🚀 The leading WebAssembly Runtime supporting WASI and Emscripten"
 url="https://wasmer.io/"
 arch="all"
 license="MIT"
 depends=""
-makedepends="rust ncurses-dev libffi-dev openssl-dev libxkbcommon-dev"
+makedepends="rust nodejs ncurses-dev libffi-dev openssl-dev libxkbcommon-dev"
 install=""
 subpackages="$pkgname-wapm"
-source="${pkgname}-${pkgver}.tar.gz::https://github.com/wasmerio/wasmer/archive/refs/tags/${pkgver}.tar.gz"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/wasmerio/wasmer/archive/refs/tags/v${pkgver}.tar.gz"
 builddir="${srcdir}/${pkgname}-${pkgver}"
 
 build() {
@@ -38,5 +38,5 @@ wapm() {
 	mv ${pkgdir}/usr/bin/wapm ${subpkgdir}/usr/bin
 }
 sha512sums="
-78257162078073000e71b99d0a1d466c7702800d2116f9f4446794dbec960695bb06d4dd2117aed914f06de0d44286b404395003e9908e7b2c9ab20d8793646c  wasmer-2.3.0.tar.gz
+6ad5728906c62c6a277df74249035a2e8f6c329a7ab8e616518f47ed014da7c56eff06aaabb9277709139ae24caf6f183b785129de5015388c4a11998d1dd8b9  wasmer-3.0.1.tar.gz
 "

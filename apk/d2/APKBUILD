@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=d2
+pkgver=0.0.13
+pkgrel=0
+pkgdesc="D2 is a modern diagram scripting language that turns text to diagrams"
+url="https://github.com/terrastruct/${pkgname}"
+arch="all"
+license="MPL-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="oss.terrastruct.com/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X version.Version=v${pkgver}" ${_gourl}/cmd/d2@v${pkgver}
+}
