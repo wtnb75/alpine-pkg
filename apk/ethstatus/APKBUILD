@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ethstatus
+pkgver=0.4a
+pkgrel=0
+pkgdesc="${pkgname}"
+url="https://github.com/samuelsh/${pkgname}"
+arch="all"
+license="GPLv2"
+depends="ncurses"
+makedepends="ncurses-dev gcc"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/samuelsh/${pkgname}/archive/refs/heads/master.tar.gz"
+builddir="$srcdir/$pkgname-master"
+
+build() {
+	cd "$builddir"
+	gcc -O2 -Wall -o ethstatus ethstatus.c -lncurses
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p $pkgdir/usr/bin
+	mkdir -p $pkgdir/usr/share/man/man1
+	install -c -m 755 ethstatus $pkgdir/usr/bin
+	install -c -m 644 ethstatus.1 $pkgdir/usr/share/man/man1/
+}
+sha512sums="
+dd25584bdfad334bcf8bb43806f3da9c10a9e22d0a0da877b0a4cc1904e7de2a57c3c5886b3be9b740e1cde581ac8fd165c2930a93a667b7dc38a5f355ad1054  ethstatus-0.4a.tar.gz
+"

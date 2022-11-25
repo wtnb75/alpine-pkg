@@ -586,3 +586,6 @@ go-getter:
 alpaca:
   type: github_tag
   id: samuong/alpaca
+d2:
+  type: github_tag
+  id: terrastruct/d2
