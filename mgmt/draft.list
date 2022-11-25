@@ -55,3 +55,4 @@ erofs-utils # exists in edge/testing
 lzfse       # exists in edge/testing
 go-getter  # v2 invalid version
 ehco       # cannot use "quic-go doesn't build on Go 1.19 yet."
+d2         # undefined reference
