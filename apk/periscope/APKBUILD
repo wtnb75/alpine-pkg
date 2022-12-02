@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=periscope
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=0
 pkgdesc="de-duplicate your files without losing data"
 url="https://github.com/anishathalye/${pkgname}"
