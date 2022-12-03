@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=wasmtime
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=0
 pkgdesc="Standalone JIT-style runtime for WebAssembly, using Cranelift"
 url="https://wasmtime.dev/"
