@@ -11,7 +11,7 @@ depends=""
 makedepends="util-linux readline-dev"
 install=""
 subpackages="$pkgname-dev $pkgname-doc"
-source="http://isthe.com/chongo/src/calc/calc-$pkgver.tar.bz2 arg-fix.patch"
+source="http://isthe.com/chongo/src/calc/calc-$pkgver.tar.bz2"
 builddir="$srcdir/${pkgname}-${pkgver}"
 
 build() {
@@ -32,5 +32,4 @@ package() {
 
 sha512sums="
 d443906652fc6dc13d061364fd1478a8f9b3c50cf5895dc56923e569541b23a6b88126a5951211dbc0159cd2e0242c0f8a5883afb1c8229847543bd0d09c661f  calc-2.14.1.2.tar.bz2
-8c7c7a7d175eea72af721d2bc4a5d7c0036f55fa0f7ff8017517a9f1b8d2284e345e10f622a4de3800c5741033396a9ca307cceda2747782a7fb7d4883a710c2  arg-fix.patch
 "
