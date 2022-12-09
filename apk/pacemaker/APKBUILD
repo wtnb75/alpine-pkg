@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=pacemaker
 _pkgname=Pacemaker
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=0
 pkgdesc="Pacemaker is an advanced, scalable High-Availability cluster resource manager"
 url="https://www.clusterlabs.org/pacemaker/"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-80c02dc65860cfdb62f5d03dd9b6ca9326a4050770d250c4958f3bb13acde8038dd81622c9458c859330eec8c26258a3fc43831cb56ef80ebb557de114c53efa  pacemaker-2.1.4.tar.gz
+d47c35478b0d874fbc76db3d8d6875f4c18e4eb93f28bcf74142019dee7085744b86a9e8f12725a5c4a0a61fe901e1d8b33b78b50e2135746435e876d83755ba  pacemaker-2.1.5.tar.gz
 "
