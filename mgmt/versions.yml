@@ -589,3 +589,18 @@ alpaca:
 d2:
   type: github_tag
   id: terrastruct/d2
+osv-scanner:
+  type: github_tag
+  id: google/osv-scanner
+pdf-diff:
+  type: github_tag
+  id: serhack/pdf-diff
+skeema:
+  type: github_tag
+  id: skeema/skeema
+tproxy:
+  type: github_tag
+  id: kevwan/tproxy
+sbom-cli-plugin:
+  type: github_tag
+  id: docker/sbom-cli-plugin
