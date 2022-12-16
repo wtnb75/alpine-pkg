@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=global
-pkgver=6.6.8
+pkgver=6.6.9
 pkgrel=0
 pkgdesc="GNU Global source code tagging system"
 url="https://www.gnu.org/software/global/"
@@ -30,5 +30,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-1a09d91ae4c569601c3550e443b271e9bdf48b19d54f628370a9c36a87a0b763dae0212d827bfbcb79eff45ef90a1737596f15cb1122d0bbbb0dba50001656f4  global-6.6.8.tar.gz
+b95d917c2c44251ac12a1abbc8660a20241758c1642c950198ce51bd9ddc87573822c85e968afe78afd582ec5c037269431f97983fb23f52a6f981b3524e7dfa  global-6.6.9.tar.gz
 "
