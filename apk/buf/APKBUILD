@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=buf
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=0
 pkgdesc="A new way of working with Protocol Buffers"
 url="https://github.com/${pkgname}build/${pkgname}"
