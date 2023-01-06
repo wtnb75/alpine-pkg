@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=kitchen_sync
-pkgver=2.15
+pkgver=2.16
 pkgrel=0
 pkgdesc="Fast unidirectional synchronization"
 url="https://github.com/willbryant/${pkgname}"
@@ -34,5 +34,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-027dd451b9046ed861376c803cbe6a665c96e53ec65b3d5e8bcc732b1fb8ca49f41bfdf4867247aeb8d8f49bff1e7eddbbf4803df77893c477017fb76afac8ec  kitchen_sync-2.15.tar.gz
+ade30e830cd8aa8cba6f1cbc4a959343346b3e2da75e31eb7cadb7bb06653923ffd0b9d4198dce2699f3646a1d20b4f1e2c9f9db7473a305bd1e3a96fa99130f  kitchen_sync-2.16.tar.gz
 "
