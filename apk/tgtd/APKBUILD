@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=tgtd
 _pkgname=tgt
-pkgver=1.0.84
+pkgver=1.0.85
 pkgrel=0
 pkgdesc="Linux SCSI target framework"
 url="http://stgt.sourceforge.net/"
@@ -31,6 +31,6 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-a194d95fac7c4525b22257af3977b1ca680d81bbf1aa4c75444f30a6d8d8db22eca3b29b2ece314fe3b0c0d18152e048c912347c9db1146c9f38419be5116971  tgtd-1.0.84.tar.gz
+847e4c4f80e9bdc46910eb9ab49a150d985a8fcdb77e67eabf5eb12845d9faafee76f9b7a5d71d5b3504205288d77fcf3e0f04e7f835ab8ad829700c13d783d4  tgtd-1.0.85.tar.gz
 960a268e17f7dc4f39cf749965a1d64f814e875a859936cc483357e888e373dbb8573e9531d58826ce38ee5923f5d61319f09947f66798dcafddf58de8cfa667  0001-wordsize.patch
 "
