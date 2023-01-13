@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=osv-scanner
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=0
 pkgdesc="Vulnerability scanner written in Go which uses the data provided by https://osv.dev"
 url="https://github.com/google/${pkgname}"
