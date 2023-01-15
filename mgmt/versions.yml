@@ -604,3 +604,6 @@ tproxy:
 sbom-cli-plugin:
   type: github_tag
   id: docker/sbom-cli-plugin
+gokey:
+  type: github_tag
+  id: cloudflare/gokey
