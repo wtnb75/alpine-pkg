@@ -607,3 +607,9 @@ sbom-cli-plugin:
 gokey:
   type: github_tag
   id: cloudflare/gokey
+cdebug:
+  type: github_tag
+  id: iximiuz/cdebug
+runn:
+  type: github_tag
+  id: k1LoW/runn
