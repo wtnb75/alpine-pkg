@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=addlicense
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=0
 pkgdesc="ensures source code files have copyright license headers"
 url="https://github.com/google/addlicense"

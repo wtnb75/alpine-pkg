@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=gifski
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=0
 pkgdesc="GIF encoder based on libimagequant (pngquant)."
 url="https://github.com/ImageOptim/gifski"
