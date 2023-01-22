@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=scriptisto
+pkgver=2.0.1
+pkgrel=0
+pkgdesc='A language-agnostic "shebang interpreter" that enables you to write scripts in compiled languages.'
+url="https://github.com/igor-petruk/${pkgname}"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="cargo rust"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install scriptisto --locked --version ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
+}

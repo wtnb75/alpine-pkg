@@ -613,3 +613,6 @@ cdebug:
 runn:
   type: github_tag
   id: k1LoW/runn
+scriptisto:
+  type: github_tag
+  id: igor-petruk/scriptisto
