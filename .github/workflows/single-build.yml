@@ -35,11 +35,11 @@ jobs:
         chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
     - name: build image
       run: |
-        docker compose -f docker compose.yml -f ${{ matrix.arch }}.yml build builder test
+        docker compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build builder test
         docker pull alpine:edge
-        docker compose -f docker compose.yml -f ${{ matrix.arch }}.yml build export
+        docker compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build export
     - name: boot builder
-      run: docker compose -f docker compose.yml -f ${{ matrix.arch }}.yml up -d builder
+      run: docker compose -f docker-compose.yml -f ${{ matrix.arch }}.yml up -d builder
     - name: apk update
       run: docker compose exec -T builder sudo apk update
     - name: build apk

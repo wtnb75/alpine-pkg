@@ -48,11 +48,11 @@ jobs:
       run: docker plugin install --grant-all-permissions ghcr.io/wtnb75/anyfs:latest
     - name: build image
       run: |
-        docker compose -f docker compose.yml -f ${{ matrix.arch }}.yml build builder test
+        docker compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build builder test
         docker pull alpine:edge
-        docker compose -f docker compose.yml -f ${{ matrix.arch }}.yml build export
+        docker compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build export
     - name: boot builder
-      run: docker compose -f docker compose.yml -f s3output.yml -f ${{ matrix.arch }}.yml up -d builder
+      run: docker compose -f docker-compose.yml -f s3output.yml -f ${{ matrix.arch }}.yml up -d builder
     - name: cache
       uses: actions/cache@v3
       with:
@@ -60,7 +60,7 @@ jobs:
         key: ${{ runner.os }}-buildcache-${{ matrix.arch }}-${{ hashFiles('**/APKBUILD') }}
         restore-keys: ${{ runner.os }}-${{ matrix.arch }}-buildcache-
     - name: import cache
-      run: docker compose -f docker compose.yml -f s3output.yml up cache-import
+      run: docker compose -f docker-compose.yml -f s3output.yml up cache-import
     - name: apk update
       run: docker compose exec -T builder sudo apk update
     - name: build apk
@@ -72,7 +72,7 @@ jobs:
     - name: export cache
       run: |
         mkdir -p -m 0777 cache
-        docker compose -f docker compose.yml -f s3output.yml up cache-export
+        docker compose -f docker-compose.yml -f s3output.yml up cache-export
         ls -lR cache
     - name: shutdown builder
-      run: docker compose -f docker compose.yml -f s3output.yml down -v
+      run: docker compose -f docker-compose.yml -f s3output.yml down -v
