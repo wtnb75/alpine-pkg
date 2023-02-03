@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=hashlink
-pkgver=1.12
+pkgver=1.13
 pkgrel=0
 pkgdesc="A virtual machine for Haxe"
 url="https://hashlink.haxe.org/"
@@ -29,6 +29,6 @@ package() {
 	make install PREFIX=$pkgdir/usr
 }
 sha512sums="
-9c8c0f2bd338f98bf99e6f0d9e681caad600dc2089bdf0a78ec296d8d855827675f22bd919e6a9cd3c8e242093ca4429480eb3ae07cad5da26107de02e8450bd  hashlink-1.12.tar.gz
+b41373e5c4256fe5217d352f642a860309f6bc89c487214296270166862cbf4a84bc0e060fe29edc7972460d15b31ba5b489d50cd04307d760b0524bb012ab34  hashlink-1.13.tar.gz
 aff7de03120de2c5d555902eb3ee1a866514424ed9ce8de5118c5ea62b08b00b8a83d713f5191599ce720896d83c943786eee69e1d30f5ee51c10bbf3c7b0fa2  0001-alpine.patch
 "
