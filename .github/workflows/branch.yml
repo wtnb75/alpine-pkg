@@ -35,11 +35,11 @@ jobs:
         chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
     - name: build image
       run: |
-        docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build builder test
+        docker compose -f docker compose.yml -f ${{ matrix.arch }}.yml build builder test
         docker pull alpine:edge
-        docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build export
+        docker compose -f docker compose.yml -f ${{ matrix.arch }}.yml build export
     - name: boot builder
-      run: docker-compose -f docker-compose.yml -f ${{ matrix.arch }}.yml up -d builder
+      run: docker compose -f docker compose.yml -f ${{ matrix.arch }}.yml up -d builder
     - name: cache
       uses: actions/cache@v3
       with:
@@ -47,9 +47,9 @@ jobs:
         key: ${{ runner.os }}-buildcache-${{ matrix.arch }}-${{ hashFiles('**/APKBUILD') }}
         restore-keys: ${{ runner.os }}-${{ matrix.arch }}-buildcache-
     - name: import cache
-      run: docker-compose up cache-import
+      run: docker compose up cache-import
     - name: apk update
-      run: docker-compose exec -T builder sudo apk update
+      run: docker compose exec -T builder sudo apk update
     - name: build apk
       run: |
         cd apk
@@ -58,21 +58,21 @@ jobs:
           [ -f "${i}/APKBUILD" ] || continue
           grep -q "^${i}" ../mgmt/draft.list && continue
           [ -f ../mgmt/draft.list.${{ matrix.arch }} ] && grep -q "^${i}" ../mgmt/draft.list.${{ matrix.arch }} && continue
-          docker-compose exec -T builder sh /build/build-all.sh ${i} || exit 1
+          docker compose exec -T builder sh /build/build-all.sh ${i} || exit 1
         done
     - name: gc and re-index
       run: |
-        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ matrix.arch }}/ --no-dry || true
-        docker-compose exec -T -w /build/mgmt builder python3 -m mgmt make-index --privkey /home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa /home/packager/packages/apk/${{ matrix.arch }}/ || true
+        docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ matrix.arch }}/ --no-dry || true
+        docker compose exec -T -w /build/mgmt builder python3 -m mgmt make-index --privkey /home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa /home/packager/packages/apk/${{ matrix.arch }}/ || true
     - name: list apk
       run: |
         mkdir -p -m 0777 output
-        env c_gid=$(id -g) c_uid=$(id -u) docker-compose up export
+        env c_gid=$(id -g) c_uid=$(id -u) docker compose up export
         ls -lR output
     - name: export cache
       run: |
         mkdir -p -m 0777 cache
-        docker-compose up cache-export
+        docker compose up cache-export
         ls -lR cache
     - name: shutdown builder
-      run: docker-compose down -v
+      run: docker compose down -v
