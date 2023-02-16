@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=wasm3
+pkgver=0.5.0
+pkgrel=0
+pkgdesc="A fast WebAssembly interpreter, and the most universal WASM runtime"
+url="https://github.com/${pkgname}/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	install -d -m 755 -o root -g root $pkgdir/usr/bin
+	install -m 755 -o root -g root wasm3 $pkgdir/usr/bin
+}
+sha512sums="
+87d29f942ef9a93faeb4085f1fc7ae8c274a7bd528ccaaf56a273815c524e43c96635acd6b59ee607d5d0c383c1d1358d09080a0d1a23cf1dcaedcab6c56d39e  wasm3-0.5.0.tar.gz
+"

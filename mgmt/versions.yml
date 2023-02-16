@@ -616,3 +616,6 @@ runn:
 scriptisto:
   type: github_tag
   id: igor-petruk/scriptisto
+wasm3:
+  type: github_tag
+  id: wasm3/wasm3
