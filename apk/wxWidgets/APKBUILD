@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=wxWidgets
-pkgver=3.2.2
+pkgver=3.2.2.1
 pkgrel=0
 pkgdesc=""
 url="https://www.wxwidgets.org/"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-c134fb595d0e73396cf8151eb5703363f7500033835f9073c6c26ee184cdd30c1f7e1602982c36fabcf05d6aef371b08bee2c2bfb7ce70e81b5d4452c85db2e6  wxWidgets-3.2.2.tar.bz2
+289d61ea2abd75a329aafcbd347ab84b136f31fca01dd902593f661691ecd30a4416286ff501c4257baa6765cf356ade3087eb8609af9a44599cfdc20e2f03a6  wxWidgets-3.2.2.1.tar.bz2
 "
