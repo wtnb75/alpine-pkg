@@ -14,3 +14,4 @@ uutils    # build failed?(killed)
 cfonts    # build failed?(cargo)
 wasmtime  # build failed?(cargo)
 git-delta # build failed?(cargo)
+toast     # build failed?
