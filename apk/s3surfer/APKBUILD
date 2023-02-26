@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=s3surfer
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=0
 pkgdesc="CLI tool for browsing S3 bucket and download objects interactively"
 url="https://github.com/hirose31/s3surfer"
