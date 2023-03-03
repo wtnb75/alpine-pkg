@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=toast
-pkgver=0.46.0
+pkgver=0.46.1
 pkgrel=0
 pkgdesc="Containerize your development and continuous integration environments"
 url="https://github.com/stepchowfun/toast"
