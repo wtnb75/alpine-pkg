@@ -1,0 +1,53 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=httpcgi
+pkgver=0.0.8
+pkgrel=0
+pkgdesc="serve legacy CGI"
+url="https://github.com/wtnb75/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go wasmer"
+install=""
+#subpackages="$pkgname-wasmtime $pkgname-wasmer"
+source=""
+_gourl="github.com/wtnb75/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+ldflags="-X main.version=v${pkgver} -X main.date=$(date +%Y-%m-%d)"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -tags docker,wazero -ldflags "${ldflags}" ${_gourl}@v${pkgver}
+}
+
+_subpkg_build(){
+	GO111MODULE=on GOBIN=${subpkgdir}/usr/bin go install -tags ${subpkgname##${pkgname}-} -ldflags "${ldflags}" ${_gourl}@v${pkgver}
+	mv ${subpkgdir}/usr/bin/${pkgname} ${subpkgdir}/usr/bin/${subpkgname}
+}
+
+wazero() {
+	_subpkg_build
+}
+
+wasmer() {
+	_subpkg_build
+}
+
+wasmtime() {
+	_subpkg_build
+}
+
+docker() {
+	_subpkg_build
+}

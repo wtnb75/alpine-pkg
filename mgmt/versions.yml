@@ -619,3 +619,6 @@ scriptisto:
 wasm3:
   type: github_tag
   id: wasm3/wasm3
+httpcgi:
+  type: github_tg
+  id: wtnb75/httpcgi
