@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=calc
-pkgver=2.14.1.3
+pkgver=2.14.1.4
 pkgrel=0
 pkgdesc="arbitrary precision calculator"
 url="http://isthe.com/chongo/tech/comp/calc/"
@@ -31,5 +31,5 @@ package() {
 }
 
 sha512sums="
-12656d54ab919bd089fd22c401b271f8772bf5ec43e8905c4ab1e942c79a5dda0ce8a5677e9d40fbb4a357a848b2d94870ef9ce3dc2d3bb0b3b76d3fa55727b8  calc-2.14.1.3.tar.bz2
+6103eed7559f88fdf856086cbdbdbe08cab2269014afb7ffb1e968576226a3c4fc72583668cceb1fe8520123478fbbcc710c8383d9aff89d0fba6196f54d63d3  calc-2.14.1.4.tar.bz2
 "
