@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=go-getter
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=0
 pkgdesc="Package for downloading things from a string URL using a variety of protocols"
 url="https://github.com/hashicorp/${pkgname}"
