@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=trurl
+pkgver=0.2
+pkgrel=0
+pkgdesc="${pkgname} is a command line tool for URL parsing and manipulation"
+url="https://github.com/curl/${pkgname}"
+arch="all"
+license="curl"
+depends=""
+makedepends="curl-dev"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/curl/${pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir PREFIX=/usr
+}
+sha512sums="
+e6ad68183acefb09985b453d0bdc7d0afe9e4c916c4e32fe67cee9afd23aa437e0b538cdc9456bc2ed93dc8996c9c64efeeff74a1415f044d0c1e52d0f5f00c7  trurl-0.2.tar.gz
+"

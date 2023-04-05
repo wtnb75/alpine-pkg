@@ -622,3 +622,10 @@ wasm3:
 httpcgi:
   type: github_tg
   id: wtnb75/httpcgi
+blocky:
+  type: github_tag
+  id: 0xERR0R/blocky
+trurl:
+  type: github_tag
+  id: curl/trurl
+  regexp: '^trurl-(?P<version>[0-9\.]*)'
