@@ -12,7 +12,7 @@ makedepends="go"
 install=""
 subpackages=""
 source=""
-_gourl="github.com/${pkgname}/${pkgname}"
+_gourl="github.com/${pkgname}/${pkgname}/v8"
 builddir="$srcdir/$pkgname-$pkgver"
 
 
@@ -27,5 +27,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X ${_gourl}/v7/src/cmd.version=v${pkgver} -X ${_gourl}/v7/src/cmd.buildDate=$(date +%Y/%m/%d)" ${_gourl}/v7@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X ${_gourl}/src/cmd.version=v${pkgver} -X ${_gourl}/src/cmd.buildDate=$(date +%Y/%m/%d)" ${_gourl}@v${pkgver}
 }
