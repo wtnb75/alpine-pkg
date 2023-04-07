@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=mimalloc
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=0
 pkgdesc="mimalloc is a compact general purpose allocator with excellent performance"
 url="https://github.com/microsoft/mimalloc"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-f766d6d9ad961cc129a561ed4824eb30e0857c2da4662e0c6fd095c7e193760a2c3238943efa7601099d3b44480b34f1755454d6172a91b6dd1e3fa3a19d4a9e  mimalloc-2.1.0.tar.gz
+01c7bdfd001ebc34bb0918fe4ecff42a4ec316fbbd73d4dda52c93c31e5712595758a595ae7ea436f445ecc0ebbf7f9c63d9c572f1c1c5a9e96f51fc524a4875  mimalloc-2.1.1.tar.gz
 "

@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=qsv
-pkgver=0.95.1
+pkgver=0.98.0
 pkgrel=0
 pkgdesc="CSVs sliced, diced & analyzed"
 url="https://github.com/jqnatividad/${pkgname}"

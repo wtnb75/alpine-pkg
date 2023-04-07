@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=git-town
-pkgver=7.9.0
+pkgver=8.0.0
 pkgrel=0
 pkgdesc="High-level CLI for Git"
 url="https://github.com/${pkgname}/${pkgname}"
