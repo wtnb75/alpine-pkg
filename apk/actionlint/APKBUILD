@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=actionlint
-pkgver=1.6.23
+pkgver=1.6.24
 pkgrel=0
 pkgdesc="Static checker for GitHub Actions workflow files"
 url="https://github.com/rhysd/actionlint"
