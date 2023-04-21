@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=drill-http
 _pkgname=drill
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=0
 pkgdesc="Drill is an HTTP load testing application written in Rust inspired by Ansible syntax"
 url="https://github.com/fcsonline/drill"
