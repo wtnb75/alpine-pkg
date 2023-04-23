@@ -243,8 +243,8 @@ misspell:
   type: github_tag
   id: client9/misspell
 drill-http:
-  type: github_tag
-  id: fcsonline/drill
+  type: cargo
+  id: drill
 whalebrew:
   type: github_tag
   id: whalebrew/whalebrew

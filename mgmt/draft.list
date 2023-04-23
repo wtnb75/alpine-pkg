@@ -60,3 +60,5 @@ easeprobe  # v2 invalid version
 alpaca     # v2 invalid version
 gotun      # build failed?
 mimalloc   # build failed(undeclared variables)
+wasmer     # build failed?
+wasmtime   # build failed?

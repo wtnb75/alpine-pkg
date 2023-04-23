@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=mbw
-pkgver=1.5
+pkgver=2.0
 pkgrel=0
 pkgdesc="Memory Bandwidth Benchmark"
 url="https://github.com/raas/${pkgname}/"
@@ -34,5 +34,5 @@ package() {
   install -c -m 644 -o root -g root ../mbw.1 $pkgdir/usr/share/man/man1/
 }
 sha512sums="
-64d95c63e36a8eb443b2cb2f99c26782c1fdec281ec203533f25359cbb97764d3d71b9066cd45fa9ff7021858989dd3de34d560cffa1cd71d9b9c1aa341166e3  mbw-1.5.tar.gz
+19066e5eb974e088803b5944518b104ad6266dc349a4f1af0208d2e754f2fb8da9d1006001f5c2d23b15737f34da5d5aa18e6416dbfe0ff722211b8650fb84b3  mbw-2.0.tar.gz
 "
