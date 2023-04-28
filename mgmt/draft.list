@@ -62,3 +62,4 @@ gotun      # build failed?
 mimalloc   # build failed(undeclared variables)
 wasmer     # build failed?
 wasmtime   # build failed?
+imgproxy   # build failed
