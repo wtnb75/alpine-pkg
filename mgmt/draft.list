@@ -11,7 +11,6 @@ pacemaker  # needs libqb, libcpg(corosync)
 cling      # build failed(LLVMDemangle)
 ttyrec     # no license
 pyenv      # cannot install python
-aamath     # site down?
 tikv       # build failed(proc-macro vs. musl)
 tikv-pd    # live version check problem
 mvfst      # dep

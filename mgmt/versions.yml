@@ -629,3 +629,6 @@ trurl:
   type: github_tag
   id: curl/trurl
   regexp: '^trurl-(?P<version>[0-9\.]*)'
+killport:
+  type: github_tag
+  id: jkfran/killport
