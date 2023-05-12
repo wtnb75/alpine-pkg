@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=boinc-client
-pkgver=7.22.0
+pkgver=7.22.1
 _pkgver=$(echo $pkgver | cut -f1-2 -d.)
 pkgrel=0
 pkgdesc="Open-source software for volunteer computing and grid computing"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-f8c87338750605f59f5265fd0bfe2956acfca0c42ef58402df860f0eb9953467ee34286308a916e1d4ee12cbf85c05422558ccdf241ab8f26b86c966f66aec4a  boinc-client-7.22.0.tar.gz
+8b3efc68fe8df8f95a674d9deddbe355da2070a960b1768ee7f9c2afdd8a373e97297715dec5d7daf131d4b5c478afbc4476e152ec516080620f66e1a1f785af  boinc-client-7.22.1.tar.gz
 "

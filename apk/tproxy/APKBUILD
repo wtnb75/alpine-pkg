@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=tproxy
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=0
 pkgdesc="A cli tool to proxy and analyze TCP connections"
 url="https://github.com/kevwan/${pkgname}"
