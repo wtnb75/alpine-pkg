@@ -1,0 +1,38 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=stone
+pkgver=2.4
+pkgrel=0
+pkgdesc="Simple Repeater"
+url="http://www.gcd.org/sengoku/${pkgname}/Welcome.ja.html"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="http://www.gcd.org/sengoku/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make linux
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p $pkgdir/usr/bin
+	mkdir -p $pkgdir/usr/share/doc/${pkgname}-${pkgver}
+	install -c -m 755 -o root -g root stone $pkgdir/usr/bin
+	install -c -m 644 -o root -g root README.txt $pkgdir/usr/share/doc/${pkgname}-${pkgver}/
+	install -c -m 644 -o root -g root README.en.txt $pkgdir/usr/share/doc/${pkgname}-${pkgver}/
+	install -c -m 644 -o root -g root GPL.txt $pkgdir/usr/share/doc/${pkgname}-${pkgver}/
+}
+sha512sums="
+3b4bfde322e01817aff5e65bec290a498e04dd7401fd0d63889288825dee345d92f9afd3e1464867a2fa7fa9f0af0f23ab76370ba722f454ae6f4e1c6919846d  stone-2.4.tar.gz
+"
