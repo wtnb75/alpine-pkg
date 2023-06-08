@@ -1,0 +1,44 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ggml
+pkgver=0.1.$(date +%Y%m%d)
+pkgrel=0
+pkgdesc="Tensor library for machine learning"
+url="https://github.com/ggerganov/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends=""
+install=""
+subpackages=""
+source=""
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	git clone --depth=1 ${url} $builddir
+}
+
+build() {
+	cd "$builddir"
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+	cd ..
+	for i in examples/*/*.sh; do
+	  sed -i -e 's,wget --quiet --show-progress,wget,g;' $i
+	done
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	make install DESTDIR=$pkgdir
+	mkdir -p $pkgdir/usr/share/${pkgname}/bin $pkgdir/usr/share/${pkgname}
+	install -c -m 755 -o root -g root ./bin/* $pkgdir/usr/share/${pkgname}/bin
+	cp -r ../examples $pkgdir/usr/share/${pkgname}
+}
