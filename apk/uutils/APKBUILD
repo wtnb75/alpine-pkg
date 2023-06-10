@@ -1,7 +1,8 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=uutils
-pkgver=0.0.18
+_cargoname=coreutils
+pkgver=0.0.19
 pkgrel=0
 pkgdesc="Cross-platform Rust rewrite of the GNU coreutils"
 url="https://github.com/uutils/coreutils"
@@ -15,8 +16,7 @@ source=""
 builddir="${srcdir}/${pkgname}"
 
 prepare() {
-	mkdir -p $(dirname $builddir)
-	git clone --depth=1 -b $pkgver $url $builddir
+	mkdir -p $builddir
 }
 
 build() {
@@ -29,7 +29,7 @@ check() {
 
 package() {
 	cd "$builddir"
-	cargo install --root ${pkgdir}/usr --path .
+	cargo install ${_cargoname} --locked --version ${pkgver} --root ${pkgdir}/usr
 	rm -f ${pkgdir}/usr/.crates*
-	mv ${pkgdir}/usr/bin/coreutils ${pkgdir}/usr/bin/uutils
+	mv ${pkgdir}/usr/bin/${_cargoname} ${pkgdir}/usr/bin/${pkgname}
 }
