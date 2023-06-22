@@ -1,0 +1,34 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=httptunnel
+pkgver=3.0.5
+pkgrel=0
+pkgdesc="${pkgname} creates a bidirectional virtual data connection tunnelled in HTTP requests"
+url="https://www.nocrew.org/software/${pkgname}.html"
+arch="all"
+license="GPL"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-doc"
+source="http://www.nocrew.org/software/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+fe7aff3c98da8c5e68b8fb003fb5ac3643ee4b86e3b56e8fec80cab5a183d2f6ead16284f350b9b3c979727a0cc72119c10c5b7e050c0d856809fa33e3868f35  httptunnel-3.0.5.tar.gz
+"
