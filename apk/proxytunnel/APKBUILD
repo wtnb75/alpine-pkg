@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=proxytunnel
+pkgver=1.10.20210604
+pkgrel=0
+pkgdesc="Stealth tunneling through HTTP(S) proxies"
+url="https://github.com/${pkgname}/${pkgname}"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="openssl-dev asciidoc xmlto"
+install=""
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make prefix=/usr
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir prefix=/usr
+}
+sha512sums="
+8cf88cda45646575b1eebbca3e8fe0de0edb6bcbecfb5b06cc50fdb863717f7c72b0a52c6d0f70f99284c1b2914f455f0965366b16e331c12e1bb98296b9b7ae  proxytunnel-1.10.20210604.tar.gz
+"
