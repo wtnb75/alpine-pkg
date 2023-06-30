@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=pushpin
-pkgver=1.36.0
+pkgver=1.37.0
 pkgrel=0
 pkgdesc="Proxy server for adding push to your API"
 url="https://pushpin.org/"
@@ -31,5 +31,5 @@ package() {
 	make install INSTALL_ROOT=$pkgdir
 }
 sha512sums="
-1a9025fa9b4ad3254c2d6109ef9cb530f7e5a03b4bb4d136811120775d0eaa9a090002fc7b1d6ddb9ef2bdb03109354a690481b0e3b6f61c98355c78a0963b46  pushpin-1.36.0.tar.bz2
+0ffeb885edde70f54d591e02d4840eb8a7fb078c051ef8989a1e745b1fdbd2ceafe508cab9033e9abe0c7df914f01f1d80d3efa6acace196f6ff5a09b10a67e5  pushpin-1.37.0.tar.bz2
 "
