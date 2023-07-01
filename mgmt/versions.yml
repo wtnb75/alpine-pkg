@@ -588,3 +588,6 @@ killport:
 redir:
   type: github_tag
   id: troglobit/redir
+zchunk:
+  type: github_tag
+  id: zchunk/zchunk
