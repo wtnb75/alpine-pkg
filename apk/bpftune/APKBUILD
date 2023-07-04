@@ -1,0 +1,37 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=bpftune
+pkgver=0.0.1
+_gittag=main
+pkgrel=0
+pkgdesc="${pkgname} uses BPF to auto-tune Linux systems"
+url="https://github.com/oracle-samples/${pkgname}"
+arch="all"
+license="GPLv2"
+depends=""
+makedepends="clang coreutils bpftool libcap-dev libbpf-dev libnl3-dev py3-docutils"
+install=""
+subpackages="$pkgname-doc"
+source=""
+builddir="$srcdir/$pkgname-$_gittag"
+
+prepare() {
+        git clone --depth=1 -b $_gittag ${url} $builddir
+        cd $builddir
+        sed -i.bak 's,lib64,lib,g;' Makefile src/Makefile
+}
+
+build() {
+	cd "$builddir"
+	make -j1
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
