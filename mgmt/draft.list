@@ -63,3 +63,4 @@ wasmer     # build failed?
 wasmtime   # build failed?
 imgproxy   # build failed
 toast      # build failed(SIGSEGV)
+xmake      # build failed
