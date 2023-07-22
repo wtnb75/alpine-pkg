@@ -64,3 +64,4 @@ wasmtime   # build failed?
 imgproxy   # build failed
 toast      # build failed(SIGSEGV)
 xmake      # build failed
+periscope  # build failed?
