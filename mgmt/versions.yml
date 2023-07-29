@@ -591,3 +591,6 @@ redir:
 zchunk:
   type: github_tag
   id: zchunk/zchunk
+traefik-acme:
+  type: github_tag
+  id: na4ma4/traefik-acme
