@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=cdebug
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=0
 pkgdesc="${pkgname} - a swiss army knife of container debugging"
 url="https://github.com/iximiuz/${pkgname}"

@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=vitess
-pkgver=17.0.0
+pkgver=17.0.1
 pkgrel=0
 pkgdesc="Vitess is a database clustering system for horizontal scaling of MySQL"
 url="https://github.com/vitessio/vitess"
@@ -29,5 +29,5 @@ package() {
 	make install PREFIX=${pkgdir}/usr
 }
 sha512sums="
-5414006dbb55f077992d94df7f2be0b96f3c56664ca9a28eedc83ab405059676a04d6e751310d645312fdd0c1ee9d048b12607e0c231fe8e9a6c159cdb212ca2  vitess-17.0.0.tar.gz
+cf9b8bb7e18c4353797e5abf0224cfd79f0d5a00c9949dcfdd5b1957091ed536fbcca705a0836396c75e2768ec19b649e4a5b5c77c375552bcdb9db289eda92e  vitess-17.0.1.tar.gz
 "
