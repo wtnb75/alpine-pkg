@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=deark
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=0
 pkgdesc="A utility for file format and metadata analysis, data extraction, decompression, and image format decoding"
 url="https://entropymine.com/deark/"
@@ -30,5 +30,5 @@ package() {
 	make install DEARK_INSTALLDIR=$pkgdir/usr/bin/
 }
 sha512sums="
-6dad30a31309f67d3b89204631e66f5b18783ab4ea7edc7682270b07cf237809b3278bc53e4f9e2d091c6721d8dca9aea4ba5fb76daac649ff96f250c66f172f  deark-1.6.4.tar.gz
+367a68e714b3f897940635e4f83f5445c5fe1a357e46fc2d2795d1eba23e658fcb0d6a4f55e867433de363cb3bf02be1d86674e0e6cacc245f16cfc8fc352ac0  deark-1.6.5.tar.gz
 "
