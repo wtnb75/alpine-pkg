@@ -594,3 +594,6 @@ zchunk:
 traefik-acme:
   type: github_tag
   id: na4ma4/traefik-acme
+gotgt:
+  type: github_tag
+  id: gostor/gotgt

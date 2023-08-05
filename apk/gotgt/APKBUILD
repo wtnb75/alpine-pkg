@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=gotgt
+pkgver=0.2.2
+pkgrel=0
+pkgdesc="Simple Golang iSCSI Target framework"
+url="https://github.com/gostor/${pkgname}"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/gostor/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X ${_gourl}/pkg/version.Version=v${pkgver} -X ${_gourl}/pkg/version.Built=$(date +%Y-%m-%d)" ${_gourl}@v${pkgver}
+}
