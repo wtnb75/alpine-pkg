@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=proxygen
-pkgver=2023.07.24.00
+pkgver=2023.07.31.00
 pkgrel=0
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 url="https://github.com/facebook/proxygen"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-7dd90dc7f31f6ba30d293e7174320eb0964d15c1285960321ab2e3e8056a5c1df46effa767a607623a4e2ce3e62164a4f8deaf4008fdfbae980b41f2308a99c8  proxygen-v2023.07.24.00.tar.gz
+93b2760fc073bbfe72389f733ec9c9e8858bd2935bc20fbbb6a51de04dcc0842488ff16c56eb9727e0c7e7a627cab1cdbe98c6ab28c0e4d724dca2bb8cd2cabc  proxygen-v2023.07.31.00.tar.gz
 "
