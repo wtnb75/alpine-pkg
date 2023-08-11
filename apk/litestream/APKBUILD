@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=litestream
-pkgver=0.3.9
+pkgver=0.3.11
 pkgrel=0
 pkgdesc="Streaming replication for SQLite"
 url="https://github.com/benbjohnson/${pkgname}"
