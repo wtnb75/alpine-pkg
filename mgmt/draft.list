@@ -66,3 +66,4 @@ toast      # build failed(SIGSEGV)
 xmake      # build failed
 periscope  # build failed?
 tgtd       # build failed
+litestream # build failed
