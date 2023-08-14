@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=easeprobe
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=0
 pkgdesc="A simple, standalone, and lightWeight tool that can do health/status checking, written in Go."
 url="https://github.com/megaease/${pkgname}"
