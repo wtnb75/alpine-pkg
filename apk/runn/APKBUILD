@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=runn
-pkgver=0.80.2
+pkgver=0.80.3
 pkgrel=0
 pkgdesc="${pkgname} is a package/tool for ${pkgname}ing operations following a scenario"
 url="https://github.com/k1LoW/${pkgname}"
