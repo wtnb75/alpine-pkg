@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=ovh-ttyrec
-pkgver=1.1.6.7
+pkgver=1.1.7.0
 pkgrel=0
 pkgdesc="Enhanced (but compatible) version of the classic ttyrec"
 url="https://github.com/ovh/ovh-ttyrec"
@@ -29,4 +29,6 @@ package() {
 	cd "$builddir"
 	make install DESTDIR=${pkgdir}
 }
-sha512sums="ae81adde1b95ce354727a795118d39b9c70b94229344287c722a38ff1597bfdff4a66de1fee59381c03c1d0a42ab3e374b2ab6e576fa758d3933b1a73162fa55  ovh-ttyrec-1.1.6.7.tar.gz"
+sha512sums="
+ae5ac73ca4f0ef975cbdf271d25f2c17b31813a55f2745adf72c014898c418a024967c8af6499073118a45e15e2b591212ba4b4204154ae9b8e0e6df64ff75d9  ovh-ttyrec-1.1.7.0.tar.gz
+"
