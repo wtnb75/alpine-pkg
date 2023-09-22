@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=erofs-utils
-pkgver=1.6
+pkgver=1.7
 pkgrel=0
 pkgdesc="${pkgname} includes user-space tools for EROFS filesystem"
 url="https://git.kernel.org/pub/scm/linux/kernel/git/xiang/${pkgname}.git"
@@ -31,5 +31,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-1537c5cb60cb70c607b8c00408451f90122fe902d80c9d35dde7b9205588ae3513ddd7cb38d4062e55bb57e37d9b53a668752792e6cba0bc0d78176afed3e502  erofs-utils-1.6.tar.gz
+0f204cd40644bde28f9bd0c5c234d93e68db3a3998bb089f43bfb3ce9a9db1e1cc2fa65919205cbd4a484fa4388cffadf5b395bc4363de3882e1a19778c2d62b  erofs-utils-1.7.tar.gz
 "
