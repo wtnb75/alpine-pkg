@@ -600,3 +600,9 @@ gotgt:
 gickup:
   type: github_tag
   id: cooperspencer/gickup
+nfsserve:
+  type: cargo
+  id: nfsserve
+b3sum:
+  type: github_tag
+  id: BLAKE3-team/BLAKE3
