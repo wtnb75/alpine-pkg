@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=gztool
+pkgver=1.6.0
+pkgrel=0
+pkgdesc="extract random-positioned data from gzip files with no penalty"
+url="https://github.com/circulosmeos/${pkgname}"
+arch="all"
+license="zlib"
+depends=""
+makedepends="zlib-dev"
+install=""
+subpackages="$pkgname-doc"
+source="${pkgname}-${pkgver}.tar.gz::https://github.com/circulosmeos/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	autoreconf -i
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+180273b3ded3c4d60e9f8fbf5aa56d08eed9925dcab9dc6203c832199252225bb03ceb8fcaa949a93c7fb1931fde7c5205a1bad050a3fe77fd9897616535be06  gztool-1.6.0.tar.gz
+"

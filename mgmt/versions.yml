@@ -603,3 +603,6 @@ gickup:
 cfn-guard:
   type: github_tag
   id: aws-cloudformation/cloudformation-guard
+gztool:
+  type: github_tag
+  id: circulosmeos/gztool
