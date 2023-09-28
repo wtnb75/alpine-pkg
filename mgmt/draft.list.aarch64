@@ -16,3 +16,4 @@ wasmtime  # build failed?(cargo)
 git-delta # build failed?(cargo)
 toast     # build failed?
 killport  # long build time
+nfsserve  # long build time

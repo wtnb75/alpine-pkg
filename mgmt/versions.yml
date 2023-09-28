@@ -600,3 +600,6 @@ gotgt:
 gickup:
   type: github_tag
   id: cooperspencer/gickup
+nfsserve:
+  type: cargo
+  id: nfsserve
