@@ -606,3 +606,6 @@ cfn-guard:
 gztool:
   type: github_tag
   id: circulosmeos/gztool
+nfsserve:
+  type: cargo
+  id: nfsserve
