@@ -17,5 +17,7 @@ ADD abuildconf/*.rsa.pub /etc/apk/keys/
 RUN chown root.root /etc/apk/keys/wtnb75*.pub && \
     chmod 644 /etc/apk/keys/wtnb75*.pub
 RUN apk update
+RUN apk add sccache
+ENV RUSTC_WRAPPER=/usr/bin/sccache
 USER packager
 ENTRYPOINT ["tini", "--"]

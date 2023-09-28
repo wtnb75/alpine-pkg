@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=cfn-guard
+pkgver=3.0.1
+pkgrel=0
+pkgdesc="policy-as-code DSL by AWS CloudFormation"
+url="https://github.com/aws-cloudformation/cloudformation-guard/"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="cargo rust"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install cfn-guard --locked --version ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
+}
