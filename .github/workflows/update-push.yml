@@ -33,11 +33,18 @@ jobs:
       run: docker compose exec -T -w /build builder git config --global --add safe.directory /build
     - name: update version
       run: docker compose exec -T -w /build/mgmt builder python3 -m mgmt auto-update versions.yml
+    - name: fix permission
+      run: |
+        sudo chown -R $(id -u):$(id -g) .git
     - name: git commit/push
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.PUSH_TOKEN }}
         commit-message: auto update version
         title: auto update version
+        branch: auto-update
         add-paths: |
           apk
+    - name: run workflow
+      run: |
+        gh workflow run branch --ref auto-update
