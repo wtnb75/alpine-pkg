@@ -42,11 +42,5 @@ jobs:
         token: ${{ secrets.PUSH_TOKEN }}
         commit-message: auto update version
         title: auto update version
-        branch: auto-update
         add-paths: |
           apk
-    - name: run workflow
-      run: |
-        gh workflow run branch --ref auto-update
-      env:
-        GH_TOKEN: ${{ secrets.PUSH_TOKEN }}
