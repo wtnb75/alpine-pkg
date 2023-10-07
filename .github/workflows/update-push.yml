@@ -48,3 +48,5 @@ jobs:
     - name: run workflow
       run: |
         gh workflow run branch --ref auto-update
+      env:
+        GH_TOKEN: ${{ secrets.PUSH_TOKEN }}
