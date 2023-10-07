@@ -33,19 +33,14 @@ jobs:
       run: docker compose exec -T -w /build builder git config --global --add safe.directory /build
     - name: update version
       run: docker compose exec -T -w /build/mgmt builder python3 -m mgmt auto-update versions.yml
-    - name: git setting
+    - name: fix permission
       run: |
-        git config --local user.name "GitHub Actions"
-        git config --local user.email "546304+github-actions[bot]@users.noreply.github.com"
-    - name: git commit/push
-      env:
-        GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }}
-      run: |
-        tag=version$(date +%Y%m%d)
         sudo chown -R $(id -u):$(id -g) .git
-        git diff --cached --name-only | grep -q APKBUILD || exit 0
-        git checkout -b $tag
-        git commit -m 'auto update version'
-        hub push origin $tag
-        hub pull-request -b ${GITHUB_REF##*/} -m "auto update version"
-        gh workflow run branch --ref $tag
+    - name: git commit/push
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.PUSH_TOKEN }}
+        commit-message: auto update version
+        title: auto update version
+        add-paths: |
+          apk
