@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=msquic
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=0
 pkgdesc="Cross-platform, C implementation of the IETF QUIC protocol"
 url="https://microsoft.github.io/msquic/"
