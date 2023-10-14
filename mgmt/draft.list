@@ -69,3 +69,4 @@ tgtd       # build failed
 litestream # build failed
 dbmate     # build failed
 ggml       # no tag
+runsc      # build failed
