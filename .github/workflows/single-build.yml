@@ -26,6 +26,7 @@ jobs:
         private_key: ${{ secrets.PRIVATE_KEY }}
         arch: ${{ matrix.arch }}
     - name: build apk
+      shell: bash
       run: docker compose exec -T builder sh /build/build-all.sh ${{ github.event.inputs.package }}
     - name: list apk
       uses: ./.github/actions/list-apk
