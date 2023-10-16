@@ -1,0 +1,39 @@
+name: list-apk
+description: |
+  list apk files
+inputs:
+  gc:
+    required: true
+    default: "false"
+    description: apk gc flag
+  arch:
+    required: true
+    default: x86_64
+    description: architecture
+runs:
+  using: "composite"
+  steps:
+  - name: check-if
+    shell: bash
+    run: |
+      echo "filenum=$(docker compose exec -w /home/packager/packages/apk -T builder find . -type f -name \*.apk | wc -l)" >> $GITHUB_OUTPUT
+  - name: debug
+    shell: bash
+    run: echo "file num = ${{ steps.check-if.outputs.filenum }}"
+  - name: gc
+    shell: bash
+    if: inputs.gc == 'true'
+    run: |
+      docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ inputs.arch }}/ --no-dry
+  - name: index
+    shell: bash
+    run: |
+      docker compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
+  - name: list apk
+    shell: bash
+    run: |
+      echo "# package list" >> $GITHUB_STEP_SUMMARY
+      echo "" >> $GITHUB_STEP_SUMMARY
+      echo '```' >> $GITHUB_STEP_SUMMARY
+      docker compose exec -T -w /home/packager/packages/apk builder find . -type f -newer /build/.git >> $GITHUB_STEP_SUMMARY
+      echo '```' >> $GITHUB_STEP_SUMMARY

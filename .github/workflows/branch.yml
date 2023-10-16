@@ -18,39 +18,15 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: setup qemu
-      uses: docker/setup-qemu-action@v2
-    - name: setup abuild.conf
-      shell: bash
-      env:
-        PACKAGER: ${{ secrets.PACKAGER }}
-        KEY_NAME: ${{ secrets.KEY_NAME }}
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-      run: |
-        echo "PACKAGER=\"$PACKAGER\"" >> docker/builder/abuildconf/abuild.conf
-        echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/$KEY_NAME.rsa\"" >> docker/builder/abuildconf/abuild.conf
-        echo "$PRIVATE_KEY" > docker/builder/abuildconf/$KEY_NAME.rsa
-        cp "$KEY_NAME.rsa.pub" docker/builder/abuildconf/
-        cp "$KEY_NAME.rsa.pub" docker/test/
-        chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
-    - name: build image
-      run: |
-        docker compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build builder test
-        docker pull alpine:edge
-        docker compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build export
-    - name: boot builder
-      run: docker compose -f docker-compose.yml -f ${{ matrix.arch }}.yml up -d builder
-    - name: cache
-      uses: actions/cache@v3
+    - name: boot
+      uses: ./.github/actions/builder
       with:
-        path: cache
-        key: ${{ runner.os }}-buildcache-${{ matrix.arch }}-${{ hashFiles('**/APKBUILD') }}
-        restore-keys: ${{ runner.os }}-${{ matrix.arch }}-buildcache-
-    - name: import cache
-      run: docker compose up cache-import
-    - name: apk update
-      run: docker compose exec -T builder sudo apk update
+        packager: ${{ secrets.PACKAGER }}
+        key_name: ${{ secrets.KEY_NAME }}
+        private_key: ${{ secrets.PRIVATE_KEY }}
+        arch: ${{ matrix.arch }}
     - name: build apk
+      shell: bash
       run: |
         cd apk
         for i in $(git diff --name-only origin/main . | cut -f2 -d/ | sort -u) ; do
@@ -60,19 +36,9 @@ jobs:
           [ -f ../mgmt/draft.list.${{ matrix.arch }} ] && grep -q "^${i}" ../mgmt/draft.list.${{ matrix.arch }} && continue
           docker compose exec -T builder sh /build/build-all.sh ${i} || exit 1
         done
-    - name: gc and re-index
-      run: |
-        docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ matrix.arch }}/ --no-dry || true
-        docker compose exec -T -w /build/mgmt builder python3 -m mgmt make-index --privkey /home/packager/.abuild/${{ secrets.KEY_NAME }}.rsa /home/packager/packages/apk/${{ matrix.arch }}/ || true
     - name: list apk
-      run: |
-        mkdir -p -m 0777 output
-        env c_gid=$(id -g) c_uid=$(id -u) docker compose up export
-        ls -lR output
-    - name: export cache
-      run: |
-        mkdir -p -m 0777 cache
-        docker compose up cache-export
-        ls -lR cache
+      uses: ./.github/actions/list-apk
+      with:
+        arch: ${{ matrix.arch }}
     - name: shutdown builder
-      run: docker compose down -v
+      uses: ./.github/actions/builder-fini

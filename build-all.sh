@@ -18,11 +18,11 @@ if [ "$*" = "" ]; then
     for i in */APKBUILD; do
         grep -q "^$(basename $(dirname $i))" ${draft1} && continue
         [ -f ${draft2} ] && grep -q "^$(basename $(dirname $i))" ${draft2} && continue
-        do1 $(dirname $i)
+        do1 $(dirname $i) | sed -e 's, ERROR: \([^ :]*\):, ::error file=apk/\1/APKBUILD:: \1:,g;'
     done
 else
     for i; do
-        do1 $i
+        do1 $i | sed -e 's, ERROR: \([^ :]*\):, ::error file=apk/\1/APKBUILD:: \1:,g;'
     done
 fi
 apk-index || exit 1

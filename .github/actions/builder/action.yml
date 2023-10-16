@@ -1,0 +1,82 @@
+name: apkbuilder
+description: |
+  boot apk builder
+inputs:
+  packager:
+    required: true
+    description: packager string
+  key_name:
+    required: true
+    description: key name string
+  private_key:
+    required: true
+    description: private key for sign apk
+  arch:
+    required: true
+    description: architecture
+  aws_access_key:
+    required: false
+    description: S3 access key
+  aws_secret_key:
+    required: false
+    description: S3 secret key
+  aws_bucket:
+    required: false
+    description: S3 bucket
+  aws_region:
+    required: false
+    description: S3 region
+runs:
+  using: composite
+  steps:
+  - name: setup qemu
+    uses: docker/setup-qemu-action@v3
+  - name: setup abuild.conf
+    shell: bash
+    run: |
+      echo "PACKAGER=\"${{ inputs.packager }}\"" >> docker/builder/abuildconf/abuild.conf
+      echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/${{ inputs.key_name }}.rsa\"" >> docker/builder/abuildconf/abuild.conf
+      echo "${{ inputs.private_key }}" > docker/builder/abuildconf/${{ inputs.key_name }}.rsa
+      cp "${{ inputs.key_name }}.rsa.pub" docker/builder/abuildconf/
+      cp "${{ inputs.key_name }}.rsa.pub" docker/test/
+      chmod 600 "docker/builder/abuildconf/${{ inputs.key_name }}.rsa"
+  - name: setup dotenv
+    shell: bash
+    if: inputs.aws_bucket != ''
+    run: |
+       touch .env
+       echo "AWS_ACCESS_KEY=${{ inputs.aws_access_key }}" >> .env
+       echo "AWS_SECRET_KEY=${{ inputs.aws_secret_key }}" >> .env
+       echo "AWS_BUCKET=${{ inputs.aws_bucket }}" >> .env
+       echo "AWS_REGION=${{ inputs.aws_region }}" >> .env
+  - name: setup docker plugin
+    if: inputs.aws_bucket != ''
+    shell: bash
+    run: |
+      docker plugin install --grant-all-permissions ghcr.io/wtnb75/anyfs:latest
+  - name: build image
+    shell: bash
+    run: |
+      docker pull alpine:edge
+      docker compose -f docker-compose.yml -f ${{ inputs.arch }}.yml build builder test
+      docker compose -f docker-compose.yml -f ${{ inputs.arch }}.yml build export
+  - name: boot builder(s3)
+    shell: bash
+    if: inputs.aws_bucket != ''
+    run: docker compose -f docker-compose.yml -f s3output.yml -f ${{ inputs.arch }}.yml up -d builder
+  - name: boot builder
+    shell: bash
+    if: inputs.aws_bucket == ''
+    run: docker compose -f docker-compose.yml -f ${{ inputs.arch }}.yml up -d builder
+  - name: cache
+    uses: actions/cache@v3
+    with:
+      path: ./cache
+      key: ${{ runner.os }}-buildcache-${{ matrix.arch }}-${{ hashFiles('**/APKBUILD') }}
+      restore-keys: ${{ runner.os }}-${{ matrix.arch }}-buildcache-
+  - name: import cache
+    shell: bash
+    run: docker compose -f docker-compose.yml up cache-import
+  - name: apk update
+    shell: bash
+    run: docker compose exec -T builder sudo apk update

@@ -56,7 +56,6 @@ go-getter  # v2 invalid version
 ehco       # cannot use "quic-go doesn't build on Go 1.19 yet."
 d2         # undefined reference
 easeprobe  # v2 invalid version
-alpaca     # v2 invalid version
 gotun      # build failed?
 mimalloc   # build failed(undeclared variables)
 wasmer     # build failed?
