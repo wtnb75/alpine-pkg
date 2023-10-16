@@ -17,6 +17,10 @@ runs:
     shell: bash
     run: |
       echo "filenum=$(docker compose exec -w /home/packager/packages/apk -T builder find . -type f -name \*.apk | wc -l | tr -d ' ')" >> $GITHUB_OUTPUT
+      echo "filenum0=$(docker compose exec -w /home/packager/packages/apk -T builder find . -type f)"
+      echo "filenum1=$(docker compose exec -w /home/packager/packages/apk -T builder find . -type f -name \*.apk)"
+      echo "filenum2=$(docker compose exec -w /home/packager/packages/apk -T builder find . -type f -name \*.apk | wc -l)"
+      echo "output=$GITHUB_OUTPUT"
   - name: debug
     shell: bash
     run: echo "file num = ${{ steps.check-if.outputs.filenum }}"
