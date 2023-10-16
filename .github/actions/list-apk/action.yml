@@ -25,7 +25,7 @@ runs:
   - name: list apk
     shell: bash
     run: |
-      echo "# package list" >> $GITHUB_STEP_SUMMARY
+      echo "# package list ${{ inputs.arch }}" >> $GITHUB_STEP_SUMMARY
       echo "" >> $GITHUB_STEP_SUMMARY
       echo '```' >> $GITHUB_STEP_SUMMARY
       docker compose exec -T -w /home/packager/packages/apk/${{ inputs.arch }} builder find . -type f -newer /build/.git >> $GITHUB_STEP_SUMMARY
