@@ -13,21 +13,31 @@ inputs:
 runs:
   using: "composite"
   steps:
+  - name: check if
+    shell: bash
+    run: |
+      if [ -d /home/packager/packages/apk ] ; then
+        echo "filenum=$(find /home/packager/packages/apk -type f -name \*.apk | wc -l | tr -d ' ')" >> $GITHUB_STATE
+      else
+        echo "filenum=0" >> $GITHUB_STATE
+      fi
   - name: gc
     shell: bash
-    if: inputs.gc == 'true'
+    if: inputs.gc == 'true' && env.STATE_filenum != 0
     run: |
       if [ $(find /home/packager/packages/apk -type f -name \*.apk | wc -l) != 0 ] ; then
         docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ inputs.arch }}/ --no-dry
       fi
   - name: index
     shell: bash
+    if: env.STATE_filenum != 0
     run: |
       if [ $(find /home/packager/packages/apk -type f -name \*.apk | wc -l) != 0 ] ; then
         docker compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
       fi
   - name: list apk
     shell: bash
+    if: env.STATE_filenum != 0
     run: |
       echo "# package list" >> $GITHUB_STEP_SUMMARY
       echo "" >> $GITHUB_STEP_SUMMARY
