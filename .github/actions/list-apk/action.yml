@@ -16,25 +16,17 @@ runs:
   - name: check if
     shell: bash
     run: |
-      if [ -d /home/packager/packages/apk ] ; then
-        echo "filenum=$(find /home/packager/packages/apk -type f -name \*.apk | wc -l | tr -d ' ')" >> $GITHUB_STATE
-      else
-        echo "filenum=0" >> $GITHUB_STATE
-      fi
+      echo "filenum=$(docker compose exec -w /home/packager/packages/apk -T builder find . -type f -name \*.apk | wc -l | tr -d ' ')" >> $GITHUB_STATE
   - name: gc
     shell: bash
     if: inputs.gc == 'true' && env.STATE_filenum != 0
     run: |
-      if [ $(find /home/packager/packages/apk -type f -name \*.apk | wc -l) != 0 ] ; then
-        docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ inputs.arch }}/ --no-dry
-      fi
+      docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ inputs.arch }}/ --no-dry
   - name: index
     shell: bash
     if: env.STATE_filenum != 0
     run: |
-      if [ $(find /home/packager/packages/apk -type f -name \*.apk | wc -l) != 0 ] ; then
-        docker compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
-      fi
+      docker compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
   - name: list apk
     shell: bash
     if: env.STATE_filenum != 0
@@ -42,5 +34,5 @@ runs:
       echo "# package list" >> $GITHUB_STEP_SUMMARY
       echo "" >> $GITHUB_STEP_SUMMARY
       echo '```' >> $GITHUB_STEP_SUMMARY
-      find /home/packager/packages/apk -type f -newer .git >> $GITHUB_STEP_SUMMARY
+      docker compose exec -T -w /home/packager/packages/apk builder find . -type f -newer /build/.git >> $GITHUB_STEP_SUMMARY
       echo '```' >> $GITHUB_STEP_SUMMARY
