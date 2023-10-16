@@ -76,7 +76,7 @@ runs:
       restore-keys: ${{ runner.os }}-${{ matrix.arch }}-buildcache-
   - name: import cache
     shell: bash
-    run: docker compose -f docker-compose.yml -f s3output.yml up cache-import
+    run: docker compose -f docker-compose.yml up cache-import
   - name: apk update
     shell: bash
     run: docker compose exec -T builder sudo apk update

@@ -16,10 +16,16 @@ runs:
   - name: gc
     shell: bash
     if: inputs.gc == 'true'
-    run: docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ inputs.arch }}/ --no-dry
+    run: |
+      if [ $(find /home/packager/packages/apk -type f -name \*.apk | wc -l) != 0 ] ; then
+        docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ inputs.arch }}/ --no-dry
+      fi
   - name: index
     shell: bash
-    run: docker compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
+    run: |
+      if [ $(find /home/packager/packages/apk -type f -name \*.apk | wc -l) != 0 ] ; then
+        docker compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
+      fi
   - name: list apk
     shell: bash
     run: |
