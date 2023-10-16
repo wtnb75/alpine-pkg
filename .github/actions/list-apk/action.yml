@@ -13,13 +13,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - name: check-if
-    shell: bash
-    run: |
-      echo "filenum=$(docker compose exec -w /home/packager/packages/apk -T builder find . -type f -name \*.apk | wc -l)" >> $GITHUB_OUTPUT
-  - name: debug
-    shell: bash
-    run: echo "file num = ${{ steps.check-if.outputs.filenum }}"
   - name: gc
     shell: bash
     if: inputs.gc == 'true'
@@ -35,5 +28,5 @@ runs:
       echo "# package list" >> $GITHUB_STEP_SUMMARY
       echo "" >> $GITHUB_STEP_SUMMARY
       echo '```' >> $GITHUB_STEP_SUMMARY
-      docker compose exec -T -w /home/packager/packages/apk builder find . -type f -newer /build/.git >> $GITHUB_STEP_SUMMARY
+      docker compose exec -T -w /home/packager/packages/apk/${{ inputs.arch }} builder find . -type f -newer /build/.git >> $GITHUB_STEP_SUMMARY
       echo '```' >> $GITHUB_STEP_SUMMARY
