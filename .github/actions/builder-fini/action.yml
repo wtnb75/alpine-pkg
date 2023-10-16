@@ -5,9 +5,11 @@ runs:
   using: composite
   steps:
   - name: export cache
+    shell: bash
     run: |
       mkdir -p -m 0777 cache
       docker compose -f docker-compose.yml -f s3output.yml up cache-export
       ls -lR cache
   - name: shutdown builder
+    shell: bash
     run: docker compose -f docker-compose.yml down -v --remove-orphans

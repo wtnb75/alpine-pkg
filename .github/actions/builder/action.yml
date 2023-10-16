@@ -4,20 +4,28 @@ description: |
 inputs:
   packager:
     required: true
+    description: packager string
   key_name:
     required: true
+    description: key name string
   private_key:
     required: true
+    description: private key for sign apk
   arch:
     required: true
+    description: architecture
   aws_access_key:
     required: false
+    description: S3 access key
   aws_secret_key:
     required: false
+    description: S3 secret key
   aws_bucket:
     required: false
+    description: S3 bucket
   aws_region:
     required: false
+    description: S3 region
 runs:
   using: composite
   steps:
@@ -53,9 +61,11 @@ runs:
       docker compose -f docker-compose.yml -f ${{ inputs.arch }}.yml build builder test
       docker compose -f docker-compose.yml -f ${{ inputs.arch }}.yml build export
   - name: boot builder(s3)
+    shell: bash
     if: inputs.aws_bucket != ''
     run: docker compose -f docker-compose.yml -f s3output.yml -f ${{ inputs.arch }}.yml up -d builder
   - name: boot builder
+    shell: bash
     if: inputs.aws_bucket == ''
     run: docker compose -f docker-compose.yml -f ${{ inputs.arch }}.yml up -d builder
   - name: cache
@@ -65,6 +75,8 @@ runs:
       key: ${{ runner.os }}-buildcache-${{ matrix.arch }}-${{ hashFiles('**/APKBUILD') }}
       restore-keys: ${{ runner.os }}-${{ matrix.arch }}-buildcache-
   - name: import cache
+    shell: bash
     run: docker compose -f docker-compose.yml -f s3output.yml up cache-import
   - name: apk update
+    shell: bash
     run: docker compose exec -T builder sudo apk update

@@ -5,16 +5,20 @@ inputs:
   gc:
     required: true
     default: "false"
+    description: apk gc flag
   arch:
     required: true
     default: x86_64
+    description: architecture
 runs:
   using: "composite"
   steps:
   - name: gc
+    shell: bash
     if: inputs.gc == 'true'
     run: docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ inputs.arch }}/ --no-dry
   - name: index
+    shell: bash
     run: docker compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
   - name: list apk
     shell: bash
