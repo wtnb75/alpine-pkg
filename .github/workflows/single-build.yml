@@ -32,5 +32,16 @@ jobs:
       uses: ./.github/actions/list-apk
       with:
         arch: ${{ matrix.arch }}
+    - name: export apk
+      shell: bash
+      run: |
+        mkdir output
+        docker compose up export
+    - name: export artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: apk-${{ matrix.arch }}
+        path: output/${{ matrix.arch }}/*.apk
+        if-no-files-found: error
     - name: shutdown builder
       uses: ./.github/actions/builder-fini
