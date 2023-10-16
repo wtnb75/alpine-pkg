@@ -29,8 +29,8 @@ runs:
   - name: list apk
     shell: bash
     run: |
-      echo "# package list" >> $GITHUB_SUMMARY_OUTPUT
-      echo "" >> $GITHUB_SUMMARY_OUTPUT
-      echo '```' >> $GITHUB_SUMMARY_OUTPUT
-      find /home/packager/packages/apk -type f -newer .git >> $GITHUB_SUMMARY_OUTPUT
-      echo '```' >> $GITHUB_SUMMARY_OUTPUT
+      echo "# package list" >> $GITHUB_STEP_SUMMARY
+      echo "" >> $GITHUB_STEP_SUMMARY
+      echo '```' >> $GITHUB_STEP_SUMMARY
+      find /home/packager/packages/apk -type f -newer .git >> $GITHUB_STEP_SUMMARY
+      echo '```' >> $GITHUB_STEP_SUMMARY
