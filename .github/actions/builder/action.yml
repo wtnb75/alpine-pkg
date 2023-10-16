@@ -80,3 +80,6 @@ runs:
   - name: apk update
     shell: bash
     run: docker compose exec -T builder sudo apk update
+  - name: mkdir
+    shell: bash
+    run: docker compose exec -T builder mkdir -p /home/packager/packages/apk
