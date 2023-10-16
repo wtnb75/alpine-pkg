@@ -1,0 +1,13 @@
+diff --git a/libParallel/parallel_import.cpp b/libParallel/parallel_import.cpp
+index 39cf187..ff3d4d8 100644
+--- a/libParallel/parallel_import.cpp
++++ b/libParallel/parallel_import.cpp
+@@ -144,7 +144,7 @@ void this_thread_yield(){
+ #       ifdef __ANDROID__
+             sched_yield();
+ #       else
+-            pthread_yield();
++            sched_yield();
+ #       endif
+ #   endif
+ #endif

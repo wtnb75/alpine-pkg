@@ -609,3 +609,6 @@ gztool:
 nfsserve:
   type: cargo
   id: nfsserve
+HDiffPatch:
+  type: github_tag
+  id: sisong/HDiffPatch
