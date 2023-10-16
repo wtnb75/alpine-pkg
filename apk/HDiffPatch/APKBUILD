@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=HDiffPatch
+pkgver=4.6.7
+pkgrel=0
+pkgdesc="Diff/Patch between binary files or directories"
+url="https://github.com/sisong/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="zlib-dev bzip2-dev"
+install=""
+subpackages=""
+source="$pkgname-$pkgver.tar.gz::https://github.com/sisong/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz 0001-alpine.patch"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	make LZMA=0 ZSTD=0 MD5=0
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	mkdir -p $pkgdir/usr/bin
+	install -c -m 755 hdiffz $pkgdir/usr/bin/hdiffz
+	install -c -m 755 hpatchz $pkgdir/usr/bin/hpatchz
+}
+sha512sums="
+171c2efbd56111f992ffb08029a3b5635ac171cf392f216acb0f3185f9b38a830354f975f06e7b265f109c1b89e21a163080d7a0e1b3b2da5b08330b6ac48a7e  HDiffPatch-4.6.7.tar.gz
+63df1ead651dfafdcefcd98357395b828867041da67e4b6154c2572380b504566ac0b2faf4e192b90431b09aa01a6e35449855f9928363cab4a0059b0c518d99  0001-alpine.patch
+"
