@@ -36,6 +36,7 @@ jobs:
       shell: bash
       run: |
         mkdir output
+        chmod 777 output
         docker compose up export
     - name: export artifact
       uses: actions/upload-artifact@v3
