@@ -72,8 +72,8 @@ runs:
     uses: actions/cache@v3
     with:
       path: ./cache
-      key: ${{ runner.os }}-buildcache-${{ matrix.arch }}-${{ hashFiles('**/APKBUILD') }}
-      restore-keys: ${{ runner.os }}-${{ matrix.arch }}-buildcache-
+      key: ${{ runner.os }}-buildcache-${{ inputs.arch }}-${{ hashFiles('**/APKBUILD') }}
+      restore-keys: ${{ runner.os }}-${{ inputs.arch }}-buildcache-
   - name: import cache
     shell: bash
     run: docker compose -f docker-compose.yml up cache-import
@@ -82,4 +82,4 @@ runs:
     run: docker compose exec -T builder sudo apk update
   - name: mkdir
     shell: bash
-    run: docker compose exec -T builder mkdir -p /home/packager/packages/apk
+    run: docker compose exec -T builder mkdir -p /home/packager/packages/apk/${{ inputs.arch }}

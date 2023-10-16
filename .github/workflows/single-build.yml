@@ -26,10 +26,23 @@ jobs:
         private_key: ${{ secrets.PRIVATE_KEY }}
         arch: ${{ matrix.arch }}
     - name: build apk
+      shell: bash
       run: docker compose exec -T builder sh /build/build-all.sh ${{ github.event.inputs.package }}
     - name: list apk
       uses: ./.github/actions/list-apk
       with:
         arch: ${{ matrix.arch }}
+    - name: export apk
+      shell: bash
+      run: |
+        mkdir output
+        chmod 777 output
+        docker compose up export
+    - name: export artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: apk-${{ matrix.arch }}
+        path: output/${{ matrix.arch }}/*.apk
+        if-no-files-found: error
     - name: shutdown builder
       uses: ./.github/actions/builder-fini
