@@ -12,7 +12,7 @@ makedepends="go"
 install=""
 subpackages=""
 source=""
-_gourl="github.com/samuong/${pkgname}"
+_gourl="github.com/samuong/${pkgname}/v2"
 builddir="$srcdir/$pkgname-$pkgver"
 
 
