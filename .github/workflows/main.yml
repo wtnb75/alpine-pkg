@@ -16,63 +16,23 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v3
-    - name: setup qemu
-      uses: docker/setup-qemu-action@v2
-    - name: setup abuild.conf
-      shell: bash
-      env:
-        PACKAGER: ${{ secrets.PACKAGER }}
-        KEY_NAME: ${{ secrets.KEY_NAME }}
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-      run: |
-        echo "PACKAGER=\"$PACKAGER\"" >> docker/builder/abuildconf/abuild.conf
-        echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/$KEY_NAME.rsa\"" >> docker/builder/abuildconf/abuild.conf
-        echo "$PRIVATE_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa"
-        cp $KEY_NAME.rsa.pub docker/builder/abuildconf/
-        cp $KEY_NAME.rsa.pub docker/test/
-        chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
-    - name: setup dotenv
-      shell: bash
-      env:
-        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-        AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
-        AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
-        AWS_REGION: ${{ secrets.AWS_REGION }}
-      run: |
-        touch .env
-        echo "AWS_ACCESS_KEY=$AWS_ACCESS_KEY" >> .env
-        echo "AWS_SECRET_KEY=$AWS_SECRET_KEY" >> .env
-        echo "AWS_BUCKET=$AWS_BUCKET" >> .env
-        echo "AWS_REGION=$AWS_REGION" >> .env
-    - name: setup docker plugin
-      run: docker plugin install --grant-all-permissions ghcr.io/wtnb75/anyfs:latest
-    - name: build image
-      run: |
-        docker compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build builder test
-        docker pull alpine:edge
-        docker compose -f docker-compose.yml -f ${{ matrix.arch }}.yml build export
-    - name: boot builder
-      run: docker compose -f docker-compose.yml -f s3output.yml -f ${{ matrix.arch }}.yml up -d builder
-    - name: cache
-      uses: actions/cache@v3
+    - name: boot
+      uses: ./.github/actions/builder
       with:
-        path: ./cache
-        key: ${{ runner.os }}-buildcache-${{ matrix.arch }}-${{ hashFiles('**/APKBUILD') }}
-        restore-keys: ${{ runner.os }}-${{ matrix.arch }}-buildcache-
-    - name: import cache
-      run: docker compose -f docker-compose.yml -f s3output.yml up cache-import
-    - name: apk update
-      run: docker compose exec -T builder sudo apk update
+        packager: ${{ secrets.PACKAGER }}
+        key_name: ${{ secrets.KEY_NAME }}
+        private_key: ${{ secrets.PRIVATE_KEY }}
+        arch: ${{ matrix.arch }}
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+        aws_bucker: ${{ secrets.AWS_BUCKET }}
+        aws_region: ${{ secrets.AWS_REGION }}
     - name: build apk
       run: docker compose exec -T builder sh /build/build-all.sh
-    - name: gc and re-index
-      run: |
-        docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ matrix.arch }}/ --no-dry
-        docker compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
-    - name: export cache
-      run: |
-        mkdir -p -m 0777 cache
-        docker compose -f docker-compose.yml -f s3output.yml up cache-export
-        ls -lR cache
+    - name: list apk
+      uses: ./.github/actions/list-apk
+      with:
+        gc: "true"
+        arch: ${{ matrix.arch }}
     - name: shutdown builder
-      run: docker compose -f docker-compose.yml -f s3output.yml down -v
+      uses: ./.github/actions/builder-fini

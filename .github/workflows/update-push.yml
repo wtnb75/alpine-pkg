@@ -11,22 +11,13 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v3
-    - name: setup abuild.conf
-      shell: bash
-      env:
-        PACKAGER: ${{ secrets.PACKAGER }}
-        KEY_NAME: ${{ secrets.KEY_NAME }}
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-      run: |
-        echo "PACKAGER=\"$PACKAGER\"" >> docker/builder/abuildconf/abuild.conf
-        echo "PACKAGER_PRIVKEY=\"/home/packager/.abuild/$KEY_NAME.rsa\"" >> docker/builder/abuildconf/abuild.conf
-        echo "$PRIVATE_KEY" > "docker/builder/abuildconf/$KEY_NAME.rsa"
-        cp $KEY_NAME.rsa.pub docker/builder/abuildconf/$KEY_NAME.rsa.pub
-        chmod 600 "docker/builder/abuildconf/$KEY_NAME.rsa"
-    - name: build image
-      run: docker compose build builder
-    - name: boot builder
-      run: docker compose up -d builder
+    - name: boot
+      uses: ./.github/actions/builder
+      with:
+        packager: ${{ secrets.PACKAGER }}
+        key_name: ${{ secrets.KEY_NAME }}
+        private_key: ${{ secrets.PRIVATE_KEY }}
+        arch: x86_64
     - name: chmod
       run: chmod -R go+wX apk .git
     - name: git config

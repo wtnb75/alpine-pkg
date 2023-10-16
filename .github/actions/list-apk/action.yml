@@ -1,0 +1,26 @@
+name: list-apk
+description: |
+  list apk files
+inputs:
+  gc:
+    required: true
+    default: "false"
+  arch:
+    required: true
+    default: x86_64
+runs:
+  using: "composite"
+  steps:
+  - name: gc
+    if: inputs.gc == 'true'
+    run: docker compose exec -T -w /build/mgmt builder python3 -m mgmt gc /home/packager/packages/apk/${{ inputs.arch }}/ --no-dry
+  - name: index
+    run: docker compose exec -T -w /home/packager/packages/apk builder dirindex make --template apache --recursive . --hide index.html
+  - name: list apk
+    shell: bash
+    run: |
+      echo "# package list" >> $GITHUB_SUMMARY_OUTPUT
+      echo "" >> $GITHUB_SUMMARY_OUTPUT
+      echo '```' >> $GITHUB_SUMMARY_OUTPUT
+      find /home/packager/packages/apk -type f -newer .git >> $GITHUB_SUMMARY_OUTPUT
+      echo '```' >> $GITHUB_SUMMARY_OUTPUT
