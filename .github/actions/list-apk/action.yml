@@ -17,6 +17,9 @@ runs:
     shell: bash
     run: |
       echo "filenum=$(docker compose exec -w /home/packager/packages/apk -T builder find . -type f -name \*.apk | wc -l | tr -d ' ')" >> $GITHUB_OUTPUT
+  - name: debug
+    shell: bash
+    run: echo "file num = ${{ steps.check-if.outputs.filenum }}"
   - name: gc
     shell: bash
     if: inputs.gc == 'true' && steps.check-if.outputs.filenum != 0
