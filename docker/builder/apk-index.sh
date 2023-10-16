@@ -1,5 +1,6 @@
 #! /bin/sh
 set -eu
+set -o pipefail
 . /etc/abuild.conf
 . $HOME/.abuild/abuild.conf
 

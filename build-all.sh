@@ -1,5 +1,6 @@
 #! /bin/sh
 set -eu
+set -o pipefail
 cd $(dirname $0)
 apkdir=$(pwd)/apk
 mgmtdir=$(pwd)/mgmt
