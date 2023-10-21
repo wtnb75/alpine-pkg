@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=nuclei
-pkgver=2.9.15
+pkgver=3.0.1
 pkgrel=0
 pkgdesc="configurable targeted vulnerability scanning based on templates"
 url="https://github.com/projectdiscovery/nuclei"
@@ -27,5 +27,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}/v2/cmd/nuclei@v${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install ${_gourl}/v3/cmd/nuclei@v${pkgver}
 }
