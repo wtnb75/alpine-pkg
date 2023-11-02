@@ -612,3 +612,6 @@ nfsserve:
 HDiffPatch:
   type: github_tag
   id: sisong/HDiffPatch
+gittuf:
+  type: github_tag
+  id: gittuf/gittuf
