@@ -615,3 +615,6 @@ HDiffPatch:
 gittuf:
   type: github_tag
   id: gittuf/gittuf
+tailspin:
+  type: github_tag
+  id: bensadeh/tailspin
