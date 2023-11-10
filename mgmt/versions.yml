@@ -186,7 +186,7 @@ enblend-enfuse:
   directory: enblend-enfuse
   regexp: '^enblend-enfuse-(?P<version>[^\s]+)'
 wxWidgets:
-  type: github_tag
+  type: github_release
   id: wxWidgets/wxWidgets
 boinc-client:
   type: github_tag
