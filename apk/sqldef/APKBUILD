@@ -1,10 +1,10 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=sqldef
-pkgver=0.16.10
+pkgver=0.16.12
 pkgrel=0
 pkgdesc="Idempotent schema management for MySQL, PostgreSQL, and more"
-url="https://github.com/k0kubun/${pkgname}"
+url="https://github.com/${pkgname}/${pkgname}"
 arch="all"
 license="MIT"
 depends=""
@@ -12,7 +12,7 @@ makedepends="go mariadb-dev sqlite-dev postgresql-dev"
 install=""
 subpackages=""
 source=""
-_gourl="github.com/k0kubun/${pkgname}"
+_gourl="github.com/${pkgname}/${pkgname}"
 builddir="$srcdir/$pkgname-$pkgver"
 
 

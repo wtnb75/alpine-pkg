@@ -1,6 +1,7 @@
 #! /bin/sh
 set -eu
 set -o pipefail
+export CARGO_TARGET_DIR=$(mktemp -d)
 cd $(dirname $0)
 apkdir=$(pwd)/apk
 mgmtdir=$(pwd)/mgmt
