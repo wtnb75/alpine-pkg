@@ -70,3 +70,4 @@ dbmate     # build failed
 ggml       # no tag
 runsc      # build failed
 kitchen_sync # build failed
+uutils     # build failed?
