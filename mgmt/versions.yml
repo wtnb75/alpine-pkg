@@ -618,3 +618,9 @@ gittuf:
 tailspin:
   type: github_tag
   id: bensadeh/tailspin
+shell2http:
+  type: github_tag
+  id: msoap/shell2http
+go-test-report:
+  type: github_tag
+  id: vakenbolt/go-test-report
