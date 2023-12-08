@@ -12,7 +12,7 @@ makedepends="go"
 install=""
 subpackages=""
 source=""
-_gourl="github.com/${pkgname}/${pkgname}/v10"
+_gourl="github.com/${pkgname}/${pkgname}/v11"
 builddir="$srcdir/$pkgname-$pkgver"
 
 
