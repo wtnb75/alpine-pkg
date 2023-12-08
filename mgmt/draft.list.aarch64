@@ -19,3 +19,4 @@ killport  # long build time
 cfn-guard # long build time
 nfsserve  # long build time
 tailspin  # long build time
+argc      # long build time

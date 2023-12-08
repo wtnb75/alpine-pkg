@@ -624,3 +624,6 @@ shell2http:
 go-test-report:
   type: github_tag
   id: vakenbolt/go-test-report
+argc:
+  type: github_tag
+  id: sigoden/argc
