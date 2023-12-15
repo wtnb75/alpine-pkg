@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=cling
-pkgver=0.9
+pkgver=1.0
 pkgrel=0
 pkgdesc="The cling C++ interpreter"
 url="https://github.com/root-project/cling"
@@ -32,4 +32,6 @@ package() {
 	cd "$builddir"/build
 	make install DESTDIR=$pkgdir
 }
-sha512sums="255972be4ad5e6f63e4e96e79dbc9f8102f6694788736872f7a5f1352363d2e0ddfaf3fd03237f161c6ba21109b22fad0f4eadf1fafaa1de36f9cb65b5d88a3d  cling-0.9.tar.gz"
+sha512sums="
+95d2910b425ae6d9154199c033f93e3374ecf830d71fea2b512b4d9a880a55df484d317fb8d4cb830017bc27b26b60ec952daaee4b8391b66bf360bdb3f7b2b5  cling-1.0.tar.gz
+"
