@@ -627,3 +627,9 @@ go-test-report:
 argc:
   type: github_tag
   id: sigoden/argc
+quicssh:
+  type: github_tag
+  id: moul/quicssh
+quicssh-rs:
+  type: github_tag
+  id: oowl/quicssh-rs

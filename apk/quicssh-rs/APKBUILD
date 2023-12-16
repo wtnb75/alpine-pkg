@@ -1,0 +1,33 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=quicssh-rs
+pkgver=0.1.1
+pkgrel=0
+pkgdesc="QUIC proxy that allows to use QUIC to connect to an SSH server without needing to patch the client or the server"
+url="https://github.com/oowl/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="cargo rust"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $builddir
+}
+
+build() {
+	cd "$builddir"
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+	cargo install quicssh-rs --locked --version ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
+}
