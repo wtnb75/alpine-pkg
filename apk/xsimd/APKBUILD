@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=xsimd
-pkgver=12.1.0
+pkgver=12.1.1
 pkgrel=0
 pkgdesc="C++ wrappers for SIMD intrinsics and parallelized, optimized mathematical functions (SSE, AVX, NEON, AVX512)"
 url="https://xsimd.readthedocs.io/en/latest/"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-957f0097aa6baeffe63e34bbebc9fd677b98d6cdae3a74c20f1dd4aadf9f37027efdcf840670eddfd8194e255aee1e52a960ffb04b056b75bf66e38e73981818  xsimd-12.1.0.tar.gz
+8e45a8e9b28358d5f20f713ea19a8c366edc62790c27984149f283dfe808d78a549c8ec465e8b3677d7e30b2cb80093908de364bbb9dc80683f5fdfb843131e1  xsimd-12.1.1.tar.gz
 "

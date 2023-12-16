@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=haiku
-pkgver=0.0.38
+pkgver=0.0.40
 pkgrel=0
 pkgdesc="俳句(Haiku) detection"
 url="https://github.com/mattn/go-haiku"
