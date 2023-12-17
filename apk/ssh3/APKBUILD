@@ -1,0 +1,40 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=ssh3
+pkgver=0.1.4
+pkgrel=0
+pkgdesc="SSH3: faster and rich secure shell using HTTP/3"
+url="https://github.com/francoismichel/${pkgname}"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/francoismichel/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p $(dirname $builddir)
+	git clone -b v${pkgver} https://github.com/francoismichel/ssh3 ${builddir}
+}
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd $builddir
+	go build -o ssh3 cli/client/main.go
+	go build -o ssh3-server cli/server/main.go
+	mkdir -p ${pkgdir}/usr/bin
+	install -c -m 755 ssh3-server ${pkgdir}/usr/bin/ssh3-server
+	install -c -m 755 ssh3 ${pkgdir}/usr/bin/ssh3
+}
