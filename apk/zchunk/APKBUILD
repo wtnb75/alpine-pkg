@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=zchunk
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=0
 pkgdesc="A file format designed for highly efficient deltas while maintaining good compression"
 url="https://github.com/${pkgname}/${pkgname}"
@@ -32,5 +32,5 @@ package() {
         meson install --destdir $pkgdir
 }
 sha512sums="
-32f3167db747a494373c03941450e8b6b7eb6ad6a07633ccb9dbd3176ffb79073746bbdf3f132605ad51de23b3b20434d1580cf7cd72e0b658263bb32359f5bc  zchunk-1.3.2.tar.gz
+7fbe50182d46e4e8ce8730959cd97ea39b48dd77d034303435ce15caec194409984d435167d3b55769577d6be6c539573eddd9351f178377a756babc508d6281  zchunk-1.4.0.tar.gz
 "
