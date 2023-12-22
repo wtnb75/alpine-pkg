@@ -634,5 +634,5 @@ quicssh-rs:
   type: github_tag
   id: oowl/quicssh-rs
 ssh3:
-  type: github_tag
+  type: github_release
   id: francoismichel/ssh3
