@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=wangle
-pkgver=2023.12.18.00
+pkgver=2023.12.25.00
 pkgrel=0
 pkgdesc="framework providing a set of common client/server abstractions"
 url="https://github.com/facebook/wangle"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-0ae2a7b0a920cee5e410f54b9ad0b90e97babc2b6bd5a71d5de6fb81c8b426d6603561bdefa4c244e878242777b8ac61093dafa2733d3b3ae7fecc22d92b57c1  wangle-2023.12.18.00.tar.gz
+4ee67341943b1e86522a79026906b47bfbad66e1b034264c2c6873d08e40677ae82eee2e67ec6164d041ee44d9375e140ef6db84b9256ce5ab8d09733300167f  wangle-2023.12.25.00.tar.gz
 "
