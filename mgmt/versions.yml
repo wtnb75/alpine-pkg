@@ -636,3 +636,6 @@ quicssh-rs:
 ssh3:
   type: github_release
   id: francoismichel/ssh3
+csvlens:
+  type: github_tag
+  id: YS-L/csvlens
