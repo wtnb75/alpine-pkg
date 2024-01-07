@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=act
-pkgver=0.2.56
+pkgver=0.2.57
 pkgrel=0
 pkgdesc="Run your GitHub Actions locally"
 url="https://github.com/nektos/act"
