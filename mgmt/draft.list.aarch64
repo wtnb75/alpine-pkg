@@ -21,3 +21,4 @@ nfsserve  # long build time
 tailspin  # long build time
 argc      # long build time
 quicssh-rs # build failed?(cargo)
+csvlens   # build failed?(cargo)
