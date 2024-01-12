@@ -72,3 +72,4 @@ runsc      # build failed
 kitchen_sync # build failed
 uutils     # build failed?
 csvlens    # build failed
+pushpin    # build failed
