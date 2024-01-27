@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=tailspin
-pkgver=2.4.0
+pkgver=3.0.0
 pkgrel=0
 pkgdesc="A log file highlighter"
 url="https://github.com/bensadeh/${pkgname}"

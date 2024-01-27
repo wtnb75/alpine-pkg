@@ -22,3 +22,4 @@ tailspin  # long build time
 argc      # long build time
 quicssh-rs # build failed?(cargo)
 csvlens   # build failed?(cargo)
+amp.      # build failed(cargo)

@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=amp
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=0
 pkgdesc="A complete text editor for your terminal"
 url="https://${pkgname}.rs/"
