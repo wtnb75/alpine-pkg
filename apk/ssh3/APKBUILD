@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=ssh3
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=0
 pkgdesc="SSH3: faster and rich secure shell using HTTP/3"
 url="https://github.com/francoismichel/${pkgname}"
