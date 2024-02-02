@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=immortal
-pkgver=0.24.4
+pkgver=0.24.5
 pkgrel=0
 pkgdesc="A *nix cross-platform (OS agnostic) supervisor"
 url="https://github.com/${pkgname}/${pkgname}"
