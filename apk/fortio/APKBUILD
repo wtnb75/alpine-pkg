@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=fortio
-pkgver=1.63.2
+pkgver=1.63.3
 pkgrel=0
 pkgdesc="Fortio load testing library, command line tool, advanced echo server and web UI"
 url="https://github.com/fortio/fortio"
