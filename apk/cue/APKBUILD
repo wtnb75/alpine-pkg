@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=cue
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=0
 pkgdesc="The CUE Data Constraint Language"
 url="https://github.com/${pkgname}-lang/${pkgname}"

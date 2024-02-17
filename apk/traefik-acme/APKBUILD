@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=traefik-acme
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=0
 pkgdesc="Extract certificates from acme.json created by traefik"
 url="https://github.com/na4ma4/${pkgname}"

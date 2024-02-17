@@ -76,3 +76,5 @@ pushpin    # build failed
 tailspin   # build failed
 vale       # v3
 cdebug     # go version
+cfonts     # build failed?
+duckdb     # build failed?
