@@ -8,24 +8,26 @@ url="https://github.com/quantumsheep/${pkgname}"
 arch="all"
 license="MIT"
 depends=""
-makedepends="go"
+makedepends="cargo rust"
 install=""
 subpackages=""
 source=""
-_gourl="github.com/quantumsheep/${pkgname}"
-builddir="$srcdir/$pkgname-$pkgver"
+builddir="${srcdir}/${pkgname}"
 
+prepare() {
+	mkdir -p $builddir
+}
 
 build() {
-	:
+	cd "$builddir"
 }
 
 check() {
-	# Replace with proper check command(s)
 	:
 }
 
 package() {
-	# Replace with proper package command(s)
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X ${_gourl}/cmd.Version=v${pkgver}" ${_gourl}@${pkgver}
+	cd "$builddir"
+	cargo install sshs --git ${url} --tag ${pkgver} --root ${pkgdir}/usr
+	rm -f ${pkgdir}/usr/.crates*
 }
