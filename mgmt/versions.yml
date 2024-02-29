@@ -639,3 +639,6 @@ ssh3:
 csvlens:
   type: github_tag
   id: YS-L/csvlens
+phodav:
+  type: git_tag
+  url: https://gitlab.gnome.org/GNOME/phodav.git
