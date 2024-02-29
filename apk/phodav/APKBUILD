@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=phodav
+pkgver=3.0
+pkgrel=0
+pkgdesc="WebDav server implementation using libsoup"
+url="https://gitlab.gnome.org/GNOME/${pkgname}"
+arch="all"
+license="LGPLv2"
+depends=""
+makedepends="glib-dev libsoup3-dev libxml2-dev meson"
+install=""
+subpackages=""
+source=""
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	git clone --depth=1 -b v${pkgver} ${url} $builddir
+}
+
+build() {
+	cd "$builddir"
+	meson build --prefix /usr
+	cd build
+	ninja
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"/build
+	meson install --destdir $pkgdir
+}
