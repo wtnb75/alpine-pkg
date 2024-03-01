@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=clair
-pkgver=4.7.2
+pkgver=4.7.3
 pkgrel=0
 pkgdesc="Vulnerability Static Analysis for Containers"
 url="https://github.com/quay/clair"

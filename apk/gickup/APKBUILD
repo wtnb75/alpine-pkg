@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=gickup
-pkgver=0.10.27
+pkgver=0.10.28
 pkgrel=0
 pkgdesc="Backup all the repositories"
 url="https://github.com/cooperspencer/${pkgname}"
