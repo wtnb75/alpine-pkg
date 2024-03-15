@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=proxify
-pkgver=0.0.13
+pkgver=0.0.15
 pkgrel=0
 pkgdesc="Swiss Army knife Proxy tool for HTTP/HTTPS traffic"
 url="https://github.com/projectdiscovery/proxify"
