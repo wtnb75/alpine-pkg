@@ -82,3 +82,4 @@ ngtcp2     # exists in edge/main
 actionlint # exists in edge/testing
 phodav     # exists in edge/community
 sshs       # build failed
+quicssh-rs # build failed
