@@ -642,3 +642,12 @@ csvlens:
 phodav:
   type: git_tag
   url: https://gitlab.gnome.org/GNOME/phodav.git
+jnv:
+  type: github_tag
+  id: ynqa/jnv
+jiq:
+  type: github_tag
+  id: fiatjaf/jiq
+jid:
+  type: github_tag
+  id: simeji/jid
