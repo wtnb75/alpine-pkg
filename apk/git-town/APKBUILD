@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=git-town
-pkgver=12.1.0
+pkgver=13.0.2
 pkgrel=0
 pkgdesc="High-level CLI for Git"
 url="https://github.com/${pkgname}/${pkgname}"
