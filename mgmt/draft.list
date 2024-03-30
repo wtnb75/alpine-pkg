@@ -85,3 +85,4 @@ sshs       # build failed
 quicssh-rs # build failed
 jnv        # build failed
 cfn-guard  # build failed
+git-town   # build failed
