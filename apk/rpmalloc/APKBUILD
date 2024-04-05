@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=rpmalloc
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=0
 pkgdesc="Public domain cross platform lock free thread caching 16-byte aligned memory allocator implemented in C"
 url="https://github.com/mjansson/rpmalloc"
@@ -33,5 +33,5 @@ package() {
 	cp rpmalloc/*.h $pkgdir/usr/include/rpmalloc
 }
 sha512sums="
-0a60ce5839014fe1c69f9261b51786b14cf9370dbfbff65bcd62ddd8cb995e479761d623fb3da742df8922167800788a5e722c73d3e3c0d19d0818928570e3be  rpmalloc-1.4.4.tar.gz
+1addc717d7bbc7a39a121ca5e25403522c517824c614107e9b1ac1d3eda2717f3580ff431eb9bbea06c2762c9307b48d8a902dbf871828fd4dce10831e83bec0  rpmalloc-1.4.5.tar.gz
 "
