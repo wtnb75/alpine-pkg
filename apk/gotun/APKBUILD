@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=gotun
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=0
 pkgdesc="TLS/SSL Tunnel - A modern STunnel replacement written in golang"
 url="https://github.com/opencoff/go-tunnel"

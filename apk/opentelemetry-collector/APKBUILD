@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=opentelemetry-collector
-pkgver=0.97.0
+pkgver=0.98.0
 pkgrel=0
 pkgdesc="OpenTelemetry Collector"
 url="https://github.com/open-telemetry/opentelemetry-collector"
