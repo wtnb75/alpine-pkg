@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=tikv
-pkgver=8.0.0
+pkgver=6.5.9
 pkgrel=0
 pkgdesc="Distributed transactional key-value database, originally created to complement TiDB"
 url="https://tikv.org/"
@@ -35,5 +35,5 @@ package() {
 	cp target/release/tikv-* ${pkgdir}/usr/bin
 }
 sha512sums="
-50a98f2e091e9c324dd2dd1536f14ed452841ccbbb9da5a477c6a0522e0a9351ed3cccca6c64f7ca944990a3ac29e06ae478fcee0c3b244b38d3e1668ce6a000  tikv-8.0.0.tar.gz
+a26a45e629a95c60dcdb8fd5dff8b319c40105da16d85980919975798eda093e02c285193ef97217d46f7d8b2a517d06955c77687cfcf1409502a3f713cbeade  tikv-6.5.9.tar.gz
 "
