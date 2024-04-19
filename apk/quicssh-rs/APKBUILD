@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=quicssh-rs
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=0
 pkgdesc="QUIC proxy that allows to use QUIC to connect to an SSH server without needing to patch the client or the server"
 url="https://github.com/oowl/${pkgname}"
