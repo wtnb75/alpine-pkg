@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=turbolift
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=0
 pkgdesc="A simple tool to help apply changes across many GitHub repositories simultaneously"
 url="https://github.com/Skyscanner/turbolift"
