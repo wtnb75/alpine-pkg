@@ -651,3 +651,6 @@ jiq:
 jid:
   type: github_tag
   id: simeji/jid
+godap:
+  type: github_tag
+  id: Macmod/godap

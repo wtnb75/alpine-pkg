@@ -81,15 +81,14 @@ class VersionChecker:
         apk = tarfile.open(apkfile, mode="r:gz")
         res = {}
         for line in apk.extractfile(".PKGINFO").readlines():
+            if line.startswith("#"):
+                continue
             ll = line.decode("utf-8").strip().split("=", 1)
             if len(ll) != 2:
                 continue
             var, val = [x.strip() for x in ll]
             if var in res:
-                if isinstance(res[var], list):
-                    res[var].append(val)
-                else:
-                    res[var] = [res[var], val]
+                res[var] += "\n" + val
             else:
                 res[var] = val
         return res
@@ -207,7 +206,7 @@ class VersionChecker:
             _log.debug("suffix %s", links)
         return self.get_newest(regexp, links, stopwords=stopwords)
 
-    def get_version_git_tag(self, url, regexp="^v?(?P<version>[0-9\.]*)$", stopwords=None):
+    def get_version_git_tag(self, url, regexp=r"^v?(?P<version>[0-9.]*)$", stopwords=None):
         tags = []
         for line in subprocess.check_output(["git", "ls-remote", "--tags", url], text=True).splitlines():
             v = line.strip().split()
