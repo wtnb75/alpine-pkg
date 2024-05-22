@@ -1,0 +1,41 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=sshportal
+pkgver=1.19.5
+pkgrel=0
+pkgdesc="simple, fun and transparent SSH (and telnet) bastion server"
+url="https://github.com/moul/${pkgname}"
+arch="all"
+license="Apache-2.0"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="moul.io/${pkgname}"
+_ghurl="https://github.com/moul/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	mkdir -p $(dirname $builddir)
+	git clone -b v${pkgver} ${_ghurl} $builddir
+}
+
+build() {
+	cd $builddir
+	go get -u gorm.io/driver/sqlite
+	go get -u gorm.io/driver/mysql
+	go get -u gorm.io/driver/postgres
+	go mod tidy
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	cd $builddir
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.GitTag=v${pkgver}" .
+}

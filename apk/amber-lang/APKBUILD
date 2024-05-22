@@ -1,0 +1,35 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=amber-lang
+pkgver=0.3.1
+pkgrel=0
+pkgdesc="Amber the programming language compiled to bash"
+url="https://${pkgname}.com/"
+arch="all"
+license="GPLv3"
+depends=""
+makedepends="cargo rust"
+install=""
+subpackages=""
+source=""
+builddir="${srcdir}/${pkgname}"
+
+prepare() {
+	mkdir -p $(dirname $builddir)
+        git clone --depth=1 -b ${pkgver}-alpha https://github.com/Ph0enixKM/Amber $builddir
+}
+
+build() {
+	cd "$builddir"
+        cargo build --release
+}
+
+check() {
+	:
+}
+
+package() {
+	cd "$builddir"
+        mkdir -p ${pkgdir}/usr/bin
+        cp target/release/amber ${pkgdir}/usr/bin/
+}
