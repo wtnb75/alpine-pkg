@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=nuclei
-pkgver=3.2.7
+pkgver=3.2.8
 pkgrel=0
 pkgdesc="configurable targeted vulnerability scanning based on templates"
 url="https://github.com/projectdiscovery/nuclei"
