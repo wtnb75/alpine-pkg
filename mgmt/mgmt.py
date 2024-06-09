@@ -325,6 +325,19 @@ def read_apkfile(apkfile):
 
 @cli.command()
 @cli_option
+@click.option("--template", type=click.File("r"))
+@click.option("--output", type=click.File("w"))
+@click.argument("apkfile", type=click.Path(exists=True, file_okay=True, dir_okay=False, readable=True))
+def apk2md(apkfile, template, output):
+    import jinja2
+    data = VersionChecker().read_apkfile(apkfile)
+    tstr = template.read()
+    tmpl = jinja2.Template(tstr)
+    click.echo(tmpl.render(**data), file=output)
+
+
+@cli.command()
+@cli_option
 @click.argument("yamlfile", type=click.File('r'))
 @click.argument("names", nargs=-1)
 def get_version(yamlfile, names):
@@ -430,17 +443,14 @@ def make_from_template(template, args, output):
         os.path.join(_templatedir, "APKBUILD.*"))]))
 @click.argument("args", default='{}')
 def make_from_template2(template, args):
-    from jinja2 import Template
-    ptn = re.compile(r'{{\s*(?P<key>[a-zA-Z0-9]+)\s*}}')
+    from jinja2 import Template, Environment, meta
     data = json.loads(args)
     keys = set(data.keys())
-    needs = set()
-    tmpl = []
+    env = Environment()
     with open(f"{_templatedir}/APKBUILD.{template}") as ifp:
-        for line in ifp:
-            tmpl.append(line.rstrip())
-            for i in ptn.finditer(line):
-                needs.add(i.group("key"))
+        tmpl = ifp.read()
+    ast = env.parse(tmpl)
+    needs = meta.find_undeclared_variables(ast)
     _log.debug("missing: %s", needs-keys)
     _log.debug("toomany: %s", keys-needs)
     for i in sorted(needs-keys):
@@ -458,10 +468,10 @@ def make_from_template2(template, args):
             if data[k2] in data[k]:
                 data[k] = data[k].replace(data[k2], "${" + v2 + "}")
     click.echo(json.dumps(data, ensure_ascii=False))
-    t = Template("\n".join(tmpl))
     os.makedirs(os.path.dirname(outfn), exist_ok=True)
+    tmpl = Template(tmpl)
     with open(outfn, "w") as output:
-        click.echo(t.render(**data), file=output)
+        click.echo(tmpl.render(**data), file=output)
 
 
 @cli.command()
