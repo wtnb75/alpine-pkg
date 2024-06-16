@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=py3-mitmproxy
-pkgver=10.3.0
+pkgver=10.3.1
 pkgrel=0
 pkgdesc="mitmproxy is a free and open source interactive HTTPS proxy"
 url="https://mitmproxy.org/"
