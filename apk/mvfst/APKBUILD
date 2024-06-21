@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=mvfst
-pkgver=2024.06.10.00
+pkgver=2024.06.17.00
 pkgrel=0
 pkgdesc="An implementation of the QUIC transport protocol."
 url="https://github.com/facebookincubator/mvfst"

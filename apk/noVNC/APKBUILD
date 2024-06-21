@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=noVNC
-pkgver=1.4.0
+pkgver=1.5.0
 _websockify_ver=0.10.0
 pkgrel=0
 pkgdesc="VNC client web application"
@@ -34,6 +34,6 @@ package() {
 }
 
 sha512sums="
-b42b0e8c3947dba9a9ba8518bbeb218e77c9d36302c1161f168351ef971c76f3a25e0d136d44e5aa0c6d934290e7d8f23961519e64ca9bdb1eeed8d416aecee3  noVNC-1.4.0.tar.gz
+36977cde835697bec8547493e47be2ce78e4a748a29c249ce1f36df6c0e238aaacaddcb116efd484119c832a3d43e6ef12cff1c0e0a1179755ae43ed49b7fd09  noVNC-1.5.0.tar.gz
 262071f4858e5e3b6471c6f3731d8715c5c13fcc5f43738a330323958a8f0cbe7797847bdc676f1c6c34055c6f8afb949d005a5607d6b220b893910ff973ddc5  websockify-0.10.0.tar.gz
 "
