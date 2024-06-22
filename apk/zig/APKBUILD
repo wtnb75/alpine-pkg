@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=zig
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=0
 pkgdesc="General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software."
 url="https://ziglang.org/"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-20d4dc6db1ef97cf562103dccce372d37ab15fcb4207957f3935c62782d50aff338f73ee98bc263fe1056471d8e9a622afd30234d32e9773b24b717917c8ee69  zig-0.12.0.tar.gz
+e2df80c1ef801c80540dd3ac9cf250134c8935e379409eca0040081e99318bc185eca9e1e51bac5d3bf2667829f5afd0b3ae836ad2c1a8b3b6ae266493836249  zig-0.13.0.tar.gz
 "

@@ -77,7 +77,6 @@ tailspin   # build failed
 vale       # v3
 cdebug     # go version
 cfonts     # build failed?
-duckdb     # build failed?
 ngtcp2     # exists in edge/main
 actionlint # exists in edge/testing
 phodav     # exists in edge/community
@@ -88,3 +87,4 @@ cfn-guard  # build failed
 git-town   # build failed
 nfsserve   # no binary
 amber-lang # build failed?
+killport   # build failed
