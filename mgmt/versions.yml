@@ -654,3 +654,12 @@ jid:
 godap:
   type: github_tag
   id: Macmod/godap
+amber-lang:
+  type: github_tag
+  id: Ph0enixKM/Amber
+assh:
+  type: github_tag
+  id: moul/assh
+sshportal:
+  type: github_tag
+  id: moul/sshportal
