@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=uutils
 _cargoname=coreutils
-pkgver=0.0.26
+pkgver=0.0.27
 pkgrel=0
 pkgdesc="Cross-platform Rust rewrite of the GNU coreutils"
 url="https://github.com/uutils/coreutils"
