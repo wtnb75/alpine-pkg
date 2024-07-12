@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=HDiffPatch
-pkgver=4.6.9
+pkgver=4.7.0
 pkgrel=0
 pkgdesc="Diff/Patch between binary files or directories"
 url="https://github.com/sisong/${pkgname}"
@@ -31,6 +31,6 @@ package() {
 	install -c -m 755 hpatchz $pkgdir/usr/bin/hpatchz
 }
 sha512sums="
-361a570c0e04d5afd528ef50681512f26d982e75bf91ba69c57b65b1975fa7052713473b91dc0540e45c666813be77af92be771efea16353c5a95a25f8e70e6f  HDiffPatch-4.6.9.tar.gz
+58b42dfd5dc32d9d29a24951eb8efb2d94f200399a3fd446d51166f52e0bff3ec08902d9663970396fc73dadd3ae88cff1c740216c4d5ca2dee2b27f04950413  HDiffPatch-4.7.0.tar.gz
 63df1ead651dfafdcefcd98357395b828867041da67e4b6154c2572380b504566ac0b2faf4e192b90431b09aa01a6e35449855f9928363cab4a0059b0c518d99  0001-alpine.patch
 "
