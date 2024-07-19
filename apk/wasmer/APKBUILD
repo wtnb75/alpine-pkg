@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=wasmer
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 pkgdesc="🚀 The leading WebAssembly Runtime supporting WASI and Emscripten"
 url="https://wasmer.io/"
@@ -38,5 +38,5 @@ wapm() {
 	mv ${pkgdir}/usr/bin/wapm ${subpkgdir}/usr/bin
 }
 sha512sums="
-bd274ea919e232b27b2720891c8c0bed19bebf6e1c7578177fe7941f9a5222d0772c54027e9e87fa47664ffa53739ce1bbdf2baf6a72ea0dd75110da410f7314  wasmer-4.3.4.tar.gz
+b8d6ddd12b641595f3893104b4a38afd70f5f123e26724e9606d7be4afe7085cd6942b3b7c58ba7b660d5ff6838d6261b3d6681048a0b290b1a1b509a212c9de  wasmer-4.3.5.tar.gz
 "
