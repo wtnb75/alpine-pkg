@@ -16,7 +16,7 @@ builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
 	cd "$builddir"
-	make LZMA=0 ZSTD=0 MD5=0
+	make LDEF=0 LZMA=0 ZSTD=0 MD5=0
 }
 
 check() {
