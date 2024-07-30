@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=immortal
-pkgver=0.24.5
+pkgver=0.24.6
 pkgrel=0
 pkgdesc="A *nix cross-platform (OS agnostic) supervisor"
 url="https://github.com/${pkgname}/${pkgname}"
@@ -27,5 +27,5 @@ check() {
 
 package() {
 	# Replace with proper package command(s)
-	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.version=v${pkgver}" ${_gourl}/cmd/...@${pkgver}
+	GO111MODULE=on GOBIN=${pkgdir}/usr/bin go install -ldflags "-X main.version=v${pkgver}" ${_gourl}/cmd/...@v${pkgver}
 }
