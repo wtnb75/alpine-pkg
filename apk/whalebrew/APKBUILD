@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=whalebrew
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=0
 pkgdesc="Homebrew, but with Docker images"
 url="https://github.com/whalebrew/whalebrew"
