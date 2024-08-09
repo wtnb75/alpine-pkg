@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=rush
-pkgver=2.3
+pkgver=2.4
 pkgrel=0
 pkgdesc="GNU Rush is a Restricted User Shell"
 url="https://www.gnu.org/software/${pkgname}/"
@@ -31,5 +31,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-248d459256866c138570a2b19d0594207efa65f82df9b355d1a106fbc1d3fc1b3cdef85d31510a1c7994b82b4025abce8f65b35bb01db338b6e65248958762ef  rush-2.3.tar.gz
+0ff132566bc6330904bcc7632e6da9434e37cb93350a3a9383c12c66d937533315d49a7dc31a650516fb2adb8559d222496fbcf11e7c19f296d8221ccec74ab1  rush-2.4.tar.gz
 "
