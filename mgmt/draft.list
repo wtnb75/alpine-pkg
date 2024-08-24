@@ -88,3 +88,4 @@ git-town   # build failed
 nfsserve   # no binary
 amber-lang # build failed?
 killport   # build failed
+orgalorg   # requires go >= 1.23.0
