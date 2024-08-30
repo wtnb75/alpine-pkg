@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=ngtcp2
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=0
 pkgdesc="ngtcp2 project is an effort to implement IETF QUIC protocol"
 url="https://github.com/ngtcp2/ngtcp2"
