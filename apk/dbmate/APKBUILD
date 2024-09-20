@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=dbmate
-pkgver=2.20.0
+pkgver=2.21.0
 pkgrel=0
 pkgdesc="A lightweight, framework-agnostic database migration tool."
 url="https://github.com/amacneil/${pkgname}"

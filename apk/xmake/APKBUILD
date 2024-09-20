@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=xmake
-pkgver=2.9.4
+pkgver=2.9.5
 pkgrel=0
 pkgdesc="A cross-platform build utility based on Lua"
 url="https://xmake.io/"
