@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=austin
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=0
 pkgdesc="Python frame stack sampler for CPython"
 url="https://github.com/P403n1x87/austin"
@@ -31,5 +31,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-0bc9375fd3875adedf7f590de9ea283f17ac60461b353f991c0a3d9ca103fe14e11cbb3a5de4944625f102725e0b4309ad72a16185f165f70e9ca8d181881430  austin-3.6.0.tar.gz
+0d3315b8f683ac3bde8f2b230e7e468ddc392d6e505f787d0ae133773e73f9f6b1a4516e6a27a81c9400356cd09b9b452466c4613a27fe76a0c2c70c0dbdde9c  austin-3.7.0.tar.gz
 "
