@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=argc
-pkgver=1.20.1
+pkgver=1.21.0
 pkgrel=0
 pkgdesc="Easily create and use cli that based on bashscript"
 url="https://github.com/sigoden/${pkgname}"

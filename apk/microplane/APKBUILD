@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=microplane
-pkgver=0.0.34
+pkgver=0.0.35
 pkgrel=0
 pkgdesc="A CLI tool to make git changes across many repos, especially useful with Microservices"
 url="https://github.com/Clever/microplane"

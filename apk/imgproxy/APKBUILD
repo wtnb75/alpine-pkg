@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=imgproxy
-pkgver=3.26.0
+pkgver=3.26.1
 pkgrel=0
 pkgdesc="Fast and secure standalone server for resizing and converting remote images"
 url="https://github.com/imgproxy/imgproxy"
