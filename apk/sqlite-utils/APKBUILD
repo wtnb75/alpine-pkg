@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=py3-sqlite-utils
 _pkgname=sqlite_utils
-pkgver=3.37
+pkgver=3.38a0
 pkgrel=0
 pkgdesc="CLI tool and Python utility functions for manipulating SQLite databases"
 url="https://sqlite-utils.datasette.io/"
