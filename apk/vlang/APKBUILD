@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=vlang
-pkgver=2024.45
+pkgver=2024.46
 pkgrel=0
 pkgdesc="The V Programming Language"
 url="https://vlang.io/"
