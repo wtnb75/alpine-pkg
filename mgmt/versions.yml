@@ -210,7 +210,7 @@ cedro:
   type: github_tag
   id: Sentido-Labs/cedro
 sqlite-utils:
-  type: github_tag
+  type: github_release
   id: simonw/sqlite-utils
 addlicense:
   type: github_tag
