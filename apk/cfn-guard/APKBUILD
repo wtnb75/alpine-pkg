@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=cfn-guard
-pkgver=3.1.1
+pkgver=3.1.12
 pkgrel=0
 pkgdesc="policy-as-code DSL by AWS CloudFormation"
 url="https://github.com/aws-cloudformation/cloudformation-guard/"
