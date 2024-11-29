@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=gztool
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=0
 pkgdesc="extract random-positioned data from gzip files with no penalty"
 url="https://github.com/circulosmeos/${pkgname}"
@@ -31,5 +31,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-b8ad32d7e7adc2c1f4b6c3f3fddad8dbad0105e140636c9b10572366f07013062384c0dc723b362969363bcb8f8bd08d71d88135b82cfa535f99c20dba399b9c  gztool-1.7.0.tar.gz
+f35ce25275de446ce6f77df70216fed5be3d50f45e3e91b0c8476742faaae2c48989c9a1ff8c6d28879632bf0f524b199bbe6b6c60e7cd1ad06e307f562e4a5d  gztool-1.8.0.tar.gz
 "

@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=atlas
-pkgver=0.28.1
+pkgver=0.29.0
 pkgrel=0
 pkgdesc="A database toolkit"
 url="https://github.com/ariga/${pkgname}"
