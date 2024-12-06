@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=folly
-pkgver=2024.11.25.00
+pkgver=2024.12.02.00
 pkgrel=0
 pkgdesc="An open-source C++ library developed and used at Facebook"
 url="https://github.com/facebook/folly"
@@ -35,6 +35,6 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-4ee74e1379cef139c81f08c696d8e04a7dd3149aaf79c9013b856d9fb5a50b6ebd69573206dc74fadebb3a829a1ada5f54871bc96d7520a5ffde2a1375da2a30  folly-2024.11.25.00.tar.gz
+afa430ed4a1d4b617614d5c6893af5fb893b3bbb696c833234842b05fc40c1ef942883029777893b4cf4b44eda189889adb555367740dbba2032912f4d518622  folly-2024.12.02.00.tar.gz
 888938ff3826a5c46de93d957dd4e4236084c5593bc8d8ee41c3ce71eeb34a72120bdcaf9dc25118c222604e52c225c9e1d603538a4178a44a83b697d9780a67  0001-execinfo.patch
 "
