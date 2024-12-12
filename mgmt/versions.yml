@@ -666,3 +666,6 @@ sshportal:
 guile-fibers:
   type: github_tag
   id: wingo/fibers
+guile-shepherd:
+  type: git_tag
+  url: https://git.savannah.gnu.org/git/shepherd.git

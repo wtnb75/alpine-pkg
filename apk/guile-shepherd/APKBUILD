@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+_pkgname=shepherd
+pkgname=guile-${_pkgname}
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="The Shepherd is a service manager"
+url="https://www.gnu.org/software/shepherd/"
+arch="all"
+license="GPL3"
+depends="guile guile-fibers"
+makedepends="guile-dev"
+install=""
+options="!strip"
+subpackages="$pkgname-doc"
+source="https://ftp.gnu.org/gnu/shepherd/shepherd-${pkgver}.tar.gz"
+builddir="$srcdir/${_pkgname}-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+6c601e1bb520f81e001301376de921dc7d9e5b73c5b0f42cd01b7f80947003d005c9658559f752efe6fc037c06eec6da92117c633cc42ab8cb80cf61ef0a857b  shepherd-1.0.0.tar.gz
+"
