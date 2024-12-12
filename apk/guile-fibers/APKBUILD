@@ -1,0 +1,36 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+_pkgname=fibers
+pkgname=guile-${_pkgname}
+pkgver=1.3.1
+pkgrel=0
+pkgdesc="Concurrent ML-like concurrency for Guile"
+url="https://github.com/wingo/fibers/"
+arch="all"
+license="LGPL3/GPL3"
+depends="guile"
+makedepends="guile-dev"
+options="!strip"
+install=""
+subpackages="$pkgname-doc"
+source="https://github.com/wingo/fibers/releases/download/v${pkgver}/fibers-${pkgver}.tar.gz"
+builddir="$srcdir/${_pkgname}-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --mandir=/usr/share/man
+	make
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	cd "$builddir"
+	make install DESTDIR=$pkgdir
+}
+sha512sums="
+264658eefaa5d65950eaf742c7e7ff9af65e838d6657e39928e5ae2f8f642012d6d50d3b957a69f414d57420bd86e8c207fcdd2d8dfa7c1a59fe86573dcaf062  fibers-1.3.1.tar.gz
+"

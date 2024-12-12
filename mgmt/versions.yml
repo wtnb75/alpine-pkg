@@ -663,3 +663,6 @@ assh:
 sshportal:
   type: github_tag
   id: moul/sshportal
+guile-fibers:
+  type: github_tag
+  id: wingo/fibers
