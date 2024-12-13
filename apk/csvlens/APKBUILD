@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=csvlens
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=0
 pkgdesc="Command line csv viewer"
 url="https://github.com/YS-L/${pkgname}"
