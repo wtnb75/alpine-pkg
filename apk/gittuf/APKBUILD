@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=gittuf
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=0
 pkgdesc="A security layer for Git repositories"
 url="https://${pkgname}.dev/"
