@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=godap
-pkgver=2.10.1
+pkgver=2.10.3
 pkgrel=0
 pkgdesc="A complete TUI for LDAP"
 url="https://github.com/Macmod/${pkgname}"
