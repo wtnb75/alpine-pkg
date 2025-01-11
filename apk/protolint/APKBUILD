@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=protolint
-pkgver=0.51.0
+pkgver=0.52.0
 pkgrel=0
 pkgdesc="A pluggable linter and fixer to enforce Protocol Buffer style and conventions"
 url="https://github.com/yoheimuta/${pkgname}"

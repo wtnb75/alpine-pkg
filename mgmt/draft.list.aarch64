@@ -26,3 +26,4 @@ amp       # build failed(cargo)
 sshs      # build failed(cargo)
 rpmalloc  # build failed
 scriptisto  # long build time
+nuclei    # long build time
