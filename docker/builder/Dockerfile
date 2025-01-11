@@ -14,7 +14,7 @@ RUN chown -R packager:abuild /home/packager/.abuild
 RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 RUN echo "http://wtnb75-repo.s3-website-ap-northeast-1.amazonaws.com/apk/" >> /etc/apk/repositories
 ADD abuildconf/*.rsa.pub /etc/apk/keys/
-RUN chown root.root /etc/apk/keys/wtnb75*.pub && \
+RUN chown root:root /etc/apk/keys/wtnb75*.pub && \
     chmod 644 /etc/apk/keys/wtnb75*.pub
 RUN apk update
 RUN apk add sccache
