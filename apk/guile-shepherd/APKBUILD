@@ -2,7 +2,7 @@
 # Maintainer:
 _pkgname=shepherd
 pkgname=guile-${_pkgname}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=0
 pkgdesc="The Shepherd is a service manager"
 url="https://www.gnu.org/software/shepherd/"
@@ -32,5 +32,5 @@ package() {
 	make install DESTDIR=$pkgdir
 }
 sha512sums="
-6c601e1bb520f81e001301376de921dc7d9e5b73c5b0f42cd01b7f80947003d005c9658559f752efe6fc037c06eec6da92117c633cc42ab8cb80cf61ef0a857b  shepherd-1.0.0.tar.gz
+659635db7aaa85eb0d4c88b61dec8a0e10ee81ca90193da7477678c1356d5b43154f05171f6eb0389ef44d4fc1215d2a034f8abede616e8eb80759ab33e30e7d  shepherd-1.0.1.tar.gz
 "
