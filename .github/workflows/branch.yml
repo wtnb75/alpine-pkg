@@ -14,7 +14,7 @@ jobs:
           name: x86_64
         - runner: ubuntu-24.04-arm
           name: aarch64
-    runs-on: {{ matrix.arch.runner }}
+    runs-on: ${{ matrix.arch.runner }}
     steps:
     - name: checkout
       uses: actions/checkout@v4
