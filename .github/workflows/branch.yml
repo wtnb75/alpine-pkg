@@ -10,9 +10,11 @@ jobs:
     strategy:
       matrix:
         arch:
-        - x86_64
-        - aarch64
-    runs-on: ubuntu-latest
+        - runner: ubuntu-latest
+          name: x86_64
+        - runner: ubuntu-24.04-arm
+          name: aarch64
+    runs-on: {{ matrix.arch.runner }}
     steps:
     - name: checkout
       uses: actions/checkout@v4
@@ -24,7 +26,7 @@ jobs:
         packager: ${{ secrets.PACKAGER }}
         key_name: ${{ secrets.KEY_NAME }}
         private_key: ${{ secrets.PRIVATE_KEY }}
-        arch: ${{ matrix.arch }}
+        arch: ${{ matrix.arch.name }}
     - name: build apk
       shell: bash
       run: |
@@ -33,12 +35,12 @@ jobs:
           [ -d "$i" ] || continue
           [ -f "${i}/APKBUILD" ] || continue
           grep -q "^${i}" ../mgmt/draft.list && continue
-          [ -f ../mgmt/draft.list.${{ matrix.arch }} ] && grep -q "^${i}" ../mgmt/draft.list.${{ matrix.arch }} && continue
+          [ -f ../mgmt/draft.list.${{ matrix.arch.name }} ] && grep -q "^${i}" ../mgmt/draft.list.${{ matrix.arch.name }} && continue
           docker compose exec -T builder sh /build/build-all.sh ${i} || exit 1
         done
     - name: list apk
       uses: ./.github/actions/list-apk
       with:
-        arch: ${{ matrix.arch }}
+        arch: ${{ matrix.arch.name }}
     - name: shutdown builder
       uses: ./.github/actions/builder-fini
