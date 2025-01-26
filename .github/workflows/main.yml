@@ -10,9 +10,11 @@ jobs:
     strategy:
       matrix:
         arch:
-        - x86_64
-        - aarch64
-    runs-on: ubuntu-latest
+        - runner: ubuntu-latest
+          name: x86_64
+        - runner: ubuntu-24.04-arm
+          name: aarch64
+    runs-on: ${{ matrix.arch.runner }}
     steps:
     - name: checkout
       uses: actions/checkout@v4
@@ -22,7 +24,7 @@ jobs:
         packager: ${{ secrets.PACKAGER }}
         key_name: ${{ secrets.KEY_NAME }}
         private_key: ${{ secrets.PRIVATE_KEY }}
-        arch: ${{ matrix.arch }}
+        arch: ${{ matrix.arch.name }}
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
         aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
         aws_bucket: ${{ secrets.AWS_BUCKET }}
@@ -34,6 +36,6 @@ jobs:
       uses: ./.github/actions/list-apk
       with:
         gc: "true"
-        arch: ${{ matrix.arch }}
+        arch: ${{ matrix.arch.name }}
     - name: shutdown builder
       uses: ./.github/actions/builder-fini

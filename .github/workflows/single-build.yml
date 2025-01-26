@@ -12,9 +12,11 @@ jobs:
     strategy:
       matrix:
         arch:
-        - x86_64
-        - aarch64
-    runs-on: ubuntu-latest
+        - runner: ubuntu-latest
+          name: x86_64
+        - runner: ubuntu-24.04-arm
+          name: aarch64
+    runs-on: ${{ matrix.arch.runner }}
     steps:
     - name: checkout
       uses: actions/checkout@v4
@@ -24,14 +26,14 @@ jobs:
         packager: ${{ secrets.PACKAGER }}
         key_name: ${{ secrets.KEY_NAME }}
         private_key: ${{ secrets.PRIVATE_KEY }}
-        arch: ${{ matrix.arch }}
+        arch: ${{ matrix.arch.name }}
     - name: build apk
       shell: bash
       run: docker compose exec -T builder sh /build/build-all.sh ${{ github.event.inputs.package }}
     - name: list apk
       uses: ./.github/actions/list-apk
       with:
-        arch: ${{ matrix.arch }}
+        arch: ${{ matrix.arch.name }}
     - name: export apk
       shell: bash
       run: |
@@ -41,8 +43,8 @@ jobs:
     - name: export artifact
       uses: actions/upload-artifact@v4
       with:
-        name: apk-${{ matrix.arch }}
-        path: output/${{ matrix.arch }}/*.apk
+        name: apk-${{ matrix.arch.name }}
+        path: output/${{ matrix.arch.name }}/*.apk
         if-no-files-found: error
     - name: shutdown builder
       uses: ./.github/actions/builder-fini
