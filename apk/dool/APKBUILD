@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=dool
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=0
 pkgdesc="Python3 compatible clone of dstat"
 url="https://github.com/scottchiefbaker/dool"
@@ -31,5 +31,5 @@ package() {
 }
 
 sha512sums="
-129527ebd02911c074a2743f9db00be2170440150363d3c20c282034a9219d7ec3faf81b2f95189feaac00e8f7027f27f8796a6853ccef8b27de9bb374e822eb  dool-1.3.3.tar.gz
+b88d248f4fad61d58b184331e0f51562cafedbf35d32a4995e0141542503fa3a29eb43fe4c865ff3af433c6c98b463c1b987d3ebe3f85d2230a9d9a697618e72  dool-1.3.4.tar.gz
 "
