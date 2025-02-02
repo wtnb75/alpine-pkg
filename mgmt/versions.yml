@@ -87,9 +87,6 @@ global:
   url: https://ftp.gnu.org/pub/gnu/global/
   prefix: global-
   suffix: .tar.gz
-wasmer:
-  type: github_tag
-  id: wasmerio/wasmer
 ovh-ttyrec:
   type: github_tag
   id: ovh/ovh-ttyrec
@@ -282,9 +279,6 @@ cdb:
 gifski:
   type: github_tag
   id: ImageOptim/gifski
-#goofys:   # build failed with newer version
-#  type: github_tag
-#  id: kahing/goofys
 hashlink:
   type: github_tag
   id: HaxeFoundation/hashlink
@@ -452,9 +446,6 @@ columnify:
 sqldef:
   type: github_tag
   id: sqldef/sqldef
-deark:
-  type: github_tag
-  id: jsummers/deark
 uutils:
   type: github_tag
   id: uutils/coreutils
