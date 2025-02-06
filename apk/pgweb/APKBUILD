@@ -1,0 +1,31 @@
+# Contributor: Watanabe Takashi <wtnb75@gmail.com>
+# Maintainer:
+pkgname=pgweb
+pkgver=0.16.2
+pkgrel=0
+pkgdesc="Cross-platform client for PostgreSQL databases"
+url="https://github.com/sosedoff/${pkgname}"
+arch="all"
+license="MIT"
+depends=""
+makedepends="go"
+install=""
+subpackages=""
+source=""
+_gourl="github.com/sosedoff/${pkgname}"
+builddir="$srcdir/$pkgname-$pkgver"
+
+
+build() {
+	:
+}
+
+check() {
+	# Replace with proper check command(s)
+	:
+}
+
+package() {
+	# Replace with proper package command(s)
+	GOBIN=${pkgdir}/usr/bin go install ${_gourl}@v${pkgver}
+}
