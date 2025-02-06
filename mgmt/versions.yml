@@ -660,3 +660,6 @@ guile-fibers:
 guile-shepherd:
   type: git_tag
   url: https://git.savannah.gnu.org/git/shepherd.git
+pgweb:
+  type: github_tag
+  id: sosedoff/pgweb
