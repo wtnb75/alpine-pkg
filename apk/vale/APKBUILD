@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=vale
-pkgver=3.9.4
+pkgver=3.9.5
 pkgrel=0
 pkgdesc="A syntax-aware linter for prose built with speed and extensibility in mind."
 url="https://github.com/errata-ai/vale"

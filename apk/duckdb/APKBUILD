@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=duckdb
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=0
 pkgdesc="DuckDB is an in-process SQL OLAP database management system"
 url="https://duckdb.org/"
@@ -34,5 +34,5 @@ package() {
 	make install DESTDIR=${pkgdir}
 }
 sha512sums="
-ecd036ff975e90c4e9cc3a25784169f5938db19eacd2abc201719d329ec1055608bb2270de22bf409d828196ede6ffe95369154c916916e13a7a14071b05652e  duckdb-1.1.3.tar.gz
+f5bca7a3b6f763b4b1a1f39e53c6f818925584fb44886e291ac3546fe50de545e80d16b4120f0126020e44b601a1b9193f4faad7a3dc8799cda843b1965038f2  duckdb-1.2.0.tar.gz
 "
