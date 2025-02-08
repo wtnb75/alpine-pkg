@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=abcmidi
-pkgver=2025.01.30
+pkgver=2025.02.07a
 pkgrel=0
 pkgdesc="abcMIDI is a package of programs written in C for handling abc music notation files"
 url="https://github.com/sshlien/abcmidi"
@@ -31,5 +31,5 @@ package() {
 }
 
 sha512sums="
-d8daa149c486c55cd04fc38cdbeae1866f1419d2e5c9ae0a4eae4b34161eda9243a4c5f55f9a4ffbd968adad2247146f7ac83ea27a29176b616e5b0a3d581686  abcmidi-2025.01.30.tar.gz
+2ce176f5036cd4ea5589cf74f48cb9076ba88783cc47e23d7ed23c53f9251ae053bdcd450f3bdbf0e941f4c35101102b395ef9dff39e90f119944a2f04ff6569  abcmidi-2025.02.07a.tar.gz
 "
