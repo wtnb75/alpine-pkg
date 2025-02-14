@@ -1,7 +1,7 @@
 # Contributor: Watanabe Takashi <wtnb75@gmail.com>
 # Maintainer:
 pkgname=ipfs
-pkgver=0.33.1
+pkgver=0.33.2
 pkgrel=0
 pkgdesc="IPFS implementation in Go"
 url="https://github.com/ipfs/go-ipfs"
