@@ -91,3 +91,4 @@ killport   # build failed
 orgalorg   # requires go >= 1.23.0
 runn       # requires go >= 1.22.7
 amp        # no version in crates.io
+jd         # cannot go install after v2
