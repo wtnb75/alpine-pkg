@@ -75,7 +75,6 @@ csvlens    # build failed
 pushpin    # build failed
 tailspin   # build failed
 vale       # v3
-cdebug     # go version
 cfonts     # build failed?
 ngtcp2     # exists in edge/main
 actionlint # exists in edge/testing
@@ -88,7 +87,6 @@ git-town   # build failed
 nfsserve   # no binary
 amber-lang # build failed?
 killport   # build failed
-orgalorg   # requires go >= 1.23.0
-runn       # requires go >= 1.22.7
 amp        # no version in crates.io
 jd         # cannot go install after v2
+traefik-acme # requires go>=1.24.0
