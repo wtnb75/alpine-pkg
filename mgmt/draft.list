@@ -90,3 +90,4 @@ killport   # build failed
 amp        # no version in crates.io
 jd         # cannot go install after v2
 traefik-acme # requires go>=1.24.0
+goplus     # build failed
